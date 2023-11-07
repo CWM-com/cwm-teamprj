@@ -1,3 +1,4 @@
+// 해당 요소에 도달했을때 카운팅 js
 const counter = ($counter, max) => {
   let now = max;
 
@@ -41,7 +42,7 @@ function checkvisible(checked, check = 'above') {
 
 const evented = function () {
   if(!isVisible && checkvisible(checked)) {
-    //alert("성공");
+    // alert("성공");
     // 카운트를 적용시킬 요소
     const $counter = document.querySelectorAll(".count");
   
@@ -50,9 +51,9 @@ const evented = function () {
     const max2 = 40;
     const max3 = 78;
   
-    setTimeout(() => counter($counter[0], max1), 2000);
-    setTimeout(() => counter($counter[1], max2), 2000);
-    setTimeout(() => counter($counter[2], max3), 2000);
+    setTimeout(() => counter($counter[0], max1), 800);
+    setTimeout(() => counter($counter[1], max2), 800);
+    setTimeout(() => counter($counter[2], max3), 800);
     isVisible = true;
   }
 
@@ -61,3 +62,26 @@ const evented = function () {
   }
 }
 window.addEventListener('scroll', evented);
+
+
+
+// Top 버튼 js
+const TopBtn = document.querySelector(".scroll-TopBtn");
+
+ const scrollBtnMove = () => {
+  window.scrollY > (window.innerHeight - window.screenY) ? TopBtn.classList.add("show") : TopBtn.classList.remove("show");
+ };
+ window.addEventListener('scroll', scrollBtnMove);
+
+  function move() {
+    if(window.scrollY != 0) {
+      setTimeout(() => {
+        // 해당 scrolly 값에서 - 100px 한만큼 위치 이동
+        window.scrollTo(0,window.scrollY - 100);
+        move();
+      },10);
+    }
+  };
+TopBtn.addEventListener('click', move);
+  
+
