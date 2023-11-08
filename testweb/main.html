@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
+    <title>Index Page Camping</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/main.css">
@@ -22,6 +22,9 @@
                         </span>
                         <span>
                             <a href="">로그인</a>
+                        </span>
+                        <span>
+                            <a href="">마이페이지</a>
                         </span>
                     </div>
                 </div>
@@ -72,7 +75,8 @@
         </div>
         <div class="main-img">
             <div class="main-search">
-                <h2>검색에 쓸 문구</h2>
+                <h2>캠핑이 하고 싶을때</h2>
+                <p>전국의 캠핑장을 검색하여 떠나보세요.</p>
                 <div class="search-form">
                     <form action="">
                         <fieldset style="border: 0;">
@@ -83,53 +87,49 @@
                     </form>
                 </div>
             </div>
-            <div class="best-menu">
-                <div>
-                    <h2>BEST CAMP</h2>
-                </div>
-                <div class="bestList">
-                    <div class="best-box">
-                        <div class="best-img">
-                            <img src="./images/bestming1.jpg" alt="">
-                        </div>
-                        <div class="Listexplan">
-                            <p>서울 캠핑</p>
-                            <p>설명 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, accusamus.</p>
-                        </div>
-                    </div>
-                    <div class="best-box">
-                        <div class="best-img">
-                            <img src="./images/bestming1.jpg" alt="">
-                        </div>
-                        <div class="Listexplan">
-                            <p>경기 캠핑</p>
-                            <p>설명 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, accusamus.</p>
-                        </div>
-                    </div>
-                    <div class="best-box">
-                        <div class="best-img">
-                            <img src="./images/bestming1.jpg" alt="">
-                        </div>
-                        <div class="Listexplan">
-                            <p>부산 캠핑</p>
-                            <p>설명 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, accusamus.</p>
-                        </div>
-                    </div>
-                    <div class="best-box">
-                        <div class="best-img">
-                            <img src="./images/bestming1.jpg" alt="">
-                        </div>
-                        <div class="Listexplan">
-                            <p>경남 캠핑</p>
-                            <p>설명 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, accusamus.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </header>
     <main>
         <section>
+            <div>
+                <div class="best-menu">
+                    <div class="menu-info">
+                        <h2>BEST CAMP</h2>
+                        <span>소개합니다 Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, hic!</span>
+                    </div>
+                    <div class="bestList">
+                        <div class="best-box">
+                            <div class="best-img">
+                                <img src="./images/imgg.jpg" alt="">
+                            </div>
+                            <div class="Listexplan">
+                                <p>서울 캠핑</p>
+                                <p>설명 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, accusamus.</p>
+                            </div>
+                        </div>
+                        <div class="best-box">
+                            <div class="best-img">
+                                <img src="./images/bestming1.jpg" alt="">
+                            </div>
+                            <div class="Listexplan">
+                                <p>경기 캠핑</p>
+                                <p>설명 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, accusamus.</p>
+                            </div>
+                        </div>
+                        <div class="best-box">
+                            <div class="best-img">
+                                <img src="./images/mainimg3.jpg" alt="">
+                            </div>
+                            <div class="Listexplan">
+                                <p>부산 캠핑</p>
+                                <p>설명 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, accusamus.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-main-1-wrap">
             <div class="section-main-1">
                 <div class="main-wrap">
                     <div class="wrap-cotent1">
@@ -169,7 +169,7 @@
                 </div>
             </div>
         </section>
-        <div class="content-color">
+        <div class="content-color" id="checked">
             <div class="count-box">
                 <div class="count">
                     0
@@ -180,7 +180,7 @@
                 <div class="count">
                     0
                 </div>
-                <span>#리뷰 개수</span>
+                <span>#리뷰 갯수</span>
             </div>
             <div class="count-box">
                 <div class="count">
@@ -203,7 +203,7 @@
                             <img src="images/review_img.jpg" alt="">
                         </div>
                         <div>
-                            <h3>후기 제목 Lorem ipsum dolor sit amet.</h3>
+                            <h4>후기 제목 Lorem ipsum dolor sit amet.</h4>
                         </div>
                         <div>내용 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore, placeat!</div>
                     </div>
@@ -217,7 +217,7 @@
                             <img src="images/review_img.jpg" alt="">
                         </div>
                         <div>
-                            <h3>후기 제목 Lorem ipsum dolor sit amet.</h3>
+                            <h4>후기 제목 Lorem ipsum dolor sit amet.</h4>
                         </div>
                         <div>내용 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore, placeat!</div>
                     </div>
@@ -231,11 +231,14 @@
                             <img src="images/review_img.jpg" alt="">
                         </div>
                         <div>
-                            <h3>후기 제목 Lorem ipsum dolor sit amet.</h3>
+                            <h4>후기 제목 Lorem ipsum dolor sit amet.</h4>
                         </div>
                         <div>내용 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore, placeat!</div>
                     </div>
                 </div>
+            </div>
+            <div>
+                <button class="scroll-TopBtn"><i class="fa-solid fa-angle-up"></i><br>TOP</button>
             </div>
         </section>
     </main>
@@ -243,27 +246,28 @@
         <div class="footer-container">
             <div class="footer-wrap">
                 <div>
-                    개인정보취급방침
+                    <div class="footer-item">
+                        <p>
+                            <span><strong>CMW camping travle</strong></span>
+                        </p>
+                        <p>
+                            <span>T. 051-111-1234 | F. 051-222-3456 | E. mailok@mail.com <br></span>
+                        </p>
+                        <p>
+                            <span>부산광역시 서면 123로 561-30(작성자)</span>
+                        </p>
+                    </div>
                 </div>
-                <div>
-                    홈페이지 이용약관
-                </div>
-                <div>
-                    공지사항
-                </div>
-                <div>
-                    회원가입
-                </div>
-                <div>
-                    로그인
-                </div>
+            </div>
+            <div class="footer-copyright">
+                <span>Copyrightⓒ CWM 캠핑 & All rights reserved.</span>
             </div>
             <div>
                 <div class="footer-icon">
-                    <span><i class="fa-brands fa-square-instagram"></i></span>
-                    <span><i class="fa-brands fa-facebook"></i></span>
-                    <span><i class="fa-brands fa-tiktok"></i></span>
-                    <span><i class="fa-brands fa-youtube"></i></span>
+                    <a><i class="fa-brands fa-square-instagram"></i></a>
+                    <a><i class="fa-brands fa-facebook"></i></a>
+                    <a><i class="fa-brands fa-tiktok"></i></a>
+                    <a><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
         </div>
