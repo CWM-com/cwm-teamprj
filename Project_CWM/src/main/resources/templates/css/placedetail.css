@@ -1,0 +1,105 @@
+/* 바디 */
+.section0{
+    width: 100%;
+}
+
+/* 헤더 뒷공간 */
+.bar-back{
+    width: 100%;
+    height: 110px;
+    background-color: #fff;
+}
+
+/* 바디 제목 */
+.section00{
+    display: flex;
+    margin: 100px 300px 50px 300px;
+}
+.menu0 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.menu00 {
+    width: 100%;
+}   
+.menu0 h2::after {
+    content: "";
+    margin-top: 10px;
+    width: 100%;
+    height: 1.5px;
+    display: block;
+    background-color: #ccc;
+}
+.menu0 div h2 {
+    color: #000;
+    font-size: 34px;
+    padding-bottom: 10px;
+}
+
+/* 캠핑 내용 */
+.map-wrap{
+    margin: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+/* 사이드바 */
+.side-menu-bar{
+    width: 200px;
+    text-align: center;
+}
+.side-title{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(165, 192, 239, 0.4);
+    border-radius: 15px 15px 15px 15px;
+}
+
+/* 디테일 내용 */
+.detail-content{
+    width: 100%;
+    padding: 0 250px 0 78px;
+}
+.detail-title{
+    width: 100%;
+    display: flex;
+}
+.detail-title-title{
+    width: 60%;
+    background-color: red;
+}
+.detail-title-bookmark{
+    width: 20%;
+    background-color: blue;
+
+}
+.detail-title-star{
+    width: 20%;
+    background-color: green;
+}
+.detail-body{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.detail-position{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    font-size: 40px;
+    padding: 20px 30px;
+}
+
+
+.detail-position i{
+    padding: 20px;
+}
+#booked{
+    color: green;
+}

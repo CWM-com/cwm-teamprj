@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장소페이지</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/place.css">
+</head>
+<body>
+    <header>
+        <div class="p-fix">
+            <div class="header-container">
+                <div class="header-top">
+                    <div class="top-right">
+                        <span>
+                            <a href="">홈</a>
+                        </span>
+                        <span>
+                            <a href="">회원가입</a>
+                        </span>
+                        <span>
+                            <a href="">로그인</a>
+                        </span>
+                        <span>
+                            <a href="">마이페이지</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="header-Line">
+                    <div class="Logo">
+                        <h3>CWM.CWM</h3>
+                    </div> 
+                    <div class="header-menu">  
+                        <ul class="menuList">
+                            <li>
+                                <a href="">캠핑장 이용안내</a>
+                                <ul class="submenu sub-left">
+                                    <li>
+                                        <a href="">캠핑장 위치</a>
+                                    </li>
+                                    <li>
+                                        <a href="">지역별 날씨</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="">캠핑장 정보</a>
+                            </li>
+                            <li>
+                                <a href="">예약/결제</a>
+                            </li>
+                            <li>
+                                <a href="">캠핑 팁</a>
+                            </li>
+                            <li>
+                                <a href="">캠핑 게시판</a>
+                                <ul class="submenu sub-right">
+                                    <li>
+                                        <a href="">공지사항</a>
+                                    </li>
+                                    <li>
+                                        <a href="">캠핑 리뷰</a>
+                                    </li>
+                                    <li>
+                                        <a href="">자유게시판</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="section0">
+            <div class="bar-back"></div>
+        </div>
+        <div class="section0">
+            <div class="section00">
+                <div class="menu0">
+                    <div class="menu00">
+                        <h2>전국 캠핑장 위치</h2>
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <div class="section0">
+            <div class="map-wrap">
+                <div class="side-menu-bar">
+                    <div class="side-title">
+                        사이드제목
+                    </div>
+                    <div class="side-content">
+                        사이드내용
+                    </div>
+                </div>
+                <div class="place-content">
+                    <div class="camp-option">
+                        <div class="camp-option-select">
+                            <p>정렬순</p>
+                            <select name="" id="">
+                                <option value="001">최근 등록순</option>
+                                <option value="002">인기순</option>
+                                <option value="002">이름순</option>
+                            </select>
+                        </div>
+                        <div class="camp-option-search">
+                            <form action="">
+                                <ul>
+                                    <li>
+                                        <label for="">캠핑장 검색</label>
+                                        <input type="text" name="search" class="search" id="search" required placeholder="찾으시는 캠핑장 이름을 입력하세요">
+                                    </li>
+                                </ul>
+                                <input class="btn" type="submit" value="검색"><br>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="camp-place">
+                        <div class="camp-place-title">
+                            <div class="camp-place-title-thumb">썸네일</div>
+                            <div class="camp-place-title-content">
+                                <div class="content-list">
+                                    <li id="name">이름 : </li>
+                                
+                                    <br>
+                                    <li id="addr">주소 : </li>
+                                    
+                                    <br>
+                                    <li id="tel">연락처 : </li>    
+                                </div>
+                            </div>
+                            <div class="camp-place-title-pic">
+                                <div class="pic-list">
+                                    <div class="pic">사진1</div>
+                                    <div class="pic">사진2</div>
+                                    <div class="pic">사진3</div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="camp-place">
+                        <div class="camp-place-title">
+                            <div class="camp-place-title-thumb">썸네일</div>
+                            <div class="camp-place-title-content">
+                                <div class="content-list">
+                                    <li id="name">이름 : </li>
+                                
+                                    <br>
+                                    <li id="addr">주소 : </li>
+                                    
+                                    <br>
+                                    <li id="tel">연락처 : </li>    
+                                </div>
+                            </div>
+                            <div class="camp-place-title-pic">
+                                <div class="pic-list">
+                                    <div class="pic">사진1</div>
+                                    <div class="pic">사진2</div>
+                                    <div class="pic">사진3</div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="camp-place">
+                        <div class="camp-place-title">
+                            <div class="camp-place-title-thumb">썸네일</div>
+                            <div class="camp-place-title-content">
+                                <div class="content-list">
+                                    <li id="name">이름 : </li>
+                                
+                                    <br>
+                                    <li id="addr">주소 : </li>
+                                    
+                                    <br>
+                                    <li id="tel">연락처 : </li>    
+                                </div>
+                            </div>
+                            <div class="camp-place-title-pic">
+                                <div class="pic-list">
+                                    <div class="pic">사진1</div>
+                                    <div class="pic">사진2</div>
+                                    <div class="pic">사진3</div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="camp-place">
+                        <div class="camp-place-title">
+                            <div class="camp-place-title-thumb">썸네일</div>
+                            <div class="camp-place-title-content">
+                                <div class="content-list">
+                                    <li id="name">이름 : </li>
+                                
+                                    <br>
+                                    <li id="addr">주소 : </li>
+                                    
+                                    <br>
+                                    <li id="tel">연락처 : </li>    
+                                </div>
+                            </div>
+                            <div class="camp-place-title-pic">
+                                <div class="pic-list">
+                                    <div class="pic">사진1</div>
+                                    <div class="pic">사진2</div>
+                                    <div class="pic">사진3</div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="camp-place">
+                        <div class="camp-place-title">
+                            <div class="camp-place-title-thumb">썸네일</div>
+                            <div class="camp-place-title-content">
+                                <div class="content-list">
+                                    <li id="name">이름 : </li>
+                                
+                                    <br>
+                                    <li id="addr">주소 : </li>
+                                    
+                                    <br>
+                                    <li id="tel">연락처 : </li>    
+                                </div>
+                            </div>
+                            <div class="camp-place-title-pic">
+                                <div class="pic-list">
+                                    <div class="pic">사진1</div>
+                                    <div class="pic">사진2</div>
+                                    <div class="pic">사진3</div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bar">
+                        페이지바
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-wrap">
+                <div>
+                    <div class="footer-item">
+                        <p>
+                            <span><strong>CMW camping travle</strong></span>
+                        </p>
+                        <p>
+                            <span>T. 051-111-1234 | F. 051-222-3456 | E. mailok@mail.com <br></span>
+                        </p>
+                        <p>
+                            <span>부산광역시 서면 123로 561-30(작성자)</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <span>Copyrightⓒ CWM 캠핑 & All rights reserved.</span>
+            </div>
+            <div>
+                <div class="footer-icon">
+                    <a><i class="fa-brands fa-square-instagram"></i></a>
+                    <a><i class="fa-brands fa-facebook"></i></a>
+                    <a><i class="fa-brands fa-tiktok"></i></a>
+                    <a><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
