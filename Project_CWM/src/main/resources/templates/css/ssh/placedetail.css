@@ -86,20 +86,66 @@
     margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+}
+.detail-body-addr, .detail-body-price, .detail-body-tel, .detail-body-review, .detail-body-location{
+    display: flex;
+    height: 100%;
+    padding: 20px 0;
+}
+span, p{
+    margin-right: 10px;
+    font-size: 18px;
+}
+.detail-pics{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    border: 0;
+    background-color: transparent;
+    font-size: 20px;
+    cursor: pointer;
+}
+.detail-pics .pic{
+    width: 100%;
+    height: 500px;
+    background-color: pink;
+    margin: 0 20px;
 }
 .detail-position{
-    margin-top: 30px;
+    margin-top: 50px;
+}
+.detail-position h2{
+    text-align: center;
+}
+.detail-position-icons{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     text-align: center;
     font-size: 40px;
     padding: 20px 30px;
 }
-
-
-.detail-position i{
-    padding: 20px;
+.detail-position-icons i{
+    padding: 50px 20px;
 }
 #booked{
     color: green;
+}
+.detail-etc h2{
+    text-align: center;
+}
+.detail-etc-pic{
+    display: flex;
+    justify-content: space-between;
+}
+.pic2{
+    width: 200px;
+    height: 300px;
+    text-align: center;
+}
+.detail-etc01{
+    text-align: center;
 }
