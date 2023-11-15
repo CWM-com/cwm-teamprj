@@ -104,19 +104,41 @@
 .camp-place-title{
     width: 100%;
     display: flex;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height: 200px;
     margin-bottom: 10px;
+    background-color: rgba(165, 192, 239, 0.1);
+    box-shadow: rgba(90, 91, 95, 0.8) 0px 1px 2px 0px;
 }
 .camp-place-title-thumb{
     width: 200px;
-    background-color: green;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    /* background-color: green; */
+}
+.thumb-img{
+    width: 100%;
+    display: block; 
+    object-fit: cover;
 }
 .camp-place-title-content{
     width: 240px;
     margin-left: 5px;
     display: flex;
     align-items: center;
+}
+.content-list{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    height: 100%;
+    align-items: center;
+}
+.content-list-detail{
+    display: flex;
+}
+.content-list-detail li{
+    margin-right: 10px;
 }
 .camp-place-title-pic{
     width: 470px;
@@ -130,8 +152,9 @@
 .pic{
     width: 130px;
     height: 180px;
-    background-color: blue;
-    margin: 0 10px;
+    margin: 10px 10px;
+    overflow: hidden;
+    position: relative;
 }
 .pic:last-child{
     margin-right: 0;
