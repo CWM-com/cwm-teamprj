@@ -84,6 +84,17 @@
 .search{
     width: 215px;
 }
+.btn{
+    margin-left: 3px;
+    padding: 3px 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(165, 192, 239, 0.4);
+    color: #f3f4f6;
+    font-size: 15px;
+    transition: 0.3s;
+}
 
 /* 내용 */
 .camp-place{
