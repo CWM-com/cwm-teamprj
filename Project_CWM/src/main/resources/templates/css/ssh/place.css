@@ -78,19 +78,25 @@
     margin-right: 10px;
     gap: 10px;
 }
+.camp-option-select select{
+    border-radius: 5px;
+}
 .camp-option-search form{
     display: flex;
     justify-content: space-around;
 }
 .search{
-    width: 215px;
+    width: 200px;
+    height: 20px;
+}
+.camp-option-search input{
+    border: 1px solid #a1a1a1;
+    border-radius: 5px;
+    font-size: 15px;
 }
 .btn{
     margin-left: 3px;
     padding: 3px 10px;
-    outline: none;
-    border: none;
-    border-radius: 5px;
     background-color: rgba(165, 192, 239, 0.4);
     color: #a1a1a1;
     font-size: 15px;
@@ -123,13 +129,11 @@
     height: 200px;
     overflow: hidden;
     position: relative;
-    
 }
 .thumb-img{
     width: 100%;
     display: block; 
     object-fit: cover;
-    
 }
 .thumb-img img{
     border-radius: 10px;
@@ -154,9 +158,6 @@
     /* font-size: 20px; */
     font-weight: 600;
 }
-.hidden{
-    display: none;
-}
 .camp-place-title-pic{
     width: 470px;
 }
@@ -172,9 +173,13 @@
     margin: 10px 10px;
     overflow: hidden;
     position: relative;
+    border-radius: 5px;
 }
 .pic:last-child{
     margin-right: 0;
+}
+.hidden{
+    display: none;
 }
 
 /* 페이지바 */
