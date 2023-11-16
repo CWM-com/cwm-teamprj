@@ -76,6 +76,7 @@
     display: flex;
     justify-content: space-around;
     margin-right: 10px;
+    gap: 10px;
 }
 .camp-option-search form{
     display: flex;
@@ -91,9 +92,10 @@
     border: none;
     border-radius: 5px;
     background-color: rgba(165, 192, 239, 0.4);
-    color: #f3f4f6;
+    color: #a1a1a1;
     font-size: 15px;
-    transition: 0.3s;
+    font-weight: 700;
+    cursor: pointer;
 }
 
 /* 내용 */
@@ -109,22 +111,32 @@
     margin-bottom: 10px;
     background-color: rgba(165, 192, 239, 0.1);
     box-shadow: rgba(90, 91, 95, 0.8) 0px 1px 2px 0px;
+    border-radius: 10px;
+}
+.camp-place-title:hover{
+    transform: translateX(-4px) translateY(-4px);
+    transition: 0.3s;
+    cursor: pointer;
 }
 .camp-place-title-thumb{
     width: 200px;
     height: 200px;
     overflow: hidden;
     position: relative;
-    /* background-color: green; */
+    
 }
 .thumb-img{
     width: 100%;
     display: block; 
     object-fit: cover;
+    
+}
+.thumb-img img{
+    border-radius: 10px;
 }
 .camp-place-title-content{
     width: 240px;
-    margin-left: 5px;
+    margin-left: 10px;
     display: flex;
     align-items: center;
 }
@@ -139,6 +151,11 @@
 }
 .content-list-detail li{
     margin-right: 10px;
+    /* font-size: 20px; */
+    font-weight: 600;
+}
+.hidden{
+    display: none;
 }
 .camp-place-title-pic{
     width: 470px;
