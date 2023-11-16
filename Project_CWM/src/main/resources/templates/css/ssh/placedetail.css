@@ -65,40 +65,64 @@
     width: 100%;
     padding: 0 250px 0 78px;
 }
+
+/* 디테일 제목 */
 .detail-title{
     width: 100%;
     display: flex;
 }
 .detail-title-title{
     width: 60%;
-    background-color: red;
 }
 .detail-title-bookmark{
     width: 20%;
-    background-color: blue;
-
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ccc;
 }
-.detail-title-star{
+.rating {
     width: 20%;
-    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
 }
+.star {
+    cursor: pointer;
+    color: #ccc;
+    margin: 0 5px;
+}
+.active {
+    color: tomato;
+}
+
+/* 디테일 바디 */
 .detail-body{
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    margin: 100px 0 150px 0;
     text-align: center;
 }
-.detail-body-addr, .detail-body-price, .detail-body-tel, .detail-body-review, .detail-body-location{
-    display: flex;
-    height: 100%;
-    padding: 20px 0;
+table{
+    border-collapse: collapse;
+    width: 100%;
 }
-span, p{
-    margin-right: 10px;
-    font-size: 18px;
+tr{
+    height: 50px;
+    text-align: center;
 }
-.detail-pics{
-    
+td{
+    border: 1px solid #ccc;
+}
+td:nth-child(1), td:nth-child(3){
+    font-weight: bold;
+    background-color: #eee;
+}
+td i{
+    cursor: pointer;
+}
+
+/* 디테일 사진 */
+.detail-pics{ 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,40 +133,70 @@ button{
     font-size: 20px;
     cursor: pointer;
 }
-.detail-pics .pic{
+.pics{
     width: 100%;
     height: 500px;
-    background-color: pink;
+    background-color: rgba(165, 192, 239, 0.4);
     margin: 0 20px;
 }
+.pic01, .pic02, .pic03{
+    width: 100%; /* 작은 div의 가로 크기 */
+    height: 100%; /* 작은 div의 세로 크기 */
+    overflow: hidden;
+}
+.pic01 img, .pic02 img, .pic03 img{
+    width: auto; /* 이미지의 가로 크기를 자동으로 조절 */
+    height: 100%; /* 이미지를 부모 요소에 맞게 세로 크기 조절 */
+    display: block; /* 인라인 요소로부터 블록 요소로 변경 */
+    margin: 0 auto;
+}
+.hidden{
+    display: none;
+}
+
+/* 디테일 자리 */
 .detail-position{
-    margin-top: 50px;
+    margin-top: 100px;
 }
 .detail-position h2{
     text-align: center;
 }
 .detail-position-icons{
+    margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     text-align: center;
     font-size: 40px;
     padding: 20px 30px;
+    background-color: rgba(195, 235, 195, 0.3);
 }
-.detail-position-icons i{
-    padding: 50px 20px;
+.icons{
+    padding: 30px 20px;
+    /* display: flex; */
 }
-#booked{
-    color: green;
+.icons span{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 디테일 주변 */
+.detail-etc{
+    margin-top: 100px;
 }
 .detail-etc h2{
+    margin: 50px 0;
     text-align: center;
 }
 .detail-etc-pic{
     display: flex;
     justify-content: space-between;
+    gap: 10px;
+}
+.detail-etc01{
+    width: 25%;
 }
 .pic2{
-    width: 200px;
+    width: 100%;
     height: 300px;
     text-align: center;
 }
