@@ -130,12 +130,12 @@
     overflow: hidden;
     position: relative;
 }
-.thumb-img{
+.pic-thumb{
     width: 100%;
     display: block; 
     object-fit: cover;
 }
-.thumb-img img{
+.pic-thumb img{
     border-radius: 10px;
 }
 .camp-place-title-content{
@@ -161,13 +161,13 @@
 .camp-place-title-pic{
     width: 470px;
 }
-.pic-list{
+.pic0-list{
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.pic{
+.pic1, .pic2, .pic3{
     width: 130px;
     height: 180px;
     margin: 10px 10px;
