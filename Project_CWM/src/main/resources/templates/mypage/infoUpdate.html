@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지</title>
+    <title>회원정보 수정</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/kdh/reset.css">
-    <link rel="stylesheet" href="/css/kdh/mypage/mypage.css">
+    <link rel="stylesheet" href="../../static/css/kdh/reset.css">
+    <link rel="stylesheet" href="../../static/css/kdh/mypage/infoUpdate.css">
 </head>
 <body>
     <header>
@@ -82,7 +82,7 @@
             <div class="section00">
                 <div class="menu0">
                     <div class="menu00">
-                        <h2>마이페이지</h2>
+                        <h2>정보수정</h2>
                     </div>  
                 </div>
             </div>
@@ -95,10 +95,10 @@
                             <a href=""><span>마이페이지</span></a>
                         </li>
                         <li class="side-content">
-                            <a href=""><span>정보 수정</span></a>
+                            <a href="./infoUpdate.html"><span>정보 수정</span></a>
                         </li>
                         <li class="side-content">
-                            <a href=""><span>예약내역</span></a>
+                            <a href="./reservation.html"><span>예약내역</span></a>
                         </li>
                         <li class="side-content">
                             <a href=""><span>작성 게시글</span></a>
@@ -108,18 +108,53 @@
                 <!-- 위 사이드바 박스 부분 끝 -->
 
                 <!-- 전체 볼려고 잠시 길이 잡아놈 -->
-                <div>
-                    <div>
-                        <p>XXX님 환영합니다.</p>
+                <div class="update-container">
+                    <div class="update-content">
+                        <form action="">
+                            <div class="update-box">
+                                <ul>
+                                    <li>
+                                        <div class="input-type">
+                                            <label for="userName"><h3>이름</h3></label>
+                                            <input type="text" name="userName" id="userName" class="id-info" placeholder="이름">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="input-type">
+                                            <label for="userEmail"><h3>이메일</h3></label>
+                                            <p>mail@mail.com</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="input-type">
+                                            <label for="userId"><h3>아이디</h3></label>
+                                            <p>1q2w3e4r</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="input-type">
+                                            <label for="userPwd"><h3>비밀번호</h3></label>
+                                            <input type="password" name="userPwd" id="userPwd" class="id-info" placeholder="8자 이상, 숫자와 영문 필수 포함">
+                                            <input type="password" name="checkPwd" id="checkPwd" class="id-info" placeholder="비밀번호 확인">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="input-type">
+                                            <label for="userTel"><h3>전화번호</h3></label>
+                                            <input type="tel" name="userTel" id="userTel" class="id-info" placeholder="전화번호를 입력해주세요">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="check-box">
+                                    <button type="submit" class="update-check">정보 수정</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
              </div>
         </section>
-        <section class="section-wrap">
-            <div style="height: 300px;">
-                2번째 섹션
-            </div>
-        </section>
+
     </main>
     <footer>
         <div class="footer-container">
