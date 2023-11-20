@@ -48,6 +48,7 @@
 
 /* 사이드바 */
 .side-menu-bar{
+    left: 10px;
     width: 200px;
     text-align: center;
 }
@@ -59,6 +60,15 @@
     align-items: center;
     background-color: rgba(165, 192, 239, 0.4);
     border-radius: 15px 15px 15px 15px;
+}
+.side-title a {
+    color: #fff;
+}
+.side-content {
+    padding: 5px 0px;
+}
+.side-content a {
+    color: #000;
 }
 
 /* 디테일 내용 */
