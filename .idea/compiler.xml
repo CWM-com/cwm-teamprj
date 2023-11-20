@@ -6,12 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tut05" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Project_CWM" target="17" />
+      <module name="tut05" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Project_CWM" options="-parameters" />
       <module name="tut05" options="-parameters" />
     </option>
   </component>
