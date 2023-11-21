@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원정보 수정</title>
+    <title>로그인 정보수정</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../../static/css/kdh/reset.css">
     <link rel="stylesheet" href="../../static/css/kdh/mypage/infoUpdate.css">
@@ -80,82 +80,86 @@
         </div>
         <div class="section0">
             <div class="section00">
-                <div class="menu0">
-                    <div class="menu00">
-                        <h2>정보수정</h2>
-                    </div>  
+                
+            </div>
+        </div>
+        <div class="mypage-container">
+            <div class="page-List">
+                <a href="./mypage.html"><h2>마이 페이지</h2></a>
+                <nav>
+                    <div>
+                        <strong class="sub-title">내 정보</strong>
+                        <ul class="title-List">
+                            <li>
+                                <a href="./infoupdate.html">로그인 정보</a>
+                            </li>
+                            <li>
+                                <a href="">작성한 글</a>
+                            </li>
+                            <li>
+                                <a href="">찜 목록</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="title-box">
+                        <Strong class="sub-title">결제 내역</Strong>
+                        <ul class="title-List">
+                            <li>
+                                <a href="">전체 내역</a>
+                            </li>
+                            <li>
+                                <a href="">예약 완료</a>
+                            </li>
+                            <li>
+                                <a href="">예약 취소 </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="user-update">
+                <h3>로그인 정보</h3>
+                <div class="update-info">
+                    <form action="">
+                        <ul>
+                            <li>
+                                <div class="input-type">
+                                    <label for="userName"><h3>이름</h3></label>
+                                    <div>홍길동</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-type">
+                                    <label for="userEmail"><h3>이메일</h3></label>
+                                    <div>mail@mail.com</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-type">
+                                    <label for="userId"><h3>아이디</h3></label>
+                                    <div>1q2w3e4r</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-type">
+                                    <label for="userPwd"><h3>비밀번호</h3></label>
+                                    <input type="password" name="userPwd" id="userPwd" class="id-info" placeholder="8자 이상, 숫자와 영문 필수 포함">
+                                    <input type="password" name="checkPwd" id="checkPwd" class="id-info" placeholder="비밀번호 확인">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-type">
+                                    <label for="userTel"><h3>전화번호</h3></label>
+                                    <input type="tel" name="userTel" id="userTel" class="id-info" placeholder="전화번호를 입력해주세요">
+                                </div>
+                            </li>
+                        <button class="update-btn">수정</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <section class="section-wrap">
-            <div class="map-wrap">
-                <div class="side-menu-bar">
-                    <ul>
-                        <li class="side-title">
-                            <a href=""><span>마이페이지</span></a>
-                        </li>
-                        <li class="side-content">
-                            <a href="./infoUpdate.html"><span>정보 수정</span></a>
-                        </li>
-                        <li class="side-content">
-                            <a href="./reservation.html"><span>예약내역</span></a>
-                        </li>
-                        <li class="side-content">
-                            <a href=""><span>작성 게시글</span></a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- 위 사이드바 박스 부분 끝 -->
-
-                <!-- 전체 볼려고 잠시 길이 잡아놈 -->
-                <div class="update-container">
-                    <div class="update-content">
-                        <form action="">
-                            <div class="update-box">
-                                <ul>
-                                    <li>
-                                        <div class="input-type">
-                                            <label for="userName"><h3>이름</h3></label>
-                                            <input type="text" name="userName" id="userName" class="id-info" placeholder="이름">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="input-type">
-                                            <label for="userEmail"><h3>이메일</h3></label>
-                                            <p>mail@mail.com</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="input-type">
-                                            <label for="userId"><h3>아이디</h3></label>
-                                            <p>1q2w3e4r</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="input-type">
-                                            <label for="userPwd"><h3>비밀번호</h3></label>
-                                            <input type="password" name="userPwd" id="userPwd" class="id-info" placeholder="8자 이상, 숫자와 영문 필수 포함">
-                                            <input type="password" name="checkPwd" id="checkPwd" class="id-info" placeholder="비밀번호 확인">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="input-type">
-                                            <label for="userTel"><h3>전화번호</h3></label>
-                                            <input type="tel" name="userTel" id="userTel" class="id-info" placeholder="전화번호를 입력해주세요">
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="check-box">
-                                    <button type="submit" class="update-check">정보 수정</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-             </div>
-        </section>
-
     </main>
+    
     <footer>
         <div class="footer-container">
             <div class="footer-wrap">
@@ -186,5 +190,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="../../static/js/kdh/reservation/tabmove.js"></script>
 </body>
 </html>

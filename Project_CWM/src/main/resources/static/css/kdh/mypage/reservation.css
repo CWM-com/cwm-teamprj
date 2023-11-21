@@ -155,7 +155,7 @@ img {
 /* 바디 */
 .section0{
     width: 100%;
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -173,7 +173,7 @@ img {
 }
 
 .section-wrap {
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
 }
 .menu0 {
@@ -194,7 +194,8 @@ img {
 }
 .menu0 div h2 {
     color: #000;
-    font-size: 34px;
+    font-size: 28px;
+    text-align: center;
 }
 
 /* 캠핑 내용 */
@@ -238,6 +239,7 @@ img {
 .tab .tabnav {
     overflow: hidden;
     display: flex;
+    justify-content: center;
 }
 
 .tab .tabnav li {
