@@ -4,7 +4,7 @@
 body {
     font-family: 'Noto Sans KR', sans-serif;
     font-family: 'Poppins', sans-serif;
-    background-color: #f7f7f7;
+    background-color: #fff;
 }
 
 header {
@@ -17,6 +17,7 @@ ul li {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 img {
@@ -168,7 +169,6 @@ img {
 
 /* 바디 제목 */
 .section00{
-    display: flex;
     margin-top: 100px;
 }
 
@@ -178,62 +178,192 @@ img {
 }
 .menu0 {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
 }
 .menu00 {
     width: 100%;
 }   
-.menu0 h2::after {
-    content: "";
-    margin-top: 10px;
-    width: 100%;
-    height: 1.5px;
-    display: block;
-    background-color: #ccc;
-}
-.menu0 div h2 {
-    color: #000;
-    font-size: 34px;
-    padding-bottom: 10px;
-}
 
-/* 캠핑 내용 */
+/* mypage 시작 */
 
-/* 사이드바 */
-.side-menu-bar{
-    position: absolute;
-    left: 10px;
-    width: 200px;
-    text-align: center;
-}
-.side-title{
-    width: 100%;
-    height: 40px;
+.mypage-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(165, 192, 239, 0.4);
-    border-radius: 15px 15px 15px 15px;
+    max-width: 1200px;
+    height: 100vh;
+    margin: 0 auto;
 }
 
-.side-title a {
-    color: #fff;
+.page-List {
+    width: 180px;
+    margin-right: 50px;
 }
 
-.side-content {
-    padding: 5px 0px;
+.page-List a h2 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    padding-bottom: 30px;
+    letter-spacing: -0.5px;
 }
 
-.side-content a {
-    color: #000;
+.sub-title {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    margin-bottom: 12px;
+    vertical-align: top;
+    letter-spacing: -0.5px;
 }
 
+.title-List li a {
+    color: rgba(34, 34, 34, 0.5);
+    font-size: 15px;
+    letter-spacing: -.15px;
+    line-height: 18px;
+}
 
+.title-List li:nth-child(2) {
+    margin-top: 12px;
+}
 
-/* 본문 */
+.title-List li:nth-child(3) {
+    margin-top: 12px;
+}
 
+.title-box {
+    margin-top: 40px;
+}
 
+/* 서브 타이틀 끝 */
+
+.page-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.userInfo-box {
+    width: 600px;
+    margin: 0 10px 10px 0;
+    background: #fff;
+    border: 1px solid #c7c8d2;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.userInfo-box h3 {
+    font-size: 16px;
+    padding: 10px 15px;
+    margin: 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
+    background: #f6f6f6;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.info ul li {
+    margin: 3px 0;
+    line-height: 1.6;
+}
+
+.info ul li span {
+    font-weight: bold;
+}
+
+.update-info li a {
+    height: 36px;
+    line-height: 34px;
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    color: rgba(34, 34, 34, 0.8);
+    padding: 8px 16px;
+}
+
+.update-info li a span {
+    font-size: 12px;
+}
+
+/* 캠핑 박스 시작 */
+
+.camp-box {
+    width: 300px;
+    height: 165px;
+    margin: 0 10px 10px 0;
+    background: #fff;
+    border: 1px solid #c7c8d2;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.camp-box h3 {
+    font-size: 16px;
+    padding: 10px 15px;
+    margin: 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
+    background: #f6f6f6;
+}
+
+.camp-more ul li {
+    margin: 3px 0;
+    line-height: 1.6;
+}
+
+.camp-more li a {
+    height: 36px;
+    line-height: 34px;
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    color: rgba(34, 34, 34, 0.8);
+    padding: 4px 8px;
+}
+
+.camp-more li a span {
+    font-size: 12px;
+}
+/* 찜 목록 끝 */
+
+.use-content {
+    /* position: absolute;
+    top: 43%;
+    left: 28.2%; */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.use-box {
+    width: 600px;
+    height: 200px;
+    margin: 0 10px 10px 0;
+    background: #fff;
+    border: 1px solid #c7c8d2;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.use-box h3 {
+    font-size: 16px;
+    padding: 10px 15px;
+    margin: 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
+    background: #f6f6f6;
+}
+
+.notice-List {
+    height: 150px;
+    line-height: 150px;
+}
+
+.notice-List p {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
 
 /* footer 시작 */
 
