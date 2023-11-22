@@ -34,14 +34,18 @@ input:focus {outline:none;}
 /* header*/
 
 .p-fix {
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    left: 0;
     overflow: visible;
-    background-color: rgba(18, 20, 23,);
+    background-color: rgba(18, 20, 23,0.8);
     /* #121417 */
 }
 
 .header-container {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto; 
 }
 
@@ -158,6 +162,31 @@ input:focus {outline:none;}
     transition: all 0.5s ease-in-out;
 }
 
+
+
+/* 헤더 뒷공간 */
+.bar-back{
+    width: 100%;
+    height: 110px;
+    background-color: #fff;
+}
+
+/* 바디 제목 */
+.section00{
+    margin-top: 100px;
+}
+
+.section-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.menu0 {
+    width: 100%;
+}
+.menu00 {
+    width: 100%;
+}  
+
 /* footer 시작 */
 
 footer {
@@ -167,7 +196,7 @@ footer {
 
 .footer-container {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
