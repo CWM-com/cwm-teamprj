@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/mypage")
 public class MypageController {
 
-    @GetMapping("/mypage")
+    @GetMapping("")
     public String getMypage() {
         return "mypage/mypage";
     }
 
-    @GetMapping("/infoUpdate")
+    @GetMapping("/userinfo")
     public String getinfoUpdate() {
-        return "/mypage/infoUpdate";
+        return "mypage/userinfo";
     }
 }
