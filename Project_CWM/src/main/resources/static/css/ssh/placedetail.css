@@ -1,7 +1,7 @@
 /* 디테일 내용 */
 .detail-content{
-    width: 100%;
-    padding: 0 250px 0 78px;
+    width: 950px;
+    padding-right: 30px;
 }
 
 /* 디테일 제목 */

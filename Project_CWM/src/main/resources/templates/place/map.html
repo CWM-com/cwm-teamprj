@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,71 +13,7 @@
     <script src="/js/ssh/map.js"></script>
 </head>
 <body>
-    <header>
-        <div class="p-fix">
-            <div class="header-container">
-                <div class="header-top">
-                    <div class="top-right">
-                        <span>
-                            <a href="">홈</a>
-                        </span>
-                        <span>
-                            <a href="">회원가입</a>
-                        </span>
-                        <span>
-                            <a href="">로그인</a>
-                        </span>
-                        <span>
-                            <a href="">마이페이지</a>
-                        </span>
-                    </div>
-                </div>
-                <div class="header-Line">
-                    <div class="Logo">
-                        <h3>CWM.CWM</h3>
-                    </div> 
-                    <div class="header-menu">  
-                        <ul class="menuList">
-                            <li>
-                                <a href="">캠핑장 이용안내</a>
-                                <ul class="submenu sub-left">
-                                    <li>
-                                        <a href="">캠핑장 위치</a>
-                                    </li>
-                                    <li>
-                                        <a href="">지역별 날씨</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="">캠핑장 정보</a>
-                            </li>
-                            <li>
-                                <a href="">예약/결제</a>
-                            </li>
-                            <li>
-                                <a href="">캠핑 팁</a>
-                            </li>
-                            <li>
-                                <a href="">캠핑 게시판</a>
-                                <ul class="submenu sub-right">
-                                    <li>
-                                        <a href="">공지사항</a>
-                                    </li>
-                                    <li>
-                                        <a href="">캠핑 리뷰</a>
-                                    </li>
-                                    <li>
-                                        <a href="">자유게시판</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <header th:insert="~{fragment/header::header_a}"></header>
     <main>
         <div class="section0">
             <div class="bar-back"></div>
@@ -92,15 +29,31 @@
         </div>
         <div class="section0">
             <div class="map-wrap">
-                <div class="side-menu-bar">
-                    <ul>
-                        <li class="side-title">
-                            <a href=""><span>전국캠핑장위치</span></a>
-                        </li>
-                        <li class="side-content">
-                            <a href=""><span>지도에서 보기</span></a>
-                        </li>
-                    </ul>
+                <div class="page-List">
+                    <a>
+                        <h2>전국 캠핑장 위치</h2>
+                    </a>
+                    <nav>
+                        <div>
+                            <strong class="sub-title">캠핑장 이용안내</strong>
+                            <ul class="title-List">
+                                <li>
+                                    <a href="">캠핑장 위치</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="title-box">
+                            <Strong class="sub-title">캠핑장 정보</Strong>
+                            <ul class="title-List">
+                                <li>
+                                    <a href="./place">캠핑장 목록</a>
+                                </li>
+                                <li>
+                                    <a href="./placedetail">캠핑장 상세</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
                 <div class="map-content">
                     <div id="map" class="map-place">
@@ -135,36 +88,7 @@
             </div>
         </div>
     </main>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-wrap">
-                <div>
-                    <div class="footer-item">
-                        <p>
-                            <span><strong>CMW camping travle</strong></span>
-                        </p>
-                        <p>
-                            <span>T. 051-111-1234 | F. 051-222-3456 | E. mailok@mail.com <br></span>
-                        </p>
-                        <p>
-                            <span>부산광역시 서면 123로 561-30(작성자)</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <span>Copyrightⓒ CWM 캠핑 & All rights reserved.</span>
-            </div>
-            <div>
-                <div class="footer-icon">
-                    <a><i class="fa-brands fa-square-instagram"></i></a>
-                    <a><i class="fa-brands fa-facebook"></i></a>
-                    <a><i class="fa-brands fa-tiktok"></i></a>
-                    <a><i class="fa-brands fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <footer th:insert="~{fragment/footer::footer_a}"></footer>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=350d61e1c8af4895cfdf1d6afcd68fca"></script>
     <script>
         var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
