@@ -1,10 +1,10 @@
 /* 지도 내용 */
 .map-content{
-    width: 100%;
+    width: 950px;
     height: 1000px;
     display: flex;
     justify-content: space-between;
-    padding: 0 250px 0 78px;
+    padding-right: 30px;
 }
 .map-place{
     width: 70%;
