@@ -80,6 +80,10 @@ button{
     height: 500px;
     /* background-color: rgba(165, 192, 239, 0.4); */
     margin: 0 20px;
+    display: flex;
+}
+.pic00-list div {
+    transition: opacity 0.5s ease-in-out;
 }
 .pic01, .pic02, .pic03, .pic04{
     width: 100%; /* 작은 div의 가로 크기 */
@@ -92,8 +96,11 @@ button{
     display: block; /* 인라인 요소로부터 블록 요소로 변경 */
     margin: 0 auto;
 }
-.hidden{
-    display: none;
+.visible {
+    opacity: 1;
+}
+.hidden {
+    opacity: 0.1;
 }
 
 /* 디테일 자리 */
