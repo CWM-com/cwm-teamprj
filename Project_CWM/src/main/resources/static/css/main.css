@@ -70,6 +70,12 @@ img {
     padding-bottom: 15px;
 }
 
+.Logo h3 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+}
+
 .Logo h3 a{
     font-size: 30px;
     font-weight: bold;
