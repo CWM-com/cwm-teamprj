@@ -1,0 +1,548 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+}
+
+header {
+    background-color: #121417;
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    width: 100%;
+}
+
+.p-fix {
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    left: 0;
+    overflow: visible;
+    background-color: rgba(18, 20, 23,0.8);
+    /* #121417 */
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+
+.header-top {
+    display: flex;
+    justify-content: end;
+    
+}
+
+.top-right {
+    height: 30px;
+    margin-top: 10px;
+}
+
+.top-right span {
+    margin-right: 12px;
+}
+
+.top-right span:last-child {
+    margin-right: 0;
+}
+
+.header-top span a {
+    font-size: 12px;
+    color: #7c7c7c;
+}
+
+.header-Line {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.Logo h3 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.menuList {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menuList::after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.menuList li {
+    position: relative;
+    float: left;
+    margin-right: 50px;
+}
+
+.menuList li:hover .submenu {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.6s ease-in-out;
+}
+
+.menuList li:last-child {
+    margin-right: 0px;
+}
+
+.menuList li a {
+    /* color:rgba(165, 192, 239, 0.8); */
+    color: #e1ecf0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.submenu {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.sub-left {
+    left: 5px;
+}
+
+.sub-right {
+    left: -12px;
+}
+
+.submenu li a {
+    padding: 0 10px;
+    width: 100%;
+    display: block; 
+    
+    line-height: 32px;
+    font-weight: normal;
+}
+
+.submenu a:last-child {
+    border-bottom: none;
+}
+
+.submenu li {
+    width: 130px;
+    text-align: center;
+    background-color: rgba(18, 20, 23,0.5);
+}
+
+.submenu li a:hover {
+    background-color: rgba(18, 20, 23,0.8);
+    transition: all 0.5s ease-in-out;
+}
+
+/* 바디 */
+.section0{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 헤더 뒷공간 */
+.bar-back{
+    width: 100%;
+    height: 110px;
+    background-color: #fff;
+}
+
+/* 바디 제목 */
+.section00{
+    margin-top: 100px;
+}
+
+.section-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.menu0 {
+    width: 100%;
+}
+.menu00 {
+    width: 100%;
+}   
+
+/* mypage 시작 */
+
+.mypage-container {
+    display: flex;
+    max-width: 1200px;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.page-List {
+    width: 180px;
+    margin-right: 50px;
+}
+
+.page-List a h2 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    padding-bottom: 30px;
+    letter-spacing: -0.5px;
+}
+
+.sub-title {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    margin-bottom: 12px;
+    vertical-align: top;
+    letter-spacing: -0.5px;
+}
+
+.title-List li a {
+    color: rgba(34, 34, 34, 0.5);
+    font-size: 15px;
+    letter-spacing: -.15px;
+    line-height: 18px;
+}
+
+.title-List li:nth-child(2) {
+    margin-top: 12px;
+}
+
+.title-List li:nth-child(3) {
+    margin-top: 12px;
+}
+
+.title-box {
+    margin-top: 40px;
+}
+
+/* 서브 타이틀 끝 */
+
+.page-title {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+}
+
+.page-title h1 {
+    font-size: 28px;
+    padding-bottom: 10px;
+    line-height: 29px;
+}
+
+.select-content {
+    margin-top: 70px;
+    border-top: 2px solid #000;
+    border-bottom: 7px solid #f7f7f7;
+}
+
+.select-List {
+    position: relative;
+    padding: 30px 30px;
+}
+
+.select {
+    display: flex;
+    justify-content: space-between;
+}
+
+.choose-List dl dt {
+    text-align: center;
+    color: rgba(34, 34, 34, 0.5);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 22px;
+}
+
+.choose-List dl dd {
+    cursor: pointer;
+    font-size: 18px;
+    text-align: center;
+}
+
+.choose-List dl dd #campName {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+}
+
+#checkinYmd, #checkoutYmd {
+    outline: none;
+    border: 0;
+    width: 130px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.select-btn {
+    background-color: #24262b;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    border: 1px solid #000;
+    cursor: pointer;
+
+    padding: 24px 50px;
+}
+
+/* 캠핑장 위치 시작*/
+
+.location-List {
+    border: 1px solid #dcdcdc;
+    border-top: none;
+    width: 100%;
+    display: none;
+}
+
+.location-title {
+    padding: 20px 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.location-title ul li span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.location-title ul li .close-btn {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.location-box {
+    padding: 10px 0 0 30px;
+}
+
+.location-box dl dt {
+    margin: 15px 0 6px 6px;
+    margin-top: 10px;
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.location-name {
+    display: flex;
+}
+
+.l-name {
+    margin: 8px 16px 10px 0px;
+    padding: 10px 28px;
+    border: 1px solid #dcdcdc;
+    color: rgba(34, 34, 34, 0.5);
+    font-weight: 600;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.add {
+    border: 1px solid #24262b;
+}
+
+.btn-box {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.btn-box .location-btn {
+    width: 150px;
+    height: 50px;
+    background-color: #24262b;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* footer 시작 */
+
+footer {
+    background-color: #24262b;
+    height: 300px;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-wrap {
+    width: 100%;
+    padding-top: 80px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.footer-wrap .footer-item {
+    width: 100%;
+    height: 150px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(196, 196, 196);
+}
+
+.footer-item::after {
+    content: "";
+    width: 1100px;
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    margin-top: 16px;
+}
+
+.footer-item p {
+    padding-bottom: 6px;
+}
+
+.footer-item p:last-child {
+    margin-bottom: 0px;
+}
+
+.footer-icon {
+    font-size: 22px;
+    text-align: right;
+}
+
+.footer-icon a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    line-height: 40px;
+    margin-right: 10px;
+}
+
+.footer-icon a:hover {
+    background-color: #fff;
+    color: #24262b;
+    transition: all 0.6s ease-in-out;
+    padding-left: 0;
+    cursor: pointer;
+}
+
+.footer-copyright {
+    position: relative;
+    bottom: 34px;
+    width: 100%;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(196, 196, 196);
+}
+
+
+/* ********** 달력  시작 ***********/
+
+td {
+    width: 45px;
+    height: 45px;
+}
+
+.Calendar-box {
+    display: none;
+    height: 500px;
+    margin: 0 auto;
+}
+
+.Calendar {
+    text-align: center;
+}
+
+.prev-btn {
+    visibility: hidden;
+}
+
+.showDate {
+    display: block;
+}
+
+.hideDate {
+    display: none;
+}
+
+.Calendar>thead>tr:first-child>td {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.Calendar>thead>tr:last-child>td {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;     
+}
+
+.Calendar>tbody>tr>td>p {
+    font-family: 'Noto Sans KR', sans-serif;
+    height: 45px;
+    width: 45px;
+    border-radius: 50px;
+    transition-duration: .2s;
+    line-height: 43px;
+    margin: 2.5px;
+    display: block;
+    text-align: center;
+}    
+
+.Date-List p:hover {
+ background-color:  #dce9f4;
+ color: #fff;
+}
+
+/* 날짜 별 선택현황 표시 */
+.past {
+    color: lightgray;
+}
+
+.today {
+    background-color: #ddd;    
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.after {
+    cursor: pointer;
+}
+/* 날짜 별 선택현황 표시 끝 */
+
+.Date-Btn {
+    position: absolute;
+    bottom: 5%;
+    right: 33%;
+    background-color: #24262b;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #24262b;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 6px 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* ********** 달력  끝 ***********/

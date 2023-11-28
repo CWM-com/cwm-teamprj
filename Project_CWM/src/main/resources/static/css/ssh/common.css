@@ -13,14 +13,15 @@
 /* 바디 제목 */
 .section00{
     display: flex;
+    margin: 100px 300px 50px 300px;
 }
 .menu0 {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 .menu00 {
-    width: 100%;
+    width: 920px;
 }   
 .menu0 h2::after {
     content: "";
@@ -43,12 +44,6 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
-
-    display: flex;
-    max-width: 1200px;
-    height: 1100ㅔㅌ;
-    margin: 0 auto;
-    margin-top: 100px
 }
 
 /* 사이드바 */
@@ -75,14 +70,10 @@
 }
 
 .page-List {
-    width: 180px;
-    margin-right: 50px;
+    width: 200px;
+    /* margin-right: 20px; */
+    margin-left: 40px;
 }
-.page-List a {
-    text-decoration: none;
-    color: inherit;
-}
-
 .page-List a h2 {
     font-size: 24px;
     font-weight: 700;
@@ -90,7 +81,6 @@
     padding-bottom: 30px;
     letter-spacing: -0.5px;
 }
-
 .sub-title {
     display: inline-block;
     font-size: 18px;
@@ -100,22 +90,15 @@
     vertical-align: top;
     letter-spacing: -0.5px;
 }
-
 .title-List li a {
     color: rgba(34, 34, 34, 0.5);
     font-size: 15px;
     letter-spacing: -.15px;
     line-height: 18px;
 }
-
 .title-List li:nth-child(2) {
     margin-top: 12px;
 }
-
-.title-List li:nth-child(3) {
-    margin-top: 12px;
-}
-
 .title-box {
-    margin-top: 40px;
+    margin-top: 20px;
 }
