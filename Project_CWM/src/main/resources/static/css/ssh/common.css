@@ -1,6 +1,11 @@
 /* 바디 */
 .section0{
     width: 100%;
+    margin: 0 auto;
+}
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 /* 헤더 뒷공간 */
@@ -12,35 +17,33 @@
 
 /* 바디 제목 */
 .section00{
-    display: flex;
-    margin: 100px 300px 50px 300px;
-}
-.menu0 {
     width: 100%;
     display: flex;
-    justify-content: center;
+    height: 100px;
 }
-.menu00 {
-    width: 920px;
-}   
-.menu0 h2::after {
-    content: "";
+.section-header {
+    width: 100%;
+    display: block;
+}
+.section-header h2 {
+    color: #000;
+    font-size: 34px;
+    padding-bottom: 10px;
+}
+hr{
+    border: 0;
     margin-top: 10px;
     width: 100%;
     height: 1.5px;
     display: block;
     background-color: #ccc;
 }
-.menu0 div h2 {
-    color: #000;
-    font-size: 34px;
-    padding-bottom: 10px;
-}
 
 /* 캠핑 내용 */
 .map-wrap{
     max-width: 1200px;
-    margin: 0 50px;
+    margin: 0 auto;
+    margin-top: 100px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
@@ -70,9 +73,8 @@
 }
 
 .page-List {
-    width: 200px;
-    /* margin-right: 20px; */
-    margin-left: 40px;
+    width: 180px;
+    margin-right: 50px;
 }
 .page-List a h2 {
     font-size: 24px;
