@@ -1,0 +1,127 @@
+/* 메인내용 */
+.place-content{
+    width: 950px;
+    padding-right: 30px;
+}
+
+/* 옵션바 */
+.camp-option{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+.camp-option-select{
+    display: flex;
+    justify-content: space-around;
+    margin-right: 10px;
+    gap: 10px;
+}
+.camp-option-select select{
+    border-radius: 5px;
+}
+.camp-option-search form{
+    display: flex;
+    justify-content: space-around;
+}
+.search{
+    width: 200px;
+    height: 20px;
+}
+.camp-option-search input{
+    border: 1px solid #a1a1a1;
+    border-radius: 5px;
+    font-size: 15px;
+}
+.btn{
+    margin-left: 3px;
+    padding: 3px 10px;
+    background-color: rgba(165, 192, 239, 0.4);
+    color: #a1a1a1;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* 내용 */
+.camp-place{
+    width: 100%;
+    margin-top: 30px;
+}
+.camp-place-title{
+    width: 100%;
+    display: flex;
+    /* border: 1px solid black; */
+    height: 200px;
+    margin-bottom: 10px;
+    background-color: rgba(165, 192, 239, 0.1);
+    box-shadow: rgba(90, 91, 95, 0.8) 0px 1px 2px 0px;
+    border-radius: 10px;
+}
+.camp-place-title:hover{
+    transform: translateX(-4px) translateY(-4px);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.camp-place-title-thumb{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+.pic-thumb{
+    width: 100%;
+    display: block; 
+    object-fit: cover;
+}
+.pic-thumb img{
+    border-radius: 10px;
+}
+.camp-place-title-content{
+    width: 240px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+.content-list{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    height: 100%;
+    align-items: center;
+}
+.content-list-detail{
+    display: flex;
+}
+.content-list-detail li{
+    margin-right: 10px;
+    /* font-size: 20px; */
+    font-weight: 600;
+}
+.camp-place-title-pic{
+    width: 470px;
+}
+.pic0-list{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pic1, .pic2, .pic3{
+    width: 130px;
+    height: 180px;
+    margin: 10px 10px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px;
+}
+.pic:last-child{
+    margin-right: 0;
+}
+.hidden{
+    display: none;
+}
+
+/* 페이지바 */
+.page-bar{
+    margin-top: 50px;
+    width: 100%;
+}
