@@ -148,8 +148,8 @@ button{
     height: 100%;
     /* text-align: center; */
 }
-.span{
+.p{
     background-color: rgba(255, 255, 255, 0.5);
     height: auto;
-    /* padding-bottom: 20px; */
+    line-height: 1.8;
 }
