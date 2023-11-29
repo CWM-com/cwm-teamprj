@@ -4,121 +4,42 @@
     padding-right: 30px;
 }
 
-/* 옵션바 */
-.camp-option{
-    width: 100%;
-    display: flex;
-    justify-content: right;
-}
-.camp-option-select{
-    display: flex;
-    justify-content: space-around;
-    margin-right: 10px;
-    gap: 10px;
-}
-.camp-option-select select{
-    border-radius: 5px;
-}
-.camp-option-search form{
-    display: flex;
-    justify-content: space-around;
-}
-.search{
-    width: 200px;
-    height: 20px;
-}
-.camp-option-search input{
-    border: 1px solid #a1a1a1;
-    border-radius: 5px;
-    font-size: 15px;
-}
-.btn{
-    margin-left: 3px;
-    padding: 3px 10px;
-    background-color: rgba(165, 192, 239, 0.4);
-    color: #a1a1a1;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
 /* 내용 */
-.camp-place{
+.camp-tool, .camp-food, .camp-delivery{
     width: 100%;
     margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
 }
-.camp-place-title{
-    width: 100%;
-    display: flex;
-    /* border: 1px solid black; */
-    height: 200px;
-    margin-bottom: 10px;
-    background-color: rgba(165, 192, 239, 0.1);
-    box-shadow: rgba(90, 91, 95, 0.8) 0px 1px 2px 0px;
-    border-radius: 10px;
+.tool-box, .food-box, .delivery-box{
+    background-color: #f3f4f6;
+    box-shadow: 0 1px 2px 0 rgba(90, 91, 95, 0.1);
+    transition: all .3s ease-in-out;
 }
-.camp-place-title:hover{
-    transform: translateX(-4px) translateY(-4px);
-    transition: 0.3s;
+.tool-box:hover, .food-box:hover, .delivery-box:hover{
+    transform: translateY(-8px);
     cursor: pointer;
 }
-.camp-place-title-thumb{
-    width: 200px;
-    height: 200px;
-    overflow: hidden;
-    position: relative;
+.tool-box img, .food-box img, .delivery-box img{
+  width: 100%;
+  object-fit: cover;
 }
-.pic-thumb{
-    width: 100%;
-    display: block; 
-    object-fit: cover;
-}
-.pic-thumb img{
-    border-radius: 10px;
-}
-.camp-place-title-content{
-    width: 240px;
-    margin-left: 10px;
+.tool-name, .food-name, .delivery-name{
+    padding: 1rem;
     display: flex;
-    align-items: center;
-}
-.content-list{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    height: 100%;
-    align-items: center;
-}
-.content-list-detail{
-    display: flex;
-}
-.content-list-detail li{
-    margin-right: 10px;
-    /* font-size: 20px; */
+    color: #767268;
+    cursor: pointer;
     font-weight: 600;
 }
-.camp-place-title-pic{
-    width: 470px;
+.tool-name i, .food-name i, .delivery-name i{
+    font-size: 1.2rem; /* = 19.2px*/
+    margin-right: 4px;
 }
-.pic0-list{
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.tool-name span, .food-name span, .delivery-name span{
+    font-style: italic;
 }
-.pic1, .pic2, .pic3{
-    width: 130px;
-    height: 180px;
-    margin: 10px 10px;
-    overflow: hidden;
-    position: relative;
-    border-radius: 5px;
-}
-.pic:last-child{
-    margin-right: 0;
-}
-.hidden{
-    display: none;
-}
+
 
 /* 페이지바 */
 .page-bar{
