@@ -106,12 +106,6 @@
                             <li>
                                 <a href="">실시간 예약</a>
                             </li>
-                            <li>
-                                <a href="">예약 완료</a>
-                            </li>
-                            <li>
-                                <a href="">예약 취소 </a>
-                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -127,7 +121,7 @@
                                     <dl>
                                         <dt>캠핑장 선택</dt>
                                         <dd>
-                                           <input type="text" id="campName" name="campName" placeholder="캠핑장을 선택해주세요."readonly>
+                                           <input type="text" id="campName" name="campName" value="" placeholder="캠핑장을 선택해주세요."readonly>
                                         </dd>
                                     </dl>
                                 </div>
@@ -148,19 +142,19 @@
                                 <div class="choose-List">
                                     <dl>
                                         <dt>성인</dt>
-                                        <dd>0</dd>
+                                        <input type="number" id="adult" class="quantity" value="0" readonly>
                                     </dl>
                                 </div>
                                 <div class="choose-List">
                                     <dl>
                                         <dt>청소년</dt>
-                                        <dd>0</dd>
+                                        <input type="number" id="Teen" class="quantity" value="0" readonly>
                                     </dl>
                                 </div>
                                 <div class="choose-List">
                                     <dl>
                                         <dt>유아</dt>
-                                        <dd>0</dd>
+                                        <input type="number" id="child" class="quantity" value="0" readonly>
                                     </dl>
                                 </div>
                                 <div>
@@ -255,10 +249,111 @@
                         </tbody>
                         <button class="Date-Btn">확인</button>
                     </table>
-                        
+                </div>
+                <div class="count-content">
+                    <div>
+                        <p class="close-line"><span>인원 선택</span><button class="count-btn"><i class="fa-solid fa-xmark"></i></button></i></p>
+                    </div>
+                    <div class="count-box">
+                        <div class="count-title">
+                            
+                        </div>
+                        <ul class="count-box">
+                            <li class="count-List">
+                                <span>성인</span>
+                                <div>
+                                    <button class="down-cnt-btn" onclick="downCnt('downAdult')"><span>-</span></button>
+                                    <input type="number" value="0" readonly id="count-type-1" class="cnt" name="count-type-1">
+                                    <button class="plus-cnt-btn" onclick="upCnt('plusAdult')"><span>+</span></button>
+                                </div>
+                            </li>
+                            <li class="count-List">
+                                <span>청소년</span>
+                                <div>
+                                    <button class="down-cnt-btn" onclick="downCnt('downTeen')"><span>-</span></button>
+                                    <input type="number" value="0" readonly id="count-type-2" class="cnt" name="count-type-2">
+                                    <button class="plus-cnt-btn" onclick="upCnt('plusTeen')"><span>+</span></button>
+                                </div>
+                            </li>
+                            <li class="count-List">
+                                <span>유아</span>
+                                <div>
+                                    <button class="down-cnt-btn" onclick="downCnt('downCild')"><span>-</span></button>
+                                    <input type="number" value="0" readonly id="count-type-3" class="cnt" name="count-type-3">
+                                    <button class="plus-cnt-btn" onclick="upCnt('plusChild')"><span>+</span></button>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="count-close">
+                            <button class="count-close-btn">확인</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="camp-position">
+                    <div class="position-box">
+                        <div class="position-title-1">
+                            <div class="position-title">
+                                <p>캠핑장 선택</p>
+                                <div>
+                                    <p>총9개</p>
+                                    <p>n개 예약 가능</p>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="camp-List">
+                            <div class="position-List">
+                                <div class="camp-box">
+                                    <div>
+                                        <p>1번</p>
+                                    </div>
+                                </div>
+                                <div class="camp-box">
+                                    <div>
+                                        <p>2번</p>
+                                    </div>
+                                </div>
+                                <div class="camp-box">
+                                    <div>
+                                        <p>3번</p>
+                                    </div>
+                                </div>
+                                <div class="camp-box">
+                                    <div>
+                                        <p>4번</p>
+                                    </div>
+                                </div>
+                                <div class="camp-box">
+                                    <div>
+                                        <p>5번</p>
+                                    </div>
+                                </div>
+                                <div class="camp-box">
+                                    <div>
+                                        <p>6번</p>
+                                    </div>
+                                </div>
+                                <div class="camp-box">
+                                    <div>
+                                        <p>7번</p>
+                                    </div>
+                                </div>
+                                <div class="camp-box">
+                                    <div>
+                                        <p>8번</p>
+                                    </div>
+                                </div>
+                                <div class="camp-box">
+                                    <div>
+                                        <p>9번</p>
+                                    </div>
+                                </div>
+                         </div>
+                         </div>
+                    </div>
                 </div>
             </div>
     </main>
+
     <footer th:insert="~{fragment/footer::footer_a}">
 
     </footer>

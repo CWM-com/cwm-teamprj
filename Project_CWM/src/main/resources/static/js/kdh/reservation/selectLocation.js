@@ -1,4 +1,4 @@
-// 캠핑장 선택 시 border 바뀌기
+// 캠핑장 선택 시작
 let Lname = document.querySelectorAll(".l-name");
 
 for(let i = 0; i < Lname.length; i++) {
@@ -14,29 +14,22 @@ for(let i = 0; i < Lname.length; i++) {
         }
     });
  }
- // 캠핑장 선택 시 border 바뀌기 끝
- 
-
- // content의 적힌 값 불러오기 되긴하나 일단 보류
 
 const locationBtn = document.querySelector(".location-btn");
 const campName = document.querySelector("#campName");
 const locationList = document.querySelector(".location-List");
 const closeBtn = document.querySelector(".close-btn");
-// locationBtn.addEventListener('click', () => {
 
-//     Lname.forEach((l) => {
-//         l.addEventListener('click', () => {
-           
-//             let clickedValue = l.textContent;
+for(let i = 0; i < Lname.length; i++) {
+    Lname[i].addEventListener('click', () => {
+        campName.value = Lname[i].innerHTML.trim();
+    });
+}
 
-//             document.getElementById("campName").value = clickedValue.trim();
-//         });
-//     });
-// });
 campName.addEventListener('click',() => {
     locationList.style.display = "block";
     Calendarbox.style.display = "none";
+    document.querySelector(".count-content").style.display = "none";
 });
 // 선택하지 않고 close
 closeBtn.onclick = () => {
@@ -47,8 +40,10 @@ locationBtn.addEventListener('click',() => {
     locationList.style.display = "none";
 })
 
+ // 캠핑장 선택 부분 끝
 
-// 달력 부분
+
+// 달력 부분 시작
 let chkDate = document.querySelectorAll("input[name=checkYmd]");
 let Calendar= document.querySelector(".Calendar");
 let Calendarbox = document.querySelector(".Calendar-box");
@@ -57,6 +52,8 @@ for(let i = 0; i < chkDate.length; i++) {
     chkDate[i].addEventListener('click',() => {
         Calendarbox.style.display = "block";
         locationList.style.display = "none";
+        document.querySelector(".count-content").style.display = "none";
+
     });
 }
 
@@ -149,8 +146,6 @@ function DateGap(Date1,Date2) {
     return (Date2.getFullYear() - Date1.getFullYear()) * 12 + Date2.getMonth() - Date1.getMonth();
 }
 
-
-// **************** 여기 밑부터 코드도 잘못짠거같고 아직 해답도 모르겟음 ****************
 let checkinYmd = null;
 let checkoutYmd = null;
 
@@ -219,11 +214,123 @@ function DateToVal(year, month, day) {
     return year + "-" + month + "-" + day;
 }
 
-// day2,day1을 나눠서 일 수 구하기
+// day2,day1을 나눠서 일 수 구하기 1회 최대 ?박 정하는데에 사용
 function MaxDate(day1,day2) {
     return Math.floor((day2 - day1) / (1000 * 60 * 60 * 24));
 }
+/* 달력 끝 */
 
+
+/* 인원 수 체크 시작 */
+const cnt = document.querySelectorAll(".cnt");
+const countType1 = document.querySelector("#count-type-1");
+const countType2 = document.querySelector("#count-type-2");
+const countType3 = document.querySelector("#count-type-3");
+const countCloseBtn = document.querySelector(".count-close-btn");
+
+let quantity = document.querySelectorAll(".quantity");
+let countBtn = document.querySelector(".count-btn");
+
+for(let i = 0; i < quantity.length; i++) {
+    quantity[i].onclick = () => {
+        document.querySelector(".count-content").style.display = "block";
+        Calendarbox.style.display = "none";
+        locationList.style.display = "none";
+    }
+}
+
+countBtn.onclick = () => {
+    document.querySelector(".count-content").style.display = "none";
+}
+
+
+let cntA = 0;
+let cntB = 0;
+let cntC = 0;
+
+function downCnt(type) {
+    if(type == "downAdult") {
+        cntA--;
+        countType1.value = cntA;
+        if(cntA < 0) {
+            cntA = 0;
+            countType1.value = cntA;
+        }
+    }else if(type == "downTeen") {
+        cntB--;
+        countType2.value = cntB;
+        if(cntB < 0) {
+            cntB = 0;
+            countType2.value = cntB;
+        }
+    }else if(type == "downCild") {
+        cntC--;
+        countType3.value = cntC;
+        if(cntC < 0) {
+            cntC = 0;
+            countType3.value = cntC;
+        }
+    }
+}
+
+
+function upCnt(type) {
+  if(type == "plusAdult") {
+    cntA++;
+    countType1.value = cntA;
+    if(cntA > 5) {
+        cntA = 5;
+        countType1.value = cntA;
+        alert("최대 인원 수는 5명입니다.")
+
+    }
+  }else if(type == "plusTeen") {
+    cntB++;
+    countType2.value = cntB;
+    if(cntB > 5) {
+        cntB = 5;
+        countType2.value = cntB;
+        alert("최대 인원 수는 5명입니다.")
+    }
+  }else if(type == "plusChild") {
+    cntC++;
+    countType3.value = cntC;
+    if(cntC > 5) {
+        cntC = 5;
+        countType3.value = cntC;
+        alert("최대 인원 수는 5명입니다.")
+    }
+  }
+}
+
+let adult = document.querySelector("#adult");
+let Teen = document.querySelector("#Teen");
+let child = document.querySelector("#child");
+
+dd();
+function dd() {
+
+    countCloseBtn.addEventListener('click', () => {
+
+        let countType1Val = parseInt(countType1.value,10);
+        let countType2Val = parseInt(countType2.value,10);
+        let countType3Val = parseInt(countType3.value,10);
+        
+        if(countType1Val + countType2Val + countType3Val > 5) {
+            alert("전체 인원 제한은 최대 5명입니다.")
+        }else if(countType1Val + countType2Val + countType3Val <= 5 && countType1Val >= 1) {
+            adult.value = countType1Val;
+            Teen.value = countType2Val;
+            child.value = countType3Val;
+
+            document.querySelector(".count-content").style.display = "none";
+        }else if(countType1Val < 1 ) {
+            alert("성인 1명 이상 필수 동반되어야합니다.");
+        }
+    });
+}
+
+/* 인원 수 체크 끝 */
 
 
 
