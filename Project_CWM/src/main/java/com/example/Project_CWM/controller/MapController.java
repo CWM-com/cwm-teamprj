@@ -19,4 +19,19 @@ public class MapController {
     public String getPlaceDetail(){
         return "place/placedetail";
     }
+
+    @GetMapping("/place/placetool")
+    public String getPlaceTip(){
+        return "place/placetool";
+    }
+
+    @GetMapping("/place/placefood")
+    public String getPlaceFood(){
+        return "place/placefood";
+    }
+
+    @GetMapping("/place/placedelivery")
+    public String getPlaceDelivery(){
+        return "place/placedelivery";
+    }
 }

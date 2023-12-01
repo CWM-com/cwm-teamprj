@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장소페이지</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/ssh/reset-copy.css">
+    <link rel="stylesheet" href="/css/ssh/main-copy.css">
+    <link rel="stylesheet" href="/css/ssh/placetip.css">
+    <link rel="stylesheet" href="/css/ssh/common.css">
+</head>
+<body>
+    <header th:insert="~{fragment/header::header_a}"></header>
+    <main>
+        <div class="section0">
+            <div class="bar-back"></div>
+        </div>
+        <div class="section0">
+        </div>
+        <div class="section0">
+            <div class="map-wrap">
+                <div class="page-List">
+                    <a href="/map"><h2>캠핑 팁</h2></a>
+                    <nav>
+                        <div>
+                            <strong class="sub-title">캠핑 도구</strong>
+                            <ul class="title-List">
+                                <li>
+                                    <a href="/place/placetool">캠핑 도구</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="title-box">
+                            <Strong class="sub-title">캠핑 음식</Strong>
+                            <ul class="title-List">
+                                <li>
+                                    <a href="/place/placefood">판매품</a>
+                                </li>
+                                <li>
+                                    <a href="/place/placedelivery">배달음식</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="place-content">
+                    <div class="section00">
+                        <div class="section-header">
+                            <h2>배달음식</h2>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="camp-delivery">
+                        <div class="delivery-box">
+                            <img src="/images/ssh/ori/camp-delivery.jpg" alt="">
+                            <div class="delivery-name">
+                                <i class="fa-solid fa-thumbtack"></i>
+                                <span>배달음식</span>
+                            </div>
+                        </div>
+                        <div class="delivery-box">
+                            <img src="/images/ssh/ori/camp-delivery.jpg" alt="">
+                            <div class="delivery-name">
+                                <i class="fa-solid fa-thumbtack"></i>
+                                <span>배달음식</span>
+                            </div>
+                        </div>
+                        <div class="delivery-box">
+                            <img src="/images/ssh/ori/camp-delivery.jpg" alt="">
+                            <div class="delivery-name">
+                                <i class="fa-solid fa-thumbtack"></i>
+                                <span>배달음식</span>
+                            </div>
+                        </div>
+                        <div class="delivery-box">
+                            <img src="/images/ssh/ori/camp-delivery.jpg" alt="">
+                            <div class="delivery-name">
+                                <i class="fa-solid fa-thumbtack"></i>
+                                <span>배달음식</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-bar">
+                        페이지바
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+    <footer th:insert="~{fragment/footer::footer_a}"></footer>
+</body>
+</html>

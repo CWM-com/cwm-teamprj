@@ -130,7 +130,8 @@ button{
 
 /* 디테일 주변 */
 .detail-etc{
-    margin-top: 100px;    
+    margin-top: 100px;
+    margin-bottom: 50px;
 }
 .detail-etc h2{
     text-align: center;
@@ -147,8 +148,8 @@ button{
     height: 100%;
     /* text-align: center; */
 }
-.span{
+.p{
     background-color: rgba(255, 255, 255, 0.5);
     height: auto;
-    /* padding-bottom: 20px; */
+    line-height: 1.8;
 }
