@@ -573,6 +573,15 @@ section:nth-child(2) {
     transition: all 0.8s ease-in-out;
 }
 
+.weather-img h3 img{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: between;
+}
+
+
+
 
 
 /* main 끝 */
