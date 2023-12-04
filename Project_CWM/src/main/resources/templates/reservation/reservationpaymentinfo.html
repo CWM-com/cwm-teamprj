@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약 요금가이드</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/kdh/reset.css">
+    <link rel="stylesheet" href="/css/kdh/reservation/rservationPaymentInfo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+    <header th:insert="~{fragment/header::header_a}">
+
+    </header>
+    <main>
+        <div class="section0">
+            <div class="bar-back"></div>
+        </div>
+        <div class="section0">
+            <div class="section00">
+                
+            </div>
+        </div>
+        <div class="mypage-container">
+            <div class="page-List">
+                <a href="/mypage"><h2>예약 및 결제</h2></a>
+                <nav>
+                    <div>
+                        <strong class="sub-title">예약 안내</strong>
+                        <ul class="title-List">
+                            <li>
+                                <a href="/reservation/reservationuseinfo">이용 가이드</a>
+                            </li>
+                            <li>
+                                <a href="/reservation/reservationpaymentinfo">요금 가이드</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="title-box">
+                        <Strong class="sub-title">예약하기</Strong>
+                        <ul class="title-List">
+                            <li>
+                                <a href="/reservation">실시간 예약</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="page-title">
+                <h1>요금 가이드</h1>
+                <hr>
+                <div class="use-infomation">
+                    <div class="use-title">
+                        <h2>시설 이용료 안내</h2>
+                    </div>
+                    <div class="payment-box">
+                        <table class="payment-table">
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>정원<br>(최대)</th>
+                                    <th>이용기준</th>
+                                    <th>가격</th>
+                                    <th>비고</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        카라반
+                                    </th>
+                                    <td>5명</td>
+                                    <td>1동/1박</td>
+                                    <td>100,000</td>
+                                    <td>3동</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        글램핑
+                                    </th>
+                                    <td>5명</td>
+                                    <td>1동/1박</td>
+                                    <td>80,000</td>
+                                    <td>3동</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        일반캠핑
+                                    </th>
+                                    <td>5명</td>
+                                    <td>1동/1박</td>
+                                    <td>50,000</td>
+                                    <td>3동</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div>
+                    <div class="refund-title">
+                        <h2>환불 안내</h2>
+                    </div>
+                    <div>
+                        <table class="refund-table">
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>1일전 취소</th>
+                                    <th>당일취소 또는 미입실</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>주중</th>
+                                    <td>결제 금액의 100% 환불</td>
+                                    <td>결제 금액의 0% 환불</td>
+                                </tr>
+                                <tr>
+                                    <th>주말</th>
+                                    <td>결제 금액의 100% 환불</td>
+                                    <td>결제 금액의 0% 환불</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="refund-info">
+                            <ul>
+                                <li>
+                                    환불 규정은 체크인 일자 기준으로 적용됩니다.
+                                </li>
+                                <li>
+                                    환불 규정 미숙지에 대한 별도의 책임은 지지 않습니다.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <footer th:insert="~{fragment/footer::footer_a}">
+
+    </footer>
+
+    <script>
+    </script>
+    <script src="/js/kdh/reservation/tabmove.js"></script>
+</body>
+</html>
