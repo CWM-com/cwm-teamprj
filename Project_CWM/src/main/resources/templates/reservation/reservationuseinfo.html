@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약 이용가이드</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/kdh/reset.css">
+    <link rel="stylesheet" href="/css/kdh/reservation/reservationUseInfo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+    <header th:insert="~{fragment/header::header_a}">
+
+    </header>
+    <main>
+        <div class="section0">
+            <div class="bar-back"></div>
+        </div>
+        <div class="section0">
+            <div class="section00">
+                
+            </div>
+        </div>
+        <div class="mypage-container">
+            <div class="page-List">
+                <a href="/mypage"><h2>예약 및 결제</h2></a>
+                <nav>
+                    <div>
+                        <strong class="sub-title">예약 안내</strong>
+                        <ul class="title-List">
+                            <li>
+                                <a href="/reservation/reservationuseinfo">이용 가이드</a>
+                            </li>
+                            <li>
+                                <a href="/reservation/reservationpaymentinfo">요금 가이드</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="title-box">
+                        <Strong class="sub-title">예약하기</Strong>
+                        <ul class="title-List">
+                            <li>
+                                <a href="/reservation">실시간 예약</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="page-title">
+                <h1>이용 가이드</h1>
+                <hr>
+                <div class="use-infomation">
+                    <div class="info-title">
+                        <p>캠핑장 운영정책</p>
+                    </div>
+                    <div class="essential-info">
+                        <ul class="use-info-1">
+                            <li>
+                                <span><i class="fa-solid fa-circle-exclamation"></i></span>
+                                캠핑장 도착시 사무실을 방문하여 안내에 따라 예약시 배정된 장소에서 캠핑이 가능합니다.
+                            </li>
+                            <li>
+                                <span><i class="fa-solid fa-circle-exclamation"></i></span>
+                                미성년자(만 19세미만)는 예약이 불가합니다. 성인이 포함되지 않은 방문시 입실이 불가하며 별도의 책임을 지지 않습니다.
+                            </li>
+                            <li>
+                                <span><i class="fa-solid fa-circle-exclamation"></i></span>
+                                예약자 본인은 반드시 입실하셔야 하며, 양도 및 양수는 불가합니다.
+                            </li>
+                        </ul>
+                        <div class="use-info-2">
+                            <ul>
+                                <li>
+                                    에티켓을 준수하여 주세요.
+                                </li>
+                                <li>
+                                    예약후 방문시에는 예약자 확인을 위해 반드시 신분증을 지참해 주세요. 본인확인이 안 될 경우 입실이 불가합니다.
+                                </li>
+                                <li>
+                                    1인당 최대 예약가능일수 : 2박 3일
+                                </li>
+                                <li>
+                                    체크인 : 14시 ~ 20시까지
+                                </li>
+                                <li>
+                                    체크아웃 : 익일 12시까지
+                                </li>
+                                <li>
+                                    캠핑장 내에서는 불꽃놀이 및 폭죽 등의 사용을 금지합니다.
+                                </li>
+                                <li>
+                                    그 외 문의사항이나 안내는 관리사무실(000-123-1234)를 통해 확인 하실 수 있습니다.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <footer th:insert="~{fragment/footer::footer_a}">
+
+    </footer>
+
+    <script>
+    </script>
+    <script src="/js/kdh/reservation/tabmove.js"></script>
+</body>
+</html>

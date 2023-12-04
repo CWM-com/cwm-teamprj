@@ -298,6 +298,20 @@ img {
     cursor: pointer;
 }
 
+#days {
+    outline: none;
+    border: 0;
+    width: 18px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.plus-text {
+    font-size: 18px;
+    margin-left: -6px;
+    line-height: 24px;
+}
+
 .quantity {
     outline: none;
     text-align: center;
@@ -326,7 +340,7 @@ img {
     width: 100%;
     display: none;
     position: absolute;
-    z-index: 9999;
+    z-index: 999;
     background-color: #fff;
 }
 
@@ -485,7 +499,7 @@ td {
     width: 100%;
 
     position: absolute;
-    z-index: 9999;
+    z-index: 999;
     background-color: #fff;
 }
 
@@ -577,7 +591,7 @@ td {
     width: 100%;
 
     position: absolute;
-    z-index: 9999;
+    z-index: 999;
     background-color: #fff;
 }
 
@@ -680,13 +694,16 @@ input[type='number'] {
 
 /* 인원 수량 끝 */
 
+/* 캠핑 종류 선택 시작 */
+
 .camp-position {
-    margin-top: 180px;
+    margin-top: 120px;
 }
 
 .position-box {
-    width: 800px;
+    width: 700px;
     border: 1px solid #dcdcdc;
+    background-color: rgb(248, 250, 251);
     margin: 0 auto;
 }
 
@@ -714,7 +731,9 @@ input[type='number'] {
 }
 
 .camp-List {
-    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    margin: 40px auto;
 }
 
 .position-List {
@@ -730,7 +749,30 @@ input[type='number'] {
     align-items: center;
     justify-content: center;
     width: 160px;
-    height: 80px;
-    border: 1px solid #7c7c7c;
+    height: 60px;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    background-color: #fff;
+    text-align: center;
+    color: rgb(78, 83, 84);
+    cursor: pointer;
 }
+/* 캠핑 종류 끝 */
+
+/* 예약하기 버튼 */
+.reserv-btn-box {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+}
+.reserv-btn {
+    border: 1px solid #dcdcdc;
+    background-color: #24262b;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 18px 50px;
+}
+
 

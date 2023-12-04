@@ -53,7 +53,6 @@ for(let i = 0; i < chkDate.length; i++) {
         Calendarbox.style.display = "block";
         locationList.style.display = "none";
         document.querySelector(".count-content").style.display = "none";
-
     });
 }
 
@@ -151,7 +150,7 @@ let checkoutYmd = null;
 
 let checkinDate = document.querySelector("#checkinYmd");
 let checkoutDate = document.querySelector("#checkoutYmd");
-
+let days = document.querySelector("#days");
 
 
 
@@ -179,16 +178,20 @@ function selectCheckin() {
 
                 let ckin = new Date(checkinDate.value);
                 let ckout = new Date(checkoutDate.value);
-                console.log(ckin);
-                console.log(ckout);
+                let daysNum = MaxDate(ckin,ckout);
+
+                days.value = daysNum
+            
                 if (ckin >= ckout) {
                     alert("체크아웃 날짜가 더 빠릅니다.");
                     checkoutDate.value = "";
+                    days.value = 1;
                     return false;
                 }
                 if (MaxDate(ckin, ckout) > 2) {
                     alert("캠핑은 최대 2박3일까지 가능합니다.");
                     checkoutDate.value = "";
+                    days.value = 1;
                     return false;
                 }
             } else {
@@ -203,9 +206,19 @@ function selectCheckin() {
 
 let dateBtn = document.querySelector(".Date-Btn");
     dateBtn.addEventListener('click', () => {
+
+        let today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        let todayCheck = new Date(checkinDate.value);
+        if (todayCheck.getFullYear() == today.getFullYear() && todayCheck.getMonth() == today.getMonth() && todayCheck.getDate() == today.getDate()) {
+            alert("당일 예약은 직접문의가 필요합니다.");
+            return false;
+    }else {
         createCalendar();
         Calendarbox.style.display = "none";
-    });
+    }
+});
 
 // 달이나 일이 한 자리수 일때 앞에 0을 추가하여 출력
 function DateToVal(year, month, day) {
@@ -307,8 +320,8 @@ let adult = document.querySelector("#adult");
 let Teen = document.querySelector("#Teen");
 let child = document.querySelector("#child");
 
-dd();
-function dd() {
+checkPeople();
+function checkPeople() {
 
     countCloseBtn.addEventListener('click', () => {
 
@@ -331,6 +344,12 @@ function dd() {
 }
 
 /* 인원 수 체크 끝 */
+
+let reservBtn = document.querySelector(".reserv-btn");
+
+reservBtn.addEventListener('click', () => {
+    location.href = "/reservation/reservationcheck";
+});
 
 
 
