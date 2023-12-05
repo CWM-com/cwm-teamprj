@@ -757,6 +757,10 @@ input[type='number'] {
     color: rgb(78, 83, 84);
     cursor: pointer;
 }
+
+.choose-active {
+    border: 1px solid #24262b;
+}
 /* 캠핑 종류 끝 */
 
 /* 예약하기 버튼 */
