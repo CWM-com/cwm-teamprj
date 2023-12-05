@@ -22,4 +22,9 @@ public class NoticeController {
     public String write() {
         return "notice/write";
     }
+
+    @GetMapping("/test")
+    public String test() {
+        return "notice/test";
+    }
 }

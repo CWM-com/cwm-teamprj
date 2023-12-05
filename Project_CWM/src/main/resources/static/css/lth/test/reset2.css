@@ -1,12 +1,5 @@
-@charset 'utf-8';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
     font-family: 'Noto Sans KR', sans-serif;
@@ -246,6 +239,130 @@ img {
 .page-title {
     display: flex;
     flex-direction: column;
+}
+
+.userInfo-box {
+    width: 600px;
+    margin: 0 10px 10px 0;
+    background: #fff;
+    border: 1px solid #c7c8d2;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.userInfo-box h3 {
+    font-size: 16px;
+    padding: 10px 15px;
+    margin: 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
+    background: #f6f6f6;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.info ul li {
+    margin: 3px 0;
+    line-height: 1.6;
+}
+
+.info ul li span {
+    font-weight: bold;
+}
+
+.update-info li a {
+    height: 36px;
+    line-height: 34px;
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    color: rgba(34, 34, 34, 0.8);
+    padding: 8px 16px;
+}
+
+.update-info li a span {
+    font-size: 12px;
+}
+
+/* 캠핑 박스 시작 */
+
+.camp-box {
+    width: 300px;
+    height: 165px;
+    margin: 0 10px 10px 0;
+    background: #fff;
+    border: 1px solid #c7c8d2;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.camp-box h3 {
+    font-size: 16px;
+    padding: 10px 15px;
+    margin: 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
+    background: #f6f6f6;
+}
+
+.camp-more ul li {
+    margin: 3px 0;
+    line-height: 1.6;
+}
+
+.camp-more li a {
+    height: 36px;
+    line-height: 34px;
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    color: rgba(34, 34, 34, 0.8);
+    padding: 4px 8px;
+}
+
+.camp-more li a span {
+    font-size: 12px;
+}
+/* 찜 목록 끝 */
+
+.use-content {
+    /* position: absolute;
+    top: 43%;
+    left: 28.2%; */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.use-box {
+    width: 600px;
+    height: 200px;
+    margin: 0 10px 10px 0;
+    background: #fff;
+    border: 1px solid #c7c8d2;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.use-box h3 {
+    font-size: 16px;
+    padding: 10px 15px;
+    margin: 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
+    background: #f6f6f6;
+}
+
+.notice-List {
+    height: 150px;
+    line-height: 150px;
+}
+
+.notice-List p {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 /* footer 시작 */
