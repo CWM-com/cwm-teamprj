@@ -322,269 +322,32 @@ img {
 }
 
 
-/* 상단 이미지박스 끝 */
 
-/*  1번 section 시작 */
-
-/* main {
-  
-} */
-
-.content-color {
-    height: 800px;
+/* 헤더 뒷공간 */
+.bar-back{
+    width: 100%;
+    height: 110px;
+    background-color: #fff;
 }
 
-section {
-    width: 100%;
+/* 바디 제목 */
+.section00{
+    margin-top: 100px;
 }
 
-section:nth-child(1) {
-    margin: 180px auto;
-    margin-top: 190px;
-    width: 100%;
+.section-wrap {
     max-width: 1200px;
-}
-
-
-section:nth-child(2) {
-    width: 100%;
-    background-color: rgb(242, 244, 247);
-}
-
-.section-main-1-wrap {
-    width: 100%;
-    /* background-color: #7c7c7c; */
-}
-
-.section-main-1 {
-    padding: 0 0 250px 0;
-    margin: 0 auto;
-    margin-top: 200px;
-    margin-bottom: 210px;
-    width: 100%;
-    max-width: 1200px;
-    height: 600px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-}
-
-.main-wrap {
-    width: 300px;
-    height: 10px;
-}
-
-.wrap-cotent1 {
-    width: 300px;
-    height: 250px;
-}
-
-.wrap-cotent1 div {
-    text-align: left;
-}
-
-.wrap-cotent1 div:nth-child(2) {
-    padding-bottom: 15px;
-    padding-top: 10px;
-}
-
-.wrap-cotent1 > div > i {
-    font-size: 26px;
-}
-
-.wrap-cotent1 > div > span {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.wrap-cotent1 > div > p {
-    width: 300px;
-    height: 150px;
-    color: rgba(0, 0, 0, 0.6);
-}
-
-.wrap-cotent1 .more-btn {
-    display: block;
-    margin: 0 auto;
-    padding: 12px;
-   border: 2px solid rgb(206, 211, 220);
-   border-radius: 50px;
-   background-color: rgba(184, 196, 219, 0.3);
-   cursor: pointer;
-}
-
-.more-btn:hover {
-    background-color: rgba(167, 190, 238, 0.6);
-     transition: 0.8s;
-}
-
-.more-btn a {
-    color: #000;
-    font-size: 12px;
-    font-weight: lighter;
-}
-
-/* 1 section 끝 */
-
-/* 2 section 시작 */
-
-.content-color {
-    height: 250px;
-   background-color: rgb(202, 209, 220);
-    /* background-color: rgba(109, 131, 125); */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.count-box {
-    margin-left: 130px;
-    margin-right: 130px;
-}
-
-.count-box:nth-child(3) {
-    margin-right: 0px;
-}
-
-.count-box .count {
-    color: #fff;
-    font-size: 50px;
-    font-weight: bold;
-}
-
-.count-box span {
-    font-size: 14px;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.8);
-}
-
-.review-title {
-    margin-top: 130px;
-    position: relative;
-    top: 60px;
-}
-
-.review-title h1 {
-    font-size: 40px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.review-title h1::after {
-    content: "";
-    margin-top: 10px;
-    margin-left: 40%;
-    width: 110px;
-    height: 1.5px;
-    display: block;
-    background-color: #ccc;
-}
-
-.section-main-2 {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1200px;
-    height: 600px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 140px;
-}
-
-.section-content-box {
-    width: 400px;
-    border: 2px solid #f0f0f0;
-    border-width: medium;
-    box-shadow: 0 1px 2px 0 rgba(90, 91, 95, 0.1);
-    border-radius: 6px;
-    cursor: pointer;
-
-    animation-name: contentbox;
-    animation-duration: 3s;
-    animation-delay: 1s;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
-
-    transition: all 0.3s ease-in-out;
-}
-
-.section-content-box:hover {
-    box-shadow: 0 21px 20px -2px rgba(217, 217, 217, 1);
-    transform: translateY(-4px);
-}
-
-@keyframes contentbox {
-    0% {margin-top: 0px;}
-	100% {margin-top: 10px;}
-}
-
-.section-content-box .icon-box {
-    padding: 10px;
-    text-align: right;
-}
-
-.section-content-box div span i {
-    font-size: 35px;
-}
-
-.review-img {
-    height: auto;
     margin: 0 auto;
 }
-
-.review-img .img-box {
-    height: auto;
+.menu0 {
+    width: 100%;
 }
-
-.review-img div h4 {
-    padding: 10px 0;
-    padding-left: 8px;
-    font-weight: 600;
-}
-
-.review-img div:last-child {
-    padding-left: 8px;
-    padding-bottom: 6px;
-    color: rgba(0, 0, 0, 0.7);
-}
-
-.scroll-TopBtn {
-    position: fixed;
-    bottom: 36%;
-    left: 97.3%;
-
-    opacity: 0;
-    transition: all 0.8s ease-in-out;
-
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    outline: none;
-    padding: 8px;
-    color: #24262b;
-    background-color : #e1ecf0;
-    z-index: 10;
-    cursor: pointer;
-}
-
-.show {
-    opacity: 1;
-    transition: all 0.8s ease-in-out;
-}
-
-.weather-img h3 img{
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: between;
-}
+.menu00 {
+    width: 100%;
+}  
 
 
 
-
-
-/* main 끝 */
 
 /* footer 시작 */
 
@@ -663,5 +426,3 @@ footer {
     font-weight: 500;
     color: rgb(196, 196, 196);
 }
-
-
