@@ -9,14 +9,6 @@ placeCall varchar(20) not null,
 placeBookmark int,
 placeStar int,
 regdate date,
-picThumbName varchar(255),
-picDetailName1 varchar(255),
-picDetailName2 varchar(255),
-picDetailName3 varchar(255),
-picAroundName1 varchar(255),
-picAroundName2 varchar(255),
-picAroundName3 varchar(255),
-picAroundName4 varchar(255),
 primary key(placeCode)
 );
 
@@ -28,13 +20,16 @@ null,
 "02-304-0061",
 0,
 0,
-now(),
-"camp-thumb-thumb",
-"camp1-detail",
-"camp2-detail",
-"camp3-detail",
-"around1-detail",
-"around2-detail",
-"around3-detail",
-"around4-detail"
+now()
+);
+
+insert into placeinfo values(
+null,
+"부산 대저 캠핑장",
+"051",
+"부산광역시 강서구 대저1동 1-12",
+"051-941-0957",
+0,
+0,
+now()
 );

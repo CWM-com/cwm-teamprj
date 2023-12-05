@@ -1,0 +1,29 @@
+/* 디테일 내용 */
+.detail-content{
+    width: 950px;
+    padding-right: 30px;
+}
+
+/* 디테일 제목 */
+.detail-title{
+    width: 100%;
+    display: flex;
+}
+.detail-title-title{
+    width: 60%;
+}
+
+/* 디테일 바디 */
+.detail-body{
+    width: 100%;
+    margin: 100px 0 150px 0;
+    text-align: center;
+}
+th{
+    background-color: var(--table-bg-color);
+    width: 15%
+}
+th, td{
+    padding: 12px;
+    border: 1px solid var(--table-border-color);
+}
