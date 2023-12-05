@@ -1,0 +1,167 @@
+/* 바디 */
+.section0{
+    width: 100%;
+}
+
+/* 헤더 뒷공간 */
+.bar-back{
+    width: 100%;
+    height: 110px;
+    background-color: #fff;
+}
+
+/* 바디 제목 */
+.section00{
+    display: flex;
+    margin: 100px 300px 50px 300px;
+}
+.menu0 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.menu00 {
+    width: 100%;
+}   
+.menu0 h2::after {
+    content: "";
+    margin-top: 10px;
+    width: 100%;
+    height: 1.5px;
+    display: block;
+    background-color: #ccc;
+}
+.menu0 div h2 {
+    color: #000;
+    font-size: 34px;
+    padding-bottom: 10px;
+}
+
+/* 캠핑 내용 */
+.map-wrap{
+    margin: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+/* 사이드바 */
+.side-menu-bar{
+    width: 200px;
+    text-align: center;
+}
+.side-title{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(165, 192, 239, 0.4);
+    border-radius: 15px 15px 15px 15px;
+}
+
+/* 메인내용 */
+.place-content{
+    width: 100%;
+    padding: 0 250px 0 78px;
+}
+
+/* 옵션바 */
+.camp-option{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+.camp-option-select{
+    display: flex;
+    justify-content: space-around;
+    margin-right: 10px;
+}
+.camp-option-search form{
+    display: flex;
+    justify-content: space-around;
+}
+.search{
+    width: 215px;
+}
+.btn{
+    margin-left: 3px;
+    padding: 3px 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(165, 192, 239, 0.4);
+    color: #f3f4f6;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+/* 내용 */
+.camp-place{
+    width: 100%;
+    margin-top: 30px;
+}
+.camp-place-title{
+    width: 100%;
+    display: flex;
+    /* border: 1px solid black; */
+    height: 200px;
+    margin-bottom: 10px;
+    background-color: rgba(165, 192, 239, 0.1);
+    box-shadow: rgba(90, 91, 95, 0.8) 0px 1px 2px 0px;
+}
+.camp-place-title-thumb{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    /* background-color: green; */
+}
+.thumb-img{
+    width: 100%;
+    display: block; 
+    object-fit: cover;
+}
+.camp-place-title-content{
+    width: 240px;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+}
+.content-list{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    height: 100%;
+    align-items: center;
+}
+.content-list-detail{
+    display: flex;
+}
+.content-list-detail li{
+    margin-right: 10px;
+}
+.camp-place-title-pic{
+    width: 470px;
+}
+.pic-list{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pic{
+    width: 130px;
+    height: 180px;
+    margin: 10px 10px;
+    overflow: hidden;
+    position: relative;
+}
+.pic:last-child{
+    margin-right: 0;
+}
+
+/* 페이지바 */
+.page-bar{
+    margin-top: 50px;
+    width: 100%;
+}

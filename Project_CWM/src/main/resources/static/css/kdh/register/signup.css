@@ -43,8 +43,6 @@
     width: 100%;
     height: 40px;
     line-height: 40px;
-    padding-bottom: 8px;
-    
     border: 0;
     border-bottom: 1px solid #e5e5e5;
     color: #7c7c7c;
@@ -56,8 +54,46 @@ input:focus {
     border-bottom: 1px solid #a1a1a1;
 }
 
+.pwd-text > p {
+    font-size: 14px;
+    font-weight : bold;
+    letter-spacing: -1px;
+    color: #ff3366;
+    margin-bottom: 34px;
+    margin-top : 3px;
+}
+
+.chk-success {
+    color : rgb(0, 119, 255);
+}
+
 .id-info {
     margin-bottom: 37px;
+}
+
+#userId {
+    width : 83.5%;
+}
+
+.change-1 {
+    margin-bottom : 0px;
+}
+
+.change-2 {
+    margin-bottom : 37px;
+}
+
+.Id-check {
+    padding : 12px 14px;
+    outline : none;
+    border : 1px solid rgb(0, 119, 255);
+    border-radius : 4px;
+    background-color : #fff;
+    color : rgb(0, 119, 255);
+    height : 40px;
+    text-align : center;
+    cursor : pointer;
+    font-weight : 600;
 }
 
 /* 체크 항목 부분 시작 */
