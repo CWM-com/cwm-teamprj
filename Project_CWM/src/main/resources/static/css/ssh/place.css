@@ -10,6 +10,10 @@
     display: flex;
     justify-content: right;
 }
+.camp-option form{
+    display: flex;
+    justify-content: space-around;
+}
 .camp-option-select{
     display: flex;
     justify-content: space-around;
@@ -19,9 +23,12 @@
 .camp-option-select select{
     border-radius: 5px;
 }
-.camp-option-search form{
+.camp-option-search{
     display: flex;
     justify-content: space-around;
+}
+.camp-option-search input{
+
 }
 .search{
     width: 200px;

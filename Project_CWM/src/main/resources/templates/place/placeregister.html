@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장소등록페이지</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="/css/ssh/reset-copy.css">
+    <link rel="stylesheet" href="/css/ssh/main-copy.css">
+    <link rel="stylesheet" href="/css/ssh/common.css">
+    <link rel="stylesheet" href="/css/ssh/placeregister.css">
+</head>
+<body>
+    <header th:insert="~{fragment/header::header_a}"></header>
+    <main>
+        <div class="section0">
+            <div class="bar-back"></div>
+        </div>
+        <div class="section0">
+        </div>
+        <div class="section0">
+            <div class="map-wrap">
+                <div class="page-List">
+                    <a href="/map"><h2>전국 캠핑장 위치</h2></a>
+                    <nav>
+                        <div>
+                            <strong class="sub-title">캠핑장 이용안내</strong>
+                            <ul class="title-List">
+                                <li>
+                                    <a href="/place/map">캠핑장 위치</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="title-box">
+                            <Strong class="sub-title">캠핑장 정보</Strong>
+                            <ul class="title-List">
+                                <li>
+                                    <a href="/place/place">캠핑장 목록</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="detail-content">
+                    <div class="section00">
+                        <div class="section-header">
+                            <h2>캠핑장 등록</h2>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="detail-place">
+                        <div class="detail-title">
+                            <div class="detail-title-title">
+                                <h2>캠핑장 등록</h2>
+                            </div>
+                        </div>
+                        <div class="detail-body">
+                            <form onsubmit="return frmCheck()" action="/place/placeregister" method="post" enctype="multipart/form-data">
+                                <table>
+                                    <tr>
+                                        <th>캠핑장 이름</th>
+                                        <td>
+                                            <input type="text" name="placeName" class="input noto">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>캠핑장 지역번호</th>
+                                        <td>
+                                            <input type="text" name="placeAddrCode" class="input noto">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>캠핑장 주소</th>
+                                        <td>
+                                            <input type="text" name="placeAddrDetail" class="input noto">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>캠핑장 전화번호</th>
+                                        <td>
+                                            <input type="text" name="placeCall" class="input noto">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>캠핑장 썸네일</th>
+                                        <td>
+                                            <input type="file" name="picThumb" class="input">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>캠핑장 사진</th>
+                                        <td>
+                                            <input type="file" name="picDetail" class="input">
+                                            <input type="file" name="picDetail" class="input">
+                                            <input type="file" name="picDetail" class="input">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>캠핑장 주변</th>
+                                        <td>
+                                            <input type="file" name="picAround" class="input">
+                                            <input type="file" name="picAround" class="input">
+                                            <input type="file" name="picAround" class="input">
+                                            <input type="file" name="picAround" class="input">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                        <div class="bottom">
+                            <div class="bottom-left">
+                                <a th:href="@{/config/configList}">
+                                    <button type="button" class="btn black">게시판목록</button>
+                                </a>
+                            </div>
+                            <div class="bottom-right">
+                                <a th:href="@{/config/configWrite}">
+                                    <button type="button" class="btn blue">게시판생성</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer th:insert="~{fragment/footer::footer_a}"></footer>
+
+    <script>
+    </script>
+
+</body>
+</html>
