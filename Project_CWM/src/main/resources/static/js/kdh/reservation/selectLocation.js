@@ -345,6 +345,26 @@ function checkPeople() {
 
 /* 인원 수 체크 끝 */
 
+/* 캠핑 종류 선택 시작 */
+let campBox = document.querySelectorAll(".camp-box");
+let chooseActive = document.querySelector(".choose-active");
+
+for(let i = 0; i < campBox.length; i++) {
+    campBox[i].addEventListener('click', () => {
+        campBox[i].classList.add("choose-active");
+    });
+    for(let j = 0; j < campBox.length; j++) {
+        campBox[j].addEventListener('click', () => {
+            campBox[i].classList.remove("choose-active");
+            campBox[j].classList.add("choose-active");
+        });
+    }
+}
+
+/* 캠핑 종류 선택 끝 */
+
+/* 다음 페이지 이동 */
+
 let reservBtn = document.querySelector(".reserv-btn");
 
 reservBtn.addEventListener('click', () => {
