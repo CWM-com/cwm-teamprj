@@ -1,0 +1,78 @@
+/* 바디 */
+.section0{
+    width: 100%;
+}
+
+/* 헤더 뒷공간 */
+.bar-back{
+    width: 100%;
+    height: 110px;
+    background-color: #fff;
+}
+
+/* 바디 제목 */
+.section00{
+    display: flex;
+    margin: 100px 300px 50px 300px;
+}
+.menu0 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.menu00 {
+    width: 100%;
+}   
+.menu0 h2::after {
+    content: "";
+    margin-top: 10px;
+    width: 100%;
+    height: 1.5px;
+    display: block;
+    background-color: #ccc;
+}
+.menu0 div h2 {
+    color: #000;
+    font-size: 34px;
+    padding-bottom: 10px;
+}
+
+/* 캠핑 내용 */
+.map-wrap{
+    margin: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+/* 사이드바 */
+.side-menu-bar{
+    width: 200px;
+    text-align: center;
+}
+.side-title{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(165, 192, 239, 0.4);
+    border-radius: 15px 15px 15px 15px;
+}
+
+/* 지도 내용 */
+.map-content{
+    width: 100%;
+    height: 1000px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 250px 0 78px;
+}
+.map-place{
+    width: 70%;
+    background-color: rgb(0, 255, 0);
+}
+.option-place{
+    width: 30%;
+    background-color: rgb(0, 0, 255);
+}
