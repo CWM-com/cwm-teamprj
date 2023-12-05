@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../static/css/lth/reset.css">
+</head>
+<body>
+    <header th:insert="~{fragment/header::header_a}">
+
+    </header>
+    <main>
+        <div class="section0">
+            <div class="bar-back"></div>
+        </div>
+        <div class="section0">
+            <div class="section00">
+                
+            </div>
+        </div>
+        <div class="mypage-container">
+            <div class="page-List">
+                <a href="/mypage"><h2>날씨</h2></a>
+                <nav>
+                    <div>
+                        <strong class="sub-title">날씨</strong>
+                        <ul class="title-List">
+                            <li>
+                                <a href="/weather">날씨</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="page-title">
+                
+            </div>
+        </div>
+    </main>
+    
+    <footer th:insert="~{fragment/footer::footer_a}">
+
+    </footer>
+    <script src="js/kdh/reservation/tabmove.js"></script>
+</body>
+</html>
