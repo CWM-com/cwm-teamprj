@@ -9,6 +9,13 @@ a {
     text-decoration: none;
     color: inherit;
 }
+.btn{
+    border: 0;
+    padding: 8px 10px;
+    color: #212529;
+    border-radius: 3px;
+    cursor: pointer;
+}
 
 /* 헤더 뒷공간 */
 .bar-back{

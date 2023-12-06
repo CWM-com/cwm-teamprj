@@ -1,15 +1,15 @@
 create database cwmdb;
 
 create table placeinfo(
-placeCode int not null auto_increment,
-placeName varchar(20) not null,
-placeAddrCode varchar(10) not null,
-placeAddrDetail varchar(255) not null,
-placeCall varchar(20) not null,
-placeBookmark int,
-placeStar int,
+place_code int not null auto_increment,
+place_name varchar(20) not null,
+place_addrCode varchar(10) unique,
+place_addrDetail varchar(255) not null,
+place_call varchar(20) not null,
+place_bookmark int,
+place_star int,
 regdate date,
-primary key(placeCode)
+primary key(place_code)
 );
 
 insert into placeinfo values(
@@ -32,4 +32,14 @@ null,
 0,
 0,
 now()
+);
+
+create table files_${placeAddrCode}(
+id int not null,
+orgName varchar(255),
+savedFileName varchar(255),
+savedPathFileName varchar(255),
+savedFileSize bigint,
+folderName varchar(10),
+ext varchar(20)
 );
