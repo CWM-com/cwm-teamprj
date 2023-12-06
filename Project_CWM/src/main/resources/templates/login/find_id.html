@@ -35,6 +35,10 @@
                     <div>
                         <button type="submit" class="id-btn">아이디 찾기</button>
                     </div>
+                    <br>
+                    <script th:if="${res != null}" th:inline="javascript">
+                        alert([[${res}]]);
+                    </script>
                 </form>
             </div>
        </div>

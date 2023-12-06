@@ -40,11 +40,14 @@ public class LoginController {
     @PostMapping("/findid")
     public String setFindResult(@RequestParam("userName") String userName, @RequestParam("userEmail") String userEmail, RedirectAttributes ra) {
 
-        String id = signinService.setID(userName, userEmail);
-        System.out.println(id);
+        String result = signinService.setID(userName, userEmail);
 
-        ra.addFlashAttribute("res",id);
-
-        return "redirect:/login/findresult";
+        if(result != null) {
+            ra.addFlashAttribute("res", result);
+            return "redirect:/login/findresult";
+        }else  {
+            ra.addFlashAttribute("res","해당 이름과 이메일로 등록된 아이디가 없습니다.");
+            return "redirect:/login/findid";
+        }
     }
 }

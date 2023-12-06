@@ -1,0 +1,44 @@
+let userEmail = document.querySelector("#userEmail");
+let checkNum = document.querySelector("#checkNum");
+let certNum = document.querySelector(".cert_Num"); // 인증번호 전송 버튼
+let certNext = document.querySelector(".cert-next"); // 다음페이지 버튼
+
+let certifiNum;
+
+mailSend();
+function mailSend() {
+    certNum.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        console.log(userEmail.value);
+        $.ajax({
+            type : "post",
+            url : "/register/mailsend",
+            data : {userEmail : userEmail.value},
+            dataType : "json",
+            success : (res) => {
+                if(res != null) {
+                    certifiNum = res;
+                    alert("인증번호가 전송되었습니다.");
+                }
+            }
+        });
+    });
+}
+
+
+certNext.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    if (checkNum.value == certifiNum) {
+        alert("인증번호가 일치합니다.");
+        location.href = "/register/signup";
+    }else {
+        alert("인증번호가 일치하지 않습니다. 다시 확인해주세요.");
+        checkNum.value = "";
+        checkNum.focus();
+        return false;
+    }
+});
+
+

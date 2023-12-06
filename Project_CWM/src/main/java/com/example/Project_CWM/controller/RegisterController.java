@@ -2,6 +2,8 @@ package com.example.Project_CWM.controller;
 
 import com.example.Project_CWM.dto.RegisterDto;
 import com.example.Project_CWM.mappers.RegisterMapper;
+import com.example.Project_CWM.service.MailSerivce;
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +18,12 @@ public class RegisterController {
 
     @Autowired
     private RegisterMapper registerMapper;
+    @Autowired
+    private MailSerivce mailSerivce;
 
     @GetMapping("")
     public String getCert() {
+
         return "register/certification";
     }
 
@@ -53,5 +58,14 @@ public class RegisterController {
             map.put("res","success");
         }
         return map;
+    }
+
+    @PostMapping("/mailsend")
+    @ResponseBody
+    public String MailSend(@RequestParam String userEmail) throws MessagingException {
+
+        String result = mailSerivce.sendEmail(userEmail);
+
+        return result;
     }
 }
