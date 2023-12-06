@@ -17,8 +17,8 @@ public class SigninService {
         if(signinMapper.setFindResult(userName, userEmail) != null) {
             result = signinMapper.setFindResult(userName, userEmail);
         }else {
-            System.out.println("등록된 회원정보가 없습니다.");
+            result = null;
         }
-            return result;
+        return  result;
     }
 }
