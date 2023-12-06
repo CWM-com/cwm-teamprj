@@ -57,36 +57,36 @@
                             </div>
                         </div>
                         <div class="detail-body">
-                            <form onsubmit="return frmCheck()" action="/place/placeregister" method="post" enctype="multipart/form-data">
+                            <form onsubmit="return frmCheck()" action="/place/placeregister" method="post">
                                 <table>
                                     <tr>
                                         <th>캠핑장 이름</th>
                                         <td>
-                                            <input type="text" name="placeName" class="input noto">
+                                            <input type="text" name="placeName" placeholder="이름을 정확히 입력해주세요.">
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>캠핑장 지역번호</th>
                                         <td>
-                                            <input type="text" name="placeAddrCode" class="input noto">
+                                            <input type="text" name="placeAddrCode" placeholder="ex) 02, 051">
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>캠핑장 주소</th>
                                         <td>
-                                            <input type="text" name="placeAddrDetail" class="input noto">
+                                            <input type="text" name="placeAddrDetail" placeholder="주소를 정확히 입력해주세요.">
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>캠핑장 전화번호</th>
                                         <td>
-                                            <input type="text" name="placeCall" class="input noto">
+                                            <input type="text" name="placeCall" placeholder="번호를 정확히 입력해주세요.">
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>캠핑장 썸네일</th>
                                         <td>
-                                            <input type="file" name="picThumb" class="input">
+                                            <input type="file" name="picThumb">
                                         </td>
                                     </tr>
                                     <tr>
@@ -107,19 +107,19 @@
                                         </td>
                                     </tr>
                                 </table>
+                                <div class="bottom">
+                                    <div class="bottom-left">
+                                        <a th:href="@{/place/place}">
+                                            <button type="button" class="btn black">목록으로</button>
+                                        </a>
+                                    </div>
+                                    <div class="bottom-right">
+                                        <a th:href="@{/place/placeregister}">
+                                            <button type="submit" class="btn blue">캠핑장 등록</button>
+                                        </a>
+                                    </div>
+                                </div>
                             </form>
-                        </div>
-                        <div class="bottom">
-                            <div class="bottom-left">
-                                <a th:href="@{/config/configList}">
-                                    <button type="button" class="btn black">게시판목록</button>
-                                </a>
-                            </div>
-                            <div class="bottom-right">
-                                <a th:href="@{/config/configWrite}">
-                                    <button type="button" class="btn blue">게시판생성</button>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -127,9 +127,34 @@
         </div>
     </main>
     <footer th:insert="~{fragment/footer::footer_a}"></footer>
-
     <script>
-    </script>
+        function frmCheck(){
+            let placeName = document.querySelector("input[name=placeName]");
+            let placeAddrCode = document.querySelector("input[name=placeAddrCode]");
+            let placeAddrDetail = document.querySelector("input[name=placeAddrDetail]");
+            let placeCall = document.querySelector("input[name=placeCall]");
 
+            if(placeName.value == ""){
+                alert("캠핑장 이름을 입력하세요.");
+                placeName.focus();
+                return false;
+            }
+            if(placeAddrCode.value == ""){
+                alert("캠핑장 코드를 입력하세요.");
+                placeAddrCode.focus();
+                return false;
+            }
+            if(placeAddrDetail.value == ""){
+                alert("캠핑장 주소를 입력하세요.");
+                placeAddrDetail.focus();
+                return false;
+            }
+            if(placeCall.value == ""){
+                alert("캠핑장 번호를 입력하세요.");
+                placeCall.focus();
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>

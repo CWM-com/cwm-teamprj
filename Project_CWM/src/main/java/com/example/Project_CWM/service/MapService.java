@@ -54,4 +54,29 @@ public class MapService {
 
         return mapMapper.getListCount(map);
     }
+
+//    public String getCheckPlaceCode(String placeCode){
+//        return mapMapper.getCheckPlaceCode(placeCode);
+//    }
+
+    public void setPlace(MapDto mapDto){
+        mapMapper.setPlace(mapDto);
+    }
+
+    public List<MapDto> getPlaceList(String selectType){
+
+        Map<String, Object> mapp = new HashMap<>();
+        String order = "";
+
+        if(selectType.equals("date")){
+            order = "regdate";
+        }else if(selectType.equals("star")){
+            order = "place_star";
+        }else{
+            order = "place_name";
+        }
+        mapp.put("order", order);
+
+        return mapMapper.getPlaceList(mapp);
+    }
 }
