@@ -51,17 +51,20 @@
                     </div>
                     <div class="camp-option">
                         <div class="camp-count">
-                            <span>현재 등록된 캠핑장 수 : [[${cnt}]]개</span>
+                            <span>현재 등록된 캠핑장 수 : [[${placeCount}]]개</span>
                         </div>
-                        <form action="" method="get">
+                        <form action="" method="get" onsubmit="return placeOrder()">
                             <div class="camp-option-select">
                                 <p>정렬</p>
-                                <select name="selectType" class="selectType">
-                                    <option value="date">최근 등록순</option>
-                                    <option value="star">인기순</option>
-                                    <option value="name">이름순</option>
+                                <select name="selectType" class="selectType" onchange="this.form.submit()">
+                                    <option value="">정렬 순서</option>
+                                    <option value="option1">최근 등록순</option>
+                                    <option value="option2">인기순</option>
+                                    <option value="option3">이름순</option>
                                 </select>
                             </div>
+                        </form>
+                        <form action="" method="get">
                             <div class="camp-option-search">
                                 <ul>
                                     <li>
@@ -69,11 +72,11 @@
                                         <input style="padding-left: 5px;" type="text" name="search" class="search" id="search" placeholder="캠핑장 이름을 입력하세요">
                                     </li>
                                 </ul>
-                                <input class="btn-search" type="submit" value="search"><br>
+                                <input type="submit" class="btn-search" value="search">
                             </div>
                         </form>
                     </div>
-                    <div class="camp-place" th:each="placeList : ${placeList}">
+                    <div class="camp-place" th:each="placeSearch : ${placeSearch}">
                         <div>
                             <a href="/place/placedetail">
                                 <div class="camp-place-title">
@@ -86,31 +89,17 @@
                                         <div class="content-list">
                                             <div class="content-list-detail">
                                                 <li id="name">이름 : </li>
-                                                <p id="camp1-name">[[${placeList.placeName}]]</p>
+                                                <p id="camp1-name">[[${placeSearch.placeName}]]</p>
                                             </div>
                                             <div class="content-list-detail">
                                                 <li id="addr">주소 : </li>
-                                                <p id="camp1-addr">[[${placeList.placeAddrDetail}]]</p>
+                                                <p id="camp1-addr">[[${placeSearch.placeAddr}]]</p>
                                             </div>
                                             <div class="content-list-detail">
                                                 <li id="tel">연락처 : </li>
-                                                <p id="camp1-tel">[[${placeList.placeCall}]]</p>
+                                                <p id="camp1-tel">[[${placeSearch.placeCall}]]</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="camp-place-title-pic">
-                                        <div class="pic0-list">
-                                            <div class="pic1">
-                                                <img src="/images/ssh/camp1-detail.jpg" alt="">
-                                            </div>
-                                            <div class="pic2">
-                                                <img src="/images/ssh/camp2-detail.jpg" alt="">
-                                            </div>
-                                            <div class="pic3">
-                                                <img src="/images/ssh/camp3-detail.jpg" alt="">
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
                             </a>
@@ -118,7 +107,30 @@
                     </div>
                     <div class="bottom">
                         <div class="page-bar">
-                            페이지바
+                            <!--                prev button-->
+                            <a href="#" th:if="${page.page <= 1}"></a>
+                            <a th:href="@{/place/place?(page=${page.page - 1})}" th:unless="${page.page <= 1}">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </a>
+                            <!--                page number-->
+                            <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}"
+                               th:href="@{/place/place?(page=${i})}">
+                                <th:block th:if="${page.page eq i}">
+                                    <span style="color: #f00;">
+                                        <strong>[[${i}]]</strong>
+                                    </span>
+                                </th:block>
+                                <th:block th:unless="${page.page eq i}">
+                                    <span>[[${i}]]</span>
+                                </th:block>
+                            </a>
+                            <!--                page number-->
+
+                            <!--                next button-->
+                            <a href="#" th:if="${page.page >= page.totalPage}"></a>
+                            <a th:href="@{/place/place?(page=${page.page + 1})}" th:unless="${page.page >= page.totalPage}">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a>
                         </div>
                         <div class="bottom-right">
                             <a th:href="@{/place/placeregister}">
@@ -132,5 +144,7 @@
         </div>
     </main>
     <footer th:insert="~{fragment/footer::footer_a}"></footer>
+<script>
+</script>
 </body>
 </html>

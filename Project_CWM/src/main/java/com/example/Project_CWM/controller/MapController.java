@@ -26,11 +26,12 @@ public class MapController {
     }
 
     @GetMapping("/place")
-    public String getList(Model model, @RequestParam(value="search", defaultValue = "") String search,
+    public String getSearch(Model model, @RequestParam(value="search", defaultValue = "") String search,
                           @RequestParam(value = "page", defaultValue = "1") int page,
-                          @RequestParam(value="selectType", defaultValue = "date") String selectType) {
-        model.addAttribute("placeList", mapService.getPlaceList(selectType));
-        model.addAttribute("cnt", mapService.getSearchCnt(search));
+                          @RequestParam(value="selectType", defaultValue = "") String selectType) {
+        model.addAttribute("placeSearch", mapService.getSearch(page, search, selectType));
+        model.addAttribute("placeCount", mapService.getSearchCnt(search, selectType));
+        model.addAttribute("page", mapService.PageCalc(page));
         return "place/place";
     }
 
@@ -55,7 +56,6 @@ public class MapController {
         mapService.setPlace(mapDto);
         return "redirect:/place/place";
     }
-
 
     @GetMapping("/placedelivery")
     public String getPlaceDelivery(){
