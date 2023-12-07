@@ -6,6 +6,9 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f7f7f7;
 }
+input, select, textarea{
+    font-family: 'Noto Sans KR', sans-serif;
+}
 
 header {
     background-color: #121417;

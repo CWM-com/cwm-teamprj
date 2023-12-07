@@ -2,14 +2,22 @@ package com.example.Project_CWM.dto;
 
 public class MapDto {
 
+    private int placeId;
     private int placeCode;
     private String placeName;
-    private String placeAddrCode;
-    private String placeAddrDetail;
+    private String placeAddr;
     private String placeCall;
     private int placeBookmark;
     private int placeStar;
     private String regdate;
+
+    public int getPlaceId() {
+        return placeId;
+    }
+
+    public void setPlaceId(int placeId) {
+        this.placeId = placeId;
+    }
 
     public int getPlaceCode() {
         return placeCode;
@@ -27,20 +35,12 @@ public class MapDto {
         this.placeName = placeName;
     }
 
-    public String getPlaceAddrCode() {
-        return placeAddrCode;
+    public String getPlaceAddr() {
+        return placeAddr;
     }
 
-    public void setPlaceAddrCode(String placeAddrCode) {
-        this.placeAddrCode = placeAddrCode;
-    }
-
-    public String getPlaceAddrDetail() {
-        return placeAddrDetail;
-    }
-
-    public void setPlaceAddrDetail(String placeAddrDetail) {
-        this.placeAddrDetail = placeAddrDetail;
+    public void setPlaceAddr(String placeAddr) {
+        this.placeAddr = placeAddr;
     }
 
     public String getPlaceCall() {
@@ -78,10 +78,10 @@ public class MapDto {
     @Override
     public String toString() {
         return "MapDto{" +
-                "placeCode=" + placeCode +
+                "placeId=" + placeId +
+                ", placeCode=" + placeCode +
                 ", placeName='" + placeName + '\'' +
-                ", placeAddrCode='" + placeAddrCode + '\'' +
-                ", placeAddrDetail='" + placeAddrDetail + '\'' +
+                ", placeAddr='" + placeAddr + '\'' +
                 ", placeCall='" + placeCall + '\'' +
                 ", placeBookmark=" + placeBookmark +
                 ", placeStar=" + placeStar +

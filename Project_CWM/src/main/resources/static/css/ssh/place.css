@@ -7,8 +7,11 @@
 /* 옵션바 */
 .camp-option{
     width: 100%;
+    height: 30px;
+    vertical-align: middle;
     display: flex;
     justify-content: right;
+    text-align: center;
 }
 .camp-count{
     margin-right: 20px;
@@ -25,6 +28,7 @@
 }
 .camp-option-select select{
     border-radius: 5px;
+    font-size: 16px
 }
 .camp-option-search{
     display: flex;
@@ -87,7 +91,6 @@
     border-radius: 10px;
 }
 .camp-place-title-content{
-    width: 240px;
     margin-left: 10px;
     display: flex;
     align-items: center;
@@ -103,31 +106,11 @@
 }
 .content-list-detail li{
     margin-right: 10px;
-    /* font-size: 20px; */
+    font-size: 18px;
     font-weight: 600;
 }
-.camp-place-title-pic{
-    width: 470px;
-}
-.pic0-list{
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.pic1, .pic2, .pic3{
-    width: 130px;
-    height: 180px;
-    margin: 10px 10px;
-    overflow: hidden;
-    position: relative;
-    border-radius: 5px;
-}
-.pic:last-child{
-    margin-right: 0;
-}
-.hidden{
-    display: none;
+.content-list-detail p{
+        font-size: 18px;
 }
 
 /* 페이지바 */
