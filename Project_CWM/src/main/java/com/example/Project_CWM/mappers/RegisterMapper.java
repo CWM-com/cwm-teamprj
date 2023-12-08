@@ -15,4 +15,7 @@ public interface RegisterMapper {
 
     @Insert("insert into member values(null,#{userId},#{userPasswd},#{userEmail},#{userName},#{userTel},now())")
     public void setSignup(RegisterDto registerDto);
+
+    @Select("select * from member where user_id = #{userid}")
+    public List<RegisterDto> getUser(String userid);
 }

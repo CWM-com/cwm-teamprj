@@ -53,6 +53,11 @@ img {
     margin-right: 12px;
 }
 
+.user-Name {
+    font-size: 12px;
+    color: #7c7c7c;
+}
+
 .top-right span:last-child {
     margin-right: 0;
 }
