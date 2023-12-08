@@ -16,14 +16,15 @@ public class MapController {
 
     @Autowired
     MapService mapService;
-
     @Autowired
     MapMapper mapMapper;
+
 
     @GetMapping("/map")
     public String getMap(){
         return("place/map");
     }
+
 
     @GetMapping("/place")
     public String getSearch(Model model, @RequestParam(value="search", defaultValue = "") String search,
@@ -34,9 +35,24 @@ public class MapController {
         model.addAttribute("page", mapService.PageCalc(page));
         return "place/place";
     }
+    @GetMapping("/deletePlace")
+    @ResponseBody
+    public Map<String, Object> deletePlace(@RequestParam String placeCode){
+        if(!placeCode.isEmpty()){
+            mapService.deletePlace(placeCode);
+            mapService.dropFiles(placeCode);
+            return Map.of("msg", "success");
+        }else{
+            return Map.of("msg", "failure");
+        }
+
+    }
+
 
     @GetMapping("/placedetail")
-    public String getPlaceDetail(){
+    public String getPlaceDetail(@RequestParam String placeCode, Model model){
+        model.addAttribute("detail", mapService.getDetail(placeCode));
+        mapMapper.updateVisit(placeCode);
         return("place/placedetail");
     }
 
@@ -45,28 +61,28 @@ public class MapController {
     public String getPlaceRegister(){
         return("place/placeregister");
     }
-//    @GetMapping("/placeregister/checkPlaceCode")
-//    @ResponseBody
-//    public Map<String, Object> getCheckPlaceCode(@RequestParam String placeCode){
-//        String checkCode = mapService.getCheckPlaceCode(placeCode);
-//        return Map.of("placeCode", placeCode);
-//    }
     @PostMapping("/placeregister")
     public String setPlace(@ModelAttribute MapDto mapDto){
         mapService.setPlace(mapDto);
+        mapService.makeFiles(mapDto.getPlaceCode());
         return "redirect:/place/place";
     }
+    @GetMapping("/checkPlaceCode")
+    @ResponseBody
+    public Map<String, Object> getCheckPlaceCode(@RequestParam String placeCode){
+        int checkCode = mapService.getCheckPlaceCode(placeCode);
+        return Map.of("checkCode", checkCode);
+    }
+
 
     @GetMapping("/placedelivery")
     public String getPlaceDelivery(){
         return("place/placedelivery");
     }
-
     @GetMapping("/placefood")
     public String getPlaceFood(){
         return("place/placefood");
     }
-
     @GetMapping("/placetool")
     public String getPlaceTool(){
         return("place/placetool");
