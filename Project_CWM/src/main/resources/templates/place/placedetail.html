@@ -52,9 +52,9 @@
                         </div>
                     </div>
                     <div class="detail-place">
-                        <div class="detail-title">
+                        <div class="detail-title" >
                             <div class="detail-title-title">
-                                <h2>db에서 가져올 이름</h2>
+                                <h2>[[${detail.placeName}]]</h2>
                             </div>
                             <div class="detail-title-bookmark">
                                 <i class="fa-solid fa-bookmark" onclick="toggleImageClass(this)"></i>
@@ -71,22 +71,27 @@
                             <table>
                                 <tr>
                                     <td>주소</td>
-                                    <td><p>db에서 가져올 주소</p></td>
-                                    <td>요금 정보</td>
-                                    <td><p>db에서 가져올 요금</p></td>
+                                    <td><p>[[${detail.placeAddr}]]</p></td>
+                                    <td>조회수</td>
+                                    <td><p>[[${detail.visit} + 1]]</p></td>
                                 </tr>
                                 <tr>
                                     <td>연락처</td>
-                                    <td>db에서 가져올 연락처</td>
+                                    <td>[[${detail.placeCall}]]</td>
                                     <td>후기</td>
                                     <td>
-                                        <a href=""></a>
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                        <a href="">
+                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>현재 위치와의 거리</td>
-                                    <td colspan="3">db에서 가져올 거리</td>
+                                    <td>지도에서 보기</td>
+                                    <td colspan="3">
+                                        <a th:href="@{/place/map}">
+                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             </table>
                             
@@ -107,7 +112,7 @@
                             <button class="right-arrow"><i class="fa-solid fa-angle-right"></i></button>
                         </div>
                         <div class="detail-position">
-                            <h2>예약 가능한 자리</h2>
+                            <h2>캠핑장 배치도</h2>
                             <div class="detail-position-icons">
                                 <div class="icons">
                                     <i class="fa-solid fa-campground"></i>
@@ -194,6 +199,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="bottom">
+                            <div class="bottom-left">
+                                <a th:href="@{/place/place}">
+                                    <button type="button" class="btn list">목록으로</button>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -202,6 +214,7 @@
     <footer th:insert="~{fragment/footer::footer_a}"></footer>
 
     <script>
+
     </script>
 
 </body>

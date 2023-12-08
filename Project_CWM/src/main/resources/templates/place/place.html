@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장소페이지</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="/css/ssh/reset-copy.css">
     <link rel="stylesheet" href="/css/ssh/main-copy.css">
     <link rel="stylesheet" href="/css/ssh/common.css">
@@ -53,7 +54,7 @@
                         <div class="camp-count">
                             <span>현재 등록된 캠핑장 수 : [[${placeCount}]]개</span>
                         </div>
-                        <form action="" method="get" onsubmit="return placeOrder()">
+                        <form action="/place/place" method="get" onsubmit="return placeOrder()">
                             <div class="camp-option-select">
                                 <p>정렬</p>
                                 <select name="selectType" class="selectType" onchange="this.form.submit()">
@@ -64,21 +65,17 @@
                                 </select>
                             </div>
                         </form>
-                        <form action="" method="get">
+                        <form action="/place/place" method="get">
                             <div class="camp-option-search">
-                                <ul>
-                                    <li>
-                                        <label>캠핑장 검색</label>
-                                        <input style="padding-left: 5px;" type="text" name="search" class="search" id="search" placeholder="캠핑장 이름을 입력하세요">
-                                    </li>
-                                </ul>
+                                <label>캠핑장 검색</label>
+                                <input style="padding-left: 5px;" type="text" name="search" class="search" id="search" placeholder="캠핑장 이름을 입력하세요">
                                 <input type="submit" class="btn-search" value="search">
                             </div>
                         </form>
                     </div>
-                    <div class="camp-place" th:each="placeSearch : ${placeSearch}">
+                    <div class="camp-place" th:each="ps : ${placeSearch}">
                         <div>
-                            <a href="/place/placedetail">
+
                                 <div class="camp-place-title">
                                     <div class="camp-place-title-thumb">
                                         <div class="pic-thumb">
@@ -89,20 +86,40 @@
                                         <div class="content-list">
                                             <div class="content-list-detail">
                                                 <li id="name">이름 : </li>
-                                                <p id="camp1-name">[[${placeSearch.placeName}]]</p>
+                                                <p id="camp-name">[[${ps.placeName}]]</p>
                                             </div>
                                             <div class="content-list-detail">
                                                 <li id="addr">주소 : </li>
-                                                <p id="camp1-addr">[[${placeSearch.placeAddr}]]</p>
+                                                <p id="camp-addr">[[${ps.placeAddr}]]</p>
                                             </div>
                                             <div class="content-list-detail">
                                                 <li id="tel">연락처 : </li>
-                                                <p id="camp1-tel">[[${placeSearch.placeCall}]]</p>
+                                                <p id="camp-tel">[[${ps.placeCall}]]</p>
                                             </div>
+                                            <div class="content-list-detail">
+                                                <li id="code">코드 : </li>
+                                                <p id="camp-code">[[${ps.placeCode}]]</p>
+                                            </div>
+                                            <div class="content-list-detail">
+                                                <li id="visit">총조회수 : </li>
+                                                <p id="camp-visit">[[${ps.visit}]]</p>
+                                                <li id="bookmark">총북마크 : </li>
+                                                <p id="camp-bookmark">[[${ps.bookmark}]]</p>
+                                                <li id="star">총별점 : </li>
+                                                <p id="camp-star">[[${ps.star}]]</p>
+                                            </div>
+                                            <div class="content-list-detail">
+                                                <a th:href="@{/place/placedetail?(placeCode=${ps.placeCode})}">
+                                                    <button type="button" class="btn detail">캠핑장 상세보기</button>
+                                                </a>
+                                                <a href="#" th:onclick="dropTable([[${ps.placeCode}]])">
+                                                    <button type="button" class="btn delete">캠핑장 삭제</button>
+                                                </a>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                            </a>
                         </div>
                     </div>
                     <div class="bottom">
@@ -145,6 +162,22 @@
     </main>
     <footer th:insert="~{fragment/footer::footer_a}"></footer>
 <script>
+    function dropTable(placeCode){
+        if(confirm("삭제하면 복구할 수 없습니다.\n정말 삭제하시겠습니까?")){
+            $.ajax({
+                type: "get",
+                url: "/place/deletePlace",
+                dataType: "json",
+                data: {placeCode},
+                success: function(res){
+                    if(res.msg == "success"){
+                        alert("캠핑장이 삭제되었습니다..");
+                        location.href="/place/place";
+                    }
+                }
+            })
+        }
+    }
 </script>
 </body>
 </html>

@@ -2,8 +2,8 @@ package com.example.Project_CWM.dto;
 
 public class MapPageDto {
 
-    private int pageCount = 1;
-    private int blockCount = 1;
+    private int pageCount = 5;
+    private int blockCount = 10;
     private int page;
     private int startPage;
     private int endPage;

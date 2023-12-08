@@ -3,12 +3,13 @@ package com.example.Project_CWM.dto;
 public class MapDto {
 
     private int placeId;
-    private int placeCode;
+    private String placeCode;
     private String placeName;
     private String placeAddr;
     private String placeCall;
-    private int placeBookmark;
-    private int placeStar;
+    private int visit;
+    private int bookmark;
+    private int star;
     private String regdate;
 
     public int getPlaceId() {
@@ -19,11 +20,11 @@ public class MapDto {
         this.placeId = placeId;
     }
 
-    public int getPlaceCode() {
+    public String getPlaceCode() {
         return placeCode;
     }
 
-    public void setPlaceCode(int placeCode) {
+    public void setPlaceCode(String placeCode) {
         this.placeCode = placeCode;
     }
 
@@ -51,20 +52,28 @@ public class MapDto {
         this.placeCall = placeCall;
     }
 
-    public int getPlaceBookmark() {
-        return placeBookmark;
+    public int getVisit() {
+        return visit;
     }
 
-    public void setPlaceBookmark(int placeBookmark) {
-        this.placeBookmark = placeBookmark;
+    public void setVisit(int visit) {
+        this.visit = visit;
     }
 
-    public int getPlaceStar() {
-        return placeStar;
+    public int getBookmark() {
+        return bookmark;
     }
 
-    public void setPlaceStar(int placeStar) {
-        this.placeStar = placeStar;
+    public void setBookmark(int bookmark) {
+        this.bookmark = bookmark;
+    }
+
+    public int getStar() {
+        return star;
+    }
+
+    public void setStar(int star) {
+        this.star = star;
     }
 
     public String getRegdate() {
@@ -79,12 +88,13 @@ public class MapDto {
     public String toString() {
         return "MapDto{" +
                 "placeId=" + placeId +
-                ", placeCode=" + placeCode +
+                ", placeCode='" + placeCode + '\'' +
                 ", placeName='" + placeName + '\'' +
                 ", placeAddr='" + placeAddr + '\'' +
                 ", placeCall='" + placeCall + '\'' +
-                ", placeBookmark=" + placeBookmark +
-                ", placeStar=" + placeStar +
+                ", visit=" + visit +
+                ", bookmark=" + bookmark +
+                ", star=" + star +
                 ", regdate='" + regdate + '\'' +
                 '}';
     }

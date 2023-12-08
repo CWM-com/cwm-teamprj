@@ -30,7 +30,9 @@ public class MapService {
             }else if(selectType.equals("option2")){
                 searchQuery = "where place_name like '%" + search + "%' order by place_star desc";
             }else if(selectType.equals("option3")){
-                searchQuery = "where place_name like '%" + search + "%' order by place_name desc";
+                searchQuery = "where place_name like '%" + search + "%' order by place_name asc";
+            }else{
+                searchQuery = "where place_name like '%" + search + "%' ";
             }
         }else{
             if(selectType.equals("option1")){
@@ -38,7 +40,9 @@ public class MapService {
             }else if(selectType.equals("option2")){
                 searchQuery = "order by place_star desc";
             }else if(selectType.equals("option3")){
-                searchQuery = "order by place_name desc";
+                searchQuery = "order by place_name asc";
+            }else{
+                searchQuery = "";
             }
         }
 
@@ -60,7 +64,7 @@ public class MapService {
             if(selectType.equals("option1")){
                 searchQuery = "where place_name like '%" + search + "%' order by regdate desc";
             }else if(selectType.equals("option2")){
-                searchQuery = "where place_name like '%" + search + "%' order by place_star desc";
+                searchQuery = "where place_name like '%" + search + "%' order by star desc";
             }else if(selectType.equals("option3")){
                 searchQuery = "where place_name like '%" + search + "%' order by place_name desc";
             }
@@ -68,13 +72,12 @@ public class MapService {
             if(selectType.equals("option1")){
                 searchQuery = "order by regdate desc";
             }else if(selectType.equals("option2")){
-                searchQuery = "order by place_star desc";
+                searchQuery = "order by star desc";
             }else if(selectType.equals("option3")){
                 searchQuery = "order by place_name desc";
             }
         }
         mapp.put("searchQuery", searchQuery);
-
 
         return mapMapper.getSearchCount(mapp);
     }
@@ -102,5 +105,24 @@ public class MapService {
         mapPageDto.setTotalPage(totalPage);
 
         return mapPageDto;
+    }
+
+    public int getCheckPlaceCode(String placeCode){
+        return mapMapper.getCheckPlaceCode(placeCode);
+    }
+
+    public void deletePlace(String placeCode){
+        mapMapper.deletePlace(placeCode);
+    }
+
+    public void makeFiles(String placeCode){
+        mapMapper.makeFiles(placeCode);
+    }
+    public void dropFiles(String placeCode){
+        mapMapper.dropFiles(placeCode);
+    }
+
+    public MapDto getDetail(String placeCode){
+        return mapMapper.getDetail(placeCode);
     }
 }

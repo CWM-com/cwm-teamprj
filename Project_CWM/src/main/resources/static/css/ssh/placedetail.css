@@ -53,10 +53,15 @@ td{
     border: 1px solid #ccc;
 }
 td:nth-child(1), td:nth-child(3){
+    width: 20%;
     font-weight: bold;
     background-color: #eee;
 }
-td:nth-child(2), td:nth-child(4){
+td:nth-child(2){
+    background-color: #fff;
+}
+td:nth-child(4){
+    width: 10%;
     background-color: #fff;
 }
 td i{
@@ -152,4 +157,8 @@ button{
     background-color: rgba(255, 255, 255, 0.5);
     height: auto;
     line-height: 1.8;
+}
+
+.list{
+    background-color:#ccc;
 }
