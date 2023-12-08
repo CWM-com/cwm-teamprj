@@ -4,9 +4,12 @@ import com.example.Project_CWM.dto.RegisterDto;
 import com.example.Project_CWM.mappers.RegisterMapper;
 import com.example.Project_CWM.service.MailSerivce;
 import jakarta.mail.MessagingException;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +32,7 @@ public class RegisterController {
 
     @GetMapping("/signup")
     public String getSignup() {
+
         return "register/signup";
     }
 
@@ -62,10 +66,43 @@ public class RegisterController {
 
     @PostMapping("/mailsend")
     @ResponseBody
-    public String MailSend(@RequestParam String userEmail) throws MessagingException {
+    public Map<String,Object> MailSend(@RequestParam String userEmail) throws MessagingException {
 
-        String result = mailSerivce.sendEmail(userEmail);
+        String signupResult = mailSerivce.sendEmail(userEmail);
 
-        return result;
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("result", signupResult);
+
+        return map;
+    }
+
+    @PostMapping("/PasswdMailSend")
+    @ResponseBody
+    public Map<String,Object> PasswdMailSend(@RequestParam String userEmail) throws MessagingException {
+
+        String passwdResult = mailSerivce.sendPwdEmail(userEmail);
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("passwd",passwdResult);
+
+        return map;
+    }
+
+
+    @PostMapping("/certifiCheck")
+    public String certifiCheck(@RequestParam("userEmail") String userEmail,@RequestParam("checkNum") String checkNum, RedirectAttributes ra) {
+
+        if (userEmail == null || checkNum == null) {
+            return "redirect:/register/certification";
+        }
+
+        if(checkNum != null && userEmail !=null) {
+            ra.addFlashAttribute("userEmail", userEmail);
+            return "redirect:/register/signup";
+        }else {
+            return "redirect:/register/certification";
+        }
     }
 }

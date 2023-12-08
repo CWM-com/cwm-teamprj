@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,16 +17,23 @@
                 <div class="header-top">
                     <div class="top-right">
                         <span>
-                            <a href="/index">홈</a>
+                            <th:block th:if="${#strings.isEmpty(session.LoginIn)}">
+                                <a th:href="@{/register}">회원가입</a>
+                            </th:block>
+
+                            <th:block th:unless="${#strings.isEmpty(session.LoginIn)}">
+                                <a th:href="@{/mypage}">[[${session.LoginIn.userName}]]님</a>
+                            </th:block>
                         </span>
+
                         <span>
-                            <a href="/register">회원가입</a>
-                        </span>
-                        <span>
-                            <a href="/login">로그인</a>
-                        </span>
-                        <span>
-                            <a href="/mypage">마이페이지</a>
+                            <th:block th:if="${#strings.isEmpty(session.LoginIn)}">
+                                <a th:href="@{/login}">로그인</a>
+                            </th:block>
+
+                            <th:block th:unless="${#strings.isEmpty(session.LoginIn)}">
+                                <a th:href="@{/login/logout}">로그아웃</a>
+                            </th:block>
                         </span>
                     </div>
                 </div>

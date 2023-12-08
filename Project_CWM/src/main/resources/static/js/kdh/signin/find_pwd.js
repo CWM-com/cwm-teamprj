@@ -1,23 +1,23 @@
+let userid = document.querySelector("#userid");
 let userEmail = document.querySelector("#userEmail");
+let certNum = document.querySelector(".cert_Num"); // 인증번호 버튼
 let checkNum = document.querySelector("#checkNum");
-let certNum = document.querySelector(".cert_Num"); // 인증번호 전송 버튼
-let certNext = document.querySelector(".cert-next"); // 다음페이지 버튼
-
 let certifiNum;
-let emailVal;
+
 mailSend();
 function mailSend() {
     certNum.addEventListener('click', (e) => {
+
         e.preventDefault();
 
         $.ajax({
             type : "post",
-            url : "/register/mailsend",
+            url : "/register/PasswdMailSend",
             data : {userEmail : userEmail.value},
             dataType : "json",
             success : (res) => {
                 if(res != null) {
-                    certifiNum = res.result;
+                    certifiNum = res.passwd;
                     alert("인증번호가 전송되었습니다.");
                 }
             }
@@ -25,22 +25,33 @@ function mailSend() {
     });
 }
 
+function checkPasswd() {
 
-function certifiNumCheck() {
-    let num = document.querySelector("input[name=checkNum]");
+    if(userid.value == "") {
+        alert("아이디를 입력해주세요.");
+        userid.focus();
+        return false;
+    }
 
-    if(num.value === "") {
+    if(userEmail.value == "") {
+        alert("이메일을 입력해주세요.");
+        userEmail.focus();
+        return false;
+    }
+
+    if(checkNum.value == "") {
         alert("인증번호를 입력해주세요.");
         checkNum.focus();
         return false;
     }
-    if(num.value !== certifiNum) {
-        alert("인증번호가 일치하지 않습니다. 다시 확인해주세요.");
+
+    if(checkNum.value != certifiNum) {
+        alert("인증번호가 일치하지 않습니다.");
+        checkNum.value == "";
         checkNum.focus();
         return false;
-    }else{
-        alert("인증번호가 일치합니다.");
     }
 }
+
 
 
