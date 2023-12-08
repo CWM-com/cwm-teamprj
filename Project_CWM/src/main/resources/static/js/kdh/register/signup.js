@@ -152,7 +152,7 @@ function passwdCkeck() {
 idcheked();
 function idcheked() {
     let idCk = document.querySelector(".Id-check");
-
+    console.log(userEmail.value);
     idCk.addEventListener('click', (e) => {
             e.preventDefault();
 

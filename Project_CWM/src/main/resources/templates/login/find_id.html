@@ -26,11 +26,11 @@
                 <form action="/login/findid" method="post" onsubmit="return checkId()">
                     <div class="input-type">
                         <label for=""><h3>이름</h3></label>
-                        <input type="text" name="userName" id="userName" class="id-info" placeholder="이름을 입력해주세요.">
+                        <input type="text" name="userName" id="userName" class="id-info" placeholder="이름을 입력해주세요." autocomplete="off">
                     </div>
                     <div class="input-type">
                         <label for=""><h3>이메일</h3></label>
-                        <input type="email" name="userEmail" id="userEmail" placeholder="이메일을 입력해주세요">
+                        <input type="email" name="userEmail" id="userEmail" placeholder="이메일을 입력해주세요" autocomplete="off">
                     </div>
                     <div>
                         <button type="submit" class="id-btn">아이디 찾기</button>
@@ -44,6 +44,6 @@
        </div>
     </div>
     <script src="/js/kdh/pageMove/find_prev.js"></script>
-    <script src="/js/kdh/signin/findId.js"></script>
+    <script src="/js/kdh/signin/find_Id.js"></script>
 </body>
 </html>

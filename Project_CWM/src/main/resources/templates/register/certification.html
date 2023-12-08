@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +20,7 @@
             <div class="cert-text">
                 <h3>이메일 인증을 해주세요</h3>
             </div>
-            <form action="">
+            <form action="/register/certifiCheck" method="post" onsubmit="return certifiNumCheck()">
                 <div class="input-type">
                     <label for=""><h3>이메일</h3></label>
                     <input type="text" name="userEmail" id="userEmail" class="id-info" placeholder="이메일을 입력해주세요" autocomplete="off">
