@@ -73,13 +73,15 @@
                             </div>
                         </form>
                     </div>
-                    <div class="camp-place" th:each="ps : ${placeSearch}">
-                        <div>
-
+                    <div class="camp-place">
+                        <div th:each="ps : ${placeSearch}">
+                            <div>
                                 <div class="camp-place-title">
                                     <div class="camp-place-title-thumb">
-                                        <div class="pic-thumb">
-                                            <img src="/images/ssh/camp-thumb-thumb.jpg" alt="캠핑섬네일">
+                                        <div class="pic-thumb"  th:each="main : ${main}" th:if="${ps.placeCode == main.placeCode}">
+<!--                                            [[${main.orgName}]]-->
+<!--                                            <img src="/images/ssh/camp-thumb-thumb.jpg" alt="캠핑섬네일">-->
+                                            <img th:src="@{|/${main.folderName}/${main.orgName}|}" alt="${file.orgName}">
                                         </div>
                                     </div>
                                     <div class="camp-place-title-content">
@@ -120,6 +122,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
                     <div class="bottom">
@@ -171,7 +174,7 @@
                 data: {placeCode},
                 success: function(res){
                     if(res.msg == "success"){
-                        alert("캠핑장이 삭제되었습니다..");
+                        alert("캠핑장이 삭제되었습니다.");
                         location.href="/place/place";
                     }
                 }

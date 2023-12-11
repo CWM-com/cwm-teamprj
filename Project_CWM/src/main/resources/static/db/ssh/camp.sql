@@ -7,10 +7,21 @@ place_name varchar(20) not null,
 place_addr varchar(255) not null,
 place_call varchar(20) not null,
 visit int,
-bookmark int,
+bookmark char(1) default 'N',
 star int,
 regdate date,
 primary key(place_id)
+);
+
+create table placefiles(
+place_code varchar(10) not null,
+orgName varchar(255),
+savedFileName varchar(255),
+savedPathName varchar(255),
+savedFileSize bigint,
+folderName varchar(255),
+ext varchar(20),
+foreign key(place_code) references placeinfo(place_code)
 );
 
 insert into placeinfo values(
@@ -22,13 +33,3 @@ null,
 now()
 );
 
-insert into placeinfo values(
-null,
-"201",
-"부산 대저 캠핑장",
-"부산광역시 강서구 대저1동 1-12",
-"051-941-0957",
-0,
-0,
-now()
-);

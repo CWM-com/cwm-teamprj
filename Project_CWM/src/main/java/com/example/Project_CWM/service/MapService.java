@@ -3,6 +3,7 @@ package com.example.Project_CWM.service;
 
 
 import com.example.Project_CWM.dto.MapDto;
+import com.example.Project_CWM.dto.MapFilesDto;
 import com.example.Project_CWM.dto.MapPageDto;
 import com.example.Project_CWM.mappers.MapMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -115,9 +116,6 @@ public class MapService {
         mapMapper.deletePlace(placeCode);
     }
 
-    public void makeFiles(String placeCode){
-        mapMapper.makeFiles(placeCode);
-    }
     public void dropFiles(String placeCode){
         mapMapper.dropFiles(placeCode);
     }
@@ -125,4 +123,14 @@ public class MapService {
     public MapDto getDetail(String placeCode){
         return mapMapper.getDetail(placeCode);
     }
+    public MapFilesDto getFiles(){
+        return mapMapper.getFiles();
+    }
+    public MapFilesDto getFilesDetail(String placeCode){
+        return mapMapper.getFilesDetail(placeCode);
+    }
+    public void setFiles(MapFilesDto mapFileDto){
+        mapMapper.setFiles(mapFileDto);
+    }
+
 }

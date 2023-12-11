@@ -20,6 +20,6 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
                 .addResourceLocations("file:src/main/resources/static/")
-                .addResourceLocations("file:src/main/resources/static/upload/");
+                .addResourceLocations("file:src/main/resources/static/images/ssh/");
     }
 }

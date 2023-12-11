@@ -2,6 +2,7 @@ package com.example.Project_CWM.mappers;
 
 
 import com.example.Project_CWM.dto.MapDto;
+import com.example.Project_CWM.dto.MapFilesDto;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -29,32 +30,39 @@ public interface MapMapper {
     @Select("select count(*) from placeinfo where place_code = #{placeCode}")
     int getCheckPlaceCode(String placeCode);
 
-    //캠핑장 삭제
+    //캠핑장 제거
     @Delete("delete from placeinfo where place_code = #{placeCode}")
     void deletePlace(String placeCode);
 
     //캠핑장 추가시 첨부파일 테이블 생성
-    @Select("create table place_${placeCode}_files(\n" +
-            "orgName varchar(255),\n" +
-            "savedFileName varchar(255),\n" +
-            "savedPathName varchar(255),\n" +
-            "savedFileSize bigint,\n" +
-            "folderName varchar(10),\n" +
-            "ext varchar(20)\n" +
-            ");")
-    void makeFiles(String placeCode);
+//    @Select("create table place_${placeCode}_files(\n" +
+//            "orgName varchar(255),\n" +
+//            "savedFileName varchar(255),\n" +
+//            "savedPathName varchar(255),\n" +
+//            "savedFileSize bigint,\n" +
+//            "folderName varchar(10),\n" +
+//            "ext varchar(20)\n" +
+//            ");")
+//    void makeFiles(String placeCode);
 
-    //캠핑장 제거시 첨부파일 테이블 제거
-    @Select("drop table place_${placeCode}_files")
+    //캠핑장 제거시 헤딩 첨부파일 테이블 열 제거
+    @Delete("delete from placefiles where place_code = #{placeCode}")
     void dropFiles(String placeCode);
 
     //캠핑당 디테일 출력
     @Select("select * from placeinfo where place_code = #{placeCode}")
     public MapDto getDetail(String placeCode);
+    @Select("select * from placefiles")
+    public MapFilesDto getFiles();
+    @Select("select * from placefiles where place_code = #{placeCode}")
+    public MapFilesDto getFilesDetail(String placeCode);
 
     //캠핑장 조회수 업데이트
     @Update("update placeinfo set visit = visit + 1 where place_code = #{placeCode}")
     void updateVisit(String placeCode);
 
+    //캠핑장 추가시 첨부파일 입력
+    @Insert("insert into placefiles values(#{placeCode}, #{orgName}, #{savedFileName}, #{savedPathName}, #{savedFileSize}, #{folderName}, #{ext})")
+    public void setFiles(MapFilesDto mapFileDto);
 
 }
