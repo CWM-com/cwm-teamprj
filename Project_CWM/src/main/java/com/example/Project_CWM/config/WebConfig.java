@@ -16,4 +16,10 @@ public class WebConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/")
                 .excludePathPatterns("/login"); // 해당 등록한건 가능하게
     }
+
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**")
+                .addResourceLocations("file:src/main/resources/static/")
+                .addResourceLocations("file:src/main/resources/static/images/ssh/");
+    }
 }
