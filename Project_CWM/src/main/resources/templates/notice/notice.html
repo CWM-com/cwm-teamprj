@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"></html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -107,12 +108,12 @@
                         <h1>공지사항</h1>
                     </div>
                     <div class="notice-container">
-                        <form action="">
+                        <form method="get" action="notice" onsubmit="return check()">
                             <div class="notice-search">
                                 <div class="inpbox">
-                                    <input type="text" placeholder="제목 + 내용">
+                                    <input type="text" name="word" class="word" placeholder="제목 + 내용" required>
                                 </div>
-                                <button type="button" class="notice-search-btn">
+                                <button type="submit" class="notice-search-btn" value="검색">
                                     <img src="/images/magnifying-glass-solid.svg" alt="">
                                 </button>
                             </div>
@@ -126,95 +127,34 @@
                                     <th>제목</th>
                                     <th>날짜</th>
                                     <th>조회수</th>
+                                    <th>비고</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr th:each="notice: ${list}">
                                     <td>
-                                        <span>5</span>
+                                        <span></span>
                                     </td>
                                     <td>
-                                        <a href="">공지사항</a>
+                                        <a href=""></a>
                                     </td>
                                     <td>
-                                        <span>2023.11.09</span>
+                                        <span></span>
                                     </td>
                                     <td>
-                                        <span>?</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>5</span>
+                                        <span></span>
                                     </td>
                                     <td>
-                                        <a href="">공지사항</a>
-                                    </td>
-                                    <td>
-                                        <span>2023.11.09</span>
-                                    </td>
-                                    <td>
-                                        <span>?</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>5</span>
-                                    </td>
-                                    <td>
-                                        <a href="">공지사항</a>
-                                    </td>
-                                    <td>
-                                        <span>2023.11.09</span>
-                                    </td>
-                                    <td>
-                                        <span>?</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>5</span>
-                                    </td>
-                                    <td>
-                                        <a href="">공지사항</a>
-                                    </td>
-                                    <td>
-                                        <span>2023.11.09</span>
-                                    </td>
-                                    <td>
-                                        <span>?</span>
-                                    </td>
-                                <tr>
-                                    <td>
-                                        <span>1</span>
-                                    </td>
-                                    <td>
-                                        <a href="">공지사항</a>
-                                    </td>
-                                    <td>
-                                        <span>2023.11.09</span>
-                                    </td>
-                                    <td>
-                                        <span>?</span>
+                                        <a href="" class="btn1">수정</a>
+                                        <a href="" class="btn1")>삭제</a>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="table-page">
-                            <div class="table-page-detail">
-                                <nav>
-                                    <ul>
-                                        <li><a href="">1</a></li>
-                                        <li><a href="">2</a></li>
-                                        <li><a href="">3</a></li>
-                                        <li><a href="">4</a></li>
-                                        <li><a href="">5</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                        <button class="write">글쓰기</button>
                     </div>
+                </div>
+                <div class="bottom">
+                    <a th:href="@{/notice/write}" class="btn1">글쓰기</a>
                 </div>
             </div>
         </div>                      

@@ -246,6 +246,7 @@ img {
 .page-title {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 /* footer 시작 */
