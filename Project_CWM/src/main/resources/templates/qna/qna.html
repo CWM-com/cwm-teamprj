@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/lth/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/lth/qna.css}">
+</head>
+<body>
+    <header th:insert="~{fragment/header::header_a}">
+
+    </header>
+    <main>
+        <div class="section0">
+            <div class="bar-back"></div>
+        </div>
+        <div class="section0">
+            <div class="section00">
+                
+            </div>
+        </div>
+        <div class="mypage-container">
+            <div class="page-List">
+                <a href=""><h2>캠핑게시판</h2></a>
+                <nav>
+                    <div>
+                        <ul class="title-List">
+                            <li>
+                                <a href="">공지사항</a>
+                            </li>
+                            <li>
+                                <a href="">캠핑 리뷰</a>
+                            </li>
+                            <li>
+                                <a href="">QnA</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="page-title">
+                <div class="qna">
+                    <div class="title">
+                        <h1>QnA</h1>
+                    </div>
+                    <div class="top">
+                        <form method="get" action="/qna" onsubmit="return check()">
+                            <div class="top-right">
+                                <select name="searchType" class="searchType">
+                                    <option value="subject">질문</option>
+                                    <option value="writer">작성자</option>
+                                </select>
+                                <input type="text" name="words" class="words" required>
+                                <button type="submit" class="btn1" value="검색">검색</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="qna-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>질문/답변</th>
+                                    <th>작성자</th>
+                                    <th>등록일</th>
+                                    <th>비고</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="qna, k : ${list}">
+                                    <td>[[${cnt - ((page.page - 1) * page.pageCount) - k.index}]]</td>
+                                    <td>
+                                        <th:block th:if="${qna.depth > 1}">
+                                            <th:block th:each="seq: ${#numbers.sequence(2, qna.depth)}">
+                                                <span style="color:#f00">[RE]</span>
+                                            </th:block>
+                                        </th:block>
+                                        <a th:href="@{/qna/view?(id=${qna.id})}" class="active">[[${qna.subject}]]</a>
+                                    </td>
+                                    <td>[[${qna.writer}]]</td>
+                                    <td>[[${qna.regdate}]]</td>
+                                    <td>
+                                        <a th:href="@{/qna/update?(id=${qna.id})}" class="btn1">수정</a>
+                                        <a href="#" class="btn1" th:onclick="remove([[${qna.id}]])")>삭제</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="bottom-center">
+                    <a href="#" th:if="${page.page <= 1}"></a>
+
+                    <a th:href="@{/qna?(page=${page.page-1})}" th:unless="${page.page <= 1}">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </a>
+
+                    <!-- page number -->
+
+                    <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}" th:href="@{/qna?(page=${i})}">
+                        <th:block th:if="${page.page eq i}">
+                          <span style="color:#f00">
+                            <strong>[[${i}]]</strong>
+                          </span>
+                        </th:block>
+                        <th:block th:unless="${page.page eq i}">
+                          <span>
+                            <strong>[[${i}]]</strong>
+                          </span>
+                        </th:block>
+                    </a>
+                    <!-- page number -->
+                    <a href="#" th:if="${page.page >= page.totalPage}"></a>
+
+                    <a th:href="@{/qna?(page=${page.page + 1})}"
+                       th:unless="${page.page >= page.totalPage}">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="bottom">
+                    <a th:href="@{/qna/write}" class="btn1">글쓰기</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer th:insert="~{fragment/footer::footer_a}">
+
+    </footer>
+    <script src="js/kdh/reservation/tabmove.js"></script>
+<script>
+    function remove(id) {
+        if(confirm(id + "게시물을 삭제 하시겠습니까?")) {
+        location.href = "/qna/delete?id="+id;
+        }
+    }
+
+</script>
+</body>
+</html>
