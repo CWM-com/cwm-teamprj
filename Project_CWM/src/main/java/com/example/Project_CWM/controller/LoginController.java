@@ -22,6 +22,7 @@ public class LoginController {
 
     @GetMapping("")
     public String getLogin() {
+
         return "login/signin";
     }
     @GetMapping("/findid")

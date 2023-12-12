@@ -1,32 +1,32 @@
 // 캠핑장 선택 시작
 let Lname = document.querySelectorAll(".l-name");
 
-for(let i = 0; i < Lname.length; i++) {
-    Lname[i].addEventListener('click',() => {
+for (let i = 0; i < Lname.length; i++) {
+    Lname[i].addEventListener('click', () => {
 
         Lname[i].classList.add("add");
 
-        for(let j = 0; j < Lname.length; j++) {
-            
-            if(j !== i) {
+        for (let j = 0; j < Lname.length; j++) {
+
+            if (j !== i) {
                 Lname[j].classList.remove("add");
             }
         }
     });
- }
+}
 
 const locationBtn = document.querySelector(".location-btn");
-const campName = document.querySelector("#campName");
+const campNames = document.querySelector("#campName");
 const locationList = document.querySelector(".location-List");
 const closeBtn = document.querySelector(".close-btn");
 
-for(let i = 0; i < Lname.length; i++) {
+for (let i = 0; i < Lname.length; i++) {
     Lname[i].addEventListener('click', () => {
-        campName.value = Lname[i].innerHTML.trim();
+        campNames.value = Lname[i].innerHTML.trim();
     });
 }
 
-campName.addEventListener('click',() => {
+campNames.addEventListener('click', () => {
     locationList.style.display = "block";
     Calendarbox.style.display = "none";
     document.querySelector(".count-content").style.display = "none";
@@ -36,20 +36,20 @@ closeBtn.onclick = () => {
     locationList.style.display = "none";
 }
 // 선택 후 close
-locationBtn.addEventListener('click',() => {
+locationBtn.addEventListener('click', () => {
     locationList.style.display = "none";
 })
 
- // 캠핑장 선택 부분 끝
+// 캠핑장 선택 부분 끝
 
 
 // 달력 부분 시작
-let chkDate = document.querySelectorAll("input[name=checkYmd]");
-let Calendar= document.querySelector(".Calendar");
+let chkDate = document.querySelectorAll(".checkYmd");
+let Calendar = document.querySelector(".Calendar");
 let Calendarbox = document.querySelector(".Calendar-box");
 
-for(let i = 0; i < chkDate.length; i++) {
-    chkDate[i].addEventListener('click',() => {
+for (let i = 0; i < chkDate.length; i++) {
+    chkDate[i].addEventListener('click', () => {
         Calendarbox.style.display = "block";
         locationList.style.display = "none";
         document.querySelector(".count-content").style.display = "none";
@@ -58,7 +58,7 @@ for(let i = 0; i < chkDate.length; i++) {
 
 let nowDate = new Date();
 let today = new Date();
-today.setHours(0,0,0,0);
+today.setHours(0, 0, 0, 0);
 
 const calYear = document.querySelector("#calYear");
 const calMonth = document.querySelector("#calMonth");
@@ -66,41 +66,41 @@ const DateList = document.querySelector(".Date-List");
 
 createCalendar();
 function createCalendar() { // 달력 생성 함수
-    
-    let firstDate = new Date(nowDate.getFullYear(), nowDate.getMonth(), 1); // 해당 월의 처음날 생성
-    let lastDate = new Date(nowDate.getFullYear(), nowDate.getMonth()+1, 0); // 해당 월의 마지막날 생성
-    
-    calYear.innerHTML = nowDate.getFullYear(); // 년도 span에 현재 년도 추가
-    calMonth.innerHTML = nowDate.getMonth() +1; // 달 span에 현재 달 추가
 
-    while(DateList.rows.length > 0) {
-        DateList.deleteRow(DateList.rows.length -1);
+    let firstDate = new Date(nowDate.getFullYear(), nowDate.getMonth(), 1); // 해당 월의 처음날 생성
+    let lastDate = new Date(nowDate.getFullYear(), nowDate.getMonth() + 1, 0); // 해당 월의 마지막날 생성
+
+    calYear.innerHTML = nowDate.getFullYear(); // 년도 span에 현재 년도 추가
+    calMonth.innerHTML = nowDate.getMonth() + 1; // 달 span에 현재 달 추가
+
+    while (DateList.rows.length > 0) {
+        DateList.deleteRow(DateList.rows.length - 1);
     }
 
     let nowRows = DateList.insertRow();  // tr 추가 생성
 
-    for(let i = 0; i < firstDate.getDay(); i++) { 
+    for (let i = 0; i < firstDate.getDay(); i++) {
         let nowColumn = nowRows.insertCell();  // td 추가
     }
 
-    for(let newDay = firstDate; newDay <= lastDate; newDay.setDate(newDay.getDate() + 1 )) {
-        let nowColumn = nowRows.insertCell(); 
+    for (let newDay = firstDate; newDay <= lastDate; newDay.setDate(newDay.getDate() + 1)) {
+        let nowColumn = nowRows.insertCell();
 
         let newNum = document.createElement("p");
         newNum.innerHTML = newDay.getDate();
         nowColumn.appendChild(newNum); // innerHtml 한 속성 값을 만들어논 cell에 추가
 
-        if(newDay.getDay()== 6) { // 6인 경우는 토요일이다. 그러므로 토요일이면 새로 tr 추가하여 거기 입력
+        if (newDay.getDay() == 6) { // 6인 경우는 토요일이다. 그러므로 토요일이면 새로 tr 추가하여 거기 입력
             nowRows = DateList.insertRow();
         }
 
-        if(newDay < today) {
+        if (newDay < today) {
             newNum.classList.add("past");  // 지난 날짜는 선택 불가
             newNum.title = "예약불가일자";
-        }else if(newDay.getFullYear() == today.getFullYear() && newDay.getMonth() == today.getMonth() && newDay.getDate() == today.getDate()) {
+        } else if (newDay.getFullYear() == today.getFullYear() && newDay.getMonth() == today.getMonth() && newDay.getDate() == today.getDate()) {
             newNum.classList.add("today"); // 오늘 날짜를 표시 해줌
             newNum.title = "당일";
-        }else {
+        } else {
             newNum.classList.add("after");
             newNum.title = "예약가능일자";
         }
@@ -113,10 +113,10 @@ let standardDate = new Date(); // 기준 달력 생성
 standardDate = new Date(standardDate.getFullYear(), standardDate.getMonth(), standardDate.getDate());
 // 이전달 가기
 function prevBtn() {
-    nowDate = new Date(nowDate.getFullYear(),nowDate.getMonth()-1, nowDate.getDate());
+    nowDate = new Date(nowDate.getFullYear(), nowDate.getMonth() - 1, nowDate.getDate());
 
     // nowDate가 standardDate보다 작거나 같은 경우에는 이전버튼이 안보이게 설정
-    if(standardDate >= nowDate) { 
+    if (standardDate >= nowDate) {
         document.querySelector(".prev-btn").style.visibility = "hidden";
     }
     document.querySelector(".next-btn").style.visibility = "visible";
@@ -126,22 +126,22 @@ function prevBtn() {
 
 // 다음달 가기
 function nextBtn() {
-    nowDate = new Date(nowDate.getFullYear(),nowDate.getMonth()+1, nowDate.getDate());
+    nowDate = new Date(nowDate.getFullYear(), nowDate.getMonth() + 1, nowDate.getDate());
 
     // nowDate가 standardDate보다 같거나 클 경우에는 prevBtn이 보이게 설정
-    if(standardDate <= nowDate) {
+    if (standardDate <= nowDate) {
         document.querySelector(".prev-btn").style.visibility = "visible";
     }
 
     // standardDate과 달의 차이가 2개월이 넘어가면 nextBtn이 보이지 않게 설정
-    if(DateGap(standardDate,nowDate) >= 2) {
+    if (DateGap(standardDate, nowDate) >= 2) {
         document.querySelector(".next-btn").style.visibility = "hidden";
     }
     createCalendar();
 }
 
 // 개월 차이 계산
-function DateGap(Date1,Date2) {
+function DateGap(Date1, Date2) {
     return (Date2.getFullYear() - Date1.getFullYear()) * 12 + Date2.getMonth() - Date1.getMonth();
 }
 
@@ -172,16 +172,17 @@ function selectCheckin() {
             if (checkinYmd == null) {
                 checkinYmd = newNums[i].innerHTML;
                 checkinDate.value = DateToVal(nowDate.getFullYear(), nowDate.getMonth() + 1, checkinYmd);
+                console.log(checkinDate.value);
             } else if (checkoutYmd == null && checkinYmd != newNums[i].innerHTML) {
                 checkoutYmd = newNums[i].innerHTML;
                 checkoutDate.value = DateToVal(nowDate.getFullYear(), nowDate.getMonth() + 1, checkoutYmd);
-
+                console.log(checkoutDate.value);
                 let ckin = new Date(checkinDate.value);
                 let ckout = new Date(checkoutDate.value);
-                let daysNum = MaxDate(ckin,ckout);
+                let daysNum = MaxDate(ckin, ckout);
 
                 days.value = daysNum
-            
+
                 if (ckin >= ckout) {
                     alert("체크아웃 날짜가 더 빠릅니다.");
                     checkoutDate.value = "";
@@ -205,16 +206,16 @@ function selectCheckin() {
 }
 
 let dateBtn = document.querySelector(".Date-Btn");
-    dateBtn.addEventListener('click', () => {
+dateBtn.addEventListener('click', () => {
 
-        let today = new Date();
-        today.setHours(0, 0, 0, 0);
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-        let todayCheck = new Date(checkinDate.value);
-        if (todayCheck.getFullYear() == today.getFullYear() && todayCheck.getMonth() == today.getMonth() && todayCheck.getDate() == today.getDate()) {
-            alert("당일 예약은 직접문의가 필요합니다.");
-            return false;
-    }else {
+    let todayCheck = new Date(checkinDate.value);
+    if (todayCheck.getFullYear() == today.getFullYear() && todayCheck.getMonth() == today.getMonth() && todayCheck.getDate() == today.getDate()) {
+        alert("당일 예약은 직접문의가 필요합니다.");
+        return false;
+    } else {
         createCalendar();
         Calendarbox.style.display = "none";
     }
@@ -228,7 +229,7 @@ function DateToVal(year, month, day) {
 }
 
 // day2,day1을 나눠서 일 수 구하기 1회 최대 ?박 정하는데에 사용
-function MaxDate(day1,day2) {
+function MaxDate(day1, day2) {
     return Math.floor((day2 - day1) / (1000 * 60 * 60 * 24));
 }
 /* 달력 끝 */
@@ -244,7 +245,7 @@ const countCloseBtn = document.querySelector(".count-close-btn");
 let quantity = document.querySelectorAll(".quantity");
 let countBtn = document.querySelector(".count-btn");
 
-for(let i = 0; i < quantity.length; i++) {
+for (let i = 0; i < quantity.length; i++) {
     quantity[i].onclick = () => {
         document.querySelector(".count-content").style.display = "block";
         Calendarbox.style.display = "none";
@@ -262,24 +263,24 @@ let cntB = 0;
 let cntC = 0;
 
 function downCnt(type) {
-    if(type == "downAdult") {
+    if (type == "downAdult") {
         cntA--;
         countType1.value = cntA;
-        if(cntA < 0) {
+        if (cntA < 0) {
             cntA = 0;
             countType1.value = cntA;
         }
-    }else if(type == "downTeen") {
+    } else if (type == "downTeen") {
         cntB--;
         countType2.value = cntB;
-        if(cntB < 0) {
+        if (cntB < 0) {
             cntB = 0;
             countType2.value = cntB;
         }
-    }else if(type == "downCild") {
+    } else if (type == "downCild") {
         cntC--;
         countType3.value = cntC;
-        if(cntC < 0) {
+        if (cntC < 0) {
             cntC = 0;
             countType3.value = cntC;
         }
@@ -288,32 +289,32 @@ function downCnt(type) {
 
 
 function upCnt(type) {
-  if(type == "plusAdult") {
-    cntA++;
-    countType1.value = cntA;
-    if(cntA > 5) {
-        cntA = 5;
+    if (type == "plusAdult") {
+        cntA++;
         countType1.value = cntA;
-        alert("최대 인원 수는 5명입니다.")
+        if (cntA > 5) {
+            cntA = 5;
+            countType1.value = cntA;
+            alert("최대 인원 수는 5명입니다.")
 
-    }
-  }else if(type == "plusTeen") {
-    cntB++;
-    countType2.value = cntB;
-    if(cntB > 5) {
-        cntB = 5;
+        }
+    } else if (type == "plusTeen") {
+        cntB++;
         countType2.value = cntB;
-        alert("최대 인원 수는 5명입니다.")
-    }
-  }else if(type == "plusChild") {
-    cntC++;
-    countType3.value = cntC;
-    if(cntC > 5) {
-        cntC = 5;
+        if (cntB > 5) {
+            cntB = 5;
+            countType2.value = cntB;
+            alert("최대 인원 수는 5명입니다.")
+        }
+    } else if (type == "plusChild") {
+        cntC++;
         countType3.value = cntC;
-        alert("최대 인원 수는 5명입니다.")
+        if (cntC > 5) {
+            cntC = 5;
+            countType3.value = cntC;
+            alert("최대 인원 수는 5명입니다.")
+        }
     }
-  }
 }
 
 let adult = document.querySelector("#adult");
@@ -325,19 +326,19 @@ function checkPeople() {
 
     countCloseBtn.addEventListener('click', () => {
 
-        let countType1Val = parseInt(countType1.value,10);
-        let countType2Val = parseInt(countType2.value,10);
-        let countType3Val = parseInt(countType3.value,10);
-        
-        if(countType1Val + countType2Val + countType3Val > 5) {
+        let countType1Val = parseInt(countType1.value, 10);
+        let countType2Val = parseInt(countType2.value, 10);
+        let countType3Val = parseInt(countType3.value, 10);
+
+        if (countType1Val + countType2Val + countType3Val > 5) {
             alert("전체 인원 제한은 최대 5명입니다.")
-        }else if(countType1Val + countType2Val + countType3Val <= 5 && countType1Val >= 1) {
+        } else if (countType1Val + countType2Val + countType3Val <= 5 && countType1Val >= 1) {
             adult.value = countType1Val;
             Teen.value = countType2Val;
             child.value = countType3Val;
 
             document.querySelector(".count-content").style.display = "none";
-        }else if(countType1Val < 1 ) {
+        } else if (countType1Val < 1) {
             alert("성인 1명 이상 필수 동반되어야합니다.");
         }
     });
@@ -345,31 +346,81 @@ function checkPeople() {
 
 /* 인원 수 체크 끝 */
 
-/* 캠핑 종류 선택 시작 */
-let campBox = document.querySelectorAll(".camp-box");
-let chooseActive = document.querySelector(".choose-active");
-
-for(let i = 0; i < campBox.length; i++) {
-    campBox[i].addEventListener('click', () => {
-        campBox[i].classList.add("choose-active");
-    });
-    for(let j = 0; j < campBox.length; j++) {
-        campBox[j].addEventListener('click', () => {
-            campBox[i].classList.remove("choose-active");
-            campBox[j].classList.add("choose-active");
-        });
-    }
-}
-
-/* 캠핑 종류 선택 끝 */
-
-/* 다음 페이지 이동 */
-
+/* 날짜에 따른 캠핑 종류 불러오기 */
+let selectBtnes = document.querySelector(".select-btn");
+let campName = document.querySelector("input[name=campName]");
+let checkin = document.querySelector("#checkinYmd");
+let checkout = document.querySelector("input[name=checkout]");
+let positionList = document.querySelector(".position-List");
+let searchCount = document.querySelector(".search-count");
+let positionBox = document.querySelector(".position-box");
 let reservBtn = document.querySelector(".reserv-btn");
 
-reservBtn.addEventListener('click', () => {
-    location.href = "/reservation/reservationcheck";
+selectBtnes.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    positionBox.style.display = "block";
+    reservBtn.style.display = "block";
+
+    let dataes = {
+        campName: campName.value,
+        checkin: checkin.value,
+        checkout: checkout.value
+    };
+
+    $.ajax({
+        type: "get",
+        url: "/reservation/reservationsearch",
+        data: dataes,
+        dataType: "json",
+        success: (res) => {
+            console.log(res.search);
+            console.log(res.cnt)
+
+            searchCount.innerHTML = res.cnt + "개 예약가능";
+
+            positionList.innerHTML = "";
+
+            res.search.forEach((ct, index) => {
+
+                let divBox = document.createElement("div");
+                divBox.classList.add("camp-box");
+
+                let pBox = document.createElement("p");
+                pBox.innerHTML = ct;
+                divBox.appendChild(pBox);
+
+
+                if (res.price && res.price[index]) {
+                    let spanBox = document.createElement("span");
+                    spanBox.innerHTML = res.price[index] +"원";
+                    divBox.appendChild(spanBox);
+                }
+
+                positionList.appendChild(divBox);
+
+                divBox.addEventListener('click', () => {
+
+                    let typevalue = ct;
+                    let pricevalue = res.price[index];
+
+                    let type = document.querySelector("input[name=campType]");
+                    let price = document.querySelector("input[name=campPrice]");
+
+                        type.value = typevalue;
+                        price.value = pricevalue;
+
+                    console.log(type.value);
+                    console.log(price.value);
+                    document.querySelectorAll('.camp-box').forEach((box) => {
+                        box.classList.remove("choose-active");
+                    });
+
+                    divBox.classList.add("choose-active");
+                });
+            });
+        }
+    })
 });
-
-
+/* 날짜에 따른 캠핑 종류 불러오기 끝 */
 
