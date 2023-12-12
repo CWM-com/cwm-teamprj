@@ -11,14 +11,20 @@ primary key(idx)
 
 insert into member values(null,'test123','1q2w3e4r','mails@naver.com','김길동','010-1111-1111',now());
 
+ -- 캠프 목록 시작
 create table camp(
 camp_idx int not null auto_increment,
 camp_name varchar(20) not null unique,
 primary key(camp_idx)
 );
 
-insert into camp values(null,'서울 난지 캠핑장'),(null,'서울 충주 캠핑장'),(null,'부산 서면 캠핑장'),(null,'부산 대저 캠핑장');
+insert into camp values(null,'서울 난지 캠핑장'),(null,'공릉관광지 캠핑장'),(null,'용인 자연숲 캠핑장'),(null,'동강전망휴양림오토캠핑장')
+,(null,'장호비치캠핑장'),(null,'정읍시 내장산 국민여가캠핑장'),(null,'변산반도국립공원 고사포 야영장'),(null,'충주카누캠핑장'),(null,'태안둘레길캠핑장')
+,(null,'사천비토솔섬오토캠핑장');
 
+ -- 캠프 목록 끝 
+
+ -- 캠프 타입 시작
 create table campType(
 campType_idx int not null auto_increment,
 camp_name varchar(20) not null,
@@ -28,11 +34,23 @@ primary key(campType_idx, camp_type),
 foreign key(camp_name) references camp(camp_name) on update cascade on delete restrict
 );
 
-insert into campType values(null,'부산 대저 캠핑장','캠프-A',50000),(null,'부산 대저 캠핑장','캠프-B',50000),(null,'부산 대저 캠핑장','캠프-C',50000)
-,(null,'부산 대저 캠핑장','글램핑-A',80000),(null,'부산 대저 캠핑장','글램핑-B',80000),(null,'부산 대저 캠핑장','글램핑-C',80000)
-,(null,'부산 대저 캠핑장','카라반-A',100000),(null,'부산 대저 캠핑장','카라반-B',100000),(null,'부산 대저 캠핑장','카라반-C',100000);
+insert into campType values(null,'서울 난지 캠핑장','캠프-A',50000),(null,'서울 난지 캠핑장','캠프-B',50000),(null,'서울 난지 캠핑장','캠프-C',50000)
+,(null,'서울 난지 캠핑장','글램핑-A',80000),(null,'서울 난지 캠핑장','글램핑-B',80000),(null,'서울 난지 캠핑장','글램핑-C',80000)
+,(null,'서울 난지 캠핑장','카라반-A',100000),(null,'서울 난지 캠핑장','카라반-B',100000),(null,'서울 난지 캠핑장','카라반-C',100000);
 
+insert into campType values(null,'공릉관광지 캠핑장','캠프-A',50000),(null,'공릉관광지 캠핑장','캠프-B',50000),(null,'공릉관광지 캠핑장','캠프-C',50000)
+,(null,'공릉관광지 캠핑장','글램핑-A',80000),(null,'공릉관광지 캠핑장','글램핑-B',80000),(null,'공릉관광지 캠핑장','글램핑-C',80000)
+,(null,'공릉관광지 캠핑장','카라반-A',100000),(null,'공릉관광지 캠핑장','카라반-B',100000),(null,'공릉관광지 캠핑장','카라반-C',100000);
 
+insert into campType values(null,'용인 자연숲 캠핑장','캠프-A',50000),(null,'용인 자연숲 캠핑장','캠프-B',50000),(null,'용인 자연숲 캠핑장','캠프-C',50000)
+,(null,'용인 자연숲 캠핑장','글램핑-A',80000),(null,'용인 자연숲 캠핑장','글램핑-B',80000),(null,'용인 자연숲 캠핑장','글램핑-C',80000)
+,(null,'용인 자연숲 캠핑장','카라반-A',100000),(null,'용인 자연숲 캠핑장','카라반-B',100000),(null,'용인 자연숲 캠핑장','카라반-C',100000);
+
+insert into campType values(null,'동강전망휴양림오토캠핑장','캠프-A',50000),(null,'동강전망휴양림오토캠핑장','캠프-B',50000),(null,'동강전망휴양림오토캠핑장','캠프-C',50000)
+,(null,'동강전망휴양림오토캠핑장','글램핑-A',80000),(null,'동강전망휴양림오토캠핑장','글램핑-B',80000),(null,'동강전망휴양림오토캠핑장','글램핑-C',80000)
+,(null,'동강전망휴양림오토캠핑장','카라반-A',100000),(null,'동강전망휴양림오토캠핑장','카라반-B',100000),(null,'동강전망휴양림오토캠핑장','카라반-C',100000);
+
+ -- 캠프 타입 끝
 
 create table reservation(
 reserv_idx int not null auto_increment,
@@ -41,13 +59,12 @@ reserv_tel varchar(13) not null,
 camp_name varchar(20) not null,
 camp_type varchar(10) not null,
 reserv_Check_in date not null,
-reserv_Check_out date not null,
 reserv_checkdays char(3) not null,
+reserv_Check_out date not null,
 reserv_adult_num int not null,
 reserv_teen_num int not null,
 reserv_child_num int not null,
-reserv_campPrice varchar(10) not null,
-reserv_status varchar(5) not null,
+reserv_status varchar(5),
 mem_idx int not null,
 primary key(reserv_idx),
 foreign key(mem_idx) references member(idx) on update cascade on delete restrict,

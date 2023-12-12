@@ -263,7 +263,7 @@ img {
 }
 
 .choose-List:first-child {
-    width: 200px;
+    width: 250px;
 }
 
 .choose-List dl dt {
@@ -281,8 +281,8 @@ img {
 }
 
 .choose-List dl dd #campName {
-    width: 200px;
-    font-size: 18px;
+    width : 250px;
+    font-size: 16px;
     text-align: center;
     cursor: pointer;
     outline: none;
