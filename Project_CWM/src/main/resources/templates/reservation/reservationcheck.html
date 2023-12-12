@@ -60,11 +60,15 @@
                             <ul class="userinfo">
                                 <li>
                                     <label for=""><strong>이름</strong></label>
-                                    <input type="text" name="user_Name" class="usertext" placeholder="이름을 입력해주세요.">
+                                    <input type="text" name="reservName" class="usertext" placeholder="이름을 입력해주세요.">
                                 </li>
                                 <li>
                                     <label for=""><strong>연락처</strong></label>
-                                    <input type="tel" name="user_Tel" class="usertext" placeholder="전화번호를 입력해주세요." pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}">
+                                    <input type="tel" name="reservTel" class="usertext" placeholder="전화번호를 입력해주세요.">
+                                </li>
+                                <li>
+                                    <label for=""><strong>이메일</strong></label>
+                                    <input type="tel" name="reservEmail" class="usertext" placeholder="이메일을 입력해주세요.">
                                 </li>
                             </ul>
                         </div>
@@ -76,27 +80,49 @@
                                 <div class="check-place">
                                     <ul class="place-one">
                                         <li>
-                                            <p><strong>서울캠핑장</strong></p>
+                                            <p><strong>[[${data.campName}]]</strong></p>
                                         </li>
                                         <li>
-                                            <p><strong>글램핑-A</strong></p>
+                                            <p><strong>[[${data.campType}]]</strong></p>
                                         </li>
                                         <li>
-                                            <p><strong>성인2명, 청소년1명</strong></p>
+                                            <th:block th:if="${data.adultNum > 0 and data.teenNum > 0 and data.cildNum > 0}">
+                                                <p>
+                                                    <strong>성인[[${data.adultNum}]]명, 청소년[[${data.teenNum}]]명, 유아[[${data.cildNum}]]명</strong>
+                                                </p>
+                                            </th:block>
+                                            
+                                            <th:block th:if="${data.adultNum > 0 and data.teenNum > 0 and data.cildNum == 0}">
+                                                <p>
+                                                    <strong>성인[[${data.adultNum}]]명, 청소년[[${data.teenNum}]]명</strong>
+                                                </p>
+                                            </th:block>
+                                            
+                                            <th:block th:if="${data.adultNum > 0 and data.teenNum == 0 and data.cildNum > 0}">
+                                                <p>
+                                                    <strong>성인[[${data.adultNum}]]명, 유아[[${data.cildNum}]]명</strong>
+                                                </p>
+                                            </th:block>
+                                            
+                                            <th:block th:if="${data.adultNum > 0 and data.teenNum == 0 and data.cildNum == 0}">
+                                                <p>
+                                                    <strong>성인[[${data.adultNum}]]명</strong>
+                                                </p>
+                                            </th:block>
                                         </li>
                                     </ul>
                                     <div class="date-check">
                                         <div class="date-check-1">
                                             <p class="check-one">체크인</p>
-                                            <p class="check-two">12.02</p>
+                                            <p class="check-two">[[${data.checkin}]]</p>
                                             <p class="check-three">오후 14:00</p>
                                         </div>
                                         <div class="date-check-1">
-                                            <p class="check-four">2박</p>
+                                            <p class="check-four">[[${data.checkdays}]]박</p>
                                         </div>
                                         <div class="date-check-1">
                                             <p class="check-one">체크아웃</p>
-                                            <p class="check-two">12.04</p>
+                                            <p class="check-two">[[${data.checkout}]]</p>
                                             <p class="check-three">오전 12:00</p>
                                         </div>
                                     </div>
@@ -104,33 +130,31 @@
                             </div>
                         </div>
                         <div class="payment">
-                            <form action="">
-                                <div class="payment-List-1">
-                                    <div>
-                                        <h2>결제 수단</h2>
-                                    </div>
-                                    <div>
-                                        <p class="payment-List-btn"></p>
-                                    </div>
+                            <div class="payment-List-1">
+                                <div>
+                                    <h2>결제 수단</h2>
                                 </div>
-                                <div class="payment-List-2">
-                                    <div>
-                                        <h2>결제 금액</h2>
-                                    </div>
-                                    <div class="payment-money money-1">
-                                        <p>숙박 예약 요금</p>
-                                        <p>50,000원</p>
-                                    </div>
-                                    <div class="payment-money money-2">
-                                        <p><strong>총 결제 금액</strong></p>
-                                        <p>50,000원</p>
-                                    </div>
+                                <div>
+                                    <p class="payment-List-btn"></p>
                                 </div>
-                                <div class="payment-List-3">
-                                    <button class="payment-btn">결제하기</button>
+                            </div>
+                            <div class="payment-List-2">
+                                <div>
+                                    <h2>결제 금액</h2>
                                 </div>
-                                <p class="un-use">*미성년자는 서비스 이용이 불가합니다.</p>
-                            </form>
+                                <div class="payment-money money-1">
+                                    <p>숙박 예약 요금</p>
+                                    <p>[[${data.campPrice}]]원</p>
+                                </div>
+                                <div class="payment-money money-2">
+                                    <p><strong>총 결제 금액</strong></p>
+                                    <p>[[${data.campPrice}]]원</p>
+                                </div>
+                            </div>
+                            <div class="payment-List-3">
+                                <button class="payment-btn">결제하기</button>
+                            </div>
+                            <p class="un-use">*미성년자는 서비스 이용이 불가합니다.</p>
                         </div>
                     </div>
                 </div>
