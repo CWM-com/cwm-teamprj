@@ -237,7 +237,7 @@ img {
 
 .page-title {
     width: 1000px;
-    height: 1000px;
+    height: 1200px;
     position: relative;
 }
 
@@ -363,6 +363,10 @@ img {
     padding: 10px 0 0 30px;
 }
 
+.location-box dl {
+    margin-bottom: 16px;
+}
+
 .location-box dl dt {
     margin: 15px 0 6px 6px;
     margin-top: 10px;
@@ -376,12 +380,14 @@ img {
 }
 
 .l-name {
-    margin: 8px 16px 10px 0px;
+    width: 280px;
+    margin: 4px 16px 10px 0px;
     padding: 10px 28px;
     border: 1px solid #dcdcdc;
     color: rgba(34, 34, 34, 0.5);
     font-weight: 600;
     font-size: 14px;
+    text-align: center;
 
     cursor: pointer;
 }
@@ -701,10 +707,11 @@ input[type='number'] {
 }
 
 .position-box {
-    width: 700px;
     border: 1px solid #dcdcdc;
     background-color: rgb(248, 250, 251);
+    box-shadow: 0 0 5px 0.25rem #eee;
     margin: 0 auto;
+    display : none;
 }
 
 .position-title-1 {
@@ -722,12 +729,26 @@ input[type='number'] {
     margin-left: 16px;
 }
 
+.search-count {
+    font-weight : bold;
+}
+
 .position-title > div {
     display: flex;
 }
 
 .position-title > div > p {
     margin-right: 16px;
+}
+
+.price-day {
+    margin-top: 10px;
+}
+
+.price-day span {
+    margin-left: 36px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .camp-List {
@@ -748,6 +769,7 @@ input[type='number'] {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     width: 160px;
     height: 60px;
     border: 1px solid #dcdcdc;
@@ -759,7 +781,8 @@ input[type='number'] {
 }
 
 .choose-active {
-    border: 1px solid #24262b;
+    border: 1px solid rgba(196, 206, 223,0.5);
+    background-color: rgba(196, 206, 223,0.5);
 }
 /* 캠핑 종류 끝 */
 
@@ -777,6 +800,7 @@ input[type='number'] {
     font-weight: 600;
     cursor: pointer;
     padding: 18px 50px;
+    display: none;
 }
 
 
