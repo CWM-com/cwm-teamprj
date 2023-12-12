@@ -34,17 +34,6 @@ public interface MapMapper {
     @Delete("delete from placeinfo where place_code = #{placeCode}")
     void deletePlace(String placeCode);
 
-    //캠핑장 추가시 첨부파일 테이블 생성
-//    @Select("create table place_${placeCode}_files(\n" +
-//            "orgName varchar(255),\n" +
-//            "savedFileName varchar(255),\n" +
-//            "savedPathName varchar(255),\n" +
-//            "savedFileSize bigint,\n" +
-//            "folderName varchar(10),\n" +
-//            "ext varchar(20)\n" +
-//            ");")
-//    void makeFiles(String placeCode);
-
     //캠핑장 제거시 헤딩 첨부파일 테이블 열 제거
     @Delete("delete from placefiles where place_code = #{placeCode}")
     void dropFiles(String placeCode);
@@ -52,8 +41,12 @@ public interface MapMapper {
     //캠핑당 디테일 출력
     @Select("select * from placeinfo where place_code = #{placeCode}")
     public MapDto getDetail(String placeCode);
-    @Select("select * from placefiles")
-    public MapFilesDto getFiles();
+    @Select("select * from placefiles where fileType = 'main'")
+    public List<MapFilesDto> getMainFiles();
+    @Select("select * from placefiles where fileType = 'detail'")
+    public List<MapFilesDto> getDetailFiles();
+    @Select("select * from placefiles where fileType = 'around'")
+    public List<MapFilesDto> getAroundFiles();
     @Select("select * from placefiles where place_code = #{placeCode}")
     public MapFilesDto getFilesDetail(String placeCode);
 
@@ -62,7 +55,7 @@ public interface MapMapper {
     void updateVisit(String placeCode);
 
     //캠핑장 추가시 첨부파일 입력
-    @Insert("insert into placefiles values(#{placeCode}, #{orgName}, #{savedFileName}, #{savedPathName}, #{savedFileSize}, #{folderName}, #{ext})")
+    @Insert("insert into placefiles values(#{placeCode}, #{fileType}, #{orgName}, #{savedFileName}, #{savedPathName}, #{savedFileSize}, #{folderName}, #{ext})")
     public void setFiles(MapFilesDto mapFileDto);
 
 }

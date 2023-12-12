@@ -79,8 +79,6 @@
                                 <div class="camp-place-title">
                                     <div class="camp-place-title-thumb">
                                         <div class="pic-thumb"  th:each="main : ${main}" th:if="${ps.placeCode == main.placeCode}">
-<!--                                            [[${main.orgName}]]-->
-<!--                                            <img src="/images/ssh/camp-thumb-thumb.jpg" alt="캠핑섬네일">-->
                                             <img th:src="@{|/${main.folderName}/${main.orgName}|}" alt="${file.orgName}">
                                         </div>
                                     </div>
@@ -114,7 +112,7 @@
                                                 <a th:href="@{/place/placedetail?(placeCode=${ps.placeCode})}">
                                                     <button type="button" class="btn detail">캠핑장 상세보기</button>
                                                 </a>
-                                                <a href="#" th:onclick="dropTable([[${ps.placeCode}]])">
+                                                <a th:href="@{/place/deleteFiles?(placeCode=${ps.placeCode})}" th:onclick="dropTable([[${ps.placeCode}]])">
                                                     <button type="button" class="btn delete">캠핑장 삭제</button>
                                                 </a>
                                             </div>
@@ -126,35 +124,37 @@
                         </div>
                     </div>
                     <div class="bottom">
-                        <div class="page-bar">
-                            <!--                prev button-->
-                            <a href="#" th:if="${page.page <= 1}"></a>
-                            <a th:href="@{/place/place?(page=${page.page - 1})}" th:unless="${page.page <= 1}">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </a>
-                            <!--                page number-->
-                            <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}"
-                               th:href="@{/place/place?(page=${i})}">
-                                <th:block th:if="${page.page eq i}">
+                        <div class="bottom-center">
+                            <div class="page-bar">
+                                <!--                prev button-->
+                                <a href="#" th:if="${page.page <= 1}"></a>
+                                <a th:href="@{/place/place?(page=${page.page - 1})}" th:unless="${page.page <= 1}">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </a>
+                                <!--                page number-->
+                                <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}"
+                                   th:href="@{/place/place?(page=${i})}">
+                                    <th:block th:if="${page.page eq i}">
                                     <span style="color: #f00;">
                                         <strong>[[${i}]]</strong>
                                     </span>
-                                </th:block>
-                                <th:block th:unless="${page.page eq i}">
-                                    <span>[[${i}]]</span>
-                                </th:block>
-                            </a>
-                            <!--                page number-->
+                                    </th:block>
+                                    <th:block th:unless="${page.page eq i}">
+                                        <span>[[${i}]]</span>
+                                    </th:block>
+                                </a>
+                                <!--                page number-->
 
-                            <!--                next button-->
-                            <a href="#" th:if="${page.page >= page.totalPage}"></a>
-                            <a th:href="@{/place/place?(page=${page.page + 1})}" th:unless="${page.page >= page.totalPage}">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </a>
+                                <!--                next button-->
+                                <a href="#" th:if="${page.page >= page.totalPage}"></a>
+                                <a th:href="@{/place/place?(page=${page.page + 1})}" th:unless="${page.page >= page.totalPage}">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </a>
+                            </div>
                         </div>
                         <div class="bottom-right">
                             <a th:href="@{/place/placeregister}">
-                                <button type="button" class="btn">캠핑장 등록</button>
+                                <button type="button" class="btn blue">캠핑장 등록</button>
                             </a>
                         </div>
                     </div>

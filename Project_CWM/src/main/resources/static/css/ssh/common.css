@@ -105,3 +105,7 @@ hr{
 .noto{
     font-family: 'Noto Sans KR', sans-serif;
 }
+
+.blue{
+    background-color: rgba(165, 192, 239, 0.4);
+}

@@ -123,8 +123,14 @@ public class MapService {
     public MapDto getDetail(String placeCode){
         return mapMapper.getDetail(placeCode);
     }
-    public MapFilesDto getFiles(){
-        return mapMapper.getFiles();
+    public List<MapFilesDto> getMainFiles(){
+        return mapMapper.getMainFiles();
+    }
+    public List<MapFilesDto> getDetailFiles(){
+        return mapMapper.getDetailFiles();
+    }
+    public List<MapFilesDto> getAroundFiles(){
+        return mapMapper.getAroundFiles();
     }
     public MapFilesDto getFilesDetail(String placeCode){
         return mapMapper.getFilesDetail(placeCode);

@@ -93,7 +93,7 @@ public class MapDto {
                 ", placeAddr='" + placeAddr + '\'' +
                 ", placeCall='" + placeCall + '\'' +
                 ", visit=" + visit +
-                ", bookmark=" + bookmark +
+                ", bookmark='" + bookmark + '\'' +
                 ", star=" + star +
                 ", regdate='" + regdate + '\'' +
                 '}';

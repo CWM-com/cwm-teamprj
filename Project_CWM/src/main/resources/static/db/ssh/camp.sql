@@ -15,6 +15,7 @@ primary key(place_id)
 
 create table placefiles(
 place_code varchar(10) not null,
+fileType varchar(10),
 orgName varchar(255),
 savedFileName varchar(255),
 savedPathName varchar(255),
@@ -24,12 +25,4 @@ ext varchar(20),
 foreign key(place_code) references placeinfo(place_code)
 );
 
-insert into placeinfo values(
-null,
-'101',
-'서울 난지 캠핑장',
-'서울특별시 마포구 상암동 495-81',
-'02-304-0061',
-now()
-);
 

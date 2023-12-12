@@ -2,6 +2,7 @@ package com.example.Project_CWM.dto;
 
 public class MapFilesDto {
     private String placeCode;
+    private String fileType;
     private String orgName;
     private String savedFileName;
     private String savedPathName;
@@ -65,10 +66,19 @@ public class MapFilesDto {
         this.ext = ext;
     }
 
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
+
     @Override
     public String toString() {
         return "MapFilesDto{" +
                 "placeCode='" + placeCode + '\'' +
+                ", fileType='" + fileType + '\'' +
                 ", orgName='" + orgName + '\'' +
                 ", savedFileName='" + savedFileName + '\'' +
                 ", savedPathName='" + savedPathName + '\'' +
