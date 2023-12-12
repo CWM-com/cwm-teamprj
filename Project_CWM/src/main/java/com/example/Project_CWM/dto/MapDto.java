@@ -8,7 +8,7 @@ public class MapDto {
     private String placeAddr;
     private String placeCall;
     private int visit;
-    private int bookmark;
+    private String bookmark;
     private int star;
     private String regdate;
 
@@ -60,11 +60,11 @@ public class MapDto {
         this.visit = visit;
     }
 
-    public int getBookmark() {
+    public String getBookmark() {
         return bookmark;
     }
 
-    public void setBookmark(int bookmark) {
+    public void setBookmark(String bookmark) {
         this.bookmark = bookmark;
     }
 
@@ -93,7 +93,7 @@ public class MapDto {
                 ", placeAddr='" + placeAddr + '\'' +
                 ", placeCall='" + placeCall + '\'' +
                 ", visit=" + visit +
-                ", bookmark=" + bookmark +
+                ", bookmark='" + bookmark + '\'' +
                 ", star=" + star +
                 ", regdate='" + regdate + '\'' +
                 '}';
