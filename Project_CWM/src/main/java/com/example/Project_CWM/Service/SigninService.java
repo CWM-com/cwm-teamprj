@@ -1,5 +1,6 @@
 package com.example.Project_CWM.Service;
 
+import com.example.Project_CWM.dto.RegisterDto;
 import com.example.Project_CWM.mappers.SigninMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,22 @@ public class SigninService {
             result = null;
         }
         return  result;
+    }
+
+    public String setPasswd(String userid,String userEmail) {
+
+        String result = "";
+
+        if(signinMapper.setFindPasswd(userid, userEmail) != null) {
+            result = signinMapper.setFindPasswd(userid, userEmail);
+        }else {
+            result = null;
+        }
+        return  result;
+    }
+
+    public RegisterDto setLogin(RegisterDto registerDto) {
+
+        return  signinMapper.setLogin(registerDto);
     }
 }

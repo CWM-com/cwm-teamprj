@@ -37,5 +37,41 @@ user_Name,
 user_Tel,
 reserv_price
 );
-
++ 예약 여부
 campType ,member
+
+
+
+
+
+
+
+
+
+
+
+
+certNext.addEventListener('click', (e) => {
+
+    e.preventDefault();
+    if (checkNum.value == certifiNum) {
+        alert("인증번호가 일치합니다.");
+        $.ajax({
+            type : "post",
+            url : "/register/emailval",
+            data : {userEmail : userEmail.value},
+            dataType : "json",
+            success : (res) => {
+                if(res.res == userEmail.value) {
+                    location.href = "register/signup?userEmail="+ userEmail.value;
+                }
+            }
+        });
+        
+    }else {
+        alert("인증번호가 일치하지 않습니다. 다시 확인해주세요.");
+        checkNum.value = "";
+        checkNum.focus();
+        return false;
+    }
+});

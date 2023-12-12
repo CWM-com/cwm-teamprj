@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +21,7 @@
             <div class="cert-text">
                 <h3>회원정보를 입력해주세요.</h3>
             </div>
-            <form action="">
+            <form action="/register/mailsend" method="post">
                 <ul>
                     <li>
                         <div class="input-type">
@@ -31,7 +32,7 @@
                     <li>
                         <div class="input-type">
                             <label for="userEmail"><h3>이메일</h3></label>
-                            <input type="email" name="userEmail" id="userEmail" class="id-info" placeholder="예 : mail@mail.com" autocomplete="off" maxlength="30">
+                            <input th:value="${userEmail}" readonly type="email" name="userEmail" id="userEmail" class="id-info" placeholder="예 : mail@mail.com" autocomplete="off" maxlength="30">
                         </div>
                     </li>
                     <li>

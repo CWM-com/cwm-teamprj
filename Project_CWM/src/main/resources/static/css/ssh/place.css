@@ -7,8 +7,14 @@
 /* 옵션바 */
 .camp-option{
     width: 100%;
+    height: 30px;
+    vertical-align: middle;
     display: flex;
     justify-content: right;
+    text-align: center;
+}
+.camp-count{
+    margin-right: 20px;
 }
 .camp-option form{
     display: flex;
@@ -22,13 +28,11 @@
 }
 .camp-option-select select{
     border-radius: 5px;
+    font-size: 16px
 }
 .camp-option-search{
     display: flex;
     justify-content: space-around;
-}
-.camp-option-search input{
-
 }
 .search{
     width: 200px;
@@ -39,7 +43,7 @@
     border-radius: 5px;
     font-size: 15px;
 }
-.btn{
+.btn-search{
     margin-left: 3px;
     padding: 3px 10px;
     background-color: rgba(165, 192, 239, 0.4);
@@ -57,21 +61,14 @@
 .camp-place-title{
     width: 100%;
     display: flex;
-    /* border: 1px solid black; */
     height: 200px;
     margin-bottom: 10px;
     background-color: rgba(165, 192, 239, 0.1);
     box-shadow: rgba(90, 91, 95, 0.8) 0px 1px 2px 0px;
     border-radius: 10px;
 }
-.camp-place-title:hover{
-    transform: translateX(-4px) translateY(-4px);
-    transition: 0.3s;
-    cursor: pointer;
-}
 .camp-place-title-thumb{
     width: 200px;
-    height: 200px;
     overflow: hidden;
     position: relative;
 }
@@ -84,14 +81,12 @@
     border-radius: 10px;
 }
 .camp-place-title-content{
-    width: 240px;
+    width: 710px;
     margin-left: 10px;
-    display: flex;
-    align-items: center;
 }
 .content-list{
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     height: 100%;
     align-items: center;
 }
@@ -100,35 +95,27 @@
 }
 .content-list-detail li{
     margin-right: 10px;
-    /* font-size: 20px; */
+    font-size: 18px;
     font-weight: 600;
 }
-.camp-place-title-pic{
-    width: 470px;
-}
-.pic0-list{
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.pic1, .pic2, .pic3{
-    width: 130px;
-    height: 180px;
-    margin: 10px 10px;
-    overflow: hidden;
-    position: relative;
-    border-radius: 5px;
-}
-.pic:last-child{
-    margin-right: 0;
-}
-.hidden{
-    display: none;
+.content-list-detail p{
+        font-size: 18px;
 }
 
 /* 페이지바 */
-.page-bar{
-    margin-top: 50px;
-    width: 100%;
+.bottom{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    margin-top: 30px
+}
+.detail{
+    background-color: rgba(165, 192, 239, 0.3);
+    font-size: 15px;
+}
+.delete{
+    margin-left: 10px;
+    background-color: #ccc;
+    color: #eee;
+    font-size: 15px;
 }

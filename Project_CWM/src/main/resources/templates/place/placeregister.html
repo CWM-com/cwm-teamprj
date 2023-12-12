@@ -57,36 +57,36 @@
                             </div>
                         </div>
                         <div class="detail-body">
-                            <form onsubmit="return frmCheck()" action="/place/placeregister" method="post" enctype="multipart/form-data">
+                            <form onsubmit="return frmCheck()" action="/place/placeregister" method="post">
                                 <table>
                                     <tr>
-                                        <th>캠핑장 이름</th>
+                                        <th>캠핑장 고유번호</th>
                                         <td>
-                                            <input type="text" name="placeName" class="input noto">
+                                            <input type="text" name="placeCode" placeholder="ex) 101, 203">
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>캠핑장 지역번호</th>
+                                        <th>캠핑장 이름</th>
                                         <td>
-                                            <input type="text" name="placeAddrCode" class="input noto">
+                                            <input type="text" name="placeName" placeholder="ex) 서울 난지 캠핑장">
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>캠핑장 주소</th>
                                         <td>
-                                            <input type="text" name="placeAddrDetail" class="input noto">
+                                            <input type="text" name="placeAddr" placeholder="ex) 서울특별시 마포구 상암동 495-81">
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>캠핑장 전화번호</th>
                                         <td>
-                                            <input type="text" name="placeCall" class="input noto">
+                                            <input type="text" name="placeCall" placeholder="ex) 02-304-0061">
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>캠핑장 썸네일</th>
                                         <td>
-                                            <input type="file" name="picThumb" class="input">
+                                            <input type="file" name="picThumb">
                                         </td>
                                     </tr>
                                     <tr>
@@ -107,19 +107,19 @@
                                         </td>
                                     </tr>
                                 </table>
+                                <div class="bottom">
+                                    <div class="bottom-left">
+                                        <a th:href="@{/place/place}">
+                                            <button type="button" class="btn black">목록으로</button>
+                                        </a>
+                                    </div>
+                                    <div class="bottom-right">
+                                        <a th:href="@{/place/placeregister}">
+                                            <button type="submit" class="btn blue">캠핑장 등록</button>
+                                        </a>
+                                    </div>
+                                </div>
                             </form>
-                        </div>
-                        <div class="bottom">
-                            <div class="bottom-left">
-                                <a th:href="@{/config/configList}">
-                                    <button type="button" class="btn black">게시판목록</button>
-                                </a>
-                            </div>
-                            <div class="bottom-right">
-                                <a th:href="@{/config/configWrite}">
-                                    <button type="button" class="btn blue">게시판생성</button>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -127,9 +127,45 @@
         </div>
     </main>
     <footer th:insert="~{fragment/footer::footer_a}"></footer>
-
     <script>
-    </script>
+        function frmCheck(){
+            let placeName = document.querySelector("input[name=placeName]");
+            let placeCode = document.querySelector("input[name=placeCode]");
+            let placeAddr = document.querySelector("input[name=placeAddr]");
+            let placeCall = document.querySelector("input[name=placeCall]");
 
+            if(placeCode.value == ""){
+                alert("캠핑장 코드를 입력하세요.");
+                placeCode.focus();
+                return false;
+            }else if(placeName.value == ""){
+                alert("캠핑장 이름을 입력하세요.");
+                placeName.focus();
+                return false;
+            }else if(placeAddr.value == ""){
+                alert("캠핑장 주소를 입력하세요.");
+                placeAddr.focus();
+                return false;
+            }else if(placeCall.value == ""){
+                alert("캠핑장 번호를 입력하세요.");
+                placeCall.focus();
+                return false;
+            }
+
+            $.ajax({
+                type: "get",
+                url: "/place/checkPlaceCode",
+                dataType: "json",
+                data: {placeCode: placeCode.value},
+                success: function(res){
+                    if(res.checkCode == "1"){
+                        alert("사용할 수 없는 테이블 코드입니다.\n새로 입력하세요.");
+                        placeCode.value = "";
+                        placeCode.focus();
+                    }
+                }
+            })
+        }
+    </script>
 </body>
 </html>

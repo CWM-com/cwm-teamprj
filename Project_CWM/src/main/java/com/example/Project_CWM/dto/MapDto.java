@@ -2,20 +2,29 @@ package com.example.Project_CWM.dto;
 
 public class MapDto {
 
-    private int placeCode;
+    private int placeId;
+    private String placeCode;
     private String placeName;
-    private String placeAddrCode;
-    private String placeAddrDetail;
+    private String placeAddr;
     private String placeCall;
-    private int placeBookmark;
-    private int placeStar;
+    private int visit;
+    private int bookmark;
+    private int star;
     private String regdate;
 
-    public int getPlaceCode() {
+    public int getPlaceId() {
+        return placeId;
+    }
+
+    public void setPlaceId(int placeId) {
+        this.placeId = placeId;
+    }
+
+    public String getPlaceCode() {
         return placeCode;
     }
 
-    public void setPlaceCode(int placeCode) {
+    public void setPlaceCode(String placeCode) {
         this.placeCode = placeCode;
     }
 
@@ -27,20 +36,12 @@ public class MapDto {
         this.placeName = placeName;
     }
 
-    public String getPlaceAddrCode() {
-        return placeAddrCode;
+    public String getPlaceAddr() {
+        return placeAddr;
     }
 
-    public void setPlaceAddrCode(String placeAddrCode) {
-        this.placeAddrCode = placeAddrCode;
-    }
-
-    public String getPlaceAddrDetail() {
-        return placeAddrDetail;
-    }
-
-    public void setPlaceAddrDetail(String placeAddrDetail) {
-        this.placeAddrDetail = placeAddrDetail;
+    public void setPlaceAddr(String placeAddr) {
+        this.placeAddr = placeAddr;
     }
 
     public String getPlaceCall() {
@@ -51,20 +52,28 @@ public class MapDto {
         this.placeCall = placeCall;
     }
 
-    public int getPlaceBookmark() {
-        return placeBookmark;
+    public int getVisit() {
+        return visit;
     }
 
-    public void setPlaceBookmark(int placeBookmark) {
-        this.placeBookmark = placeBookmark;
+    public void setVisit(int visit) {
+        this.visit = visit;
     }
 
-    public int getPlaceStar() {
-        return placeStar;
+    public int getBookmark() {
+        return bookmark;
     }
 
-    public void setPlaceStar(int placeStar) {
-        this.placeStar = placeStar;
+    public void setBookmark(int bookmark) {
+        this.bookmark = bookmark;
+    }
+
+    public int getStar() {
+        return star;
+    }
+
+    public void setStar(int star) {
+        this.star = star;
     }
 
     public String getRegdate() {
@@ -78,13 +87,14 @@ public class MapDto {
     @Override
     public String toString() {
         return "MapDto{" +
-                "placeCode=" + placeCode +
+                "placeId=" + placeId +
+                ", placeCode='" + placeCode + '\'' +
                 ", placeName='" + placeName + '\'' +
-                ", placeAddrCode='" + placeAddrCode + '\'' +
-                ", placeAddrDetail='" + placeAddrDetail + '\'' +
+                ", placeAddr='" + placeAddr + '\'' +
                 ", placeCall='" + placeCall + '\'' +
-                ", placeBookmark=" + placeBookmark +
-                ", placeStar=" + placeStar +
+                ", visit=" + visit +
+                ", bookmark=" + bookmark +
+                ", star=" + star +
                 ", regdate='" + regdate + '\'' +
                 '}';
     }
