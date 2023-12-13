@@ -22,4 +22,5 @@ public class WebConfig implements WebMvcConfigurer {
                 .addResourceLocations("file:src/main/resources/static/")
                 .addResourceLocations("file:src/main/resources/static/images/ssh/");
     }
+
 }

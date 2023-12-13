@@ -15,7 +15,7 @@ public interface ReservationMapper {
             "  AND ct.camp_type NOT IN (\n" +
             "    SELECT DISTINCT r.camp_type\n" +
             "    FROM reservation as r\n" +
-            "    WHERE r.camp_name = #{campName}\n" +
+            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = 'Y'" +
             "      AND (\n" +
             "        (#{checkin} BETWEEN r.reserv_Check_in AND r.reserv_Check_out - INTERVAL 1 DAY)\n" +
             "        OR (#{checkout} BETWEEN r.reserv_Check_in + INTERVAL 1 DAY AND r.reserv_Check_out)\n" +
@@ -30,7 +30,7 @@ public interface ReservationMapper {
             "  AND ct.camp_type NOT IN (\n" +
             "    SELECT DISTINCT r.camp_type\n" +
             "    FROM reservation as r\n" +
-            "    WHERE r.camp_name = #{campName}\n" +
+            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = 'Y'" +
             "      AND (\n" +
             "        (#{checkin} BETWEEN r.reserv_Check_in AND r.reserv_Check_out - INTERVAL 1 DAY)\n" +
             "        OR (#{checkout} BETWEEN r.reserv_Check_in + INTERVAL 1 DAY AND r.reserv_Check_out)\n" +
@@ -45,7 +45,7 @@ public interface ReservationMapper {
             "  AND ct.camp_type NOT IN (\n" +
             "    SELECT DISTINCT r.camp_type\n" +
             "    FROM reservation as r\n" +
-            "    WHERE r.camp_name = #{campName}\n" +
+            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = 'Y'" +
             "      AND (\n" +
             "        (#{checkin} BETWEEN r.reserv_Check_in AND r.reserv_Check_out - INTERVAL 1 DAY)\n" +
             "        OR (#{checkout} BETWEEN r.reserv_Check_in + INTERVAL 1 DAY AND r.reserv_Check_out)\n" +

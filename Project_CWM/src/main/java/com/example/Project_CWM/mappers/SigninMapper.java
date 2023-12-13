@@ -1,10 +1,8 @@
 package com.example.Project_CWM.mappers;
 
-import com.example.Project_CWM.dto.RegisterDto;
+import com.example.Project_CWM.dto.MemberDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-
-import java.util.List;
 
 @Mapper
 public interface SigninMapper {
@@ -16,5 +14,5 @@ public interface SigninMapper {
     public String setFindPasswd(String userid,String userEmail);
 
     @Select("select * from member where user_id = #{userId} and user_passwd = #{userPasswd}")
-    public RegisterDto setLogin(RegisterDto registerDto);
+    public MemberDto setLogin(MemberDto registerDto);
 }

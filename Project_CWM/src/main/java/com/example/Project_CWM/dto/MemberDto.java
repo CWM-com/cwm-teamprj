@@ -1,6 +1,6 @@
 package com.example.Project_CWM.dto;
 
-public class RegisterDto {
+public class MemberDto {
 
     private int idx;
     private String userId;
@@ -9,6 +9,7 @@ public class RegisterDto {
     private String userName;
     private String userTel;
     private String userRegdate;
+    private String userAuthority;
 
     public int getIdx() {
         return idx;
@@ -66,6 +67,14 @@ public class RegisterDto {
         this.userRegdate = userRegdate;
     }
 
+    public String getUserAuthority(String userAuthority) {
+        return userAuthority;
+    }
+
+    public void setUserAuthority(String userAuthority) {
+        this.userAuthority = userAuthority;
+    }
+
     @Override
     public String toString() {
         return "RegisterDto{" +
@@ -76,6 +85,7 @@ public class RegisterDto {
                 ", userName='" + userName + '\'' +
                 ", userTel='" + userTel + '\'' +
                 ", userRegdate='" + userRegdate + '\'' +
+                ", userAuthority='" + userAuthority + '\'' +
                 '}';
     }
 }
