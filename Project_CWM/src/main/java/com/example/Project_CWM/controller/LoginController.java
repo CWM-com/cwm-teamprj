@@ -1,14 +1,12 @@
 package com.example.Project_CWM.controller;
 
 import com.example.Project_CWM.Service.SigninService;
-import com.example.Project_CWM.dto.RegisterDto;
+import com.example.Project_CWM.dto.MemberDto;
 import com.example.Project_CWM.mappers.SigninMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import org.apache.catalina.authenticator.SavedRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -25,6 +23,8 @@ public class LoginController {
     public String getLogin(HttpServletRequest request) {
 
         String uri = request.getHeader("Referer");
+
+//        request.getRequestURL()
 
         if(uri !=null && !uri.contains("/login")) {
             request.getSession().setAttribute("prev", uri);
@@ -79,9 +79,9 @@ public class LoginController {
     }
 
     @PostMapping("/sessoinlogin")
-    public String setLogin(@ModelAttribute RegisterDto registerDto, HttpServletRequest req, HttpSession session) {
+    public String setLogin(@ModelAttribute MemberDto registerDto, HttpServletRequest req, HttpSession session) {
 
-        RegisterDto m = signinService.setLogin(registerDto);
+        MemberDto m = signinService.setLogin(registerDto);
         String prevUri = (String) req.getSession().getAttribute("prev");
         if(m != null) {
             session = req.getSession(); // 세션 생성할 준비
