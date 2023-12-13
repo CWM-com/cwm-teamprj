@@ -13,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -36,14 +35,16 @@ public class MapController {
 
 
     @GetMapping("/place")
-    public String getSearch(Model model, @RequestParam(value="search", defaultValue = "") String search,
+    public String getSearch(Model model,
                           @RequestParam(value = "page", defaultValue = "1") int page,
-                          @RequestParam(value = "selectType", defaultValue = "") String selectType){
-        model.addAttribute("placeSearch", mapService.getSearch(page, search, selectType));
-        model.addAttribute("placeCount", mapService.getSearchCnt(search, selectType));
-        model.addAttribute("page", mapService.PageCalc(page));
+                          @RequestParam(value = "selectType", defaultValue = "") String selectType,
+                          @RequestParam(value="search", defaultValue = "") String search){
+        model.addAttribute("placeSearch", mapService.getSearch(page, selectType, search));
+        model.addAttribute("page", mapService.PageCalc(page, selectType, search));
         model.addAttribute("main", mapService.getMainFiles());
 
+        String searchQuery = mapService.selectSearch(selectType, search);
+        model.addAttribute("total", mapMapper.getSearchCount(searchQuery));
 
         return "place/place";
     }

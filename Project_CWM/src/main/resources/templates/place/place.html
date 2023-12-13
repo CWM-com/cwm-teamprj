@@ -52,16 +52,17 @@
                     </div>
                     <div class="camp-option">
                         <div class="camp-count">
-                            <span>현재 등록된 캠핑장 수 : [[${placeCount}]]개</span>
+                            <span>현재 등록된 캠핑장 수 : [[${total}]]개</span>
                         </div>
                         <form action="/place/place" method="get" onsubmit="return placeOrder()">
                             <div class="camp-option-select">
                                 <p>정렬</p>
                                 <select name="selectType" class="selectType" onchange="this.form.submit()">
                                     <option value="">정렬 순서</option>
-                                    <option value="option1">최근 등록순</option>
-                                    <option value="option2">인기순</option>
-                                    <option value="option3">이름순</option>
+                                    <option value="regdate">최근 등록순</option>
+                                    <option value="pop">인기순</option>
+                                    <option value="name">이름순</option>
+                                    <option value="code">지역순</option>
                                 </select>
                             </div>
                         </form>

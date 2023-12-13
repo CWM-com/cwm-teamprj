@@ -10,18 +10,6 @@ import java.util.Map;
 
 @Mapper
 public interface MapMapper {
-    //조건에 맞는 캠핑장 출력
-    @Select("select * from placeinfo ${searchQuery} limit #{startNum}, #{offset}")
-    List<MapDto> getSearch(Map<String, Object> mapp);
-
-    //조건에 맞는 캠핑장 수 출력
-    @Select("select count(*) from placeinfo ${searchQuery}")
-    int getSearchCount(Map<String, Object> mapp);
-
-    //전체 캠핑장 수 출력
-    @Select("select count(*) from placeinfo")
-    int totalCount();
-
     //신규 캠핑장 추가
     @Insert("insert into placeinfo values(null, #{placeCode}, #{placeName}, #{placeAddr}, #{placeCall}, 0, 0, 0, now())")
     void setPlace(MapDto mapDto);
@@ -37,6 +25,14 @@ public interface MapMapper {
     //캠핑장 제거시 헤딩 첨부파일 테이블 열 제거
     @Delete("delete from placefiles where place_code = #{placeCode}")
     void dropFiles(String placeCode);
+
+    //조건에 맞는 캠핑장 수 출력
+    @Select("select count(*) from placeinfo ${searchQuery}")
+    int getSearchCount(String searchQuery);
+
+    //조건에 맞는 캠핑장 출력
+    @Select("select * from placeinfo ${searchQuery} limit #{startNum}, #{offset}")
+    List<MapDto> getSearch(Map<String, Object> mapp);
 
     //캠핑당 디테일 출력
     @Select("select * from placeinfo where place_code = #{placeCode}")
