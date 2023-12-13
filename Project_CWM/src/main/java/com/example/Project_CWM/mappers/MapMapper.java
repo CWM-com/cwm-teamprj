@@ -39,8 +39,8 @@ public interface MapMapper {
     public MapDto getDetail(String placeCode);
     @Select("select * from placefiles where fileType = 'main'")
     public List<MapFilesDto> getMainFiles();
-    @Select("select * from placefiles where fileType = 'detail'")
-    public List<MapFilesDto> getDetailFiles();
+    @Select("select * from placefiles where fileType = 'detail' and place_code = #{placeCode}")
+    public List<MapFilesDto> getDetailFiles(String placeCode);
     @Select("select * from placefiles where fileType = 'around'")
     public List<MapFilesDto> getAroundFiles();
     @Select("select * from placefiles where place_code = #{placeCode}")

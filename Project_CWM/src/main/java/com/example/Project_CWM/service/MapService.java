@@ -7,17 +7,26 @@ import com.example.Project_CWM.dto.MapFilesDto;
 import com.example.Project_CWM.dto.MapPageDto;
 import com.example.Project_CWM.mappers.MapMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.name.Rename;
+import net.coobird.thumbnailator.geometry.Positions;
+import java.io.File;
+
 @Service
 public class MapService {
 
     @Autowired
     MapMapper mapMapper;
+
+    @Value("${fileDir}")
+    String fileDir;
 
     public String selectSearch(String selectType, String search){
         String searchQuery = "";
@@ -106,9 +115,6 @@ public class MapService {
     public List<MapFilesDto> getMainFiles(){
         return mapMapper.getMainFiles();
     }
-    public List<MapFilesDto> getDetailFiles(){
-        return mapMapper.getDetailFiles();
-    }
     public List<MapFilesDto> getAroundFiles(){
         return mapMapper.getAroundFiles();
     }
@@ -118,5 +124,6 @@ public class MapService {
     public void setFiles(MapFilesDto mapFileDto){
         mapMapper.setFiles(mapFileDto);
     }
+
 
 }
