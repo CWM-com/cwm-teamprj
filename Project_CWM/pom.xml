@@ -57,7 +57,11 @@
 			<artifactId>iamport-rest-client-java</artifactId>
 			<version>0.2.23</version>
 		</dependency>
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> 01bfce58a0b6a3fe8c3bc48d94eb2162b42956ba
 	</dependencies>
 
 	<repositories>
@@ -80,4 +84,9 @@
 			</plugin>
 		</plugins>
 	</build>
+<<<<<<< HEAD
 </project>
+=======
+
+</project>
+>>>>>>> 01bfce58a0b6a3fe8c3bc48d94eb2162b42956ba
