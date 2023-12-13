@@ -5,6 +5,7 @@ import com.example.Project_CWM.dto.RegisterDto;
 import com.example.Project_CWM.mappers.SigninMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.catalina.authenticator.SavedRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +22,13 @@ public class LoginController {
     private SigninService signinService;
 
     @GetMapping("")
-    public String getLogin() {
+    public String getLogin(HttpServletRequest request) {
+
+        String uri = request.getHeader("Referer");
+
+        if(uri !=null && !uri.contains("/login")) {
+            request.getSession().setAttribute("prev", uri);
+        }
         return "login/signin";
     }
     @GetMapping("/findid")
@@ -75,13 +82,13 @@ public class LoginController {
     public String setLogin(@ModelAttribute RegisterDto registerDto, HttpServletRequest req, HttpSession session) {
 
         RegisterDto m = signinService.setLogin(registerDto);
-
+        String prevUri = (String) req.getSession().getAttribute("prev");
         if(m != null) {
             session = req.getSession(); // 세션 생성할 준비
             session.setAttribute("LoginIn", m);
             session.setMaxInactiveInterval(60 * 10);
             System.out.println("로그인 완료");
-            return "redirect:/index";
+            return "redirect:" + prevUri;
         }else {
             return "redirect:/login";
         }

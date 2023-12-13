@@ -54,4 +54,9 @@ public interface MapMapper {
     @Insert("insert into placefiles values(#{placeCode}, #{fileType}, #{orgName}, #{savedFileName}, #{savedPathName}, #{savedFileSize}, #{folderName}, #{ext})")
     public void setFiles(MapFilesDto mapFileDto);
 
+
+
+
+
+
 }
