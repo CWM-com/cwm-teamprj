@@ -1,7 +1,8 @@
 package com.example.Project_CWM.dto;
 
-public class ReservationPaymentDto {
+public class ReservationOrderDto {
 
+    private  int reservIdx;
     private String campName;
     private String checkin;
     private String checkdays;
@@ -11,10 +12,18 @@ public class ReservationPaymentDto {
     private int cildNum;
     private String campType;
     private String campPrice;
-    private String idx;
+    private String memIdx;
     private String reservName;
     private String reservTel;
     private String reservEmail;
+
+    public int getReservIdx() {
+        return reservIdx;
+    }
+
+    public void setReservIdx(int reservIdx) {
+        this.reservIdx = reservIdx;
+    }
 
     public String getCampName() {
         return campName;
@@ -88,12 +97,12 @@ public class ReservationPaymentDto {
         this.campPrice = campPrice;
     }
 
-    public String getIdx() {
-        return idx;
+    public String getMemIdx() {
+        return memIdx;
     }
 
-    public void setIdx(String idx) {
-        this.idx = idx;
+    public void setMemIdx(String memIdx) {
+        this.memIdx = memIdx;
     }
 
     public String getReservName() {
@@ -122,8 +131,9 @@ public class ReservationPaymentDto {
 
     @Override
     public String toString() {
-        return "ReservationNextDto{" +
-                "campName='" + campName + '\'' +
+        return "ReservationOrderDto{" +
+                "reservIdx=" + reservIdx +
+                ", campName='" + campName + '\'' +
                 ", checkin='" + checkin + '\'' +
                 ", checkdays='" + checkdays + '\'' +
                 ", checkout='" + checkout + '\'' +
@@ -131,11 +141,12 @@ public class ReservationPaymentDto {
                 ", teenNum=" + teenNum +
                 ", cildNum=" + cildNum +
                 ", campType='" + campType + '\'' +
-                ", campPrice=" + campPrice +
-                ", idx=" + idx +
+                ", campPrice='" + campPrice + '\'' +
+                ", memIdx='" + memIdx + '\'' +
                 ", reservName='" + reservName + '\'' +
                 ", reservTel='" + reservTel + '\'' +
                 ", reservEmail='" + reservEmail + '\'' +
                 '}';
     }
 }
+

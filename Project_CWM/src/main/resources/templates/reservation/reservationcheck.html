@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/css/kdh/reset.css">
     <link rel="stylesheet" href="/css/kdh/reservation/reservationcheck.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 </head>
 <body>
     <header th:insert="~{fragment/header::header_a}">
@@ -81,9 +83,11 @@
                                     <ul class="place-one">
                                         <li>
                                             <p><strong>[[${data.campName}]]</strong></p>
+                                            <input type="hidden" th:value="${data.campName}" id="campName">
                                         </li>
                                         <li>
                                             <p><strong>[[${data.campType}]]</strong></p>
+                                            <input type="hidden" th:value="${data.campType}" id="campType">
                                         </li>
                                         <li>
                                             <th:block th:if="${data.adultNum > 0 and data.teenNum > 0 and data.cildNum > 0}">
@@ -148,11 +152,12 @@
                                 </div>
                                 <div class="payment-money money-2">
                                     <p><strong>총 결제 금액</strong></p>
-                                    <p>[[${data.campPrice}]]원</p>
+                                    <p class="price">[[${data.campPrice}]]원</p>
+                                    <input type="hidden" th:value="${data.campPrice}" id="totalPrice">
                                 </div>
                             </div>
                             <div class="payment-List-3">
-                                <button class="payment-btn">결제하기</button>
+                                <button class="payment-btn" id="payment" onclick="kakaopay()">결제하기</button>
                             </div>
                             <p class="un-use">*미성년자는 서비스 이용이 불가합니다.</p>
                         </div>
@@ -168,5 +173,6 @@
     <script>
     </script>
     <script src="/js/kdh/reservation/tabmove.js"></script>
+    <script src="/js/kdh/reservation/payment.js"></script>
 </body>
 </html>
