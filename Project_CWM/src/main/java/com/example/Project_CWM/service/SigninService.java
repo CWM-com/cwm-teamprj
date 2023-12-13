@@ -1,6 +1,6 @@
 package com.example.Project_CWM.Service;
 
-import com.example.Project_CWM.dto.RegisterDto;
+import com.example.Project_CWM.dto.MemberDto;
 import com.example.Project_CWM.mappers.SigninMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +35,7 @@ public class SigninService {
         return  result;
     }
 
-    public RegisterDto setLogin(RegisterDto registerDto) {
+    public MemberDto setLogin(MemberDto registerDto) {
 
         return  signinMapper.setLogin(registerDto);
     }

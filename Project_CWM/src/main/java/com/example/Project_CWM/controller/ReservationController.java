@@ -1,8 +1,8 @@
 package com.example.Project_CWM.controller;
 
-import com.example.Project_CWM.dto.RegisterDto;
+import com.example.Project_CWM.dto.MemberDto;
 import com.example.Project_CWM.dto.ReservSearchDto;
-import com.example.Project_CWM.dto.ReservationPaymentDto;
+import com.example.Project_CWM.dto.ReservationOrderDto;
 import com.example.Project_CWM.service.ReservationService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class ReservationController {
     @GetMapping("")
     public String getReservation(HttpSession session, Model model) {
 
-        RegisterDto setIDX = (RegisterDto) session.getAttribute("LoginIn");
+        MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn");
 
         if(setIDX != null) {
             int Idx = setIDX.getIdx();
@@ -36,7 +36,7 @@ public class ReservationController {
     @GetMapping("/reservationcheck")
     public String getReservationCheck(HttpSession session, Model model) {
 
-        RegisterDto setIDX = (RegisterDto) session.getAttribute("LoginIn");
+        MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn");
 
 
 
@@ -76,10 +76,10 @@ public class ReservationController {
     }
 
     @PostMapping("/reservationOrder")
-    public ModelAndView reservationOrder(ReservationPaymentDto reservationPaymentDto, HttpSession session) {
+    public ModelAndView reservationOrder(ReservationOrderDto reservationPaymentDto, HttpSession session) {
 
         System.out.println(reservationPaymentDto);
-        RegisterDto setIDX = (RegisterDto) session.getAttribute("LoginIn");
+        MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn");
 
         if(setIDX != null) {
 
