@@ -2,6 +2,7 @@ package com.example.Project_CWM.dto;
 
 public class MapPageDto {
 
+    private int startNum;
     private int pageCount = 5;
     private int blockCount = 10;
     private int page;
@@ -57,10 +58,19 @@ public class MapPageDto {
         this.totalPage = totalPage;
     }
 
+    public int getStartNum() {
+        return startNum;
+    }
+
+    public void setStartNum(int startNum) {
+        this.startNum = startNum;
+    }
+
     @Override
     public String toString() {
         return "MapPageDto{" +
-                "pageCount=" + pageCount +
+                "startNum=" + startNum +
+                ", pageCount=" + pageCount +
                 ", blockCount=" + blockCount +
                 ", page=" + page +
                 ", startPage=" + startPage +
