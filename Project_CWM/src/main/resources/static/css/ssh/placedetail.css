@@ -153,6 +153,12 @@ button{
     height: 100%;
     /* text-align: center; */
 }
+.detail-etc01{
+    width: auto; /* 이미지의 가로 크기를 자동으로 조절 */
+    height: 100%; /* 이미지를 부모 요소에 맞게 세로 크기 조절 */
+    display: block; /* 인라인 요소로부터 블록 요소로 변경 */
+    margin: 0 auto;
+}
 .p{
     background-color: rgba(255, 255, 255, 0.5);
     height: auto;

@@ -159,7 +159,7 @@ public class MapController {
             for (int i = 0; i < fileDetail.size(); i++) {
                 String realName = fileDetail.get(i).getOriginalFilename();
                 String ext = realName.substring(realName.lastIndexOf("."));
-                String orgName = "camp_" + placeCode + "_detail_" + i + ext;
+                String orgName = "camp_" + placeCode + "_detail_" + (i + 1) + ext;
                 String uuid = UUID.randomUUID().toString();
                 String savedFileName = uuid + ext;
                 String fileType = "detail";
@@ -181,7 +181,7 @@ public class MapController {
             for (int i = 0; i < fileAround.size(); i++) {
                 String realName = fileAround.get(i).getOriginalFilename();
                 String ext = realName.substring(realName.lastIndexOf("."));
-                String orgName = "camp_" + placeCode + "_around_" + i + ext;
+                String orgName = "camp_" + placeCode + "_around_" + (i + 1) + ext;
                 String uuid = UUID.randomUUID().toString();
                 String savedFileName = uuid + ext;
                 String fileType = "around";
