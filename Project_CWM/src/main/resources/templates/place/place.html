@@ -75,8 +75,8 @@
                         </form>
                     </div>
                     <div class="camp-place">
-                        <div th:each="ps : ${placeSearch}">
-                            <div>
+                        <div class="wrapp" th:each="ps : ${placeSearch}">
+
                                 <div class="camp-place-title">
                                     <div class="camp-place-title-thumb">
                                         <div class="pic-thumb"  th:each="main : ${main}" th:if="${ps.placeCode == main.placeCode}">
@@ -121,7 +121,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                     <div class="bottom">

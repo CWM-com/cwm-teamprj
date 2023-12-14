@@ -2,10 +2,10 @@ package com.example.Project_CWM.service;
 
 
 
-import com.example.Project_CWM.dto.MapDto;
-import com.example.Project_CWM.dto.MapFilesDto;
-import com.example.Project_CWM.dto.MapPageDto;
-import com.example.Project_CWM.mappers.MapMapper;
+import com.example.Project_CWM.dto.PlaceDto;
+import com.example.Project_CWM.dto.PlaceFilesDto;
+import com.example.Project_CWM.dto.PlacePageDto;
+import com.example.Project_CWM.mappers.PlaceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -14,16 +14,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.coobird.thumbnailator.Thumbnails;
-import net.coobird.thumbnailator.name.Rename;
-import net.coobird.thumbnailator.geometry.Positions;
-import java.io.File;
-
 @Service
-public class MapService {
+public class PlaceService {
 
     @Autowired
-    MapMapper mapMapper;
+    PlaceMapper placeMapper;
 
     @Value("${fileDir}")
     String fileDir;
@@ -58,71 +53,71 @@ public class MapService {
         return searchQuery;
     }
 
-    public MapPageDto PageCalc(int page, String selectType, String search){
-        MapPageDto mapPageDto = new MapPageDto();
+    public PlacePageDto PageCalc(int page, String selectType, String search){
+        PlacePageDto placePageDto = new PlacePageDto();
 
         String searchQuery =selectSearch(selectType, search);
 
-        int totalCount = mapMapper.getSearchCount(searchQuery);
-        int totalPage = (int)Math.ceil((double)totalCount / mapPageDto.getPageCount());
-        int startPage = ((int)(Math.ceil((double)page / mapPageDto.getBlockCount())) - 1) * mapPageDto.getBlockCount() + 1;
-        int endPage = startPage + mapPageDto.getBlockCount() - 1;
+        int totalCount = placeMapper.getSearchCount(searchQuery);
+        int totalPage = (int)Math.ceil((double)totalCount / placePageDto.getPageCount());
+        int startPage = ((int)(Math.ceil((double)page / placePageDto.getBlockCount())) - 1) * placePageDto.getBlockCount() + 1;
+        int endPage = startPage + placePageDto.getBlockCount() - 1;
 
         if(endPage > totalPage){
             endPage = totalPage;
         }
-        mapPageDto.setStartNum((page - 1) * mapPageDto.getPageCount());
-        mapPageDto.setPage(page);
-        mapPageDto.setStartPage(startPage);
-        mapPageDto.setEndPage(endPage);
-        mapPageDto.setTotalPage(totalPage);
+        placePageDto.setStartNum((page - 1) * placePageDto.getPageCount());
+        placePageDto.setPage(page);
+        placePageDto.setStartPage(startPage);
+        placePageDto.setEndPage(endPage);
+        placePageDto.setTotalPage(totalPage);
 
-        return mapPageDto;
+        return placePageDto;
     }
 
-    public List<MapDto> getSearch(int page, String selectType, String search){
+    public List<PlaceDto> getSearch(int page, String selectType, String search){
         Map<String, Object> mapp = new HashMap<>();
-        MapPageDto mapPageDto = PageCalc(page, selectType, search);
+        PlacePageDto placePageDto = PageCalc(page, selectType, search);
 
         String searchQuery = selectSearch(selectType, search);
 
         mapp.put("searchQuery", searchQuery);
-        mapp.put("startNum", mapPageDto.getStartNum());
-        mapp.put("offset", mapPageDto.getPageCount());
+        mapp.put("startNum", placePageDto.getStartNum());
+        mapp.put("offset", placePageDto.getPageCount());
 
-        return mapMapper.getSearch(mapp);
+        return placeMapper.getSearch(mapp);
     }
 
-    public void setPlace(MapDto mapDto){
-        mapMapper.setPlace(mapDto);
+    public void setPlace(PlaceDto placeDto){
+        placeMapper.setPlace(placeDto);
     }
 
     public int getCheckPlaceCode(String placeCode){
-        return mapMapper.getCheckPlaceCode(placeCode);
+        return placeMapper.getCheckPlaceCode(placeCode);
     }
 
     public void deletePlace(String placeCode){
-        mapMapper.deletePlace(placeCode);
+        placeMapper.deletePlace(placeCode);
     }
 
     public void dropFiles(String placeCode){
-        mapMapper.dropFiles(placeCode);
+        placeMapper.dropFiles(placeCode);
     }
 
-    public MapDto getDetail(String placeCode){
-        return mapMapper.getDetail(placeCode);
+    public PlaceDto getDetail(String placeCode){
+        return placeMapper.getDetail(placeCode);
     }
-    public List<MapFilesDto> getMainFiles(){
-        return mapMapper.getMainFiles();
+    public List<PlaceFilesDto> getMainFiles(){
+        return placeMapper.getMainFiles();
     }
-    public List<MapFilesDto> getAroundFiles(){
-        return mapMapper.getAroundFiles();
+    public List<PlaceFilesDto> getAroundFiles(){
+        return placeMapper.getAroundFiles();
     }
-    public MapFilesDto getFilesDetail(String placeCode){
-        return mapMapper.getFilesDetail(placeCode);
+    public PlaceFilesDto getFilesDetail(String placeCode){
+        return placeMapper.getFilesDetail(placeCode);
     }
-    public void setFiles(MapFilesDto mapFileDto){
-        mapMapper.setFiles(mapFileDto);
+    public void setFiles(PlaceFilesDto mapFileDto){
+        placeMapper.setFiles(mapFileDto);
     }
 
 
