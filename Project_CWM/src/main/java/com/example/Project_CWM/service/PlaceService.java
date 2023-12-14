@@ -110,14 +110,11 @@ public class PlaceService {
     public List<PlaceFilesDto> getMainFiles(){
         return placeMapper.getMainFiles();
     }
-    public List<PlaceFilesDto> getAroundFiles(){
-        return placeMapper.getAroundFiles();
-    }
-    public PlaceFilesDto getFilesDetail(String placeCode){
-        return placeMapper.getFilesDetail(placeCode);
-    }
     public void setFiles(PlaceFilesDto mapFileDto){
         placeMapper.setFiles(mapFileDto);
+    }
+    public void setAddr(PlaceDto placeDto){
+        placeMapper.setAddr(placeDto);
     }
 
 

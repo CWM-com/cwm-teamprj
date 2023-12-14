@@ -54,6 +54,14 @@ public interface PlaceMapper {
     @Insert("insert into placefiles values(#{placeCode}, #{fileType}, #{orgName}, #{savedFileName}, #{savedPathName}, #{savedFileSize}, #{folderName}, #{ext})")
     public void setFiles(PlaceFilesDto mapFileDto);
 
+    //캠핑장 추가시 주소 입력
+    @Insert("insert into placecoor values(#{placeCode}, #{placeAddr}, null, null)")
+    public void setAddr(PlaceDto placeDto);
+
+    //캠핑장 추가시 주소 좌표 업데이트
+    @Update("update placecoor set place_x = #{placeX}, place_y = {placeY} where place_code = #{placeCode}")
+    public void updateAddr(String placeX, String placeY, String placeCode);
+
 
 
 
