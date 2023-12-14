@@ -1,6 +1,6 @@
 package com.example.Project_CWM.dto;
 
-public class MapDto {
+public class PlaceDto {
 
     private int placeId;
     private String placeCode;

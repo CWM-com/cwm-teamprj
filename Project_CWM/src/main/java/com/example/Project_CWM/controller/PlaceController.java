@@ -1,10 +1,9 @@
 package com.example.Project_CWM.controller;
 
-import com.example.Project_CWM.dto.MapDto;
-import com.example.Project_CWM.dto.MapFilesDto;
-import com.example.Project_CWM.mappers.MapMapper;
-import com.example.Project_CWM.service.MapService;
-import com.fasterxml.jackson.core.io.MergedStream;
+import com.example.Project_CWM.dto.PlaceDto;
+import com.example.Project_CWM.dto.PlaceFilesDto;
+import com.example.Project_CWM.mappers.PlaceMapper;
+import com.example.Project_CWM.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -24,12 +23,12 @@ import java.util.UUID;
 
 @Controller
 @RequestMapping("/place")
-public class MapController {
+public class PlaceController {
 
     @Autowired
-    MapService mapService;
+    PlaceService placeService;
     @Autowired
-    MapMapper mapMapper;
+    PlaceMapper placeMapper;
     @Value("${fileDir}")
     String fileDir;
 
@@ -44,13 +43,13 @@ public class MapController {
                           @RequestParam(value = "page", defaultValue = "1") int page,
                           @RequestParam(value = "selectType", defaultValue = "") String selectType,
                           @RequestParam(value="search", defaultValue = "") String search){
-        model.addAttribute("placeSearch", mapService.getSearch(page, selectType, search));
-        model.addAttribute("page", mapService.PageCalc(page, selectType, search));
+        model.addAttribute("placeSearch", placeService.getSearch(page, selectType, search));
+        model.addAttribute("page", placeService.PageCalc(page, selectType, search));
 
-        String searchQuery = mapService.selectSearch(selectType, search);
-        model.addAttribute("total", mapMapper.getSearchCount(searchQuery));
+        String searchQuery = placeService.selectSearch(selectType, search);
+        model.addAttribute("total", placeMapper.getSearchCount(searchQuery));
 
-        model.addAttribute("main", mapService.getMainFiles());
+        model.addAttribute("main", placeService.getMainFiles());
 
         return "place/place";
     }
@@ -58,8 +57,8 @@ public class MapController {
     @ResponseBody
     public Map<String, Object> deletePlace(@RequestParam String placeCode){
         if(!placeCode.isEmpty()){
-            mapService.dropFiles(placeCode);
-            mapService.deletePlace(placeCode);
+            placeService.dropFiles(placeCode);
+            placeService.deletePlace(placeCode);
             return Map.of("msg", "success");
         }else{
             return Map.of("msg", "failure");
@@ -86,14 +85,14 @@ public class MapController {
 
     @GetMapping("/placedetail")
     public String getPlaceDetail(@RequestParam String placeCode, Model model){
-        mapMapper.updateVisit(placeCode);
-        model.addAttribute("detail", mapService.getDetail(placeCode));
+        placeMapper.updateVisit(placeCode);
+        model.addAttribute("detail", placeService.getDetail(placeCode));
         return("place/placedetail");
     }
     @GetMapping("/placedetail/detailList")
     @ResponseBody
     public Map<String, Object> getDetailList(@RequestParam String placeCode){
-        List<MapFilesDto> dList = mapMapper.getDetailFiles(placeCode);
+        List<PlaceFilesDto> dList = placeMapper.getDetailFiles(placeCode);
         return Map.of("cList", dList);
     }
 
@@ -103,21 +102,21 @@ public class MapController {
         return("place/placeregister");
     }
     @PostMapping("/placeregister")
-    public String setPlace(@ModelAttribute MapDto mapDto,
+    public String setPlace(@ModelAttribute PlaceDto placeDto,
                            @RequestParam("fileMain") List<MultipartFile> fileMain,
                            @RequestParam("fileDetail") List<MultipartFile> fileDetail,
                            @RequestParam("fileAround") List<MultipartFile> fileAround) throws IOException {
-        mapService.setPlace(mapDto);
+        placeService.setPlace(placeDto);
 
-        String placeCode = mapDto.getPlaceCode();
+        String placeCode = placeDto.getPlaceCode();
         String folderName = "place_" + placeCode + "_files";
         String savedPathName = fileDir + folderName;
         File makeFolder = new File(fileDir + folderName);
         if(!makeFolder.exists()){
             makeFolder.mkdir();
         }
-        MapFilesDto mapFilesDto = new MapFilesDto();
-
+        PlaceFilesDto placeFilesDto = new PlaceFilesDto();
+        //메인파일 및 섬네일
         for(MultipartFile mf : fileMain){
             String realName = mf.getOriginalFilename();
             String ext = realName.substring(realName.lastIndexOf("."));
@@ -144,17 +143,17 @@ public class MapController {
             graphic.drawImage(thumb, 0, 0, width, height, null);
             ImageIO.write(bt_image, "jpg", thumbnailFile);
 
-            mapFilesDto.setPlaceCode(placeCode);
-            mapFilesDto.setFileType(fileType);
-            mapFilesDto.setOrgName(orgName);
-            mapFilesDto.setSavedFileName(savedFileName);
-            mapFilesDto.setSavedPathName(savedPathName);
-            mapFilesDto.setFolderName(folderName);
-            mapFilesDto.setExt(ext);
+            placeFilesDto.setPlaceCode(placeCode);
+            placeFilesDto.setFileType(fileType);
+            placeFilesDto.setOrgName(orgName);
+            placeFilesDto.setSavedFileName(savedFileName);
+            placeFilesDto.setSavedPathName(savedPathName);
+            placeFilesDto.setFolderName(folderName);
+            placeFilesDto.setExt(ext);
 
-            mapService.setFiles(mapFilesDto);
+            placeService.setFiles(placeFilesDto);
         }
-
+        //디테일 파일 및 섬네일
         if(!fileDetail.get(0).isEmpty()) {
             for (int i = 0; i < fileDetail.size(); i++) {
                 String realName = fileDetail.get(i).getOriginalFilename();
@@ -163,20 +162,37 @@ public class MapController {
                 String uuid = UUID.randomUUID().toString();
                 String savedFileName = uuid + ext;
                 String fileType = "detail";
+                File saveFile = new File(savedPathName, orgName);
 
-                fileDetail.get(i).transferTo(new File(savedPathName + "/" + orgName));
+                fileDetail.get(i).transferTo(saveFile);
 
-                mapFilesDto.setPlaceCode(placeCode);
-                mapFilesDto.setFileType(fileType);
-                mapFilesDto.setOrgName(orgName);
-                mapFilesDto.setSavedFileName(savedFileName);
-                mapFilesDto.setSavedPathName(savedPathName);
-                mapFilesDto.setFolderName(folderName);
-                mapFilesDto.setExt(ext);
+                //섬네일 파일 생성
+                File thumbnailFile = new File((savedPathName + "/" + "thumb_" + orgName));
+                BufferedImage thumb = ImageIO.read(saveFile);
+                /* 비율 */
+                double ratio = 1.5;
+                int width = (int) (thumb.getWidth() / ratio);
+                int height = (int) (thumb.getHeight() / ratio);
+                // 생성자 매개변수 넓이, 높이, 생성될 이미지 타입
+                //실제 이미지 사이즈
+                BufferedImage bt_image = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
+                Graphics2D graphic = bt_image.createGraphics();
+                //출력될 이미지 사이즈
+                graphic.drawImage(thumb, 0, 0, width, height, null);
+                ImageIO.write(bt_image, "jpg", thumbnailFile);
 
-                mapService.setFiles(mapFilesDto);
+                placeFilesDto.setPlaceCode(placeCode);
+                placeFilesDto.setFileType(fileType);
+                placeFilesDto.setOrgName(orgName);
+                placeFilesDto.setSavedFileName(savedFileName);
+                placeFilesDto.setSavedPathName(savedPathName);
+                placeFilesDto.setFolderName(folderName);
+                placeFilesDto.setExt(ext);
+
+                placeService.setFiles(placeFilesDto);
             }
         }
+        //주변 파일 및 섬네일
         if(!fileAround.get(0).isEmpty()){
             for (int i = 0; i < fileAround.size(); i++) {
                 String realName = fileAround.get(i).getOriginalFilename();
@@ -185,18 +201,34 @@ public class MapController {
                 String uuid = UUID.randomUUID().toString();
                 String savedFileName = uuid + ext;
                 String fileType = "around";
+                File saveFile = new File(savedPathName, orgName);
 
-                fileAround.get(i).transferTo(new File(savedPathName + "/" + orgName));
+                fileAround.get(i).transferTo(saveFile);
 
-                mapFilesDto.setPlaceCode(placeCode);
-                mapFilesDto.setFileType(fileType);
-                mapFilesDto.setOrgName(orgName);
-                mapFilesDto.setSavedFileName(savedFileName);
-                mapFilesDto.setSavedPathName(savedPathName);
-                mapFilesDto.setFolderName(folderName);
-                mapFilesDto.setExt(ext);
+                //섬네일 파일 생성
+                File thumbnailFile = new File((savedPathName + "/" + "thumb_" + orgName));
+                BufferedImage thumb = ImageIO.read(saveFile);
+                /* 비율 */
+                double ratio = 3;
+                int width = (int) (thumb.getWidth() / ratio);
+                int height = (int) (thumb.getHeight() / ratio);
+                // 생성자 매개변수 넓이, 높이, 생성될 이미지 타입
+                //실제 이미지 사이즈
+                BufferedImage bt_image = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
+                Graphics2D graphic = bt_image.createGraphics();
+                //출력될 이미지 사이즈
+                graphic.drawImage(thumb, 0, 0, width, height, null);
+                ImageIO.write(bt_image, "jpg", thumbnailFile);
 
-                mapService.setFiles(mapFilesDto);
+                placeFilesDto.setPlaceCode(placeCode);
+                placeFilesDto.setFileType(fileType);
+                placeFilesDto.setOrgName(orgName);
+                placeFilesDto.setSavedFileName(savedFileName);
+                placeFilesDto.setSavedPathName(savedPathName);
+                placeFilesDto.setFolderName(folderName);
+                placeFilesDto.setExt(ext);
+
+                placeService.setFiles(placeFilesDto);
             }
         }
 
@@ -206,7 +238,7 @@ public class MapController {
     @GetMapping("/checkPlaceCode")
     @ResponseBody
     public Map<String, Object> getCheckPlaceCode(@RequestParam String placeCode){
-        int checkCode = mapService.getCheckPlaceCode(placeCode);
+        int checkCode = placeService.getCheckPlaceCode(placeCode);
         return Map.of("checkCode", checkCode);
     }
 

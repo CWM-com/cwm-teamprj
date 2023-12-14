@@ -1,18 +1,18 @@
 package com.example.Project_CWM.mappers;
 
 
-import com.example.Project_CWM.dto.MapDto;
-import com.example.Project_CWM.dto.MapFilesDto;
+import com.example.Project_CWM.dto.PlaceDto;
+import com.example.Project_CWM.dto.PlaceFilesDto;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface MapMapper {
+public interface PlaceMapper {
     //신규 캠핑장 추가
     @Insert("insert into placeinfo values(null, #{placeCode}, #{placeName}, #{placeAddr}, #{placeCall}, 0, 0, 0, now())")
-    void setPlace(MapDto mapDto);
+    void setPlace(PlaceDto placeDto);
 
     //캠핑장 코드 중복 확인
     @Select("select count(*) from placeinfo where place_code = #{placeCode}")
@@ -32,19 +32,19 @@ public interface MapMapper {
 
     //조건에 맞는 캠핑장 출력
     @Select("select * from placeinfo ${searchQuery} limit #{startNum}, #{offset}")
-    List<MapDto> getSearch(Map<String, Object> mapp);
+    List<PlaceDto> getSearch(Map<String, Object> mapp);
 
     //캠핑당 디테일 출력
     @Select("select * from placeinfo where place_code = #{placeCode}")
-    public MapDto getDetail(String placeCode);
+    public PlaceDto getDetail(String placeCode);
     @Select("select * from placefiles where fileType = 'main'")
-    public List<MapFilesDto> getMainFiles();
+    public List<PlaceFilesDto> getMainFiles();
     @Select("select * from placefiles where fileType = 'detail' and place_code = #{placeCode}")
-    public List<MapFilesDto> getDetailFiles(String placeCode);
+    public List<PlaceFilesDto> getDetailFiles(String placeCode);
     @Select("select * from placefiles where fileType = 'around'")
-    public List<MapFilesDto> getAroundFiles();
+    public List<PlaceFilesDto> getAroundFiles();
     @Select("select * from placefiles where place_code = #{placeCode}")
-    public MapFilesDto getFilesDetail(String placeCode);
+    public PlaceFilesDto getFilesDetail(String placeCode);
 
     //캠핑장 조회수 업데이트
     @Update("update placeinfo set visit = visit + 1 where place_code = #{placeCode}")
@@ -52,7 +52,7 @@ public interface MapMapper {
 
     //캠핑장 추가시 첨부파일 입력
     @Insert("insert into placefiles values(#{placeCode}, #{fileType}, #{orgName}, #{savedFileName}, #{savedPathName}, #{savedFileSize}, #{folderName}, #{ext})")
-    public void setFiles(MapFilesDto mapFileDto);
+    public void setFiles(PlaceFilesDto mapFileDto);
 
 
 

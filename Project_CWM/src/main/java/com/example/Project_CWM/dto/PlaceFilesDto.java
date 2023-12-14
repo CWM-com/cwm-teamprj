@@ -1,6 +1,6 @@
 package com.example.Project_CWM.dto;
 
-public class MapFilesDto {
+public class PlaceFilesDto {
     private String placeCode;
     private String fileType;
     private String orgName;

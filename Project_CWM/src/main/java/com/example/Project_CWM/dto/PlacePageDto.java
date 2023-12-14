@@ -1,6 +1,6 @@
 package com.example.Project_CWM.dto;
 
-public class MapPageDto {
+public class PlacePageDto {
 
     private int startNum;
     private int pageCount = 5;
