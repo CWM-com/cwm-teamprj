@@ -2,6 +2,7 @@ package com.example.Project_CWM.service;
 
 
 
+import com.example.Project_CWM.dto.MapDto;
 import com.example.Project_CWM.dto.PlaceDto;
 import com.example.Project_CWM.dto.PlaceFilesDto;
 import com.example.Project_CWM.dto.PlacePageDto;
@@ -110,15 +111,14 @@ public class PlaceService {
     public List<PlaceFilesDto> getMainFiles(){
         return placeMapper.getMainFiles();
     }
-    public List<PlaceFilesDto> getAroundFiles(){
-        return placeMapper.getAroundFiles();
-    }
-    public PlaceFilesDto getFilesDetail(String placeCode){
-        return placeMapper.getFilesDetail(placeCode);
-    }
     public void setFiles(PlaceFilesDto mapFileDto){
         placeMapper.setFiles(mapFileDto);
     }
+    public void setAddr(MapDto mapDto){
+        placeMapper.setAddr(mapDto);
+    }
 
-
+    public void updateAddr(MapDto mapDto){
+        placeMapper.updateAddr(mapDto);
+    }
 }

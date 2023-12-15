@@ -1,5 +1,6 @@
 package com.example.Project_CWM.controller;
 
+import com.example.Project_CWM.dto.MapDto;
 import com.example.Project_CWM.dto.PlaceDto;
 import com.example.Project_CWM.dto.PlaceFilesDto;
 import com.example.Project_CWM.mappers.PlaceMapper;
@@ -31,12 +32,6 @@ public class PlaceController {
     PlaceMapper placeMapper;
     @Value("${fileDir}")
     String fileDir;
-
-    @GetMapping("/map")
-    public String getMap(){
-        return("place/map");
-    }
-
 
     @GetMapping("/place")
     public String getSearch(Model model,
@@ -103,10 +98,12 @@ public class PlaceController {
     }
     @PostMapping("/placeregister")
     public String setPlace(@ModelAttribute PlaceDto placeDto,
+                           @ModelAttribute MapDto mapDto,
                            @RequestParam("fileMain") List<MultipartFile> fileMain,
                            @RequestParam("fileDetail") List<MultipartFile> fileDetail,
                            @RequestParam("fileAround") List<MultipartFile> fileAround) throws IOException {
         placeService.setPlace(placeDto);
+        placeService.setAddr(mapDto);
 
         String placeCode = placeDto.getPlaceCode();
         String folderName = "place_" + placeCode + "_files";
