@@ -63,6 +63,17 @@ public interface PlaceMapper {
     @Update("update placecoor set place_x = #{placeX}, place_y = {placeY} where place_code = #{placeCode}")
     public void updateAddr(MapDto mapDto);
 
+    //캠핑장 북마크 추가
+    @Insert("insert into placebookmark values(#{}, #{}, 1, null)")
+
+
+    //캠핑장 북마크 제거
+
+    //캠핑장 별점 추가
+
+    //캠핑장 별점 제거
+
+
 
 
 

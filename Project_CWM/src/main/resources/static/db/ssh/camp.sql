@@ -33,4 +33,13 @@ place_y varchar(255),
 foreign key(place_code) references placeinfo(place_code)
 );
 
+create table placebookmark(
+place_code varchar(10) not null,
+idx int not null,
+per_bookmark int,
+per_star int,
+foreign key(place_code) references placeinfo(place_code),
+foreign key(idx) references member(idx)
+);
+
 
