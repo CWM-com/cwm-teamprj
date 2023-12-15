@@ -7,7 +7,7 @@
     <title>마이페이지</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/kdh/reset.css">
-    <link rel="stylesheet" href="/css/kdh/mypage/mypage.css">
+    <link rel="stylesheet" href="/css/kdh/mypage/mypage.css?after">
 </head>
 <body>
     <header th:insert="~{fragment/header::header_a}">
@@ -30,7 +30,7 @@
                         <strong class="sub-title">내 정보</strong>
                         <ul class="title-List">
                             <li>
-                                <a href="/mypage/userinfo">로그인 정보</a>
+                                <a href="/mypage/update">로그인 정보</a>
                             </li>
                             <li>
                                 <a href="">작성한 글</a>
@@ -58,25 +58,25 @@
             </div>
             <div class="page-title">
                 <div class="userInfo-box">
-                    <h3>zz님 정보</h3>
+                    <h3>[[${session.LoginIn.userName}]]님 정보</h3>
                     <div class="info">
                         <ul>
                             <li>
                                 <span>아이디 :</span>
-                                1q2w3e4r
+                                [[${session.LoginIn.userId}]]
                             </li>
                             <li>
                                 <span>이메일 :</span>
-                                mail@mail.com
+                                [[${session.LoginIn.userEmail}]]
                             </li>
                             <li>
                                 <span>전화번호 :</span>
-                                010-1111-1111
+                                [[${session.LoginIn.userTel}]]
                             </li>
                         </ul>
                         <ul class="update-info">
                             <li>
-                               <a href="/mypage/userinfo"><span>정보수정</span></a>
+                               <a href="/mypage/update"><span>정보수정</span></a>
                             </li>
                         </ul>
                     </div>

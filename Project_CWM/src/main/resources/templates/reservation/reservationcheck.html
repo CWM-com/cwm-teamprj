@@ -62,15 +62,15 @@
                             <ul class="userinfo">
                                 <li>
                                     <label for=""><strong>이름</strong></label>
-                                    <input type="text" name="reservName" class="usertext" placeholder="이름을 입력해주세요.">
+                                    <input type="text" name="reservName" class="usertext" placeholder="이름을 입력해주세요." maxlength="20">
                                 </li>
                                 <li>
                                     <label for=""><strong>연락처</strong></label>
-                                    <input type="tel" name="reservTel" class="usertext" placeholder="전화번호를 입력해주세요.">
+                                    <input type="tel" name="reservTel" class="usertext" placeholder="예: 010-1234-5678" maxlength="13">
                                 </li>
                                 <li>
                                     <label for=""><strong>이메일</strong></label>
-                                    <input type="tel" name="reservEmail" class="usertext" placeholder="이메일을 입력해주세요.">
+                                    <input type="tel" name="reservEmail" class="usertext" placeholder="예 : mail@mail.com" maxlength="30">
                                 </li>
                             </ul>
                         </div>
@@ -115,6 +115,9 @@
                                             </th:block>
                                         </li>
                                     </ul>
+                                    <input type="hidden" id="adultNum" th:value="${data.adultNum}">
+                                    <input type="hidden" id="teenNum" th:value="${data.teenNum}">
+                                    <input type="hidden" id="cildNum" th:value="${data.cildNum}">
                                     <div class="date-check">
                                         <div class="date-check-1">
                                             <p class="check-one">체크인</p>
@@ -130,6 +133,9 @@
                                             <p class="check-three">오전 12:00</p>
                                         </div>
                                     </div>
+                                    <input type="hidden" id="checkin" th:value="${data.checkin}">
+                                    <input type="hidden" id="checkdays" th:value="${data.checkdays}">
+                                    <input type="hidden" id="checkout" th:value="${data.checkout}">
                                 </div>
                             </div>
                         </div>
@@ -157,9 +163,10 @@
                                 </div>
                             </div>
                             <div class="payment-List-3">
-                                <button class="payment-btn" id="payment" onclick="kakaopay()">결제하기</button>
+                                <button class="payment-btn" id="payment">결제하기</button>
                             </div>
                             <p class="un-use">*미성년자는 서비스 이용이 불가합니다.</p>
+                            <input type="hidden" th:value="${session.LoginIn.idx}" name="memIdx">
                         </div>
                     </div>
                 </div>

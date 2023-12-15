@@ -1,6 +1,8 @@
 package com.example.Project_CWM.mappers;
 
 import com.example.Project_CWM.dto.ReservSearchDto;
+import com.example.Project_CWM.dto.ReservationOrderDto;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -15,7 +17,7 @@ public interface ReservationMapper {
             "  AND ct.camp_type NOT IN (\n" +
             "    SELECT DISTINCT r.camp_type\n" +
             "    FROM reservation as r\n" +
-            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = 'Y'" +
+            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = '예약완료'" +
             "      AND (\n" +
             "        (#{checkin} BETWEEN r.reserv_Check_in AND r.reserv_Check_out - INTERVAL 1 DAY)\n" +
             "        OR (#{checkout} BETWEEN r.reserv_Check_in + INTERVAL 1 DAY AND r.reserv_Check_out)\n" +
@@ -30,7 +32,7 @@ public interface ReservationMapper {
             "  AND ct.camp_type NOT IN (\n" +
             "    SELECT DISTINCT r.camp_type\n" +
             "    FROM reservation as r\n" +
-            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = 'Y'" +
+            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = '예약완료'" +
             "      AND (\n" +
             "        (#{checkin} BETWEEN r.reserv_Check_in AND r.reserv_Check_out - INTERVAL 1 DAY)\n" +
             "        OR (#{checkout} BETWEEN r.reserv_Check_in + INTERVAL 1 DAY AND r.reserv_Check_out)\n" +
@@ -45,7 +47,7 @@ public interface ReservationMapper {
             "  AND ct.camp_type NOT IN (\n" +
             "    SELECT DISTINCT r.camp_type\n" +
             "    FROM reservation as r\n" +
-            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = 'Y'" +
+            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = '예약완료'" +
             "      AND (\n" +
             "        (#{checkin} BETWEEN r.reserv_Check_in AND r.reserv_Check_out - INTERVAL 1 DAY)\n" +
             "        OR (#{checkout} BETWEEN r.reserv_Check_in + INTERVAL 1 DAY AND r.reserv_Check_out)\n" +
@@ -53,4 +55,7 @@ public interface ReservationMapper {
             "      )\n" +
             "  );")
     public List<ReservSearchDto> getPrice(ReservSearchDto reservSearchDto);
+
+    @Insert("insert into reservation values(null,#{reservName},#{reservTel},#{campName},#{campType},#{checkin},#{checkdays},#{checkout},#{adultNum},#{teenNum},#{cildNum},#{reservStatus},#{memIdx},#{impUid})")
+    public void getReservationList(ReservationOrderDto reservationOrderDto);
 }
