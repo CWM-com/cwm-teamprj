@@ -17,6 +17,15 @@ public class WebConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/login"); // 해당 등록한건 가능하게
     }
 
+
+
+
+
+
+
+
+
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //addResourceLocations : 저장할 위치
