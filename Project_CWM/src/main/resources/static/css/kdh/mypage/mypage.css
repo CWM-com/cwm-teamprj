@@ -248,6 +248,7 @@ img {
     border: 1px solid #c7c8d2;
     overflow: hidden;
     border-radius: 6px;
+    box-shadow: 0 0 5px 0.25rem #eee;
 }
 
 .userInfo-box h3 {
@@ -297,6 +298,7 @@ img {
     border: 1px solid #c7c8d2;
     overflow: hidden;
     border-radius: 6px;
+    box-shadow: 0 0 5px 0.25rem #eee;
 }
 
 .camp-box h3 {
@@ -343,6 +345,7 @@ img {
     border: 1px solid #c7c8d2;
     overflow: hidden;
     border-radius: 6px;
+    box-shadow: 0 0 5px 0.25rem #eee;
 }
 
 .use-box h3 {

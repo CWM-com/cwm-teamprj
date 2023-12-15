@@ -36,9 +36,7 @@ public class ReservationController {
     @GetMapping("/reservationcheck")
     public String getReservationCheck(HttpSession session, Model model) {
 
-        MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn");
-
-
+        MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn"); // 세션값 부여
 
         return "reservation/reservationcheck";
     }
@@ -76,30 +74,44 @@ public class ReservationController {
     }
 
     @PostMapping("/reservationOrder")
-    public ModelAndView reservationOrder(ReservationOrderDto reservationPaymentDto, HttpSession session) {
+    public ModelAndView reservationOrder(ReservationOrderDto reservationOrderDto, HttpSession session) {
 
-        System.out.println(reservationPaymentDto);
         MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn");
 
         if(setIDX != null) {
 
-            int day = Integer.parseInt(reservationPaymentDto.getCheckdays());
-            int price = Integer.parseInt(reservationPaymentDto.getCampPrice());
+            int day = Integer.parseInt(reservationOrderDto.getCheckdays());
+            int price = Integer.parseInt(reservationOrderDto.getCampPrice());
             int cnt = day * price;
 
             NumberFormat numberFormat = NumberFormat.getNumberInstance();
 
             String res = numberFormat.format(cnt);
 
-            reservationPaymentDto.setCampPrice(res);
+            reservationOrderDto.setCampPrice(res);
             ModelAndView mv = new ModelAndView();
 
             mv.setViewName("/reservation/reservationcheck");
-            mv.addObject("data", reservationPaymentDto);
+            mv.addObject("data", reservationOrderDto);
             return mv;
         }else {
             ModelAndView vm = new ModelAndView("redirect:/login");
             return vm;
         }
+    }
+
+    @PostMapping("/reservList")
+    @ResponseBody
+    public Map<String,Object> getReservationList(ReservationOrderDto reservationOrderDto, HttpSession session) {
+
+        reservationService.getReservationList(reservationOrderDto);
+        Map<String,Object> map = new HashMap<>();
+
+        MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn");
+        
+        if(reservationOrderDto.getReservStatus().equals("예약완료") && setIDX != null) {
+            map.put("msg","success");
+        }
+        return map;
     }
 }

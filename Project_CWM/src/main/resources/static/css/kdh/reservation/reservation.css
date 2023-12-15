@@ -761,7 +761,7 @@ input[type='number'] {
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 30px;
     margin: 0 auto;
 }
 
@@ -770,14 +770,20 @@ input[type='number'] {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 160px;
+    width: 120px;
     height: 60px;
     border: 1px solid #dcdcdc;
-    border-radius: 10px;
+    border-radius: 12px;
     background-color: #fff;
     text-align: center;
     color: rgb(78, 83, 84);
     cursor: pointer;
+}
+
+.camp-box > span {
+    font-size: 14px;
+    letter-spacing: -1px;
+    color: #7c7c7c;
 }
 
 .choose-active {
