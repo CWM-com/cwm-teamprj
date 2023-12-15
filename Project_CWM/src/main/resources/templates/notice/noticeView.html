@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
-<html xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/lth/reset.css">
-    <link rel="stylesheet" href="/css/lth/view.css">
+    <link rel="stylesheet" th:href="@{/css/lth/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/lth/view.css}">
 </head>
 <body>
     <header th:insert="~{fragment/header::header_a}">
@@ -49,12 +48,19 @@
                                 <div class="subject">
                                     <h4>[[${view.subject}]]</h4>
                                     <div class="reg_info">
+                                        <span class="visit">조회수 : </span>
                                         <span class="date">[[${view.regdate}]]</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="content">
                                 <div class="txt_cont prewrap">
+                                    <p>
+                                        <p>
+                                            <img th:src="@{|/${view.folderName}/${view.savedFileName}|}">
+                                        </p>
+                                        <span>[[${view.orgName}]]</span>
+                                    </p>
                                     [[${view.content}]]
                                 </div>
                             </div>
@@ -62,7 +68,9 @@
                     </div>
                 </div>
                 <div class="bottom">
-                    <a th:href="@{/qna/reply?(id=${view.id})}" class="btn1">답글달기</a>
+                    <a th:href="@{/notice}" class="btn1">목록보기</a>
+                    <a th:href="@{/notice/update}" class="btn2 blue">수정하기</a>
+                    <a href="#" class="btn1" th:onclick="remove([[${view.id}]])">삭제하기</a>
                 </div>
             </div>
         </div>
@@ -72,5 +80,12 @@
 
     </footer>
     <script src="js/kdh/reservation/tabmove.js"></script>
+    <script>
+        function remove(id) {
+            if(confirm(id + "게시물을 삭제 하시겠습니까?")) {
+            location.href = "/notice/delete?id="+id;
+            }
+        }
+    </script>
 </body>
 </html>

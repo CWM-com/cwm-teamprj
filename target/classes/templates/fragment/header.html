@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>header 파트 </title>
+</head>
+<body>
+    <div th:fragment="header_a">
+        <div class="p-fix">
+            <div class="header-container">
+                <div class="header-top">
+                    <div class="top-right">
+                        <span>
+                            <a href="/index">홈</a>
+                        </span>
+                        <span>
+                            <a href="/register">회원가입</a>
+                        </span>
+                        <span>
+                            <a href="/login">로그인</a>
+                        </span>
+                        <span>
+                            <a href="/mypage">마이페이지</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="header-Line">
+                    <div class="Logo">
+                        <h3><a href="/index">CWM.CWM</a></h3>
+                    </div> 
+                    <div class="header-menu">  
+                        <ul class="menuList">
+                            <li>
+                                <a href="/place/map">캠핑장 이용안내</a>
+                                <ul class="submenu sub-left">
+                                    <li>
+                                        <a href="/place/map">캠핑장 위치</a>
+                                    </li>
+                                    <li>
+                                        <a href="">지역별 날씨</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/place/place">캠핑장 정보</a>
+                            </li>
+                            <li>
+                                <a href="">예약/결제</a>
+                            </li>
+                            <li>
+                                <a href="">캠핑 팁</a>
+                            </li>
+                            <li>
+                                <a href="/notice">캠핑 게시판</a>
+                                <ul class="submenu sub-right">
+                                    <li>
+                                        <a href="/notice">공지사항</a>
+                                    </li>
+                                    <li>
+                                        <a href="">캠핑 리뷰</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Q&A</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

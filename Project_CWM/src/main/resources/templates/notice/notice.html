@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항</title>
-    <link rel="stylesheet" href="/css/lth/reset.css">
-    <link rel="stylesheet" href="/css/lth/notice.css">
+    <link rel="stylesheet" th:href="@{/css/lth/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/lth/notice.css}">
 </head>
 <body>
     <header>
@@ -133,20 +133,20 @@
                             <tbody>
                                 <tr th:each="notice: ${list}">
                                     <td>
-                                        <span></span>
+                                        <span>[[${notice.id}]]</span>
                                     </td>
                                     <td>
-                                        <a href=""></a>
+                                        <a th:href="@{/notice/view?(id=${notice.id})}" class="active">[[${notice.subject}]]</a>
                                     </td>
                                     <td>
-                                        <span></span>
+                                        <span>[[${notice.regdate}]]</span>
                                     </td>
                                     <td>
-                                        <span></span>
+                                        <span>?</span>
                                     </td>
                                     <td>
                                         <a href="" class="btn1">수정</a>
-                                        <a href="" class="btn1")>삭제</a>
+                                        <a href="#" class="btn1" th:onclick="remove([[${notice.id}]])")>삭제</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -190,5 +190,13 @@
             </div>
         </div>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    function remove(id) {
+        if(confirm(id + "게시물을 삭제 하시겠습니까?")) {
+        location.href = "/notice/delete?id="+id;
+        }
+    }
+</script>
 </body>
 </html>

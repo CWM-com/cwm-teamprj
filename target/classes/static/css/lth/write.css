@@ -1,0 +1,278 @@
+@charset 'utf-8';
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+header {
+    background-color: #121417;
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    margin: 0;
+    color: #000;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+}
+
+img {
+    width: 100%;
+}
+
+input:focus {outline:none;}
+
+/* header*/
+
+.p-fix {
+    overflow: visible;
+    background-color: rgba(18, 20, 23,);
+    /* #121417 */
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto; 
+}
+
+.header-top {
+    display: flex;
+    justify-content: end;
+    
+}
+
+.top-right {
+    height: 30px;
+    margin-top: 10px;
+}
+
+.top-right span {
+    margin-right: 12px;
+}
+
+.top-right span:last-child {
+    margin-right: 0;
+}
+
+.header-top span a {
+    font-size: 12px;
+    color: #7c7c7c;
+}
+
+.header-Line {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.Logo h3 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.menuList {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menuList::after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.menuList li {
+    position: relative;
+    float: left;
+    margin-right: 50px;
+}
+
+.menuList li:hover .submenu {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.6s ease-in-out;
+}
+
+.menuList li:last-child {
+    margin-right: 0px;
+}
+
+.menuList li a {
+    /* color:rgba(165, 192, 239, 0.8); */
+    color: #e1ecf0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.submenu {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.sub-left {
+    left: 5px;
+}
+
+.sub-right {
+    left: -12px;
+}
+
+.submenu li a {
+    padding: 0 10px;
+    width: 100%;
+    display: block; 
+    
+    line-height: 32px;
+    font-weight: normal;
+}
+
+.submenu a:last-child {
+    border-bottom: none;
+}
+
+.submenu li {
+    width: 130px;
+    text-align: center;
+    background-color: rgba(18, 20, 23,0.5);
+}
+
+.submenu li a:hover {
+    background-color: rgba(18, 20, 23,0.8);
+    transition: all 0.5s ease-in-out;
+}
+
+/********** 글쓰기 ************/
+input:focus {outline: none;}
+
+.write {
+    width: 100%;
+    margin-top: 100px;
+}
+
+.write-container {
+    text-align: center;
+    width: 100%;
+}
+
+.title {
+    width: 60%;
+    height: 30px;
+}
+
+.subject {
+    width: 60%;
+    height: 200px;
+    margin-top: 20px;
+}
+
+button {
+    display: block;
+    margin: auto;
+    text-align: center;
+    width: 200px;
+    height: 60px;
+    border: 0;
+
+    border-radius: 4px;
+    color: white;
+    font-size: 20px;
+    background-color: #000;
+    margin-bottom: 100px;
+    cursor: pointer;
+    margin-top: 100px;
+}
+
+/* footer 시작 */
+
+footer {
+    background-color: #24262b;
+    height: 300px;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-wrap {
+    width: 100%;
+    padding-top: 80px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.footer-wrap .footer-item {
+    width: 100%;
+    height: 150px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(196, 196, 196);
+}
+
+.footer-item::after {
+    content: "";
+    width: 1100px;
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    margin-top: 16px;
+}
+
+.footer-item p {
+    padding-bottom: 6px;
+}
+
+.footer-item p:last-child {
+    margin-bottom: 0px;
+}
+
+.footer-icon {
+    font-size: 22px;
+    text-align: right;
+}
+
+.footer-icon a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    line-height: 40px;
+    margin-right: 10px;
+}
+
+.footer-icon a:hover {
+    background-color: #fff;
+    color: #24262b;
+    transition: all 0.6s ease-in-out;
+    padding-left: 0;
+    cursor: pointer;
+}
+
+.footer-copyright {
+    position: relative;
+    bottom: 34px;
+    width: 100%;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(196, 196, 196);
+}

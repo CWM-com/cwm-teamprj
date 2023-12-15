@@ -10,7 +10,7 @@ public class NoticeDto {
     private String orgName;
     private String savedFileName;
     private String savedFilePathName;
-    private String savedFileSize;
+    private long savedFileSize;
     private String folderName;
     private String ext;
     private int grp;
@@ -89,11 +89,11 @@ public class NoticeDto {
         this.savedFilePathName = savedFilePathName;
     }
 
-    public String getSavedFileSize() {
+    public long getSavedFileSize() {
         return savedFileSize;
     }
 
-    public void setSavedFileSize(String savedFileSize) {
+    public void setSavedFileSize(long savedFileSize) {
         this.savedFileSize = savedFileSize;
     }
 

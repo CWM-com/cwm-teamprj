@@ -1,0 +1,121 @@
+/***************  detail ***************/
+
+.board_titWrap {
+
+    padding: 30px 20px 25px;
+    background: #fafafa;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.subject {
+    margin-top: -40px;
+}
+
+.subject h4 {
+    font-size: 25px;
+}
+
+.reg_info {
+    margin-top: 20px;
+
+}
+
+.reg_info .data {
+    float: left;
+}
+
+.reg_info .view_count {
+    float: right;
+
+    
+}
+
+.reg_info .view_count>* {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 20px;
+}
+
+.board_cont {
+    padding: 40px 60px;
+    font-size: 16px;
+    border-bottom: 2px solid #000;
+}
+
+.board_cont {
+    margin-bottom: 100px;
+}
+
+
+
+
+ 
+
+/* mypage 시작 */
+
+.mypage-container {
+    display: flex;
+    max-width: 1200px;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.page-List {
+    width: 180px;
+    margin-right: 50px;
+}
+
+.page-List a h2 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    padding-bottom: 30px;
+    letter-spacing: -0.5px;
+}
+
+.sub-title {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    margin-bottom: 12px;
+    vertical-align: top;
+    letter-spacing: -0.5px;
+}
+
+.title-List li a {
+    color: rgba(34, 34, 34, 0.5);
+    font-size: 15px;
+    letter-spacing: -.15px;
+    line-height: 18px;
+}
+
+.title-List li:nth-child(2) {
+    margin-top: 12px;
+}
+
+.title-List li:nth-child(3) {
+    margin-top: 12px;
+}
+
+.title-box {
+    margin-top: 40px;
+}
+
+/* 서브 타이틀 끝 */
+
+.page-title {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.notice-detail {
+    margin: 0 10px 10px 0;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
