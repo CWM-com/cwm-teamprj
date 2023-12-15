@@ -1,7 +1,7 @@
 package com.example.Project_CWM.controller;
 
 import com.example.Project_CWM.dto.MemberDto;
-import com.example.Project_CWM.mappers.RegisterMapper;
+import com.example.Project_CWM.mappers.MemberMapper;
 import com.example.Project_CWM.service.MailSerivce;
 import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class RegisterController {
 
     @Autowired
-    private RegisterMapper registerMapper;
+    private MemberMapper registerMapper;
     @Autowired
     private MailSerivce mailSerivce;
 

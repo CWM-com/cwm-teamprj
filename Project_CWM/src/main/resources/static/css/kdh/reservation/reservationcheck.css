@@ -295,11 +295,15 @@ img {
 .check-place {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 10px;
-    background-color: rgb(185,251,251);
-    border-radius: 8px;
+    background-color: rgb(106,255,255);
+    border-radius: 10px;
     padding: 2px 12px;
-    height: 100px;
+}
+
+.place-one {
+    margin-bottom: 2px;
 }
 
 .place-one > li {
@@ -408,15 +412,15 @@ img {
     margin-top: 12px;
 }
 
+.price {
+    color: #6d8cdb;
+    font-weight: bold;
+}
+
 .money-1 {
     border-bottom: 1px solid rgb(226, 230, 230);
     padding-bottom: 12px;
     margin-top: 16px;
-}
-
-.money-2 > p:last-child {
-    font-weight: bold;
-    color: #6d8cdb;
 }
 
 .payment-List-3 {

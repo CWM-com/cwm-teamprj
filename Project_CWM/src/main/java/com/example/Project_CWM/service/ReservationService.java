@@ -1,6 +1,7 @@
 package com.example.Project_CWM.service;
 
 import com.example.Project_CWM.dto.ReservSearchDto;
+import com.example.Project_CWM.dto.ReservationOrderDto;
 import com.example.Project_CWM.mappers.ReservationMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,5 +41,13 @@ public class ReservationService {
                                 .collect(Collectors.toList());
 
         return campPrice;
+    }
+
+    public void getReservationList(ReservationOrderDto reservationOrderDto) {
+
+        if(reservationOrderDto.getReservStatus() == null) {
+                reservationOrderDto.setReservStatus("예약완료");
+                reservationMapper.getReservationList(reservationOrderDto);
+        }
     }
 }

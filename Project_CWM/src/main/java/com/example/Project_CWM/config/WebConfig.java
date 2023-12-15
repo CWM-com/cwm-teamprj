@@ -12,9 +12,10 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new SessionCheckInterceptor())
-                .order(1).addPathPatterns("/mypage") // 포트 뒤에 / 가 붙는 경우 다 막게함
+                .order(1).addPathPatterns("/mypage/**") // 포트 뒤에 / 가 붙는 경우 다 막게함
                 .excludePathPatterns("/")
-                .excludePathPatterns("/login"); // 해당 등록한건 가능하게
+                .excludePathPatterns("/login");// 해당 등록한건 가능하게
+
     }
 
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

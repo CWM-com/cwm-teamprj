@@ -1,21 +1,21 @@
 package com.example.Project_CWM.dto;
 
 public class ReservationOrderDto {
-
     private  int reservIdx;
+    private String reservName;
+    private String reservTel;
     private String campName;
+    private String campType;
     private String checkin;
     private String checkdays;
     private String checkout;
     private int adultNum;
     private int teenNum;
     private int cildNum;
-    private String campType;
-    private String campPrice;
+    private String reservStatus;
     private String memIdx;
-    private String reservName;
-    private String reservTel;
-    private String reservEmail;
+    private String campPrice;
+    private String impUid;
 
     public int getReservIdx() {
         return reservIdx;
@@ -25,12 +25,36 @@ public class ReservationOrderDto {
         this.reservIdx = reservIdx;
     }
 
+    public String getReservName() {
+        return reservName;
+    }
+
+    public void setReservName(String reservName) {
+        this.reservName = reservName;
+    }
+
+    public String getReservTel() {
+        return reservTel;
+    }
+
+    public void setReservTel(String reservTel) {
+        this.reservTel = reservTel;
+    }
+
     public String getCampName() {
         return campName;
     }
 
     public void setCampName(String campName) {
         this.campName = campName;
+    }
+
+    public String getCampType() {
+        return campType;
+    }
+
+    public void setCampType(String campType) {
+        this.campType = campType;
     }
 
     public String getCheckin() {
@@ -81,20 +105,12 @@ public class ReservationOrderDto {
         this.cildNum = cildNum;
     }
 
-    public String getCampType() {
-        return campType;
+    public String getReservStatus() {
+        return reservStatus;
     }
 
-    public void setCampType(String campType) {
-        this.campType = campType;
-    }
-
-    public String getCampPrice() {
-        return campPrice;
-    }
-
-    public void setCampPrice(String campPrice) {
-        this.campPrice = campPrice;
+    public void setReservStatus(String reservStatus) {
+        this.reservStatus = reservStatus;
     }
 
     public String getMemIdx() {
@@ -105,47 +121,40 @@ public class ReservationOrderDto {
         this.memIdx = memIdx;
     }
 
-    public String getReservName() {
-        return reservName;
+    public String getCampPrice() {
+        return campPrice;
     }
 
-    public void setReservName(String reservName) {
-        this.reservName = reservName;
+    public void setCampPrice(String campPrice) {
+        this.campPrice = campPrice;
     }
 
-    public String getReservTel() {
-        return reservTel;
+    public String getImpUid() {
+        return impUid;
     }
 
-    public void setReservTel(String reservTel) {
-        this.reservTel = reservTel;
-    }
-
-    public String getReservEmail() {
-        return reservEmail;
-    }
-
-    public void setReservEmail(String reservEmail) {
-        this.reservEmail = reservEmail;
+    public void setImpUid(String impUid) {
+        this.impUid = impUid;
     }
 
     @Override
     public String toString() {
         return "ReservationOrderDto{" +
                 "reservIdx=" + reservIdx +
+                ", reservName='" + reservName + '\'' +
+                ", reservTel='" + reservTel + '\'' +
                 ", campName='" + campName + '\'' +
+                ", campType='" + campType + '\'' +
                 ", checkin='" + checkin + '\'' +
                 ", checkdays='" + checkdays + '\'' +
                 ", checkout='" + checkout + '\'' +
                 ", adultNum=" + adultNum +
                 ", teenNum=" + teenNum +
                 ", cildNum=" + cildNum +
-                ", campType='" + campType + '\'' +
-                ", campPrice='" + campPrice + '\'' +
+                ", reservStatus='" + reservStatus + '\'' +
                 ", memIdx='" + memIdx + '\'' +
-                ", reservName='" + reservName + '\'' +
-                ", reservTel='" + reservTel + '\'' +
-                ", reservEmail='" + reservEmail + '\'' +
+                ", campPrice='" + campPrice + '\'' +
+                ", impUid='" + impUid + '\'' +
                 '}';
     }
 }
