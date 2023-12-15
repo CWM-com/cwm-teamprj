@@ -25,4 +25,12 @@ ext varchar(20),
 foreign key(place_code) references placeinfo(place_code)
 );
 
+create table placecoor(
+place_code varchar(10) not null,
+place_addr varchar(255),
+place_x varchar(255),
+place_y varchar(255),
+foreign key(place_code) references placeinfo(place_code)
+);
+
 

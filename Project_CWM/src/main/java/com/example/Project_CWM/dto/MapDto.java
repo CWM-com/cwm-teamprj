@@ -1,24 +1,10 @@
 package com.example.Project_CWM.dto;
 
 public class MapDto {
-
-    private int placeId;
     private String placeCode;
-    private String placeName;
     private String placeAddr;
-    private String placeCall;
-    private int visit;
-    private String bookmark;
-    private int star;
-    private String regdate;
-
-    public int getPlaceId() {
-        return placeId;
-    }
-
-    public void setPlaceId(int placeId) {
-        this.placeId = placeId;
-    }
+    private String placeX;
+    private String placeY;
 
     public String getPlaceCode() {
         return placeCode;
@@ -26,14 +12,6 @@ public class MapDto {
 
     public void setPlaceCode(String placeCode) {
         this.placeCode = placeCode;
-    }
-
-    public String getPlaceName() {
-        return placeName;
-    }
-
-    public void setPlaceName(String placeName) {
-        this.placeName = placeName;
     }
 
     public String getPlaceAddr() {
@@ -44,58 +22,29 @@ public class MapDto {
         this.placeAddr = placeAddr;
     }
 
-    public String getPlaceCall() {
-        return placeCall;
+    public String getPlaceX() {
+        return placeX;
     }
 
-    public void setPlaceCall(String placeCall) {
-        this.placeCall = placeCall;
+    public void setPlaceX(String placeX) {
+        this.placeX = placeX;
     }
 
-    public int getVisit() {
-        return visit;
+    public String getPlaceY() {
+        return placeY;
     }
 
-    public void setVisit(int visit) {
-        this.visit = visit;
-    }
-
-    public String getBookmark() {
-        return bookmark;
-    }
-
-    public void setBookmark(String bookmark) {
-        this.bookmark = bookmark;
-    }
-
-    public int getStar() {
-        return star;
-    }
-
-    public void setStar(int star) {
-        this.star = star;
-    }
-
-    public String getRegdate() {
-        return regdate;
-    }
-
-    public void setRegdate(String regdate) {
-        this.regdate = regdate;
+    public void setPlaceY(String placeY) {
+        this.placeY = placeY;
     }
 
     @Override
     public String toString() {
         return "MapDto{" +
-                "placeId=" + placeId +
-                ", placeCode='" + placeCode + '\'' +
-                ", placeName='" + placeName + '\'' +
+                "placeCode='" + placeCode + '\'' +
                 ", placeAddr='" + placeAddr + '\'' +
-                ", placeCall='" + placeCall + '\'' +
-                ", visit=" + visit +
-                ", bookmark='" + bookmark + '\'' +
-                ", star=" + star +
-                ", regdate='" + regdate + '\'' +
+                ", placeX='" + placeX + '\'' +
+                ", placeY='" + placeY + '\'' +
                 '}';
     }
 }
