@@ -195,7 +195,6 @@ img {
 .mypage-container {
     display: flex;
     max-width: 1200px;
-    height: 100vh;
     margin: 0 auto;
 }
 
