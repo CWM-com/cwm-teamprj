@@ -51,13 +51,22 @@
 			<version>3.0.3</version>
 			<scope>test</scope>
 		</dependency>
-
+		<!-- 섬네일~ -->
 		<dependency>
-			<groupId>com.github.iamport</groupId>
-			<artifactId>iamport-rest-client-java</artifactId>
-			<version>0.2.23</version>
+			<groupId>net.coobird</groupId>
+			<artifactId>thumbnailator</artifactId>
+			<version>0.4.8</version>
 		</dependency>
+<<<<<<< HEAD
 
+=======
+		<dependency>
+			<groupId>org.imgscalr</groupId>
+			<artifactId>imgscalr-lib</artifactId>
+			<version>4.2</version>
+		</dependency>
+		<!-- ~섬네일 -->
+>>>>>>> 620f092108e1369bec89b1f56c881dc5419b7ce6
 	</dependencies>
 
 	<repositories>
@@ -82,6 +91,9 @@
 	</build>
 </project>
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 620f092108e1369bec89b1f56c881dc5419b7ce6

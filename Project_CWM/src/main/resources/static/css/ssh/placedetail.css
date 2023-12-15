@@ -83,23 +83,26 @@ button{
 .pic00-list{
     width: 100%;
     height: 500px;
-    /* background-color: rgba(165, 192, 239, 0.4); */
     margin: 0 20px;
     display: flex;
 }
 .pic00-list div {
     transition: opacity 0.5s ease-in-out;
 }
-.pic01, .pic02, .pic03, .pic04{
+.pic01, .pic02, .pic03{
     width: 100%; /* 작은 div의 가로 크기 */
     height: 100%; /* 작은 div의 세로 크기 */
+    display: block;
+    object-fit: cover;
+    position: relative;
     overflow: hidden;
 }
-.pic01 img, .pic02 img, .pic03 img, .pic04 img{
-    width: auto; /* 이미지의 가로 크기를 자동으로 조절 */
+.pic01 img, .pic02 img, .pic03 img{
     height: 100%; /* 이미지를 부모 요소에 맞게 세로 크기 조절 */
-    display: block; /* 인라인 요소로부터 블록 요소로 변경 */
-    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .visible {
     opacity: 1;
@@ -141,22 +144,45 @@ button{
 .detail-etc h2{
     text-align: center;
 }
-.detail-etc-pic{
+.detail-etc-etc{
     margin-top: 20px;
-    display: flex;
-    gap: 10px;
     background-color: rgba(165, 192, 239, 0.4);
     padding: 20px 10px;
 }
-.detail-etc01{
-    width: 25%;
+.detail-etc-pic{
+    width: auto;
     height: 100%;
-    /* text-align: center; */
+    display: flex;
+    margin: 0 auto;
+    padding: 5px 0;
+}
+.pic000-list{
+    width: 100%;
+    height: 200px;
+    margin: 10px 20px;
+    display: flex;
+}
+.pic000{
+    width: 100%; /* 작은 div의 가로 크기 */
+    height: 100%; /* 작은 div의 세로 크기 */
+    display: block;
+    object-fit: cover;
+    position: relative;
+    overflow: hidden;
+}
+.pic000 img{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .p{
     background-color: rgba(255, 255, 255, 0.5);
     height: auto;
+    margin: 10px 20px;
     line-height: 1.8;
+    padding: 5px 7px;
 }
 
 .list{

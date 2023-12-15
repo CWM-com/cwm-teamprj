@@ -75,12 +75,12 @@
                         </form>
                     </div>
                     <div class="camp-place">
-                        <div th:each="ps : ${placeSearch}">
-                            <div>
+                        <div class="wrapp" th:each="ps : ${placeSearch}">
+
                                 <div class="camp-place-title">
                                     <div class="camp-place-title-thumb">
                                         <div class="pic-thumb"  th:each="main : ${main}" th:if="${ps.placeCode == main.placeCode}">
-                                            <img th:src="@{|/${main.folderName}/${main.orgName}|}" alt="${file.orgName}">
+                                            <img th:src="@{|/${main.folderName}/thumb_${main.orgName}|}" alt="${file.orgName}">
                                         </div>
                                     </div>
                                     <div class="camp-place-title-content">
@@ -121,7 +121,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                     <div class="bottom">
