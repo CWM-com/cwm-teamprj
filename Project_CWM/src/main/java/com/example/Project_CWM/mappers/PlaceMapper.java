@@ -1,6 +1,7 @@
 package com.example.Project_CWM.mappers;
 
 
+import com.example.Project_CWM.dto.MapDto;
 import com.example.Project_CWM.dto.PlaceDto;
 import com.example.Project_CWM.dto.PlaceFilesDto;
 import org.apache.ibatis.annotations.*;
@@ -56,11 +57,11 @@ public interface PlaceMapper {
 
     //캠핑장 추가시 주소 입력
     @Insert("insert into placecoor values(#{placeCode}, #{placeAddr}, null, null)")
-    public void setAddr(PlaceDto placeDto);
+    public void setAddr(MapDto mapDto);
 
     //캠핑장 추가시 주소 좌표 업데이트
     @Update("update placecoor set place_x = #{placeX}, place_y = {placeY} where place_code = #{placeCode}")
-    public void updateAddr(String placeX, String placeY, String placeCode);
+    public void updateAddr(MapDto mapDto);
 
 
 

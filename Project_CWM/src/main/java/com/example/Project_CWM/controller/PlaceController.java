@@ -98,11 +98,12 @@ public class PlaceController {
     }
     @PostMapping("/placeregister")
     public String setPlace(@ModelAttribute PlaceDto placeDto,
+                           @ModelAttribute MapDto mapDto,
                            @RequestParam("fileMain") List<MultipartFile> fileMain,
                            @RequestParam("fileDetail") List<MultipartFile> fileDetail,
                            @RequestParam("fileAround") List<MultipartFile> fileAround) throws IOException {
         placeService.setPlace(placeDto);
-        placeService.setAddr(placeDto);
+        placeService.setAddr(mapDto);
 
         String placeCode = placeDto.getPlaceCode();
         String folderName = "place_" + placeCode + "_files";
