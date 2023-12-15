@@ -2,10 +2,7 @@ package com.example.Project_CWM.service;
 
 
 
-import com.example.Project_CWM.dto.MapDto;
-import com.example.Project_CWM.dto.PlaceDto;
-import com.example.Project_CWM.dto.PlaceFilesDto;
-import com.example.Project_CWM.dto.PlacePageDto;
+import com.example.Project_CWM.dto.*;
 import com.example.Project_CWM.mappers.PlaceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -122,7 +119,10 @@ public class PlaceService {
         placeMapper.updateAddr(mapDto);
     }
 
-    public void setBookmark(String placeCode, int idx){
-        placeMapper.setBookmark(placeCode, idx);
+    public void addBookmark(String placeCode, int idx){
+        placeMapper.addBookmark(placeCode, idx);
+    }
+    public void delBookmark(String placeCode, int idx){
+        placeMapper.delBookmark(placeCode, idx);
     }
 }

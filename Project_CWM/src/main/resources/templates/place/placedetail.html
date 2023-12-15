@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/css/ssh/main-copy.css">
     <link rel="stylesheet" href="/css/ssh/common.css">
     <link rel="stylesheet" href="/css/ssh/placedetail.css">
-    <script src="/js/ssh/placedetail.js"></script>
 </head>
 <body>
     <header th:insert="~{fragment/header::header_a}"></header>
@@ -55,9 +54,11 @@
                         <div class="detail-title" >
                             <div class="detail-title-title">
                                 <h2>[[${detail.placeName}]]</h2>
+                                <h2>[[${detail.placeCode}]]</h2>
+<!--                                <input type="text" th:value="${session.LoginIn.idx}" name="memIdx">-->
                             </div>
                             <div class="detail-title-bookmark">
-                                <i class="fa-solid fa-bookmark" onclick="toggleImageClass(this)"></i>
+                                <i class="fa-solid fa-bookmark bookmark" id="bookmarkIcon" onclick="bookmark()"></i>
                             </div>
                             <div class="rating" id="ratingStars">
                                 <span class="star" data-rating="1" onclick="setRating(1)">★</span>
@@ -222,16 +223,62 @@
 
     <script>
         //북마크
-        function toggleImageClass(icon) {
-            // 이미지에 'selected' 클래스가 있는지 확인
-            if (icon.classList.contains('active')) {
-                // 이미지에 'selected' 클래스가 있으면 제거
-                icon.classList.remove('active');
+        let isBookmarked = false;
+        let obj = {
+            "placeCode" : [[${detail.placeCode}]],
+            "idx" : [[${session.LoginIn.idx}]]
+        };
+        function bookmark(){
+            isBookmarked = !isBookmarked;
+            if (isBookmarked) {
+                 addBookmark();
             } else {
-                // 이미지에 'selected' 클래스가 없으면 추가
-                icon.classList.add('active');
+                 delBookmark();
             }
         }
+        function addBookmark() {
+            $.ajax({
+                type: "post",
+                url: "/place/placedetail/addBookmark",
+                dataType: "json",
+                data: obj,
+                success: function(res) {
+                    if (res.msg == "success") {
+                        $("#bookmarkIcon").addClass("active");
+                        alert("북마크가 추가되었습니다.");
+                    } else {
+                        isBookmarked = false;
+                        alert("북마크 추가에 실패했습니다.");
+                    }
+                },
+                error: function() {
+                    isBookmarked = false;
+                    alert("서버 오류가 발생했습니다.");
+                }
+            });
+        }
+        function delBookmark() {
+            $.ajax({
+                type: "post",
+                url: "/place/placedetail/delBookmark",
+                dataType: "json",
+                data: obj,
+                success: function(res) {
+                    if (res.msg == "success") {
+                        $("#bookmarkIcon").removeClass("active");
+                        alert("북마크가 제거되었습니다.");
+                    } else {
+                        isBookmarked = true;
+                        alert("북마크 제거에 실패했습니다.");
+                    }
+                },
+                error: function() {
+                    isBookmarked = true;
+                    alert("서버 오류가 발생했습니다.");
+                }
+            });
+        }
+
 
         // 별점매기기
         let currentRating = 0;
