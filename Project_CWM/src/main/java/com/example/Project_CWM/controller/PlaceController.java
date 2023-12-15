@@ -84,12 +84,6 @@ public class PlaceController {
         model.addAttribute("detail", placeService.getDetail(placeCode));
         return("place/placedetail");
     }
-    @GetMapping("/placedetail/detailList")
-    @ResponseBody
-    public Map<String, Object> getDetailList(@RequestParam String placeCode){
-        List<PlaceFilesDto> dList = placeMapper.getDetailFiles(placeCode);
-        return Map.of("cList", dList);
-    }
 
 
     @GetMapping("/placeregister")
