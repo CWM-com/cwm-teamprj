@@ -121,4 +121,8 @@ public class PlaceService {
     public void updateAddr(MapDto mapDto){
         placeMapper.updateAddr(mapDto);
     }
+
+    public void setBookmark(String placeCode, int idx){
+        placeMapper.setBookmark(placeCode, idx);
+    }
 }
