@@ -61,18 +61,22 @@ public interface PlaceMapper {
     @Update("update placecoor set place_x = #{placeX}, place_y = {placeY} where place_code = #{placeCode}")
     public void updateAddr(MapDto mapDto);
 
-    //캠핑장 북마크 추가
+    //캠핑장 개인 북마크 추가
     @Insert("insert into placebookmark values(#{placeCode}, #{idx}, 1, null)")
     public void addBookmark(String placeCode, int idx);
-    //캠핑장 북마크 제거
+    //캠핑장 개인 북마크 제거
     @Delete("delete from placebookmark where place_code = #{placeCode} and idx = #{idx}")
     public void delBookmark(String placeCode, int idx);
-    //캠핑장 별점 추가
+    //캠핑장 총 북마크 업데이트
+    @Select("update placeinfo set bookmark = (select count(*) from placebookmark where place_code = #{placeCode}) where place_code = #{placeCode}")
+    public void updateBookmark(String placeCode);
+    //캠핑장 개인 별점 추가
     @Insert("insert into placebookmark values(#{placeCode}, #{idx}, null, #{perStar})")
     public void addStar(String placeCode, int idx, String perStar);
-    //캠핑장 별점 제거
+    //캠핑장 개인 별점 제거
     @Delete("delete from placebookmark where place_code = #{placeCode} and idx = #{idx}")
     public void delStar(String placeCode, int idx);
+
 
 
 

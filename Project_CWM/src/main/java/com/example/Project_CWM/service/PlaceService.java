@@ -125,4 +125,7 @@ public class PlaceService {
     public void delBookmark(String placeCode, int idx){
         placeMapper.delBookmark(placeCode, idx);
     }
+    public void updateBookmark(String placeCode){
+        placeMapper.updateBookmark(placeCode);
+    }
 }

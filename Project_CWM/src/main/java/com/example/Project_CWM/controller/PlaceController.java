@@ -33,7 +33,7 @@ public class PlaceController {
     String fileDir;
 
     @GetMapping("/place")
-    public String getSearch(Model model,
+    public String getSearch(Model model, @ModelAttribute PlaceDto placeDto,
                           @RequestParam(value = "page", defaultValue = "1") int page,
                           @RequestParam(value = "selectType", defaultValue = "") String selectType,
                           @RequestParam(value="search", defaultValue = "") String search){
@@ -86,12 +86,14 @@ public class PlaceController {
     @ResponseBody
     public Map<String, Object> addBookmark(String placeCode, int idx){
         placeService.addBookmark(placeCode, idx);
+        placeService.updateBookmark(placeCode);
         return Map.of("msg", "success");
     }
     @PostMapping("/placedetail/delBookmark")
     @ResponseBody
     public Map<String, Object> delBookmark(String placeCode, int idx){
         placeService.delBookmark(placeCode, idx);
+        placeService.updateBookmark(placeCode);
         return Map.of("msg", "success");
     }
 
