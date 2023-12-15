@@ -64,15 +64,17 @@ public interface PlaceMapper {
     public void updateAddr(MapDto mapDto);
 
     //캠핑장 북마크 추가
-    @Insert("insert into placebookmark values(#{}, #{}, 1, null)")
-
-
+    @Insert("insert into placebookmark values(#{placeCode}, #{idx}, 1, null)")
+    void setBookmark(String placeCode, int idx);
     //캠핑장 북마크 제거
-
+    @Delete("delete from placebookmark where place_code = #{placeCode} and idx = #{idx}")
+    public void delBookmark(String placeCode, int idx);
     //캠핑장 별점 추가
-
+    @Insert("insert into placebookmark values(#{placeCode}, #{idx}, null, #{perStar})")
+    public void setStar(String placeCode, int idx, String perStar);
     //캠핑장 별점 제거
-
+    @Delete("delete from placebookmark where place_code = #{placeCode} and idx = #{idx}")
+    public void delStar(String placeCode, int idx);
 
 
 
