@@ -1,4 +1,4 @@
-package com.example.Project_CWM.Service;
+package com.example.Project_CWM.service;
 
 import com.example.Project_CWM.dto.NoticeDto;
 import com.example.Project_CWM.mappers.NoticeMapper;
@@ -19,5 +19,13 @@ public class NoticeService {
 
     public void setWrite(NoticeDto noticeDto) {
         noticeMapper.setWrite(noticeDto);
+    }
+
+    public void setDelete(int id) {
+        noticeMapper.setDelete(id);
+    }
+
+    public NoticeDto getView(int id) {
+        return noticeMapper.getView(id);
     }
 }
