@@ -1,7 +1,6 @@
-package com.example.Project_CWM.Service;
+package com.example.Project_CWM.service;
 
 import com.example.Project_CWM.dto.NoticeDto;
-import com.example.Project_CWM.dto.QnaDto;
 import com.example.Project_CWM.mappers.NoticeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
