@@ -183,13 +183,14 @@ img {
     width: 100%;
 }   
 
-/* mypage 시작 */
+/* mypage  사이드 시작 */
 
 .mypage-container {
     display: flex;
     max-width: 1200px;
-    height: 100vh;
+    height: 100%;
     margin: 0 auto;
+    margin-bottom: 100px;
 }
 
 .page-List {
@@ -234,139 +235,248 @@ img {
     margin-top: 40px;
 }
 
-/* 서브 타이틀 끝 */
+/* 사이드 타이틀 끝 */
 
-.page-title {
-    display: flex;
-    flex-direction: column;
+/* title 시작 */
+
+.user-update h3 {
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 18px;
 }
 
-.userInfo-box {
-    width: 600px;
-    margin: 0 10px 10px 0;
-    background: #fff;
-    border: 1px solid #c7c8d2;
+.update-info {
+    width: 700px;
+    border-top: 2px solid #000;
+}
+
+.update-info ul li {
+    margin-bottom: 18px;
+}
+
+/* tab 시작 */
+.section-wrap .tab {
+    position: relative;
+}
+
+.tab .tabnav {
     overflow: hidden;
-    border-radius: 6px;
-    box-shadow: 0 0 5px 0.25rem #eee;
+    display: flex;
+    justify-content: center;
 }
 
-.userInfo-box h3 {
-    font-size: 16px;
-    padding: 10px 15px;
-    margin: 0;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #ddd;
-    background: #f6f6f6;
+.tab .tabnav li {
+    width: 90px;
+    height: 46px;
+
+    border-top: 0px;
+    margin-top: 8px;
+    margin-right: 20px;
+    text-align: center;
 }
 
-.info {
+.tab .tabnav li a {
+    font-size: 20px;
+    color: #7c7c7c; 
+}
+
+.on{
+    color: #000;
+}
+
+.on::after {
+    content: "";
+    display: block;
+    width: 90%;
+    height: 2px;
+    margin-top: 5px;
+    margin-left: 5px;
+    background-color: #8faec2;
+}
+
+.on:first-child::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 2px;
+    margin-top: 5px;
+    margin-left: 23px;
+    background-color: #8faec2;
+}
+
+.tab .tab-container {
+    margin-top: 50px;
+}
+
+.tab .tab-container .tab-content:first-child {
+    display: block;
+}
+
+.tab .tab-container .tab-content {
+    display: none;
+}
+
+/* tab 끝 */
+
+/* tab 메뉴1  내용 시작 */
+
+.all {
+    width: 300px;
+    margin: 20px 16px 50px;
+    padding: 12px 16px;
+    background-color: rgb(227, 232, 235);
+}
+
+.all-box-container {
+    margin-bottom: 24px;
+}
+
+.all-box-cotent {
+    height: 250px;
+    padding: 12px 16px 16px;
+    border: 1px solid rgb(211, 217, 217);
+    border-radius: 8px;
+    box-shadow: rgba(62, 66, 67, 0.04) 4px 4px 10px 0px;
+}
+
+.all-box-top {
     display: flex;
     justify-content: space-between;
-    padding: 15px;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgb(211, 217, 217);
 }
 
-.info ul li {
-    margin: 3px 0;
-    line-height: 1.6;
+.all-box-top .date {
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: -0.5px;
 }
 
-.info ul li span {
+.all-box-top .num {
+    color: rgb(121, 126, 129);
+    font-weight: 400;
+}
+
+.all-information {
+    display: flex;
+    align-items: end;
+    padding-top: 12px;
+}
+
+.img-cover {
+    width: 150px;
+    height: 180px;
+}
+
+.img-box {
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 180px;
+}
+
+.img-box >img {
+    width: 100%;
+    height: 100%;
+}
+
+.reservation-information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 20px;
+    height: 180px;
+    width: 350px;
+}
+/* 취소 완료 시작 */
+.reservation-check {
+    display: inline-block;
+    padding: 2px 6px 0px;
+    color: #000;
+    color: rgb(125, 137, 157);
+    border: 1px solid rgb(188, 201, 224);
+    border-radius: 3px;
+}
+
+.reservation-check p {
+    font-size: 14px;
+    font-weight: bold;
+}
+/* 취소완료 끝 */
+.reservation-name {
+    margin-top: 15px;
+}
+
+.reservation-name > .location {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.reservation-name > .name {
+    margin-top: 2px;
+    font-size: 14px;
+    color: rgb(121, 126, 129)
+}
+
+.reservation-date {
+    margin-top: 15px;
+}
+
+.reservation-date p {
+    font-size: 14px;
+}
+
+.reservation-date p:nth-child(2) {
+    margin-top: 2px;
+}
+
+
+/* 예약완료 */
+
+.reservation-check2 {
+    display: inline-block;
+    padding: 2px 6px 0px;
+    color: #000;
+    color: rgb(83, 136, 228);
+    border: 1px solid rgb(188, 201, 224);
+    border-radius: 3px;
+}
+
+.reservation-check2 p {
+    font-size: 14px;
     font-weight: bold;
 }
 
-.update-info li a {
-    height: 36px;
-    line-height: 34px;
-    border: 1px solid #d3d3d3;
-    border-radius: 10px;
-    color: rgba(34, 34, 34, 0.8);
-    padding: 8px 16px;
+.all-information > .cancle-box {
+    display: flex;
+    justify-content: end;
 }
 
-.update-info li a span {
-    font-size: 12px;
+.cancle-box > p {
+    width: 80px;
+    margin-left: 100px;
 }
 
-/* 캠핑 박스 시작 */
-
-.camp-box {
-    width: 300px;
-    height: 165px;
-    margin: 0 10px 10px 0;
-    background: #fff;
-    border: 1px solid #c7c8d2;
-    overflow: hidden;
+.cancle-btn {
+    padding: 8px 12px;
+    background-color:rgb(57 115 157 / 60%);
+    color: #fff;
+    border: 1px solid rgb(188, 201, 224);
     border-radius: 6px;
-    box-shadow: 0 0 5px 0.25rem #eee;
+    cursor: pointer;
+}
+/* 예약 완료 끝 */
+
+/* 예약 현황이 없는 경우 */
+
+.none {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 222px;
 }
 
-.camp-box h3 {
-    font-size: 16px;
-    padding: 10px 15px;
-    margin: 0;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #ddd;
-    background: #f6f6f6;
-}
-
-.camp-more ul li {
-    margin: 3px 0;
-    line-height: 1.6;
-}
-
-.camp-more li a {
-    height: 36px;
-    line-height: 34px;
-    border: 1px solid #d3d3d3;
-    border-radius: 10px;
-    color: rgba(34, 34, 34, 0.8);
-    padding: 4px 8px;
-}
-
-.camp-more li a span {
-    font-size: 12px;
-}
-/* 찜 목록 끝 */
-
-.use-content {
-    /* position: absolute;
-    top: 43%;
-    left: 28.2%; */
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.use-box {
-    width: 600px;
-    height: 200px;
-    margin: 0 10px 10px 0;
-    background: #fff;
-    border: 1px solid #c7c8d2;
-    overflow: hidden;
-    border-radius: 6px;
-    box-shadow: 0 0 5px 0.25rem #eee;
-}
-
-.use-box h3 {
-    font-size: 16px;
-    padding: 10px 15px;
-    margin: 0;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #ddd;
-    background: #f6f6f6;
-}
-
-.notice-List {
-    height: 150px;
-    line-height: 150px;
-}
-
-.notice-List p {
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-}
 
 /* footer 시작 */
 
@@ -444,4 +554,24 @@ footer {
     font-size: 13px;
     font-weight: 500;
     color: rgb(196, 196, 196);
+}
+/* footer 끝 */
+
+
+.bottom{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    margin-top: 30px
+}
+.bottom-center{
+    display: flex;
+    justify-content: center;
+    margin-top: 210px;
+}
+
+.page-bar > a span {
+    font-size: 20px;
+    margin-right: 3px;
+    margin-left: 3px;
 }

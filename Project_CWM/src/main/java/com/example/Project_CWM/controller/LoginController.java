@@ -3,6 +3,7 @@ package com.example.Project_CWM.controller;
 import com.example.Project_CWM.Service.SigninService;
 import com.example.Project_CWM.dto.MemberDto;
 import com.example.Project_CWM.mappers.SigninMapper;
+import com.example.Project_CWM.service.MypageService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,6 @@ public class LoginController {
     private SigninMapper signinMapper;
     @Autowired
     private SigninService signinService;
-
     @GetMapping("")
     public String getLogin(HttpServletRequest request) {
 

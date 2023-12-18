@@ -109,7 +109,7 @@ public class ReservationController {
 
         MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn");
         
-        if(reservationOrderDto.getReservStatus().equals("예약완료") && setIDX != null) {
+        if(reservationOrderDto.getReservStatus().equals("complete") && setIDX != null) {
             map.put("msg","success");
         }
         return map;
