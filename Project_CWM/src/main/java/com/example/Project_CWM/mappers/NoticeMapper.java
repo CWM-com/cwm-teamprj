@@ -5,12 +5,14 @@ import com.example.Project_CWM.dto.QnaDto;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface NoticeMapper {
 
     @Select("select * from notice order by id desc")
-    List<NoticeDto> getNotice();
+    public List<NoticeDto> getNotice();
+
 
     @Insert("insert into notice values(null, #{subject}, #{writer}, #{content}, 0, now(), #{orgName}, #{savedFileName}, #{savedFilePathName}, #{savedFileSize}, #{folderName}, #{ext}, #{grp}, 1, 1)")
     public void setWrite(NoticeDto noticeDto);
@@ -27,9 +29,21 @@ public interface NoticeMapper {
     int getMaxGrp();
 
     /*파일업데이트*/
-    @Update("update board set subject=#{subject}, writer=#{writer}, content=#{content}, regdate=now(), orgName=#{orgName}, savedFileName=#{savedFileName}, savedFilePathName=#{savedFilePathName}, savedFileSize=#{savedFileSize}, folderName=#{folderName}, ext=#{ext}  where id=#{id}")
+    @Update("update notice set subject=#{subject}, writer=#{writer}, content=#{content}, regdate=now(), orgName=#{orgName}, savedFileName=#{savedFileName}, savedFilePathName=#{savedFilePathName}, savedFileSize=#{savedFileSize}, folderName=#{folderName}, ext=#{ext}  where id=#{id}")
     void setUpdate(NoticeDto noticeDto);
 
     /*파일다운*/
 
+
+
+
+
+    @Select("select count(*) from notice")
+    public int totalCount();
+
+    @Select("select count(*) from notice ${searchQuery}")
+    int getListCount(Map<String, Object> map);
+
+    @Select("select * from notice ${searchQuery} order by grp desc, seq asc, depth asc limit #{startNum}, #{offset}")
+    List<NoticeDto> getList(Map<String, Object> map);
 }

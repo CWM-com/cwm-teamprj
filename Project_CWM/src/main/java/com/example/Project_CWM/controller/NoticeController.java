@@ -32,9 +32,14 @@ public class NoticeController {
     String fileDir;
 
     @GetMapping("")
-    public String getNotice(Model model) {
+    public String getNotice(Model model, @RequestParam(value = "searchType", defaultValue = "") String searchType, @RequestParam(value = "words", defaultValue = "") String words, @RequestParam(value="page", defaultValue = "1") int page) {
         List<NoticeDto> notice = noticeService.getNotice();
         model.addAttribute("list", noticeService.getNotice());
+
+        model.addAttribute("cnt", noticeService.getSearchCnt(searchType, words));
+        model.addAttribute("list", noticeService.getSearch(page, searchType, words));
+        model.addAttribute("page", noticeService.NoticePageCalc(page));
+        model.addAttribute("qna", notice);
         return "notice/notice";
     }
 
@@ -102,13 +107,13 @@ public class NoticeController {
         return "notice/noticeView";
     }
 
-    @GetMapping("/notice/update")
+    @GetMapping("/update")
     public String getUpdate(@RequestParam int id, Model model) {
-//        System.out.println(id);
         NoticeDto bd = noticeMapper.getView(id);
         model.addAttribute("modify", bd);
         return "notice/noticeUpdate";
     }
+
 
     @PostMapping("/update")
     public String setUpdate(@ModelAttribute NoticeDto noticeDto, @RequestParam("file") MultipartFile mf) throws IOException {
@@ -163,7 +168,7 @@ public class NoticeController {
         noticeMapper.setUpdate(noticeDto);
 
 
-        return "redirect:/board/list";
+        return "redirect:/notice";
     }
 
 

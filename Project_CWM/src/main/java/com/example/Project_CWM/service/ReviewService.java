@@ -1,8 +1,8 @@
 package com.example.Project_CWM.service;
 
-import com.example.Project_CWM.dto.NoticeDto;
 import com.example.Project_CWM.dto.PageDto;
-import com.example.Project_CWM.mappers.NoticeMapper;
+import com.example.Project_CWM.dto.ReviewDto;
+import com.example.Project_CWM.mappers.ReviewMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,31 +11,32 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class NoticeService {
-
+public class ReviewService {
     @Autowired
-    NoticeMapper noticeMapper;
+    ReviewMapper reviewMapper;
 
-    public List<NoticeDto> getNotice() {
-        return noticeMapper.getNotice();
+    public List<ReviewDto> getReview() {
+        return reviewMapper.getReview();
     }
 
-    public void setWrite(NoticeDto noticeDto) {
-        noticeMapper.setWrite(noticeDto);
+    public void setWrite(ReviewDto reviewDto) {
+        reviewMapper.setWrite(reviewDto);
     }
 
     public void setDelete(int id) {
-        noticeMapper.setDelete(id);
+        reviewMapper.setDelete(id);
     }
 
-    public NoticeDto getView(int id) {
-        return noticeMapper.getView(id);
+    public ReviewDto getView(int id) {
+        return reviewMapper.getView(id);
+    }
+
+    void setUpdate(ReviewDto reviewDto) {
+        reviewMapper.setUpdate(reviewDto);
     }
 
 
-
-
-    public List<NoticeDto> getSearch(int page, String searchType, String words) {
+    public List<ReviewDto> getSearch(int page, String searchType, String words) {
         Map<String, Object> map = new HashMap<>();
 
         String searchQuery = "";
@@ -58,7 +59,7 @@ public class NoticeService {
 
 //        System.out.println(pageDto);
 //        System.out.println(startNum);
-        return noticeMapper.getList(map); //boardMapper.getList()로 보냄
+        return reviewMapper.getList(map); //boardMapper.getList()로 보냄
     }
 
     public int getSearchCnt(String searchType, String words) {
@@ -80,7 +81,7 @@ public class NoticeService {
 //        System.out.println(searchQuery);
         map.put("searchQuery", searchQuery);
 
-        return noticeMapper.getListCount(map); //boardMapper.getListCount()로 보냄
+        return reviewMapper.getListCount(map); //boardMapper.getListCount()로 보냄
     }
 
 
@@ -89,10 +90,10 @@ public class NoticeService {
 
 
     /* 페이지 알고리즘 구현 */
-    public PageDto NoticePageCalc(int page) {
+    public PageDto ReviewPageCalc(int page) {
         PageDto pageDto = new PageDto();
 
-        int totalCount = noticeMapper.totalCount();
+        int totalCount = reviewMapper.totalCount();
         int totalPage = (int)Math.ceil((double) totalCount / pageDto.getPageCount());
 
 
@@ -111,4 +112,5 @@ public class NoticeService {
 
         return pageDto;
     }
+
 }

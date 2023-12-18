@@ -163,6 +163,7 @@
                 <!-- page number -->
 
                 <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}" th:href="@{/notice?(page=${i})}">
+                <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}" th:href="@{/notice?(page=${i})}">
                     <th:block th:if="${page.page eq i}">
                           <span style="color:#f00">
                             <strong>[[${i}]]</strong>
