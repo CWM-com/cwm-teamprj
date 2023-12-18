@@ -222,12 +222,12 @@ img {
     line-height: 18px;
 }
 
-.title-List li:nth-child(2) {
+.title-List li {
     margin-top: 12px;
 }
 
-.title-List li:nth-child(3) {
-    margin-top: 12px;
+.title-List li:nth-child(1) {
+    margin-top: 0px
 }
 
 .title-box {

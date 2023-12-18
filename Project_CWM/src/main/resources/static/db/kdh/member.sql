@@ -10,7 +10,7 @@ user_Authority varchar(5),
 primary key(idx)
 );
 
-insert into member values(null,'test123','1q2w3e4r','mails@naver.com','김길동','010-1111-1111',now());
+insert into member values(null,'1q2w3e4r','1q2w3e4r','mails@naver.com','김길동','010-1111-1111',now(),'USER');
 
 
 
@@ -75,7 +75,7 @@ insert into campType values(null,'충주카누캠핑장','캠프-A',50000),(null
 
 insert into campType values(null,'태안둘레길캠핑장','캠프-A',50000),(null,'태안둘레길캠핑장','캠프-B',50000),(null,'태안둘레길캠핑장','캠프-C',50000)
 ,(null,'태안둘레길캠핑장','글램핑-A',80000),(null,'태안둘레길캠핑장','글램핑-B',80000),(null,'태안둘레길캠핑장','글램핑-C',80000)
-,(null,'태안둘레길캠핑장','카라반-A',100000),(null,'태안둘레길캠핑장','카라반-B',100000),(null,'충주카태안둘레길캠핑장누캠핑장','카라반-C',100000);
+,(null,'태안둘레길캠핑장','카라반-A',100000),(null,'태안둘레길캠핑장','카라반-B',100000),(null,'태안둘레길캠핑장','카라반-C',100000);
 
 insert into campType values(null,'사천비토솔섬오토캠핑장','캠프-A',50000),(null,'사천비토솔섬오토캠핑장','캠프-B',50000),(null,'사천비토솔섬오토캠핑장','캠프-C',50000)
 ,(null,'사천비토솔섬오토캠핑장','글램핑-A',80000),(null,'사천비토솔섬오토캠핑장','글램핑-B',80000),(null,'사천비토솔섬오토캠핑장','글램핑-C',80000)
@@ -91,15 +91,17 @@ reserv_name varchar(20) not null,
 reserv_tel varchar(13) not null,
 camp_name varchar(20) not null,
 camp_type varchar(10) not null,
-reserv_Check_in date not null,
-reserv_check_days char(3) not null,
-reserv_Check_out date not null,
-reserv_adult_num int not null,
-reserv_teen_num int not null,
-reserv_child_num int not null,
-reserv_status varchar(5),
+check_in date not null,
+check_days char(3) not null,
+check_out date not null,
+adult_num int not null,
+teen_num int not null,
+cildNum int not null,
+reserv_status varchar(15),
 mem_idx int not null,
 imp_uid varchar(50) not null,
+merchantUid varchar(50) not null,
+regdate date not null,
 primary key(reserv_idx),
 foreign key(mem_idx) references member(idx) on update cascade on delete restrict,
 foreign key(camp_name) references camp(camp_name) on update cascade on delete restrict,
@@ -128,13 +130,14 @@ create table Payment(
 order_idx int not null auto_increment,
 imp_uid varchar(50) not null unique,
 merchant_uid varchar(50) not null,
-orderName varchar(20) not null,
+pay_Method varchar(20) not null,
+orderName varchar(50) not null,
 amount varchar(20) not null,
 buyer_name varchar(20) not null,
 buyer_tel varchar(13) not null,
 buyer_email varchar(50) not null,
 payment_date dateTime,
-payment_status varchar(5) not null,
+payment_status varchar(15) not null,
 mem_idx int not null,
 primary key(order_idx)
 );
@@ -251,4 +254,7 @@ WHERE ct.camp_name = #{campName}
         OR (r.reserv_Check_in <= #{checkin} AND r.reserv_Check_out > #{checkout})
       )
   );
+
+
+  select p.place_code, r.* from reservation as r inner join placeinfo as p on(r.camp_name = p.place_name) where mem_idx = 1;
     

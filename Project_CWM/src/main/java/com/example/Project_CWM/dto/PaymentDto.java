@@ -1,13 +1,12 @@
 package com.example.Project_CWM.dto;
 
-import org.intellij.lang.annotations.RegExp;
-import org.springframework.lang.NonNull;
 
 public class PaymentDto {
 
     private int orderIdx;
     private String impUid;
     private String merchantUid;
+    private String payMethod;
     private String orderName;
     private String amount;
     private String buyerName;
@@ -31,6 +30,22 @@ public class PaymentDto {
 
     public void setImpUid(String impUid) {
         this.impUid = impUid;
+    }
+
+    public String getMerchantUid() {
+        return merchantUid;
+    }
+
+    public void setMerchantUid(String merchantUid) {
+        this.merchantUid = merchantUid;
+    }
+
+    public String getPayMethod() {
+        return payMethod;
+    }
+
+    public void setPayMethod(String payMethod) {
+        this.payMethod = payMethod;
     }
 
     public String getOrderName() {
@@ -97,20 +112,13 @@ public class PaymentDto {
         this.payment_date = payment_date;
     }
 
-    public String getMerchantUid() {
-        return merchantUid;
-    }
-
-    public void setMerchantUid(String merchantUid) {
-        this.merchantUid = merchantUid;
-    }
-
     @Override
     public String toString() {
         return "PaymentDto{" +
                 "orderIdx=" + orderIdx +
                 ", impUid='" + impUid + '\'' +
-                ", merchantUid=" + merchantUid +
+                ", merchantUid='" + merchantUid + '\'' +
+                ", payMethod='" + payMethod + '\'' +
                 ", orderName='" + orderName + '\'' +
                 ", amount='" + amount + '\'' +
                 ", buyerName='" + buyerName + '\'' +

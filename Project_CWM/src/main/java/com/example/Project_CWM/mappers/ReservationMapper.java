@@ -5,8 +5,10 @@ import com.example.Project_CWM.dto.ReservationOrderDto;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface ReservationMapper {
@@ -17,11 +19,11 @@ public interface ReservationMapper {
             "  AND ct.camp_type NOT IN (\n" +
             "    SELECT DISTINCT r.camp_type\n" +
             "    FROM reservation as r\n" +
-            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = '예약완료'" +
+            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = 'complete'" +
             "      AND (\n" +
-            "        (#{checkin} BETWEEN r.reserv_Check_in AND r.reserv_Check_out - INTERVAL 1 DAY)\n" +
-            "        OR (#{checkout} BETWEEN r.reserv_Check_in + INTERVAL 1 DAY AND r.reserv_Check_out)\n" +
-            "        OR (r.reserv_Check_in <= #{checkin} AND r.reserv_Check_out > #{checkout})\n" +
+            "        (#{checkin} BETWEEN r.check_in AND r.check_out - INTERVAL 1 DAY)\n" +
+            "        OR (#{checkout} BETWEEN r.check_in + INTERVAL 1 DAY AND r.check_out)\n" +
+            "        OR (r.check_in <= #{checkin} AND r.check_out > #{checkout})\n" +
             "      )\n" +
             "  );")
     public List<ReservSearchDto> getSearchType(ReservSearchDto reservSearchDto);
@@ -32,11 +34,11 @@ public interface ReservationMapper {
             "  AND ct.camp_type NOT IN (\n" +
             "    SELECT DISTINCT r.camp_type\n" +
             "    FROM reservation as r\n" +
-            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = '예약완료'" +
+            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = 'complete'" +
             "      AND (\n" +
-            "        (#{checkin} BETWEEN r.reserv_Check_in AND r.reserv_Check_out - INTERVAL 1 DAY)\n" +
-            "        OR (#{checkout} BETWEEN r.reserv_Check_in + INTERVAL 1 DAY AND r.reserv_Check_out)\n" +
-            "        OR (r.reserv_Check_in <= #{checkin} AND r.reserv_Check_out > #{checkout})\n" +
+            "        (#{checkin} BETWEEN r.check_in AND r.check_out - INTERVAL 1 DAY)\n" +
+            "        OR (#{checkout} BETWEEN r.check_in + INTERVAL 1 DAY AND r.check_out)\n" +
+            "        OR (r.check_in <= #{checkin} AND r.check_out > #{checkout})\n" +
             "      )\n" +
             "  );")
     public int getCount(ReservSearchDto reservSearchDto);
@@ -47,15 +49,28 @@ public interface ReservationMapper {
             "  AND ct.camp_type NOT IN (\n" +
             "    SELECT DISTINCT r.camp_type\n" +
             "    FROM reservation as r\n" +
-            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = '예약완료'" +
+            "    WHERE r.camp_name = #{campName}\n" + "and r.reserv_status = 'complete'" +
             "      AND (\n" +
-            "        (#{checkin} BETWEEN r.reserv_Check_in AND r.reserv_Check_out - INTERVAL 1 DAY)\n" +
-            "        OR (#{checkout} BETWEEN r.reserv_Check_in + INTERVAL 1 DAY AND r.reserv_Check_out)\n" +
-            "        OR (r.reserv_Check_in <= #{checkin} AND r.reserv_Check_out > #{checkout})\n" +
+            "        (#{checkin} BETWEEN r.check_in AND r.check_out - INTERVAL 1 DAY)\n" +
+            "        OR (#{checkout} BETWEEN r.check_in + INTERVAL 1 DAY AND r.check_out)\n" +
+            "        OR (r.check_in <= #{checkin} AND r.check_out > #{checkout})\n" +
             "      )\n" +
             "  );")
     public List<ReservSearchDto> getPrice(ReservSearchDto reservSearchDto);
 
-    @Insert("insert into reservation values(null,#{reservName},#{reservTel},#{campName},#{campType},#{checkin},#{checkdays},#{checkout},#{adultNum},#{teenNum},#{cildNum},#{reservStatus},#{memIdx},#{impUid})")
+    @Insert("insert into reservation values(null,#{reservName},#{reservTel},#{campName},#{campType},#{checkin},#{checkdays},#{checkout},#{adultNum},#{teenNum},#{cildNum},#{reservStatus},#{memIdx},#{impUid},#{merchantUid},now())")
     public void getReservationList(ReservationOrderDto reservationOrderDto);
+
+    // searchQuery에 따른 출력
+    @Select("select * from reservation where ${searchQuery} mem_idx = #{memIdx} order by reserv_idx desc limit #{startNum}, #{offset}")
+    public List<ReservationOrderDto> OrderList(Map<String,Object> map);
+
+    // searchQuery에 따른 카운트
+    @Select("select count(*) from reservation where ${searchQuery} mem_idx = #{memIdx}")
+    public int ReservCount(String memIdx,String searchQuery);
+
+
+    // 전체 / 완료 / 취소 별로 출력 끝
+    @Update("update reservation set reserv_status = 'cancel' where imp_uid = #{impUid} ")
+    public void updateReserInfo(String impUid);
 }

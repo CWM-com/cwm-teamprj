@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약 내역조회</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../static/css/kdh/reset.css">
+    <link rel="stylesheet" href="../../static/css/kdh/mypage/reservConfirm.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <header th:insert="~{fragment/header::header_a}">
+
+    </header>
+    <main>
+        <div class="section0">
+            <div class="bar-back"></div>
+        </div>
+        <div class="section0">
+            <div class="section00">
+
+            </div>
+        </div>
+        <div class="mypage-container">
+            <div class="page-List">
+                <a href="/mypage">
+                    <h2>마이 페이지</h2>
+                </a>
+                <nav>
+                    <div>
+                        <strong class="sub-title">내 정보</strong>
+                        <ul class="title-List">
+                            <li>
+                                <a href="/mypage/update">회원정보 수정</a>
+                            </li>
+                            <li>
+                                <a href="">작성한 글</a>
+                            </li>
+                            <li>
+                                <a href="">찜 목록</a>
+                            </li>
+                            <li>
+                                <a href="/mypage/withdrawal">회원탈퇴</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="title-box">
+                        <Strong class="sub-title">예약 내역</Strong>
+                        <ul class="title-List">
+                            <li>
+                                <a href="/mypage/reservConfirm">예약내역 조회</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="user-update">
+                <h3>예약내역 조회</h3>
+                <div class="update-info">
+                    <form action="/mypage/reservConfirm" method="get">
+                        <div>
+                            <div class="tab">
+                                <ul class="tabnav">
+                                    <li class="on"><a th:href="@{/mypage/reservConfirm?(page=1)}">전체</a></li>
+                                    <li><a th:href="@{/mypage/reservConfirm?(page=1,search='complete')}">예약완료</a></li>
+                                    <li><a th:href="@{/mypage/reservConfirm?(page=1,search='cancel')}">취소/환불</a></li>
+                                </ul>
+                                <div class="tab-container">
+                                    <div id="tab-1" class="tab-content">
+                                        <th:block th:if="${order != null and order.size() > 0}">
+                                            <div class="all-box-container" th:each="o : ${order}" th:if="o != null">
+                                                <div class="all-box-cotent">
+                                                    <div class="all-box-top">
+                                                        <p class="date">[[${o.regdate}]]</p>
+                                                        <p class="num">예약번호 [[${o.merchantUid}]]</p>
+                                                        <input type="hidden" id="merchantUid" th:value="${o.impUid}">
+                                                    </div>
+                                                    <div class="all-information">
+                                                        <div class="img-cover">
+                                                            <div class="img-box">
+                                                                <img src="../../static/images/mainimg2.jpg" alt="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="reservation-information">
+                                                            <th:block th:if="${o.reservStatus} eq 'complete'">
+                                                                <div class="reservation-check2">
+                                                                    <p>[[${o.reservStatus}]]</p>
+                                                                </div>
+                                                            </th:block>
+                                                            <th:block th:if="${o.reservStatus} eq 'cancel'">
+                                                                <div class="reservation-check">
+                                                                    <p>[[${o.reservStatus}]]</p>
+                                                                </div>
+                                                            </th:block>
+                                                            <div class="reservation-name">
+                                                                <p class="location">[[${o.campName}]]</p>
+                                                                <p class="name">[[${o.campType}]]</p>
+                                                            </div>
+                                                            <div class="reservation-date">
+                                                                <p>[[${o.checkin}]] ~ [[${o.checkout}]]</p>
+                                                                <th:block th:if="${o.adultNum > 0 and o.teenNum > 0 and o.cildNum > 0}">
+                                                                    <p>
+                                                                        성인[[${o.adultNum}]]명, 청소년[[${o.teenNum}]]명, 유아[[${o.cildNum}]]명
+                                                                    </p>
+                                                                </th:block>
+                                                                
+                                                                <th:block th:if="${o.adultNum > 0 and o.teenNum > 0 and o.cildNum == 0}">
+                                                                    <p>
+                                                                        성인[[${o.adultNum}]]명, 청소년[[${o.teenNum}]]명
+                                                                    </p>
+                                                                </th:block>
+                                                                
+                                                                <th:block th:if="${o.adultNum > 0 and o.teenNum == 0 and o.cildNum > 0}">
+                                                                    <p>
+                                                                       성인[[${o.adultNum}]]명, 유아[[${o.cildNum}]]명
+                                                                    </p>
+                                                                </th:block>
+                                                                
+                                                                <th:block th:if="${o.adultNum > 0 and o.teenNum == 0 and o.cildNum == 0}">
+                                                                    <p>
+                                                                        성인[[${o.adultNum}]]명
+                                                                    </p>
+                                                                </th:block>
+                                                            </div>
+                                                        </div>
+                                                        <div class="cancle-box">
+                                                            <th:block th:if="${o.reservStatus} eq 'complete'">
+                                                                <p><button class="cancle-btn">예약취소</button></p>
+                                                            </th:block>
+                                                            <th:block th:unless="${o.reservStatus} eq 'complete'">
+                                                                
+                                                            </th:block>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </th:block>
+                                        <th:block th:unless="${order != null and order.size() > 0}">
+                                            <div class="all-box-container" th:unless="${o != null}">
+                                                <div class="all-box-cotent">
+                                                    <div class="none">
+                                                        <p><i class="fa-regular fa-circle-xmark"></i></p>
+                                                        <h2>예약 내역이 없습니다.</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </th:block>
+                                        <div class="bottom-center">
+                                            <div class="page-bar">
+                                                <!--                prev button-->
+                                                <a th:href="@{/mypage/reservConfirm?(page=)}" th:if="${page.page <= 1}"></a>
+                                                <a th:href="@{/mypage/reservConfirm?(page=${page.page - 1})}" th:unless="${page.page <= 1}">
+                                                    <i class="fa-solid fa-chevron-left"></i>
+                                                   
+                                                </a>
+                                                <!--                page number-->
+                                                <a th:each="mp : ${#numbers.sequence(page.startPage, page.endPage, 1)}"
+                                                   th:href="@{/mypage/reservConfirm?(page=${mp},search=${search})}">
+                                                    <th:block th:if="${page.page eq mp}">
+                                                    <span style="color: #f00;">
+                                                        <strong>[[${mp}]]</strong>
+                                                    </span>
+                                                    </th:block>
+                                                    <th:block th:unless="${page.page eq mp}">
+                                                        <span>[[${mp}]]</span>
+                                                    </th:block>
+                                                </a>
+                                                <!--                page number-->
+                                
+                                                <!--                next button-->
+                                                <a th:href="@{/mypage/reservConfirm?(page=)}" th:if="${page.page >= page.totalPage}"></a>
+                                                <a th:href="@{/mypage/reservConfirm?(page=${page.page + 1})}" th:unless="${page.page >= page.totalPage}">
+                                                    <i class="fa-solid fa-chevron-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="memIdx" id="memIdx" th:value="${session.LoginIn.idx}">
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <footer th:insert="~{fragment/footer::footer_a}">
+
+    </footer>
+
+    <script src="../../static/js/kdh/reservation/tabmove.js"></script>
+    <script src="../../static/js/kdh/reservation/paymentCancle.js"></script>
+</body>
+
+</html>

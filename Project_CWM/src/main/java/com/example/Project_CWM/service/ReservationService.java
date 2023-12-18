@@ -46,7 +46,7 @@ public class ReservationService {
     public void getReservationList(ReservationOrderDto reservationOrderDto) {
 
         if(reservationOrderDto.getReservStatus() == null) {
-                reservationOrderDto.setReservStatus("예약완료");
+                reservationOrderDto.setReservStatus("complete");
                 reservationMapper.getReservationList(reservationOrderDto);
         }
     }
