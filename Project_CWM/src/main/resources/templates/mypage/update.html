@@ -39,7 +39,7 @@
                         <strong class="sub-title">내 정보</strong>
                         <ul class="title-List">
                             <li>
-                                <a href="/mypage/update">로그인 정보</a>
+                                <a href="/mypage/update">회원정보 수정</a>
                             </li>
                             <li>
                                 <a href="">작성한 글</a>
@@ -47,28 +47,25 @@
                             <li>
                                 <a href="">찜 목록</a>
                             </li>
+                            <li>
+                                <a href="/mypage/withdrawal">회원탈퇴</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="title-box">
                         <Strong class="sub-title">예약 내역</Strong>
                         <ul class="title-List">
                             <li>
-                                <a href="">전체 내역</a>
-                            </li>
-                            <li>
-                                <a href="">예약 완료</a>
-                            </li>
-                            <li>
-                                <a href="">예약 취소 </a>
+                                <a href="/mypage/reservConfirm">예약내역 조회</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
             <div class="user-update">
-                <h3>로그인 정보</h3>
+                <h3>회원정보 수정</h3>
                 <div class="update-info">
-                    <form action="">
+                    <form action="/mypage/infoUpdate" method="post" onsubmit="return InfoUpdate()">
                         <ul>
                             <li>
                                 <div class="input-type">
@@ -120,11 +117,13 @@
                             </li>
                         </ul>
                         <div class="btn-box">
-                            <button class="delete-btn" type="button">회원탈퇴</button>
-                            <button class="update-btn" type="button">정보수정</button>
+                            <input class="update-btn" type="submit" value="정보수정">
                         </div>
                         <input type="hidden" name="idx" id="idx" th:value="${session.LoginIn.idx}">
                     </form>
+                    <script th:if="${res != null}" th:inline="javascript">
+                        alert([[${res}]]);
+                    </script>
                 </div>
             </div>
         </div>
@@ -135,7 +134,7 @@
     </footer>
 
     <script src="../../static/js/kdh/reservation/tabmove.js"></script>
-    <script src="../../static/js/kdh/mypages/test.js"></script>
+    <script src="../../js/kdh/mypages/update.js"></script>
 </body>
 
 </html>

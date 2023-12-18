@@ -1,10 +1,7 @@
 package com.example.Project_CWM.mappers;
 
 import com.example.Project_CWM.dto.MemberDto;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -22,4 +19,7 @@ public interface MemberMapper {
 
     @Update("update member set user_passwd = #{userPasswd}, user_tel = #{userTel} where idx = #{idx}")
     public void setinfoUpdate(String userPasswd, String userTel, int idx);
+
+    @Delete("delete from member where idx = #{idx}")
+    public void Infodelete(int idx);
 }

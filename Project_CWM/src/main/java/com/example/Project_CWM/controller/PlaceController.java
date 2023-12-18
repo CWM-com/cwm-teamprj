@@ -1,10 +1,9 @@
 package com.example.Project_CWM.controller;
 
-import com.example.Project_CWM.dto.MapDto;
-import com.example.Project_CWM.dto.PlaceDto;
-import com.example.Project_CWM.dto.PlaceFilesDto;
+import com.example.Project_CWM.dto.*;
 import com.example.Project_CWM.mappers.PlaceMapper;
 import com.example.Project_CWM.service.PlaceService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -34,7 +33,7 @@ public class PlaceController {
     String fileDir;
 
     @GetMapping("/place")
-    public String getSearch(Model model,
+    public String getSearch(Model model, @ModelAttribute PlaceDto placeDto,
                           @RequestParam(value = "page", defaultValue = "1") int page,
                           @RequestParam(value = "selectType", defaultValue = "") String selectType,
                           @RequestParam(value="search", defaultValue = "") String search){
@@ -45,7 +44,6 @@ public class PlaceController {
         model.addAttribute("total", placeMapper.getSearchCount(searchQuery));
 
         model.addAttribute("main", placeService.getMainFiles());
-
         return "place/place";
     }
     @GetMapping("/deletePlace")
@@ -84,6 +82,21 @@ public class PlaceController {
         model.addAttribute("detail", placeService.getDetail(placeCode));
         return("place/placedetail");
     }
+    @PostMapping("/placedetail/addBookmark")
+    @ResponseBody
+    public Map<String, Object> addBookmark(String placeCode, int idx){
+        placeService.addBookmark(placeCode, idx);
+        placeService.updateBookmark(placeCode);
+        return Map.of("msg", "success");
+    }
+    @PostMapping("/placedetail/delBookmark")
+    @ResponseBody
+    public Map<String, Object> delBookmark(String placeCode, int idx){
+        placeService.delBookmark(placeCode, idx);
+        placeService.updateBookmark(placeCode);
+        return Map.of("msg", "success");
+    }
+
 
 
     @GetMapping("/placeregister")

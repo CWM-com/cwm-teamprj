@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 탈퇴</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/kdh/reset.css">
+    <link rel="stylesheet" href="/css/kdh/mypage/withdrawalCheck.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <header th:insert="~{fragment/header::header_a}">
+
+    </header>
+    <main>
+        <div class="section0">
+            <div class="bar-back"></div>
+        </div>
+        <div class="section0">
+            <div class="section00">
+
+            </div>
+        </div>
+        <div class="mypage-container">
+            <div class="page-List">
+                <a href="/mypage">
+                    <h2>마이페이지</h2>
+                </a>
+                <nav>
+                    <div>
+                        <strong class="sub-title">내 정보</strong>
+                        <ul class="title-List">
+                            <li>
+                                <a href="/mypage/update">회원정보 수정</a>
+                            </li>
+                            <li>
+                                <a href="">작성한 글</a>
+                            </li>
+                            <li>
+                                <a href="">찜 목록</a>
+                            </li>
+                            <li>
+                                <a href="/mypage/withdrawal">회원탈퇴</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="title-box">
+                        <Strong class="sub-title">예약 내역</Strong>
+                        <ul class="title-List">
+                            <li>
+                                <a href="/mypage/reservConfirm">예약내역 조회</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="user-delete">
+                <h3>회원 탈퇴</h3>
+                <div class="delete-info">
+                    <div class="update-info">
+                        <div class="withdrrawal-box">
+                            <form action="/mypage/delete" method="post" onsubmit="return InfoDelete()">
+                                <ul>
+                                    <li>
+                                        <div class="input-type">
+                                            <label for="userId">
+                                                <h3>아이디</h3>
+                                            </label>
+                                            <input type="text" name="userId" id="userId" class="id-info" placeholder="아이디">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="input-type">
+                                            <label for="userPwd">
+                                                <h3>비밀번호</h3>
+                                            </label>
+                                            <input type="password" name="userPasswd" id="userPwd"
+                                                class="id-info" placeholder="비밀번호" maxlength="20">
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="btn-box">
+                                    <input class="delete-btn" type="submit" value="회원탈퇴">
+                                </div>
+                                <input type="hidden" name="idx" id="idx" th:value="${session.LoginIn.idx}">
+                            </form>
+                            <script th:if="${msg != null}" th:inline="javascript">
+                                alert([[${msg}]]);
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer th:insert="~{fragment/footer::footer_a}">
+
+    </footer>
+
+    <script src="/js/kdh/mypages/withdrawal.js"></script>
+</body>
+
+</html>

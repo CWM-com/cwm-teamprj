@@ -22,7 +22,7 @@
                             </th:block>
 
                             <th:block th:unless="${#strings.isEmpty(session.LoginIn)}">
-                                <a th:href="@{/mypage}">[[${session.LoginIn.userName}]]님</a>
+                                <a th:href="@{/mypage}"><i class="fa-solid fa-user"></i>[[${session.LoginIn.userName}]]님</a>
                             </th:block>
                         </span>
 
@@ -32,7 +32,7 @@
                             </th:block>
 
                             <th:block th:unless="${#strings.isEmpty(session.LoginIn)}">
-                                <a th:href="@{/login/logout}">로그아웃</a>
+                                <a th:href="@{/login/logout}"><i class="fa-solid fa-arrow-right-from-bracket"></i>로그아웃</a>
                             </th:block>
                         </span>
                         <span>
@@ -90,7 +90,7 @@
                                         <a href="">캠핑 리뷰</a>
                                     </li>
                                     <li>
-                                        <a href="">Q&A</a>
+                                        <a href="/qna">Q&A</a>
                                     </li>
                                 </ul>
                             </li>
@@ -104,13 +104,19 @@
                 <h2>캠핑이 하고 싶을때</h2>
                 <p>전국의 캠핑장을 검색하여 떠나보세요.</p>
                 <div class="search-form">
-                    <form action="">
+                    <form action="/place/place" method="get">
                         <fieldset style="border: 0;">
                             <legend></legend>
-                            <input type="text" name="searchcmp" id="totalsearch" class="searchcmp" placeholder="캠핑장 검색" maxlength="14">
-                            <button type="button" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <input type="text" name="search" id="totalsearch" class="searchcmp" placeholder="캠핑장 검색" maxlength="14" autocomplete="off">
+                            <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </fieldset>
                     </form>
+                    <script th:if="${res != null}" th:inline="javascript">
+                        alert([[${res}]]);
+                    </script>
+                    <script th:if="${msg != null}" th:inline="javascript">
+                        alert([[${msg}]]);
+                    </script>
                 </div>
             </div>
         </div>

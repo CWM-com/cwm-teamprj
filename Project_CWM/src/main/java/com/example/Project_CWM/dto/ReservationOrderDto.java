@@ -16,7 +16,8 @@ public class ReservationOrderDto {
     private String memIdx;
     private String campPrice;
     private String impUid;
-
+    private String merchantUid;
+    private String regdate;
     public int getReservIdx() {
         return reservIdx;
     }
@@ -137,6 +138,22 @@ public class ReservationOrderDto {
         this.impUid = impUid;
     }
 
+    public String getRegdate() {
+        return regdate;
+    }
+
+    public void setRegdate(String regdate) {
+        this.regdate = regdate;
+    }
+
+    public String getMerchantUid() {
+        return merchantUid;
+    }
+
+    public void setMerchantUid(String merchantUid) {
+        this.merchantUid = merchantUid;
+    }
+
     @Override
     public String toString() {
         return "ReservationOrderDto{" +
@@ -155,7 +172,11 @@ public class ReservationOrderDto {
                 ", memIdx='" + memIdx + '\'' +
                 ", campPrice='" + campPrice + '\'' +
                 ", impUid='" + impUid + '\'' +
+                ", merchantUid=" + merchantUid +
+                ", regdate='" + regdate + '\'' +
                 '}';
     }
 }
+
+
 
