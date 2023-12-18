@@ -52,6 +52,82 @@ vertical-align: middle;
 }
 
 
-
+/*댓글*/
  
+comment-wrap {
+    margin-top: 50px;
+    background-color:#000;
+    color:#fff;
+    padding: 20px;
+}
 
+.comment-top h3 {
+    margin-bottom: 30px;
+}
+
+.comment-top i {
+    color: var(--btn-color-blue);
+}
+
+textarea {
+    height:100px;
+}
+
+input {
+    width:150px;
+}
+
+.comment-wrap {
+    border-top: 2px solid #e5e5e5;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.comment-box {
+    width: 100%;
+    padding:20px;
+    border-radius: 3px;
+    border-top: 2px solid #e5e5e5;
+}
+
+.cComment {
+    width: 100%;
+}
+
+.comment-box:nth-child(odd) {
+    background-color: rgb(247, 247, 247);
+}
+
+.comment-btn {
+    text-align: right;
+}
+
+.comment-box h3 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-box h3 span {
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+
+
+.comment-box p {
+    line-height:1.5;
+    color: rgb(126, 126, 126);
+}
+
+
+
+.comment-box .msg-btn {
+    text-align:right;
+    margin-top:20px;
+}
+.comment-box .msg-btn a {
+    color: rgb(126, 126, 126);
+}
+
+.comment-main {
+   margin-bottom: 50px;
+}

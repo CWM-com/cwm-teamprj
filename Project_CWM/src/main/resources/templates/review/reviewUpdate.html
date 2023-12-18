@@ -20,7 +20,7 @@
         </div>
         <div class="section0">
             <div class="section00">
-
+                
             </div>
         </div>
         <div class="mypage-container">
@@ -44,35 +44,35 @@
             </div>
             <div class="page-title">
                 <div class="title">
-                    <h1>Review</h1>
+                    <h1>QnA</h1>
                 </div>
-                <div class="wrap">
-                    <form onsubmit="return frmCheck()" action="/review/reply" method="post" autocomplete="off">
+                <div class="wrap"> 
+                    <form onsubmit="return frmCheck()" action="/qna/update" method="post" autocomplete="off">
                         <ul>
                             <li>
-                                <label>답변</label>
-                                <input type="text" name="subject" class="input width-100 noto">
+                                <label>질문</label>
+                                <input type="text" name="subject" class="input width-100 noto" th:value="${modify.subject}">
                             </li>
                             <li>
                                 <label>작성자</label>
-                                <input type="text" name="writer" class="input width-15 noto">
+                                <input type="text" name="writer" class="input width-15 noto" th:value="${modify.writer}">
                             </li>
                             <li>
                                 <label>내용</label>
-                                <textarea name="content" class="input width-100 height noto"></textarea>
+                                <textarea name="content" class="input width-100 height noto">[[${modify.content}]]</textarea>
                             </li>
                             <li>
-                                <input type="submit" value="답글" class="btn1">
+                                <input type="submit" value="글저장" class="btn1">
                                 <input type="reset" value="목록" class="btn1" onclick="move()">
+                                <input type="hidden" name="id" th:value="${modify.id}">
                             </li>
                         </ul>
-                        <input type="hidden" name="id" th:value="${reply.id}">
                     </form>
                 </div>
             </div>
         </div>
     </main>
-
+    
     <footer th:insert="~{fragment/footer::footer_a}">
 
     </footer>
@@ -89,12 +89,12 @@
         function frmCheck() {
 
             if(subject.value == "") {
-                alert("답변을 입력해 주세요.");
+                alert("질문을 입력해 주세요.");
                 subject.focus();
                 return false;
             }
 
-            if(writer.value == "") {
+            if(!writer.value) {
                 alert("게시물 작성자를 입력해 주세요.");
                 writer.focus();
                 return false;
@@ -107,8 +107,9 @@
             }
         }
 
+
         function move() {
-            location.href = "/review";
+            location.href = "/qna";
         }
     </script>
 </body>
