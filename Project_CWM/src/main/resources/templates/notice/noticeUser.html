@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항</title>
+    <link rel="stylesheet" th:href="@{/css/lth/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/lth/notice.css}">
+</head>
+<body>
+<header>
+    <div class="p-fix">
+        <div class="header-container">
+            <div class="header-top">
+                <div class="top-right">
+                        <span>
+                            <a href="">홈</a>
+                        </span>
+                    <span>
+                            <a href="">회원가입</a>
+                        </span>
+                    <span>
+                            <a href="">로그인</a>
+                        </span>
+                    <span>
+                            <a href="">마이페이지</a>
+                        </span>
+                </div>
+            </div>
+            <div class="header-Line">
+                <div class="Logo">
+                    <h3>CWM.CWM</h3>
+                </div>
+                <div class="header-menu">
+                    <ul class="menuList">
+                        <li>
+                            <a href="">캠핑장 이용안내</a>
+                            <ul class="submenu sub-left">
+                                <li>
+                                    <a href="">캠핑장 위치</a>
+                                </li>
+                                <li>
+                                    <a href="">지역별 날씨</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">캠핑장 정보</a>
+                        </li>
+                        <li>
+                            <a href="">예약/결제</a>
+                        </li>
+                        <li>
+                            <a href="">캠핑 팁</a>
+                        </li>
+                        <li>
+                            <a href="">캠핑 게시판</a>
+                            <ul class="submenu sub-right">
+                                <li>
+                                    <a href="">공지사항</a>
+                                </li>
+                                <li>
+                                    <a href="">캠핑 리뷰</a>
+                                </li>
+                                <li>
+                                    <a href="">자유게시판</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="section0">
+        <div class="bar-back"></div>
+    </div>
+    <div class="section0">
+        <div class="section00">
+
+        </div>
+    </div>
+    <div class="mypage-container">
+        <div class="page-List">
+            <a href=""><h2>캠핑게시판</h2></a>
+            <nav>
+                <div>
+                    <ul class="title-List">
+                        <li>
+                            <a href="">공지사항</a>
+                        </li>
+                        <li>
+                            <a href="">캠핑 리뷰</a>
+                        </li>
+                        <li>
+                            <a href="">QnA</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="page-title">
+            <div class="notice">
+                <div class="title">
+                    <h1>공지사항</h1>
+                </div>
+                <div class="notice-container">
+                    <form method="get" action="notice" onsubmit="return check()">
+                        <div class="notice-search">
+                            <div class="inpbox">
+                                <input type="text" name="word" class="word" placeholder="제목 + 내용" required>
+                            </div>
+                            <button type="submit" class="notice-search-btn" value="검색">
+                                <img src="/images/magnifying-glass-solid.svg" alt="">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="notice-List">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>날짜</th>
+                            <th>조회수</th>
+                            <th>비고</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="notice, k: ${list}">
+                                <td>
+                                    <span>[[${cnt - ((page.page - 1) * page.pageCount) - k.index}]]</span>
+                                </td>
+                                <td>
+                                    <a th:href="@{/notice/view?(id=${notice.id})}" class="active">[[${notice.subject}]]</a>
+                                </td>
+                                <td>
+                                    <span>[[${notice.regdate}]]</span>
+                                </td>
+                                <td>
+                                    <span>?</span>
+                                </td>
+                                <td>
+                                    <a th:href="@{/notice/update?(id=${notice.id})}" class="btn1">수정</a>
+                                    <a href="#" class="btn1" th:onclick="remove([[${notice.id}]])")>삭제</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="bottom-center">
+                <a href="#" th:if="${page.page <= 1}"></a>
+
+                <a th:href="@{/notice?(page=${page.page-1})}" th:unless="${page.page <= 1}">
+                    <i class="fa-solid fa-angle-left"></i>
+                </a>
+
+                <!-- page number -->
+
+                <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}" th:href="@{/notice?(page=${i})}">
+                <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}" th:href="@{/notice?(page=${i})}">
+                    <th:block th:if="${page.page eq i}">
+                          <span style="color:#f00">
+                            <strong>[[${i}]]</strong>
+                          </span>
+                    </th:block>
+                    <th:block th:unless="${page.page eq i}">
+                          <span>
+                            <strong>[[${i}]]</strong>
+                          </span>
+                    </th:block>
+                </a>
+                <!-- page number -->
+                <a href="#" th:if="${page.page >= page.totalPage}"></a>
+
+                <a th:href="@{/notice?(page=${page.page + 1})}"
+                   th:unless="${page.page >= page.totalPage}">
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+            </div>
+            <div class="bottom">
+                <a th:href="@{/notice/write}" class="btn1">글쓰기</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-wrap">
+            <div>
+                <div class="footer-item">
+                    <p>
+                        <span><strong>CMW camping travle</strong></span>
+                    </p>
+                    <p>
+                        <span>T. 051-111-1234 | F. 051-222-3456 | E. mailok@mail.com <br></span>
+                    </p>
+                    <p>
+                        <span>부산광역시 서면 123로 561-30(작성자)</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <span>Copyrightⓒ CWM 캠핑 & All rights reserved.</span>
+        </div>
+        <div>
+            <div class="footer-icon">
+                <a><i class="fa-brands fa-square-instagram"></i></a>
+                <a><i class="fa-brands fa-facebook"></i></a>
+                <a><i class="fa-brands fa-tiktok"></i></a>
+                <a><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    function remove(id) {
+        if(confirm(id + "게시물을 삭제 하시겠습니까?")) {
+        location.href = "/notice/delete?id="+id;
+        }
+    }
+</script>
+</body>
+</html>

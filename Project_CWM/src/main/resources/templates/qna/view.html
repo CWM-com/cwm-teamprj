@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="/css/lth/reset.css">
     <link rel="stylesheet" href="/css/lth/view.css">
 </head>
@@ -64,6 +65,39 @@
                 <div class="bottom">
                     <a th:href="@{/qna/reply?(id=${view.id})}" class="btn1">답글달기</a>
                 </div>
+                <div class="comment-wrap">
+                    <div class="comment-top">
+                        <h3 class="en">
+                            <i class="fa-solid fa-caret-right"></i> 댓글쓰기
+                        </h3>
+                    </div>
+
+                    <div class="comment-write">
+                        <input type="hidden" name="bId" th:value="${view.id}">
+
+                        <div class="comment-main">
+                            <div class="comment-list">
+                                <div class="comment-flex">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-wrap">
+                            <div class="comment-name">
+                                <h4 class="en">Name</h4>
+                                <input type="text" name="cWriter">
+                            </div>
+                            <div class="comment-msg">
+                                <h4 class="en">Message</h4>
+                                <textarea class="cComment" name="cComment" placeholder="댓글을 입력하세요"></textarea>
+                            </div>
+                            <div class="comment-btn">
+                                <h4 class="en"></h4>
+                                <button class="btn1 commentBtn" id="cBtn">댓글달기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -72,5 +106,66 @@
 
     </footer>
     <script src="js/kdh/reservation/tabmove.js"></script>
+<script>
+    $(document).ready(function () {
+        let bId = $("input[name=bId]");
+        let cComment = $("textarea[name=cComment]");
+        let cWriter = $("input[name=cWriter]");
+
+        let obj = {
+            bId: bId.val()
+        };
+
+        $.ajax({
+            type: "get",
+            url: "/comment/commentList",
+            dataType: "json",
+            data: obj,
+            success: function (res) {
+                let output = "";
+                res.cList.forEach((c) => {
+                    output += `<div class="comment-box">
+                        <h3>${c.cWriter}  <span>${c.cRegdate}</span></h3>
+                        <p>
+                            ${c.cComment}
+                            <p class="msg-btn">
+                                <a href="/qna" onclick="remove(${c.cId})">삭제</a>
+                            </p>
+                        </p>
+                    </div>`;
+                });
+                $(".comment-flex").html(output);
+            }
+        });
+
+        $("#cBtn").click(function () {
+            let obj = {
+                bId: bId.val(),
+                cComment: cComment.val(),
+                cWriter: cWriter.val()
+            }
+
+            $.ajax({
+                type: "get",
+                url: "/comment/commentWrite",
+                dataType: "json",
+                data: obj,
+                success: function (res) {
+                    if (res.msg == "success") {
+                        alert("댓글이 등록되었습니다.");
+                        location.reload();
+                    }
+                }
+            });
+        });
+    });
+
+    function remove(cId) {
+        if (confirm("댓글을 삭제 하시겠습니까?")) {
+            location.href = "/comment/delete?id=" + cId;
+        }
+    }
+
+    </script>
 </body>
 </html>

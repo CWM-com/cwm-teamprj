@@ -21,7 +21,10 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
                 .addResourceLocations("file:src/main/resources/static/")
-                .addResourceLocations("file:src/main/resources/static/images/ssh/");
+                .addResourceLocations("file:src/main/resources/static/images/ssh/")
+                .addResourceLocations("file:Project_CWM/src/main/resources/static/upload/")
+                .addResourceLocations("file:Project_CWM/src/main/resources/static/")
+                .addResourceLocations("file:/Users/lth069389/Desktop/temp/");;
     }
 
 }

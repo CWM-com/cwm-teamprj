@@ -1,6 +1,6 @@
 package com.example.Project_CWM.controller;
 
-import com.example.Project_CWM.Service.QnaService;
+import com.example.Project_CWM.service.QnaService;
 import com.example.Project_CWM.dto.QnaDto;
 import com.example.Project_CWM.mappers.QnaMapper;
 import org.springframework.beans.factory.annotation.Autowired;

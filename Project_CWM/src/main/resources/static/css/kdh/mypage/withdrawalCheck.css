@@ -4,7 +4,7 @@
 body {
     font-family: 'Noto Sans KR', sans-serif;
     font-family: 'Poppins', sans-serif;
-    background-color: #f7f7f7;
+    background-color: #fff;
 }
 
 header {
@@ -17,6 +17,7 @@ ul li {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 img {
@@ -155,7 +156,7 @@ img {
 /* 바디 */
 .section0{
     width: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -168,260 +169,155 @@ img {
 
 /* 바디 제목 */
 .section00{
-    display: flex;
     margin-top: 100px;
 }
 
 .section-wrap {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 .menu0 {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
 }
 .menu00 {
     width: 100%;
 }   
-.menu0 h2::after {
-    content: "";
-    margin-top: 10px;
-    width: 100%;
-    height: 1.5px;
-    display: block;
-    background-color: #ccc;
-}
-.menu0 div h2 {
-    color: #000;
-    font-size: 28px;
-    text-align: center;
-}
 
-/* 캠핑 내용 */
+/* mypage  사이드 시작 */
 
-/* 사이드바 */
-.side-menu-bar{
-    position: absolute;
-    left: 10px;
-    width: 200px;
-    text-align: center;
-}
-.side-title{
-    width: 100%;
-    height: 40px;
+.mypage-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(165, 192, 239, 0.4);
-    border-radius: 15px 15px 15px 15px;
+    max-width: 1200px;
+    height: 100vh;
+    margin: 0 auto;
 }
 
-.side-title a {
-    color: #fff;
+.page-List {
+    width: 180px;
+    margin-right: 50px;
 }
 
-.side-content {
-    padding: 5px 0px;
-}
-
-.side-content a {
-    color: #000;
-}
-
-
-
-/* tab 시작 */
-.section-wrap .tab {
-    position: relative;
-}
-
-.tab .tabnav {
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-}
-
-.tab .tabnav li {
-    width: 90px;
-    height: 46px;
-
-    border-top: 0px;
-    margin-top: 8px;
-    margin-right: 20px;
-    text-align: center;
-}
-
-.tab .tabnav li a {
-    font-size: 20px;
-    color: #7c7c7c; 
-}
-
-.on{
-    color: #000;
-}
-
-.on::after {
-    content: "";
-    display: block;
-    width: 90%;
-    height: 2px;
-    margin-top: 5px;
-    margin-left: 5px;
-    background-color: #8faec2;
-}
-
-.on:first-child::after {
-    content: "";
-    display: block;
-    width: 50%;
-    height: 2px;
-    margin-top: 5px;
-    margin-left: 23px;
-    background-color: #8faec2;
-}
-
-.tab .tab-container {
-    margin-top: 50px;
-}
-
-.tab .tab-container .tab-content:first-child {
-    display: block;
-}
-
-.tab .tab-container .tab-content {
-    display: none;
-}
-
-/* tab 끝 */
-
-/* tab 메뉴1  내용 시작 */
-
-.all {
-    width: 300px;
-    margin: 20px 16px 50px;
-    padding: 12px 16px;
-    background-color: rgb(227, 232, 235);
-}
-
-.all-box-container {
-    width: 600px;
-    margin-bottom: 24px;
-}
-
-.all-box-cotent {
-    padding: 12px 16px 16px;
-    border: 1px solid rgb(211, 217, 217);
-    border-radius: 8px;
-    box-shadow: rgba(62, 66, 67, 0.04) 4px 4px 10px 0px;
-}
-
-.all-box-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgb(211, 217, 217);
-}
-
-.all-box-top .date {
-    font-weight: bold;
-    font-size: 16px;
+.page-List a h2 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    padding-bottom: 30px;
     letter-spacing: -0.5px;
 }
 
-.all-box-top .num {
-    color: rgb(121, 126, 129);
-    font-weight: 400;
+.sub-title {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    margin-bottom: 12px;
+    vertical-align: top;
+    letter-spacing: -0.5px;
 }
 
-.all-information {
-    display: flex;
-    align-items: center;
-    padding-top: 12px;
+.title-List li a {
+    color: rgba(34, 34, 34, 0.5);
+    font-size: 15px;
+    letter-spacing: -.15px;
+    line-height: 18px;
 }
 
-.img-cover {
-    width: 150px;
-    height: 180px;
+.title-List li {
+    margin-top: 12px;
 }
 
-.img-box {
-    position: relative;
-    overflow: hidden;
-    width: 150px;
-    height: 180px;
+.title-List li:nth-child(1) {
+    margin-top: 0px
 }
 
-.img-box >img {
+.title-box {
+    margin-top: 40px;
+}
+
+/* 사이드 타이틀 끝 */
+
+/* 회원정보 수정 시작 */
+
+.user-delete h3 {
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 18px;
+}
+
+.delete-info {
+    width: 700px;
+    border-top: 2px solid #000;
+}
+
+.delete-info ul li {
+    margin-bottom: 18px;
+}
+
+.withdrrawal-box {
+    margin-top: 50px;
+}
+
+form {
+    margin-top: 22px;
+}
+
+.input-type label h3 {
+    font-size: 13px;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+}
+
+.input-type div {
+    padding-bottom: 8px;
+}
+
+.input-type input {
     width: 100%;
-    height: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding-bottom: 8px;
+    
+    border: 0;
+    border-bottom: 1px solid #e5e5e5;
+    color: #7c7c7c;
 }
 
-.reservation-information {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 20px;
-    height: 180px;
-}
-/* 취소 완료 시작 */
-.reservation-check {
-    display: inline-block;
-    padding: 2px 6px 0px;
-    color: #000;
-    color: rgb(125, 137, 157);
-    border: 1px solid rgb(188, 201, 224);
-    border-radius: 3px;
+input:focus {
+    outline: none;
+    border-width: 0 0 1px;
+    border-bottom: 1px solid #a1a1a1;
 }
 
-.reservation-check p {
-    font-size: 14px;
-}
-/* 취소완료 끝 */
-.reservation-name {
-    margin-top: 15px;
+ #checkPwd {
+    margin-bottom: 18px;
+    margin-top: 29px;
 }
 
-.reservation-name > .location {
-    font-weight: bold;
-    font-size: 1.2rem;
+.id-info:last-child {
+    margin-bottom: 0px;
 }
 
-.reservation-name > .name {
-    margin-top: 2px;
-    font-size: 14px;
-    color: rgb(121, 126, 129)
+.btn-box {
+    margin-top : 50px;
 }
 
-.reservation-date {
-    margin-top: 15px;
-}
-
-.reservation-date p {
+.delete-btn {
+    float: right;
     font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid #24262b;
+    background-color: #fff;
+    cursor: pointer;
 }
 
-.reservation-date p:nth-child(2) {
-    margin-top: 2px;
+.delete-btn:hover {
+    background-color: rgba(196, 206, 223,0.5);
+    border: 1px solid rgba(196, 206, 223,0.5);
+    transition: all 0.5s ease-in-out;
 }
 
-
-/* 예약완료 */
-
-.reservation-check2 {
-    display: inline-block;
-    padding: 2px 6px 0px;
-    color: #000;
-    color: rgb(83, 136, 228);
-    border: 1px solid rgb(188, 201, 224);
-    border-radius: 3px;
-}
-
-.reservation-check2 p {
-    font-size: 14px;
-}
-/* 예약 완료 끝 */
+/* 회원정보 수정 끝 */
 
 /* footer 시작 */
 
@@ -500,3 +396,4 @@ footer {
     font-weight: 500;
     color: rgb(196, 196, 196);
 }
+
