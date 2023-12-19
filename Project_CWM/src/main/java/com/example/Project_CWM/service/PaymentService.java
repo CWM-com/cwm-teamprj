@@ -4,7 +4,6 @@ import com.example.Project_CWM.dto.PaymentDto;
 import com.example.Project_CWM.mappers.PaymentMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +11,6 @@ import org.springframework.stereotype.Service;
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.URL;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 public class PaymentService {

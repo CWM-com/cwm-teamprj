@@ -2,9 +2,7 @@ package com.example.Project_CWM.controller;
 
 import com.example.Project_CWM.service.NoticeService;
 import com.example.Project_CWM.dto.NoticeDto;
-import com.example.Project_CWM.dto.QnaDto;
 import com.example.Project_CWM.mappers.NoticeMapper;
-import com.example.Project_CWM.mappers.QnaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
