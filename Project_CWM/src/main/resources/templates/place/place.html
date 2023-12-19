@@ -51,7 +51,6 @@
                         </div>
                     </div>
                     <div class="camp-option">
-<!--                        <input type="text" th:value="${session.LoginIn.idx}" name="memIdx">-->
                         <div class="camp-count">
                             <span>현재 등록된 캠핑장 수 : [[${total}]]개</span>
                         </div>
@@ -129,12 +128,12 @@
                             <div class="page-bar">
                                 <!--                prev button-->
                                 <a href="#" th:if="${page.page <= 1}"></a>
-                                <a th:href="@{/place/place?(page=${page.page - 1}, selectType=${param.selectType}, search=${param.search})}" th:unless="${page.page <= 1}">
+                                <a th:href="@{/place/place?(page=${page.page - 1}, selectType=${st}, search=${search})}" th:unless="${page.page <= 1}">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </a>
                                 <!--                page number-->
                                 <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}"
-                                   th:href="@{/place/place?(page=${i})}">
+                                   th:href="@{/place/place?(page=${i}, selectType=${st}, search=${search})}">
                                     <th:block th:if="${page.page eq i}">
                                     <span style="color: #f00;">
                                         <strong>[[${i}]]</strong>
@@ -148,7 +147,7 @@
 
                                 <!--                next button-->
                                 <a href="#" th:if="${page.page >= page.totalPage}"></a>
-                                <a th:href="@{/place/place?(page=${page.page + 1}, selectType=${param.selectType}, search=${param.search})}" th:unless="${page.page >= page.totalPage}">
+                                <a th:href="@{/place/place?(page=${page.page + 1}, selectType=${st}, search=${search})}" th:unless="${page.page >= page.totalPage}">
                                     <i class="fa-solid fa-chevron-right"></i>
                                 </a>
                             </div>
