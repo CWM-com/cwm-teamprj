@@ -1,5 +1,6 @@
 package com.example.Project_CWM.service;
 
+import com.example.Project_CWM.mappers.SigninMapper;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ public class MailSerivce {
 
     @Autowired
     private JavaMailSender javaMailSender;
+    @Autowired
+    private SigninMapper signinMapper;
     private String number;
     private String setFrom = "mailsend7890@gmail.com";
 
@@ -73,12 +76,19 @@ public class MailSerivce {
     }
 
     public  String sendEmail(String userEmail) throws MessagingException {
+        int cnt = 0;
+        cnt = signinMapper.countEmail(userEmail);
 
-        MimeMessage EmailSend = createMail(userEmail);
+        if(cnt == 0) {
+            MimeMessage EmailSend = createMail(userEmail);
 
-        javaMailSender.send(EmailSend);
+            javaMailSender.send(EmailSend);
 
-        return number;
+            return number;
+        }else {
+            String msg = "NOT";
+            return msg;
+        }
     }
 
     public  String sendPwdEmail(String userEmail) throws MessagingException {

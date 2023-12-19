@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="siderbar-header" th:fragment="sidebar_header_frag">
+    <a href="">
+        <h3>코리아아이티 아카데미</h3>
+    </a>
+</div>
+
+<ul class="components" th:fragment="sidebar_components_frag">
+    <li>
+        <a href="/?current=1" th:classappend="${current == '1'} ? active">
+            <i class="fa-solid fa-recycle"></i> 관리자 메인
+        </a>
+
+    </li>
+    <li>
+        <a href=/?current=2 th:classappend="${current == '2'} ? active">
+            <i class="fa-solid fa-layer-group"></i> 캠핑장 등록
+        </a>
+    </li>
+    <li>
+        <a href="/?current=3" th:classappend="${current == '3'} ? active">
+            <i class="fa-solid fa-chart-simple"></i> 공지사항 등록
+        </a>
+    </li>
+    <li>
+        <a href="/?current=4" th:classappend="${current == '4'} ? active">
+            <i class="fa-brands fa-elementor"></i> Element Icons
+        </a>
+    </li>
+    <li>
+        <a href="/?current=5" th:classappend="${current == '5'} ? active">
+            <i class="fa-solid fa-copy"></i> Copy Icons
+        </a>
+    </li>
+    <li>
+        <a href="/?current=6" th:classappend="${current == '6'} ? active">
+            <i class="fa-regular fa-calendar-check"></i> Calendar Icons
+        </a>
+    </li>
+</ul>
+</body>
+</html>

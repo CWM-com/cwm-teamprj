@@ -23,7 +23,13 @@ public class MypageController {
     private MypageService mypageService;
 
     @GetMapping("")
-    public String getMypage() {
+    public String getMypage(HttpSession session, Model model) {
+
+        MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn");
+
+        int idx = setIDX.getIdx();
+
+        model.addAttribute("recent",mypageService.recentCamp(idx));
 
         return "mypage/mypage";
     }
@@ -31,6 +37,7 @@ public class MypageController {
     public String getreservation(@RequestParam(defaultValue = "1") int page,@RequestParam(value = "search", defaultValue = "") String search ,Model model, HttpSession session) {
 
         MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn");
+
         String memIdx = String.valueOf(setIDX.getIdx());
 
         model.addAttribute("order",mypageService.OrderList(memIdx,page,search));
@@ -48,6 +55,12 @@ public class MypageController {
 
         return "mypage/withdrawal";
     }
+
+    @GetMapping("/myQnA")
+    public String getMyQnA() {
+        return "mypage/myQnA";
+    }
+
     @PostMapping("/infoUpdate")
     public String setinfoUpdate(@RequestParam("userPasswd") String userPasswd, @RequestParam("userTel") String userTel, @RequestParam("idx") int idx, HttpSession session, RedirectAttributes ra) {
 

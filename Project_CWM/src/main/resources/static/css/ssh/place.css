@@ -94,7 +94,7 @@
 }
 .camp-place-title-content{
     width: 710px;
-    margin-left: 10px;
+    margin-left: 15px;
 }
 .content-list{
     display: grid;
@@ -144,7 +144,4 @@
 .bottom a{
     font-size: 16px;
     margin-left: 5px;
-}
-.page-bar{
-
 }

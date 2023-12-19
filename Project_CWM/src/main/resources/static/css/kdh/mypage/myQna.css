@@ -188,9 +188,8 @@ img {
 .mypage-container {
     display: flex;
     max-width: 1200px;
-    height: 100%;
+    height: 100vh;
     margin: 0 auto;
-    margin-bottom: 100px;
 }
 
 .page-List {
@@ -237,7 +236,7 @@ img {
 
 /* 사이드 타이틀 끝 */
 
-/* title 시작 */
+/* Qna 부분 시작 */
 
 .user-update h3 {
     font-size: 24px;
@@ -254,219 +253,69 @@ img {
     margin-bottom: 18px;
 }
 
-/* tab 시작 */
-.section-wrap .tab {
-    position: relative;
-}
-
-.tab .tabnav {
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-}
-
-.tab .tabnav li {
-    width: 90px;
-    height: 46px;
-
-    border-top: 0px;
-    margin-top: 8px;
-    margin-right: 20px;
+table {
+    width: 100%;
+    border: 1px solid #fff;
+    border-collapse: collapse;
     text-align: center;
 }
 
-.tab .tabnav li a {
-    font-size: 20px;
-    color: #7c7c7c; 
+thead {
+    font-size: 18px;
+    height: 40px;
 }
 
-.tab .tabnav li a:hover {
-    color: #000;
-}
-
-.tab .tabnav li a:hover::after {
-    content: "";
-    display: block;
-    width: 50%;
-    height: 2px;
-    margin-top: 5px;
-    margin-left: 23px;
-    background-color: #8faec2;
-}
-
-.tab .tab-container {
-    margin-top: 50px;
-}
-
-.tab .tab-container .tab-content:first-child {
-    display: block;
-}
-
-.tab .tab-container .tab-content {
-    display: none;
-}
-
-/* tab 끝 */
-
-/* tab 메뉴1  내용 시작 */
-
-.all {
-    width: 300px;
-    margin: 20px 16px 50px;
-    padding: 12px 16px;
-    background-color: rgb(227, 232, 235);
-}
-
-.all-box-container {
-    margin-bottom: 24px;
-}
-
-.all-box-cotent {
-    height: 250px;
-    padding: 12px 16px 16px;
-    border: 1px solid rgb(211, 217, 217);
-    border-radius: 8px;
-    box-shadow: rgba(62, 66, 67, 0.04) 4px 4px 10px 0px;
-}
-
-.all-box-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgb(211, 217, 217);
-}
-
-.all-box-top .date {
-    font-weight: bold;
-    font-size: 16px;
-    letter-spacing: -0.5px;
-}
-
-.all-box-top .num {
-    color: rgb(121, 126, 129);
-    font-weight: 400;
-}
-
-.all-information {
-    display: flex;
-    align-items: end;
-    padding-top: 12px;
-}
-
-.img-cover {
-    width: 150px;
-    height: 180px;
-}
-
-.img-box {
-    position: relative;
-    overflow: hidden;
-    width: 150px;
-    height: 180px;
-}
-
-.img-box >img {
-    width: 100%;
-    height: 100%;
-}
-
-.reservation-information {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 20px;
-    height: 180px;
-    width: 350px;
-}
-/* 취소 완료 시작 */
-.reservation-check {
-    display: inline-block;
-    padding: 2px 6px 0px;
-    color: #000;
-    color: rgb(125, 137, 157);
-    border: 1px solid rgb(188, 201, 224);
-    border-radius: 3px;
-}
-
-.reservation-check p {
-    font-size: 14px;
-    font-weight: bold;
-}
-/* 취소완료 끝 */
-.reservation-name {
-    margin-top: 15px;
-}
-
-.reservation-name > .location {
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.reservation-name > .name {
-    margin-top: 2px;
-    font-size: 14px;
-    color: rgb(121, 126, 129)
-}
-
-.reservation-date {
-    margin-top: 15px;
-}
-
-.reservation-date p {
-    font-size: 14px;
-}
-
-.reservation-date p:nth-child(2) {
-    margin-top: 2px;
+tr {
+    height: 45px;
 }
 
 
-/* 예약완료 */
-
-.reservation-check2 {
-    display: inline-block;
-    padding: 2px 6px 0px;
-    color: #000;
-    color: rgb(83, 136, 228);
-    border: 1px solid rgb(188, 201, 224);
-    border-radius: 3px;
+th {
+    background-color: #f4f1f1;
 }
 
-.reservation-check2 p {
-    font-size: 14px;
-    font-weight: bold;
+th:nth-child(1) {
+    width: 10%;
 }
 
-.all-information > .cancle-box {
-    display: flex;
-    justify-content: end;
+th:nth-child(2) {
+    width: 45%;
 }
 
-.cancle-box > p {
-    width: 80px;
-    margin-left: 100px;
+th:nth-child(3), th:nth-child(4) {
+    width: 15%;
 }
 
-.cancle-btn {
-    padding: 8px 12px;
-    background-color:rgb(57 115 157 / 60%);
-    color: #fff;
-    border: 1px solid rgb(188, 201, 224);
-    border-radius: 6px;
-    cursor: pointer;
-}
-/* 예약 완료 끝 */
-
-/* 예약 현황이 없는 경우 */
-
-.none {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 222px;
+th, td {
+border: 1px solid #e8e4e4;
+border-bottom: 0;
 }
 
+td:nth-child(2) {
+    text-align: left;
+    padding-left: 8px;
+}
+
+td:nth-child(1) {
+    border-right: 0;
+}
+
+td:nth-child(2) {
+    border-right: 0;
+    border-left: 0;
+}
+
+td:nth-child(3) {
+    border-right: 0;
+    border-left: 0;
+}
+
+td:nth-child(4) {
+    border-left: 0;
+}
+
+
+/* Qna 부분 끝 */
 
 /* footer 시작 */
 
@@ -547,21 +396,3 @@ footer {
 }
 /* footer 끝 */
 
-
-.bottom{
-    display: flex;
-    justify-content: space-between;
-    font-weight: 700;
-    margin-top: 30px
-}
-.bottom-center{
-    display: flex;
-    justify-content: center;
-    margin-top: 210px;
-}
-
-.page-bar > a span {
-    font-size: 20px;
-    margin-right: 3px;
-    margin-left: 3px;
-}
