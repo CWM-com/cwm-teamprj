@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장소상세페이지</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
     <link rel="stylesheet" href="/css/ssh/reset-copy.css">
     <link rel="stylesheet" href="/css/ssh/main-copy.css">
     <link rel="stylesheet" href="/css/ssh/common.css">
@@ -56,6 +54,7 @@
                         <div class="detail-title" >
                             <div class="detail-title-title">
                                 <h2>[[${detail.placeName}]]</h2>
+<!--                                <input type="text" th:value="${session.LoginIn.idx}" name="memIdx">-->
                             </div>
                             <div class="detail-title-bookmark">
                                 <i class="fa-solid fa-bookmark bookmark" id="bookmarkIcon" onclick="bookmark()"></i>
@@ -96,28 +95,20 @@
                                 </tr>
                             </table>
                         </div>
-                        <!-- Slider main container -->
-                        <div class="swiper">
-                            <!-- Additional required wrapper -->
-                            <div class="swiper-wrapper">
-                                <!-- Slides -->
-                                <div class="swiper-slide">
+                        <div class="detail-pics">
+                            <button class="left-arrow"><i class="fa-solid fa-angle-left"></i></button>
+                            <div class="pic00-list">
+                                <div class="pic01 visible">
                                     <img th:src="@{|/images/ssh/place_${detail.placeCode}_files/thumb_camp_${detail.placeCode}_detail_1.jpg|}">
                                 </div>
-                                <div class="swiper-slide">
+                                <div class="pic02 hidden">
                                     <img th:src="@{|/images/ssh/place_${detail.placeCode}_files/thumb_camp_${detail.placeCode}_detail_2.jpg|}">
                                 </div>
-                                <div class="swiper-slide">
+                                <div class="pic03 hidden">
                                     <img th:src="@{|/images/ssh/place_${detail.placeCode}_files/thumb_camp_${detail.placeCode}_detail_3.jpg|}">
                                 </div>
                             </div>
-                            <!-- 이전, 다음 버튼 필요시 추가 -->
-                            <div class="swiper-button-prev">
-                                <button class="left-arrow"><i class="fa-solid fa-angle-left"></i></button>
-                            </div>
-                            <div class="swiper-button-next">
-                                <button class="right-arrow"><i class="fa-solid fa-angle-right"></i></button>
-                            </div>
+                            <button class="right-arrow"><i class="fa-solid fa-angle-right"></i></button>
                         </div>
                         <div class="detail-position">
                             <h2>캠핑장 배치도</h2>
@@ -230,16 +221,123 @@
     <footer th:insert="~{fragment/footer::footer_a}"></footer>
 
     <script>
-        new Swiper('.swiper', {
-            // 다양한 옵션 설정,
-            direction: 'vertical', // 슬라이드 진행 방향, 기본값 horizontal(가로)
-            // autoplay: true 도 가능하지만 객체 데이터로 할당하면 추가적인 옵션 설정 가능
-            autoplay: true,
-            loop: true, // 반복재생 여부
-            slidesPerView: 2, // 한번에 보여줄 슬라이드 개수
-            spaceBetween: 5, // 슬라이드 사이 여백
-            centeredSlides: true, // 1번 슬라이드가 가운데 보이기
-        })
+        //슬라이드
+        $(document).ready(function(){
+            var currentPic = 1;
+            var totalPics = $(".pic00-list div").length;
+
+            function showPic(index) {
+                $(".pic00-list div").removeClass("visible").addClass("hidden");
+                $(".pic00-list .pic0" + index).removeClass("hidden").addClass("visible");
+            }
+
+            $(".left-arrow").click(function(){
+                currentPic = (currentPic === 1) ? totalPics : currentPic - 1;
+                showPic(currentPic);
+            });
+
+            $(".right-arrow").click(function(){
+                currentPic = (currentPic === totalPics) ? 1 : currentPic + 1;
+                showPic(currentPic);
+            });
+
+            // 자동 슬라이드 (5초 간격)
+            setInterval(function() {
+                currentPic = (currentPic === totalPics) ? 1 : currentPic + 1;
+                showPic(currentPic);
+            }, 5000);
+        });
+
+<!--        //북마크-->
+<!--        //let isBookmarked = false;-->
+<!--        let obj = {-->
+<!--            "placeCode" : [[${detail.placeCode}]],-->
+<!--            "idx" : -->
+<!--        };-->
+<!--        function bookmark(){-->
+<!--            isBookmarked = !isBookmarked;-->
+<!--            if (isBookmarked) {-->
+<!--                if(!idx.isEmpty()){-->
+<!--                    addBookmark();-->
+<!--                }else{-->
+<!--                    alert("로그인 후 가능합니다.");-->
+<!--                }-->
+<!--            } else {-->
+<!--                if(!idx.isEmpty()){-->
+<!--                    delBookmark();-->
+<!--                }else{-->
+<!--                    alert("로그인 후 가능합니다.");-->
+<!--                }-->
+<!--            }-->
+<!--        }-->
+<!--        function addBookmark() {-->
+<!--            $.ajax({-->
+<!--                type: "post",-->
+<!--                url: "/place/placedetail/addBookmark",-->
+<!--                dataType: "json",-->
+<!--                data: obj,-->
+<!--                success: function(res) {-->
+<!--                    if (res.msg == "success") {-->
+<!--                        $("#bookmarkIcon").addClass("active");-->
+<!--                        alert("북마크가 추가되었습니다.");-->
+<!--                    } else {-->
+<!--                        isBookmarked = false;-->
+<!--                        alert("북마크 추가에 실패했습니다.");-->
+<!--                    }-->
+<!--                },-->
+<!--                error: function() {-->
+<!--                    isBookmarked = false;-->
+<!--                    alert("서버 오류가 발생했습니다.");-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+<!--        function delBookmark() {-->
+<!--            $.ajax({-->
+<!--                type: "post",-->
+<!--                url: "/place/placedetail/delBookmark",-->
+<!--                dataType: "json",-->
+<!--                data: obj,-->
+<!--                success: function(res) {-->
+<!--                    if (res.msg == "success") {-->
+<!--                        $("#bookmarkIcon").removeClass("active");-->
+<!--                        alert("북마크가 제거되었습니다.");-->
+<!--                    } else {-->
+<!--                        isBookmarked = true;-->
+<!--                        alert("북마크 제거에 실패했습니다.");-->
+<!--                    }-->
+<!--                },-->
+<!--                error: function() {-->
+<!--                    isBookmarked = true;-->
+<!--                    alert("서버 오류가 발생했습니다.");-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+
+
+<!--        // 별점매기기-->
+<!--        let currentRating = 0;-->
+<!--        function setRating(rating) {-->
+<!--            // 현재 선택된 별점을 업데이트-->
+<!--            if (rating === currentRating) {-->
+<!--                // 같은 별을 다시 클릭하면 별점 초기화-->
+<!--                rating = 0;-->
+<!--            }-->
+<!--            currentRating = rating;-->
+<!--            // 모든 별에 대한 활성화 클래스 제거-->
+<!--            const stars = document.querySelectorAll('.star');-->
+<!--            stars.forEach(star => star.classList.remove('active'));-->
+
+<!--            // 선택된 별점까지 활성화 클래스 추가-->
+<!--            for (let i = 0; i < rating; i++) {-->
+<!--                stars[i].classList.add('active');-->
+<!--            }-->
+<!--            // 여기에서 서버로 현재 별점을 전송할 수 있습니다.-->
+<!--            // 예: fetch 또는 AJAX 요청을 사용하여 서버에 데이터를 전송-->
+<!--            // sendDataToServer(currentRating);-->
+<!--        }-->
+
+
+
     </script>
 
 </body>

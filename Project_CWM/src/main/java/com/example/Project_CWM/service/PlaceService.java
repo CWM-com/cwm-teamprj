@@ -45,7 +45,7 @@ public class PlaceService {
             }else{
                 searchQuery = "where place_name like '%" + search + "%' order by place_id desc";
                 select.put("searchQuery", searchQuery);
-                select.put("selectType", selectType);
+                select.put("selectType", "");
             }
         }else{
             if(selectType.equals("regdate")){
@@ -67,7 +67,7 @@ public class PlaceService {
             }else{
                 searchQuery = "order by place_id desc";
                 select.put("searchQuery", searchQuery);
-                select.put("selectType", selectType);
+                select.put("selectType", "");
             }
         }
         return select;
