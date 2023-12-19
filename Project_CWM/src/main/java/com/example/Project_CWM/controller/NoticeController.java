@@ -35,11 +35,9 @@ public class NoticeController {
     public String getNotice(Model model, @RequestParam(value = "searchType", defaultValue = "") String searchType, @RequestParam(value = "words", defaultValue = "") String words, @RequestParam(value="page", defaultValue = "1") int page) {
         List<NoticeDto> notice = noticeService.getNotice();
         model.addAttribute("list", noticeService.getNotice());
-
         model.addAttribute("cnt", noticeService.getSearchCnt(searchType, words));
         model.addAttribute("list", noticeService.getSearch(page, searchType, words));
         model.addAttribute("page", noticeService.NoticePageCalc(page));
-        model.addAttribute("qna", notice);
         return "notice/notice";
     }
 
@@ -103,7 +101,7 @@ public class NoticeController {
     @GetMapping("/view")
     public String getView(@RequestParam int id, Model model) {
         model.addAttribute("view", noticeService.getView(id));
-
+        noticeMapper.updateVisit(id);
         return "notice/noticeView";
     }
 

@@ -36,6 +36,8 @@ public class QnaController {
         model.addAttribute("list", qnaService.getSearch(page, searchType, words));
         model.addAttribute("page", qnaService.QnaPageCalc(page));
         model.addAttribute("qna", qna);
+
+
         return "qna/qna";
     }
 

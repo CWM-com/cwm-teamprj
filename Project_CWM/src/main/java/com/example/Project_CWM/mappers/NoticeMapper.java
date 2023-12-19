@@ -46,4 +46,7 @@ public interface NoticeMapper {
 
     @Select("select * from notice ${searchQuery} order by grp desc, seq asc, depth asc limit #{startNum}, #{offset}")
     List<NoticeDto> getList(Map<String, Object> map);
+
+    @Update("update notice set visit = visit + 1 where id = #{id}")
+    void updateVisit(int id);
 }
