@@ -48,4 +48,5 @@ public interface NoticeMapper {
 
     @Update("update notice set visit = visit + 1 where id = #{id}")
     void updateVisit(int id);
+
 }

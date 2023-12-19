@@ -36,6 +36,7 @@ public class NoticeController {
         model.addAttribute("cnt", noticeService.getSearchCnt(searchType, words));
         model.addAttribute("list", noticeService.getSearch(page, searchType, words));
         model.addAttribute("page", noticeService.NoticePageCalc(page));
+
         return "notice/notice";
     }
 
