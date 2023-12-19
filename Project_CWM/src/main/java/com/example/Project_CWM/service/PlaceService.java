@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,40 +22,61 @@ public class PlaceService {
     @Value("${fileDir}")
     String fileDir;
 
-    public String selectSearch(String selectType, String search){
+    public Map<String, String> selectSearch(String selectType, String search){
         String searchQuery = "";
+        Map<String, String> select = new HashMap<>();
         if(!search.isEmpty()){
             if(selectType.equals("regdate")){
                 searchQuery = "where place_name like '%" + search + "%' order by regdate desc";
+                select.put("searchQuery", searchQuery);
+                select.put("selectType", selectType);
             }else if(selectType.equals("pop")){
                 searchQuery = "where place_name like '%" + search + "%' order by star desc";
+                select.put("searchQuery", searchQuery);
+                select.put("selectType", selectType);
             }else if(selectType.equals("name")){
                 searchQuery = "where place_name like '%" + search + "%' order by place_name asc";
+                select.put("searchQuery", searchQuery);
+                select.put("selectType", selectType);
             }else if(selectType.equals("code")){
                 searchQuery = "where place_name like '%" + search + "%' order by place_code asc";
+                select.put("searchQuery", searchQuery);
+                select.put("selectType", selectType);
             }else{
                 searchQuery = "where place_name like '%" + search + "%' order by place_id desc";
+                select.put("searchQuery", searchQuery);
+                select.put("selectType", "");
             }
         }else{
             if(selectType.equals("regdate")){
                 searchQuery = "order by regdate desc";
+                select.put("searchQuery", searchQuery);
+                select.put("selectType", selectType);
             }else if(selectType.equals("pop")){
                 searchQuery = "order by star desc";
+                select.put("searchQuery", searchQuery);
+                select.put("selectType", selectType);
             }else if(selectType.equals("name")){
                 searchQuery = "order by place_name asc";
+                select.put("searchQuery", searchQuery);
+                select.put("selectType", selectType);
             }else if(selectType.equals("code")){
                 searchQuery = "order by place_code asc";
+                select.put("searchQuery", searchQuery);
+                select.put("selectType", selectType);
             }else{
                 searchQuery = "order by place_id desc";
+                select.put("searchQuery", searchQuery);
+                select.put("selectType", "");
             }
         }
-        return searchQuery;
+        return select;
     }
 
     public PlacePageDto PageCalc(int page, String selectType, String search){
         PlacePageDto placePageDto = new PlacePageDto();
 
-        String searchQuery =selectSearch(selectType, search);
+        String searchQuery = selectSearch(selectType, search).get("searchQuery");
 
         int totalCount = placeMapper.getSearchCount(searchQuery);
         int totalPage = (int)Math.ceil((double)totalCount / placePageDto.getPageCount());
@@ -77,7 +99,7 @@ public class PlaceService {
         Map<String, Object> mapp = new HashMap<>();
         PlacePageDto placePageDto = PageCalc(page, selectType, search);
 
-        String searchQuery = selectSearch(selectType, search);
+        String searchQuery = selectSearch(selectType, search).get("searchQuery");
 
         mapp.put("searchQuery", searchQuery);
         mapp.put("startNum", placePageDto.getStartNum());
@@ -101,6 +123,9 @@ public class PlaceService {
     public void dropFiles(String placeCode){
         placeMapper.dropFiles(placeCode);
     }
+    public void dropAddr(String placeCode){
+        placeMapper.dropAddr(placeCode);
+    }
 
     public PlaceDto getDetail(String placeCode){
         return placeMapper.getDetail(placeCode);
@@ -115,17 +140,13 @@ public class PlaceService {
         placeMapper.setAddr(mapDto);
     }
 
-    public void updateAddr(MapDto mapDto){
-        placeMapper.updateAddr(mapDto);
-    }
-
-    public void addBookmark(String placeCode, int idx){
-        placeMapper.addBookmark(placeCode, idx);
-    }
-    public void delBookmark(String placeCode, int idx){
-        placeMapper.delBookmark(placeCode, idx);
-    }
-    public void updateBookmark(String placeCode){
-        placeMapper.updateBookmark(placeCode);
-    }
+//    public void addBookmark(String placeCode, int idx){
+//        placeMapper.addBookmark(placeCode, idx);
+//    }
+//    public void delBookmark(String placeCode, int idx){
+//        placeMapper.delBookmark(placeCode, idx);
+//    }
+//    public void updateBookmark(String placeCode){
+//        placeMapper.updateBookmark(placeCode);
+//    }
 }

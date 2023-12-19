@@ -37,6 +37,7 @@ public class MypageController {
     public String getreservation(@RequestParam(defaultValue = "1") int page,@RequestParam(value = "search", defaultValue = "") String search ,Model model, HttpSession session) {
 
         MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn");
+
         String memIdx = String.valueOf(setIDX.getIdx());
 
         model.addAttribute("order",mypageService.OrderList(memIdx,page,search));

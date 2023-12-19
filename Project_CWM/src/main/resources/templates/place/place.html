@@ -51,19 +51,18 @@
                         </div>
                     </div>
                     <div class="camp-option">
-<!--                        <input type="text" th:value="${session.LoginIn.idx}" name="memIdx">-->
                         <div class="camp-count">
                             <span>현재 등록된 캠핑장 수 : [[${total}]]개</span>
                         </div>
                         <form action="/place/place" method="get" onsubmit="return placeOrder()">
                             <div class="camp-option-select">
                                 <p>정렬</p>
-                                <select name="selectType" class="selectType" onchange="this.form.submit()">
+                                <select name="selectType" class="selectType" onchange="updateSelectedOption();this.form.submit();">
                                     <option value="">정렬 순서</option>
-                                    <option value="regdate">최근 등록순</option>
-                                    <option value="pop">인기순</option>
-                                    <option value="name">이름순</option>
-                                    <option value="code">지역순</option>
+                                    <option value="regdate" th:selected="${st eq 'regdate'}"> 최근 등록순</option>
+                                    <option value="pop" th:selected="${st eq 'pop'}">인기순</option>
+                                    <option value="name" th:selected="${st eq 'name'}">이름순</option>
+                                    <option value="code" th:selected="${st eq 'code'}">지역순</option>
                                 </select>
                             </div>
                         </form>
@@ -129,12 +128,12 @@
                             <div class="page-bar">
                                 <!--                prev button-->
                                 <a href="#" th:if="${page.page <= 1}"></a>
-                                <a th:href="@{/place/place?(page=${page.page - 1})}" th:unless="${page.page <= 1}">
+                                <a th:href="@{/place/place?(page=${page.page - 1}, selectType=${st}, search=${search})}" th:unless="${page.page <= 1}">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </a>
                                 <!--                page number-->
                                 <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}"
-                                   th:href="@{/place/place?(page=${i})}">
+                                   th:href="@{/place/place?(page=${i}, selectType=${st}, search=${search})}">
                                     <th:block th:if="${page.page eq i}">
                                     <span style="color: #f00;">
                                         <strong>[[${i}]]</strong>
@@ -148,7 +147,7 @@
 
                                 <!--                next button-->
                                 <a href="#" th:if="${page.page >= page.totalPage}"></a>
-                                <a th:href="@{/place/place?(page=${page.page + 1})}" th:unless="${page.page >= page.totalPage}">
+                                <a th:href="@{/place/place?(page=${page.page + 1}, selectType=${st}, search=${search})}" th:unless="${page.page >= page.totalPage}">
                                     <i class="fa-solid fa-chevron-right"></i>
                                 </a>
                             </div>
@@ -166,6 +165,9 @@
     </main>
     <footer th:insert="~{fragment/footer::footer_a}"></footer>
 <script>
+
+
+
     function dropTable(placeCode){
         if(confirm("삭제하면 복구할 수 없습니다.\n정말 삭제하시겠습니까?")){
             $.ajax({
@@ -180,6 +182,26 @@
                     }
                 }
             })
+        }
+    }
+
+    function updateSelectedOption() {
+        // select 요소와 선택된 값에 대한 참조를 얻습니다.
+        var selectElement = document.querySelector('.selectType');
+        var selectedValue = selectElement.value;
+
+        // 모든 option 요소를 반복하면서 선택된 값을 가진 option을 찾습니다.
+        var options = selectElement.options;
+        for (var i = 0; i < options.length; i++) {
+            var option = options[i];
+
+            // 선택된 값과 option의 값이 일치하는 경우 selected 속성을 설정합니다.
+            if (option.value === selectedValue) {
+                option.setAttribute('selected', 'selected');
+            } else {
+                // 일치하지 않는 경우 selected 속성을 제거합니다.
+                option.removeAttribute('selected');
+            }
         }
     }
 </script>
