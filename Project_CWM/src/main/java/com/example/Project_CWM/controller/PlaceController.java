@@ -4,6 +4,9 @@ import com.example.Project_CWM.dto.*;
 import com.example.Project_CWM.mappers.PlaceMapper;
 import com.example.Project_CWM.service.PlaceService;
 import jakarta.servlet.http.HttpSession;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -14,8 +17,13 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -40,7 +48,10 @@ public class PlaceController {
         model.addAttribute("placeSearch", placeService.getSearch(page, selectType, search));
         model.addAttribute("page", placeService.PageCalc(page, selectType, search));
 
-        String searchQuery = placeService.selectSearch(selectType, search);
+        String searchQuery = placeService.selectSearch(selectType, search).get("searchQuery");
+        String select = placeService.selectSearch(selectType, search).get("selectType");
+        model.addAttribute("sq", searchQuery);
+        model.addAttribute("st", select);
         model.addAttribute("total", placeMapper.getSearchCount(searchQuery));
 
         model.addAttribute("main", placeService.getMainFiles());
@@ -50,6 +61,7 @@ public class PlaceController {
     @ResponseBody
     public Map<String, Object> deletePlace(@RequestParam String placeCode){
         if(!placeCode.isEmpty()){
+            placeService.dropAddr(placeCode);
             placeService.dropFiles(placeCode);
             placeService.deletePlace(placeCode);
             return Map.of("msg", "success");
@@ -82,20 +94,20 @@ public class PlaceController {
         model.addAttribute("detail", placeService.getDetail(placeCode));
         return("place/placedetail");
     }
-    @PostMapping("/placedetail/addBookmark")
-    @ResponseBody
-    public Map<String, Object> addBookmark(String placeCode, int idx){
-        placeService.addBookmark(placeCode, idx);
-        placeService.updateBookmark(placeCode);
-        return Map.of("msg", "success");
-    }
-    @PostMapping("/placedetail/delBookmark")
-    @ResponseBody
-    public Map<String, Object> delBookmark(String placeCode, int idx){
-        placeService.delBookmark(placeCode, idx);
-        placeService.updateBookmark(placeCode);
-        return Map.of("msg", "success");
-    }
+//    @PostMapping("/placedetail/addBookmark")
+//    @ResponseBody
+//    public Map<String, Object> addBookmark(String placeCode, int idx){
+//        placeService.addBookmark(placeCode, idx);
+//        placeService.updateBookmark(placeCode);
+//        return Map.of("msg", "success");
+//    }
+//    @PostMapping("/placedetail/delBookmark")
+//    @ResponseBody
+//    public Map<String, Object> delBookmark(String placeCode, int idx){
+//        placeService.delBookmark(placeCode, idx);
+//        placeService.updateBookmark(placeCode);
+//        return Map.of("msg", "success");
+//    }
 
 
 
@@ -108,9 +120,9 @@ public class PlaceController {
                            @ModelAttribute MapDto mapDto,
                            @RequestParam("fileMain") List<MultipartFile> fileMain,
                            @RequestParam("fileDetail") List<MultipartFile> fileDetail,
-                           @RequestParam("fileAround") List<MultipartFile> fileAround) throws IOException {
+                           @RequestParam("fileAround") List<MultipartFile> fileAround,
+                           String query) throws IOException {
         placeService.setPlace(placeDto);
-        placeService.setAddr(mapDto);
 
         String placeCode = placeDto.getPlaceCode();
         String folderName = "place_" + placeCode + "_files";
@@ -236,6 +248,56 @@ public class PlaceController {
             }
         }
 
+        //주소 및 좌표
+        String apiKey = "9d2f52e8d4518bfba9fd6284df2be14f";
+        Float[] coordinate = new Float[2];
+        String apiUrl = "https://dapi.kakao.com/v2/local/search/address.json";
+        String jsonString = null;
+        query = mapDto.getPlaceAddr();
+
+        try {
+            query = URLEncoder.encode(query, "UTF-8");
+
+            String address = apiUrl + "?query=" + query;
+
+            URL url = new URL(address);
+            URLConnection conn = url.openConnection();
+            conn.setRequestProperty("Authorization", "KakaoAK " + apiKey);
+
+            BufferedReader rd = null;
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+            StringBuffer docJson = new StringBuffer();
+
+            String line;
+
+            while ((line = rd.readLine()) != null) {
+                docJson.append(line);
+            }
+
+            jsonString = docJson.toString();
+            rd.close();
+
+            JSONObject jsonObject = new JSONObject(jsonString);
+            JSONArray documentsArray = jsonObject.getJSONArray("documents");
+            JSONObject documentsObject = documentsArray.getJSONObject(0);
+
+
+            String longtitude = documentsObject.getString("x");
+            String latitude = documentsObject.getString("y");
+
+            coordinate[0] = Float.parseFloat(longtitude);
+            coordinate[1] = Float.parseFloat(latitude);
+            mapDto.setPlaceX(coordinate[0]);
+            mapDto.setPlaceY(coordinate[1]);
+            Float placeX = mapDto.getPlaceX();
+            Float placeY = mapDto.getPlaceY();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+        placeService.setAddr(mapDto);
 
         return "redirect:/place/place";
     }

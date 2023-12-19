@@ -3,8 +3,9 @@ package com.example.Project_CWM.dto;
 public class MapDto {
     private String placeCode;
     private String placeAddr;
-    private String placeX;
-    private String placeY;
+    private String placeName;
+    private Float placeX;
+    private Float placeY;
 
     public String getPlaceCode() {
         return placeCode;
@@ -22,20 +23,28 @@ public class MapDto {
         this.placeAddr = placeAddr;
     }
 
-    public String getPlaceX() {
+    public Float getPlaceX() {
         return placeX;
     }
 
-    public void setPlaceX(String placeX) {
+    public void setPlaceX(Float placeX) {
         this.placeX = placeX;
     }
 
-    public String getPlaceY() {
+    public Float getPlaceY() {
         return placeY;
     }
 
-    public void setPlaceY(String placeY) {
+    public void setPlaceY(Float placeY) {
         this.placeY = placeY;
+    }
+
+    public String getPlaceName() {
+        return placeName;
+    }
+
+    public void setPlaceName(String placeName) {
+        this.placeName = placeName;
     }
 
     @Override
@@ -43,8 +52,9 @@ public class MapDto {
         return "MapDto{" +
                 "placeCode='" + placeCode + '\'' +
                 ", placeAddr='" + placeAddr + '\'' +
-                ", placeX='" + placeX + '\'' +
-                ", placeY='" + placeY + '\'' +
+                ", placeName='" + placeName + '\'' +
+                ", placeX=" + placeX +
+                ", placeY=" + placeY +
                 '}';
     }
 }

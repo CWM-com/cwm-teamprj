@@ -54,7 +54,6 @@
                         <div class="detail-title" >
                             <div class="detail-title-title">
                                 <h2>[[${detail.placeName}]]</h2>
-                                <h2>[[${detail.placeCode}]]</h2>
 <!--                                <input type="text" th:value="${session.LoginIn.idx}" name="memIdx">-->
                             </div>
                             <div class="detail-title-bookmark">
@@ -222,86 +221,6 @@
     <footer th:insert="~{fragment/footer::footer_a}"></footer>
 
     <script>
-        //북마크
-        let isBookmarked = false;
-        let obj = {
-            "placeCode" : [[${detail.placeCode}]],
-            "idx" : [[${session.LoginIn.idx}]]
-        };
-        function bookmark(){
-            isBookmarked = !isBookmarked;
-            if (isBookmarked) {
-                 addBookmark();
-            } else {
-                 delBookmark();
-            }
-        }
-        function addBookmark() {
-            $.ajax({
-                type: "post",
-                url: "/place/placedetail/addBookmark",
-                dataType: "json",
-                data: obj,
-                success: function(res) {
-                    if (res.msg == "success") {
-                        $("#bookmarkIcon").addClass("active");
-                        alert("북마크가 추가되었습니다.");
-                    } else {
-                        isBookmarked = false;
-                        alert("북마크 추가에 실패했습니다.");
-                    }
-                },
-                error: function() {
-                    isBookmarked = false;
-                    alert("서버 오류가 발생했습니다.");
-                }
-            });
-        }
-        function delBookmark() {
-            $.ajax({
-                type: "post",
-                url: "/place/placedetail/delBookmark",
-                dataType: "json",
-                data: obj,
-                success: function(res) {
-                    if (res.msg == "success") {
-                        $("#bookmarkIcon").removeClass("active");
-                        alert("북마크가 제거되었습니다.");
-                    } else {
-                        isBookmarked = true;
-                        alert("북마크 제거에 실패했습니다.");
-                    }
-                },
-                error: function() {
-                    isBookmarked = true;
-                    alert("서버 오류가 발생했습니다.");
-                }
-            });
-        }
-
-
-        // 별점매기기
-        let currentRating = 0;
-        function setRating(rating) {
-            // 현재 선택된 별점을 업데이트
-            if (rating === currentRating) {
-                // 같은 별을 다시 클릭하면 별점 초기화
-                rating = 0;
-            }
-            currentRating = rating;
-            // 모든 별에 대한 활성화 클래스 제거
-            const stars = document.querySelectorAll('.star');
-            stars.forEach(star => star.classList.remove('active'));
-
-            // 선택된 별점까지 활성화 클래스 추가
-            for (let i = 0; i < rating; i++) {
-                stars[i].classList.add('active');
-            }
-            // 여기에서 서버로 현재 별점을 전송할 수 있습니다.
-            // 예: fetch 또는 AJAX 요청을 사용하여 서버에 데이터를 전송
-            // sendDataToServer(currentRating);
-        }
-
         //슬라이드
         $(document).ready(function(){
             var currentPic = 1;
@@ -328,6 +247,96 @@
                 showPic(currentPic);
             }, 5000);
         });
+
+<!--        //북마크-->
+<!--        //let isBookmarked = false;-->
+<!--        let obj = {-->
+<!--            "placeCode" : [[${detail.placeCode}]],-->
+<!--            "idx" : -->
+<!--        };-->
+<!--        function bookmark(){-->
+<!--            isBookmarked = !isBookmarked;-->
+<!--            if (isBookmarked) {-->
+<!--                if(!idx.isEmpty()){-->
+<!--                    addBookmark();-->
+<!--                }else{-->
+<!--                    alert("로그인 후 가능합니다.");-->
+<!--                }-->
+<!--            } else {-->
+<!--                if(!idx.isEmpty()){-->
+<!--                    delBookmark();-->
+<!--                }else{-->
+<!--                    alert("로그인 후 가능합니다.");-->
+<!--                }-->
+<!--            }-->
+<!--        }-->
+<!--        function addBookmark() {-->
+<!--            $.ajax({-->
+<!--                type: "post",-->
+<!--                url: "/place/placedetail/addBookmark",-->
+<!--                dataType: "json",-->
+<!--                data: obj,-->
+<!--                success: function(res) {-->
+<!--                    if (res.msg == "success") {-->
+<!--                        $("#bookmarkIcon").addClass("active");-->
+<!--                        alert("북마크가 추가되었습니다.");-->
+<!--                    } else {-->
+<!--                        isBookmarked = false;-->
+<!--                        alert("북마크 추가에 실패했습니다.");-->
+<!--                    }-->
+<!--                },-->
+<!--                error: function() {-->
+<!--                    isBookmarked = false;-->
+<!--                    alert("서버 오류가 발생했습니다.");-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+<!--        function delBookmark() {-->
+<!--            $.ajax({-->
+<!--                type: "post",-->
+<!--                url: "/place/placedetail/delBookmark",-->
+<!--                dataType: "json",-->
+<!--                data: obj,-->
+<!--                success: function(res) {-->
+<!--                    if (res.msg == "success") {-->
+<!--                        $("#bookmarkIcon").removeClass("active");-->
+<!--                        alert("북마크가 제거되었습니다.");-->
+<!--                    } else {-->
+<!--                        isBookmarked = true;-->
+<!--                        alert("북마크 제거에 실패했습니다.");-->
+<!--                    }-->
+<!--                },-->
+<!--                error: function() {-->
+<!--                    isBookmarked = true;-->
+<!--                    alert("서버 오류가 발생했습니다.");-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+
+
+<!--        // 별점매기기-->
+<!--        let currentRating = 0;-->
+<!--        function setRating(rating) {-->
+<!--            // 현재 선택된 별점을 업데이트-->
+<!--            if (rating === currentRating) {-->
+<!--                // 같은 별을 다시 클릭하면 별점 초기화-->
+<!--                rating = 0;-->
+<!--            }-->
+<!--            currentRating = rating;-->
+<!--            // 모든 별에 대한 활성화 클래스 제거-->
+<!--            const stars = document.querySelectorAll('.star');-->
+<!--            stars.forEach(star => star.classList.remove('active'));-->
+
+<!--            // 선택된 별점까지 활성화 클래스 추가-->
+<!--            for (let i = 0; i < rating; i++) {-->
+<!--                stars[i].classList.add('active');-->
+<!--            }-->
+<!--            // 여기에서 서버로 현재 별점을 전송할 수 있습니다.-->
+<!--            // 예: fetch 또는 AJAX 요청을 사용하여 서버에 데이터를 전송-->
+<!--            // sendDataToServer(currentRating);-->
+<!--        }-->
+
+
 
     </script>
 
