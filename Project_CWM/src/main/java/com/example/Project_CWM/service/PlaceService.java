@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,37 +72,37 @@ public class PlaceService {
         return select;
     }
 
-    public PlacePageDto PageCalc(int page, String selectType, String search){
-        PlacePageDto placePageDto = new PlacePageDto();
+    public PageDto PageCalc(int page, String selectType, String search){
+        PageDto pageDto = new PageDto();
 
         String searchQuery = selectSearch(selectType, search).get("searchQuery");
 
         int totalCount = placeMapper.getSearchCount(searchQuery);
-        int totalPage = (int)Math.ceil((double)totalCount / placePageDto.getPageCount());
-        int startPage = ((int)(Math.ceil((double)page / placePageDto.getBlockCount())) - 1) * placePageDto.getBlockCount() + 1;
-        int endPage = startPage + placePageDto.getBlockCount() - 1;
+        int totalPage = (int)Math.ceil((double)totalCount / pageDto.getPlacePageCount());
+        int startPage = ((int)(Math.ceil((double)page / pageDto.getBlockCount())) - 1) * pageDto.getBlockCount() + 1;
+        int endPage = startPage + pageDto.getBlockCount() - 1;
 
         if(endPage > totalPage){
             endPage = totalPage;
         }
-        placePageDto.setStartNum((page - 1) * placePageDto.getPageCount());
-        placePageDto.setPage(page);
-        placePageDto.setStartPage(startPage);
-        placePageDto.setEndPage(endPage);
-        placePageDto.setTotalPage(totalPage);
+        pageDto.setStartNum((page - 1) * pageDto.getPlacePageCount());
+        pageDto.setPage(page);
+        pageDto.setStartPage(startPage);
+        pageDto.setEndPage(endPage);
+        pageDto.setTotalPage(totalPage);
 
-        return placePageDto;
+        return pageDto;
     }
 
     public List<PlaceDto> getSearch(int page, String selectType, String search){
         Map<String, Object> mapp = new HashMap<>();
-        PlacePageDto placePageDto = PageCalc(page, selectType, search);
+        PageDto pageDto = PageCalc(page, selectType, search);
 
         String searchQuery = selectSearch(selectType, search).get("searchQuery");
 
         mapp.put("searchQuery", searchQuery);
-        mapp.put("startNum", placePageDto.getStartNum());
-        mapp.put("offset", placePageDto.getPageCount());
+        mapp.put("startNum", pageDto.getStartNum());
+        mapp.put("offset", pageDto.getPlacePageCount());
 
         return placeMapper.getSearch(mapp);
     }
