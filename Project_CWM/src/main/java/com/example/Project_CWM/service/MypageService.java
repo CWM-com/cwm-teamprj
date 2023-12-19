@@ -1,6 +1,6 @@
 package com.example.Project_CWM.service;
 
-import com.example.Project_CWM.dto.MypagePageDto;
+import com.example.Project_CWM.dto.PageDto;
 import com.example.Project_CWM.dto.ReservationOrderDto;
 import com.example.Project_CWM.mappers.MemberMapper;
 import com.example.Project_CWM.mappers.ReservationMapper;
@@ -55,12 +55,12 @@ public class MypageService {
 
             String searchQuery = selectSearch(search);
 
-            MypagePageDto mypagePageDto = new MypagePageDto();
-            int startNum = (page - 1) * mypagePageDto.getPageCount();
+            PageDto pageDto = new PageDto();
+            int startNum = (page - 1) * pageDto.getMyPageCount();
 
             map.put("memIdx", memIdx);
             map.put("startNum", startNum);
-            map.put("offset", mypagePageDto.getPageCount());
+            map.put("offset", pageDto.getMyPageCount());
             map.put("searchQuery", searchQuery);
             return reservationMapper.OrderList(map);
         }else {
@@ -68,25 +68,25 @@ public class MypageService {
         }
     }
 
-    public MypagePageDto ReservCount(int page, String memIdx, String search) {
-        MypagePageDto mypagePageDto = new MypagePageDto();
+    public PageDto ReservCount(int page, String memIdx, String search) {
+        PageDto pageDto = new PageDto();
 
         String searchQuery = selectSearch(search);
 
         int totalCount = reservationMapper.ReservCount(memIdx,searchQuery);
-        int totalPage = (int) Math.ceil((double) totalCount / mypagePageDto.getPageCount());
-        int startPage = ((int) (Math.ceil((double) page / mypagePageDto.getBlockCount()))-1) * mypagePageDto.getBlockCount() + 1;
-        int endPage = startPage + mypagePageDto.getBlockCount() -1;
+        int totalPage = (int) Math.ceil((double) totalCount / pageDto.getMyPageCount());
+        int startPage = ((int) (Math.ceil((double) page / pageDto.getBlockCount()))-1) * pageDto.getBlockCount() + 1;
+        int endPage = startPage + pageDto.getBlockCount() -1;
 
         if(endPage > totalPage) {
             endPage = totalPage;
         }
-        mypagePageDto.setStartNum((page -1) * mypagePageDto.getBlockCount());
-        mypagePageDto.setPage(page);
-        mypagePageDto.setStartPage(startPage);
-        mypagePageDto.setEndPage(endPage);
-        mypagePageDto.setTotalPage(totalPage);
+        pageDto.setStartNum((page -1) * pageDto.getBlockCount());
+        pageDto.setPage(page);
+        pageDto.setStartPage(startPage);
+        pageDto.setEndPage(endPage);
+        pageDto.setTotalPage(totalPage);
 
-        return mypagePageDto;
+        return pageDto;
     }
 }

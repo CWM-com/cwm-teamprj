@@ -3,7 +3,6 @@ package com.example.Project_CWM.controller;
 import com.example.Project_CWM.dto.*;
 import com.example.Project_CWM.mappers.PlaceMapper;
 import com.example.Project_CWM.service.PlaceService;
-import jakarta.servlet.http.HttpSession;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
