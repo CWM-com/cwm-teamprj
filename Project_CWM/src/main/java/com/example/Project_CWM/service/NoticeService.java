@@ -35,6 +35,7 @@ public class NoticeService {
 
 
 
+
     public List<NoticeDto> getSearch(int page, String searchType, String words) {
         Map<String, Object> map = new HashMap<>();
 
