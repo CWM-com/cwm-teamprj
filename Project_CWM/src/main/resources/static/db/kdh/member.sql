@@ -106,7 +106,7 @@ primary key(reserv_idx),
 foreign key(mem_idx) references member(idx) on update cascade on delete restrict,
 foreign key(camp_name) references camp(camp_name) on update cascade on delete restrict,
 foreign key(camp_type) references campType(camp_type) on update cascade on delete restrict,
-foreign key(imp_uid) references payment(imp_uid) on update cascade on delete restrict
+foreign key(imp_uid) references Payment(imp_uid) on update cascade on delete restrict
 );
 
  -- 예약현황 *************
