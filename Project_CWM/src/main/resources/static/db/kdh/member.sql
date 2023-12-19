@@ -1,6 +1,6 @@
 create table member(
 idx int not null auto_increment,
-user_Id varchar(20) not null,
+user_Id varchar(20) not null unique,
 user_Passwd varchar(20) not null,
 user_Email varchar(50) not null,
 user_Name varchar(10) not null,
