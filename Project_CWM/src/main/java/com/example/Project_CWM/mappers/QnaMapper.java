@@ -39,4 +39,6 @@ public interface QnaMapper {
 
     @Select("select ifnull(max(grp) + 1, 1) as maxGrp from qna")
     int getMaxGrp();
+
+
 }

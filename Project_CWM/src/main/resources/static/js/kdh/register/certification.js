@@ -16,7 +16,10 @@ function mailSend() {
             data : {userEmail : userEmail.value},
             dataType : "json",
             success : (res) => {
-                if(res != null) {
+                if(res.result == "NOT" ) {
+                    alert("이미 존재하는 이메일입니다.");
+                    return false;
+                }else {
                     certifiNum = res.result;
                     alert("인증번호가 전송되었습니다.");
                 }

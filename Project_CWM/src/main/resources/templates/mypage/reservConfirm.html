@@ -30,37 +30,8 @@
             </div>
         </div>
         <div class="mypage-container">
-            <div class="page-List">
-                <a href="/mypage">
-                    <h2>마이 페이지</h2>
-                </a>
-                <nav>
-                    <div>
-                        <strong class="sub-title">내 정보</strong>
-                        <ul class="title-List">
-                            <li>
-                                <a href="/mypage/update">회원정보 수정</a>
-                            </li>
-                            <li>
-                                <a href="">작성한 글</a>
-                            </li>
-                            <li>
-                                <a href="">찜 목록</a>
-                            </li>
-                            <li>
-                                <a href="/mypage/withdrawal">회원탈퇴</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="title-box">
-                        <Strong class="sub-title">예약 내역</Strong>
-                        <ul class="title-List">
-                            <li>
-                                <a href="/mypage/reservConfirm">예약내역 조회</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+            <div class="page-List" th:insert="~{fragment/mypage_side::mypage_side}">
+               
             </div>
             <div class="user-update">
                 <h3>예약내역 조회</h3>
