@@ -242,7 +242,7 @@ img {
 }
 
 .userInfo-box {
-    width: 600px;
+    width: 500px;
     margin: 0 10px 10px 0;
     background: #fff;
     border: 1px solid #c7c8d2;
@@ -291,7 +291,7 @@ img {
 /* 캠핑 박스 시작 */
 
 .camp-box {
-    width: 300px;
+    width: 430px;
     height: 165px;
     margin: 0 10px 10px 0;
     background: #fff;
@@ -338,7 +338,7 @@ img {
 }
 
 .use-box {
-    width: 600px;
+    width: 500px;
     height: 200px;
     margin: 0 10px 10px 0;
     background: #fff;

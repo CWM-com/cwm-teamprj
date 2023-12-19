@@ -73,4 +73,8 @@ public interface ReservationMapper {
     // 전체 / 완료 / 취소 별로 출력 끝
     @Update("update reservation set reserv_status = 'cancel' where imp_uid = #{impUid} ")
     public void updateReserInfo(String impUid);
+
+    // myPage 메인 최근 캠핑장
+    @Select("select camp_name, camp_type, check_in from reservation where mem_idx = #{idx} order by reserv_idx desc limit 0,1; ")
+    public List<ReservationOrderDto> recentCamp(int idx);
 }

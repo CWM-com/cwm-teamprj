@@ -15,4 +15,7 @@ public interface SigninMapper {
 
     @Select("select * from member where user_id = #{userId} and user_passwd = #{userPasswd}")
     public MemberDto setLogin(MemberDto registerDto);
+
+    @Select("select count(*) from member where user_Email = #{userEmail}")
+    public int countEmail(String userEmail);
 }

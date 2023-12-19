@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지 사이드</title>
+</head>
+<body>
+    <div th:fragment="mypage_side">
+        <a th:href="@{/mypage}"><h2>마이 페이지</h2></a>
+        <nav>
+            <div>
+                <strong class="sub-title">내 정보</strong>
+                <ul class="title-List">
+                    <li>
+                        <a th:href="@{/mypage/update}">회원정보 수정</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/mypage/myQnA}">나의 QnA</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/mypage/withdrawal}">회원탈퇴</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="title-box">
+                <Strong class="sub-title">예약 내역</Strong>
+                <ul class="title-List">
+                    <li>
+                        <a th:href="@{/mypage/reservConfirm}">예약내역 조회</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>

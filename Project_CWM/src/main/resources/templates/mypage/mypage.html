@@ -23,35 +23,8 @@
             </div>
         </div>
         <div class="mypage-container">
-            <div class="page-List">
-                <a href="/mypage"><h2>마이 페이지</h2></a>
-                <nav>
-                    <div>
-                        <strong class="sub-title">내 정보</strong>
-                        <ul class="title-List">
-                            <li>
-                                <a href="/mypage/update">회원정보 수정</a>
-                            </li>
-                            <li>
-                                <a href="">작성한 글</a>
-                            </li>
-                            <li>
-                                <a href="">찜 목록</a>
-                            </li>
-                            <li>
-                                <a href="/mypage/withdrawal">회원탈퇴</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="title-box">
-                        <Strong class="sub-title">예약 내역</Strong>
-                        <ul class="title-List">
-                            <li>
-                                <a href="/mypage/reservConfirm">예약내역 조회</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+            <div class="page-List" th:insert="~{fragment/mypage_side::mypage_side}">
+                
             </div>
             <div class="page-title">
                 <div class="userInfo-box">
@@ -88,25 +61,25 @@
                 </div>
             </div>
             <div class="camp-box">
-                <h3>최근 찜한 캠핑장</h3>
-                <div class="info">
+                <h3>최근 예약한 캠핑장</h3>
+                <div class="info" th:each=" r : ${recent}">
                     <ul>
                         <li>
-                            <span>캠핑장 명 :</span>
-                            서면 캠핑장
+                            <span>캠핑장  :</span>
+                            [[${r.campName}]]
                         </li>
                         <li>
-                            <span>캠핑장 위치 :</span>
-                           서면
+                            <span>캠핑종류 :</span>
+                            [[${r.campType}]]
                         </li>
                         <li>
-                            <span>캠핑장 주소 :</span>
-                           123로
+                            <span>예약날짜 :</span>
+                            [[${r.checkin}]]
                         </li>
                     </ul>
                     <ul class="camp-more">
                         <li>
-                           <a href=""><span>더보기</span></a>
+                           <a th:href="@{/mypage/reservConfirm}"><span>더보기</span></a>
                         </li>
                     </ul>
                 </div>

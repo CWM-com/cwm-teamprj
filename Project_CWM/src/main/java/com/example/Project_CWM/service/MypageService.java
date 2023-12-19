@@ -26,6 +26,10 @@ public class MypageService {
         }
     }
 
+    public List<ReservationOrderDto> recentCamp(int idx) {
+        return reservationMapper.recentCamp(idx);
+    }
+
     public void Infodelete(int idx) {
 
         memberMapper.Infodelete(idx);

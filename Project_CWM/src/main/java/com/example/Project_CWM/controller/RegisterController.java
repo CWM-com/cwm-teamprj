@@ -7,6 +7,7 @@ import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.HashMap;
@@ -94,17 +95,25 @@ public class RegisterController {
 
 
     @PostMapping("/certifiCheck")
-    public String certifiCheck(@RequestParam("userEmail") String userEmail,@RequestParam("checkNum") String checkNum, RedirectAttributes ra) {
+    public ModelAndView certifiCheck(@RequestParam("userEmail") String userEmail,@RequestParam("checkNum") String checkNum, RedirectAttributes ra) {
+
+        ModelAndView mv = new ModelAndView();
 
         if (userEmail == null || checkNum == null) {
-            return "redirect:/register/certification";
-        }
 
-        if(checkNum != null && userEmail !=null) {
-            ra.addFlashAttribute("userEmail", userEmail);
-            return "redirect:/register/signup";
+            mv.setViewName("/register/certification");
+
+            return mv;
+        }
+        if(checkNum != null && !userEmail.isEmpty()) {
+
+            mv.setViewName("/register/signup");
+            mv.addObject("data", userEmail);
+
+            return mv;
         }else {
-            return "redirect:/register/certification";
+            mv.setViewName("/register/certification");
+            return mv;
         }
     }
 }

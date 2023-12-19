@@ -56,10 +56,6 @@ public class ReservationController {
     @GetMapping("/reservationsearch")
     @ResponseBody
     public Map<String,Object> getReservationSearch(ReservSearchDto reservSearchDto) {
-        System.out.println(reservSearchDto.getCampName());
-        System.out.println(reservSearchDto.getCheckin());
-        System.out.println(reservSearchDto.getCheckout());
-
 
         Map<String,Object> map = new HashMap<>();
 
