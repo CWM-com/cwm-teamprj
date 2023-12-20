@@ -1,9 +1,11 @@
 package com.example.Project_CWM.dto;
 
-public class PageDto {
-    private int pageCount = 10; //한 페이지 게시물 개수
+public class PlacePageDto {
+
+    private int startNum;
+    private int pageCount = 5;
     private int blockCount = 10;
-    private int page; //현제 페이지 번호
+    private int page;
     private int startPage;
     private int endPage;
     private int totalPage;
@@ -56,10 +58,19 @@ public class PageDto {
         this.totalPage = totalPage;
     }
 
+    public int getStartNum() {
+        return startNum;
+    }
+
+    public void setStartNum(int startNum) {
+        this.startNum = startNum;
+    }
+
     @Override
     public String toString() {
-        return "PageDto{" +
-                "pageCount=" + pageCount +
+        return "MapPageDto{" +
+                "startNum=" + startNum +
+                ", pageCount=" + pageCount +
                 ", blockCount=" + blockCount +
                 ", page=" + page +
                 ", startPage=" + startPage +

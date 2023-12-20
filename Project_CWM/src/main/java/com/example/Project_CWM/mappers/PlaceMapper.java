@@ -76,6 +76,10 @@ public interface PlaceMapper {
 //    @Delete("delete from placebookmark where place_code = #{placeCode} and idx = #{idx}")
 //    public void delStar(String placeCode, int idx);
 
+    // 메인페이지 캠프 개수 카운팅
+    @Select("select count(*) from placeinfo")
+    public int MainPlaceCount();
+
 
 
 

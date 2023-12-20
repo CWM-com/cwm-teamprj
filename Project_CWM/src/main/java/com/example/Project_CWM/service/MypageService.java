@@ -1,8 +1,11 @@
 package com.example.Project_CWM.service;
 
+import com.example.Project_CWM.dto.MypagePageDto;
 import com.example.Project_CWM.dto.PageDto;
+import com.example.Project_CWM.dto.QnaDto;
 import com.example.Project_CWM.dto.ReservationOrderDto;
 import com.example.Project_CWM.mappers.MemberMapper;
+import com.example.Project_CWM.mappers.QnaMapper;
 import com.example.Project_CWM.mappers.ReservationMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +21,8 @@ public class MypageService {
     private MemberMapper memberMapper;
     @Autowired
     private ReservationMapper reservationMapper;
+    @Autowired
+    private QnaMapper qnaMapper;
 
     public void setinfoUpdate(String userPasswd, String userTel, int idx) {
 
@@ -55,12 +60,12 @@ public class MypageService {
 
             String searchQuery = selectSearch(search);
 
-            PageDto pageDto = new PageDto();
-            int startNum = (page - 1) * pageDto.getMyPageCount();
+            MypagePageDto mypagePageDto = new MypagePageDto();
+            int startNum = (page - 1) * mypagePageDto.getPageCount();
 
             map.put("memIdx", memIdx);
             map.put("startNum", startNum);
-            map.put("offset", pageDto.getMyPageCount());
+            map.put("offset", mypagePageDto.getPageCount());
             map.put("searchQuery", searchQuery);
             return reservationMapper.OrderList(map);
         }else {
@@ -68,25 +73,39 @@ public class MypageService {
         }
     }
 
-    public PageDto ReservCount(int page, String memIdx, String search) {
-        PageDto pageDto = new PageDto();
+    public MypagePageDto ReservCount(int page, String memIdx, String search) {
+        MypagePageDto mypagePageDto = new MypagePageDto();
 
         String searchQuery = selectSearch(search);
 
         int totalCount = reservationMapper.ReservCount(memIdx,searchQuery);
-        int totalPage = (int) Math.ceil((double) totalCount / pageDto.getMyPageCount());
-        int startPage = ((int) (Math.ceil((double) page / pageDto.getBlockCount()))-1) * pageDto.getBlockCount() + 1;
-        int endPage = startPage + pageDto.getBlockCount() -1;
+        int totalPage = (int) Math.ceil((double) totalCount / mypagePageDto.getPageCount());
+        int startPage = ((int) (Math.ceil((double) page / mypagePageDto.getBlockCount()))-1) * mypagePageDto.getBlockCount() + 1;
+        int endPage = startPage + mypagePageDto.getBlockCount() -1;
 
         if(endPage > totalPage) {
             endPage = totalPage;
         }
-        pageDto.setStartNum((page -1) * pageDto.getBlockCount());
-        pageDto.setPage(page);
-        pageDto.setStartPage(startPage);
-        pageDto.setEndPage(endPage);
-        pageDto.setTotalPage(totalPage);
+        mypagePageDto.setStartNum((page -1) * mypagePageDto.getBlockCount());
+        mypagePageDto.setPage(page);
+        mypagePageDto.setStartPage(startPage);
+        mypagePageDto.setEndPage(endPage);
+        mypagePageDto.setTotalPage(totalPage);
 
-        return pageDto;
+        return mypagePageDto;
+    }
+
+    // my QnA
+    public List<QnaDto> getMyQnA(int page, String userId) {
+        Map<String, Object> map = new HashMap<>();
+
+        PageDto pageDto = new PageDto();
+
+        int startNum = (page - 1) * pageDto.getPageCount();
+        map.put("startNum", startNum);
+        map.put("offset", pageDto.getPageCount());
+        map.put("userId", userId);
+
+        return qnaMapper.getMyQnA(map); //boardMapper.getList()로 보냄
     }
 }

@@ -28,13 +28,13 @@
                 <div>
                     <ul class="title-List">
                         <li>
-                            <a href="/weather">공지사항</a>
+                            <a href="/notice">공지사항</a>
                         </li>
                         <li>
-                            <a href="/weather">QnA</a>
+                            <a href="/qna">QnA</a>
                         </li>
                         <li>
-                            <a href="/weather">리뷰</a>
+                            <a href="/review">캠핑 리뷰</a>
                         </li>
                     </ul>
                 </div>
@@ -56,11 +56,15 @@
                         </div>
                         <div class="content">
                             <div class="txt_cont prewrap">
-                                <p>
-                                <p>
-                                    <img th:src="@{|/${view.folderName}/${view.savedFileName}|}">
-                                </p>
-                                <span>[[${view.orgName}]]</span>
+                                <div>
+                                    <p th:if="${view.savedFileName != null}">
+                                        <img th:src="@{|/${view.folderName}/${view.savedFileName}|}">
+                                    </p>
+                                </div>
+                                <div>
+                                    <p th:unless="${view.savedFileName != null}">
+                                    </p>
+                                </div>
                                 </p>
                                 [[${view.content}]]
                             </div>

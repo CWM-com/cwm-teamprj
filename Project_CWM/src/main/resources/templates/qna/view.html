@@ -30,13 +30,13 @@
                     <div>
                         <ul class="title-List">
                             <li>
-                                <a href="/weather">공지사항</a>
+                                <a href="/notice">공지사항</a>
                             </li>
                             <li>
-                                <a href="/weather">QnA</a>
+                                <a href="/qna">QnA</a>
                             </li>
                             <li>
-                                <a href="/weather">리뷰</a>
+                                <a href="/review">캠핑 리뷰</a>
                             </li>
                         </ul>
                     </div>
@@ -48,9 +48,12 @@
                         <form>
                             <div class="board_titWrap">
                                 <div class="subject">
-                                    <h4>[[${view.subject}]]</h4>
-                                    <div class="reg_info">
-                                        <span class="date">[[${view.regdate}]]</span>
+                                    <h4>[질문] [[${view.subject}]]</h4>
+                                    <div class="reg_wrap">
+                                        <div class="reg_info">
+                                            <span class="date">작성자 : [[${view.userId}]]</span>
+                                            <span class="date">[[${view.regdate}]]</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +66,13 @@
                     </div>
                 </div>
                 <div class="bottom">
-                    <a th:href="@{/qna/reply?(id=${view.id})}" class="btn1">답글달기</a>
+                    <span th:if="${session.LoginIn != null and session.LoginIn.userId == view.userId}">
+                        <a th:href="@{/qna/update(id=${view.id})}" class="btn1">수정</a>
+                        <a href="#" class="btn1" th:onclick="remove([[${view.id}]])">삭제</a>
+                    </span>
+                    <span th:if="${session.LoginIn}">
+                        <a th:href="@{/qna/reply(id=${view.id})}" class="btn1">답글달기</a>
+                    </span>
                 </div>
                 <div class="comment-wrap">
                     <div class="comment-top">
@@ -84,11 +93,11 @@
                         </div>
                         <div class="comment-wrap">
                             <div class="comment-name">
-                                <h4 class="en">Name</h4>
+                                <h4 class="en">닉네임</h4> :
                                 <input type="text" name="cWriter">
                             </div>
                             <div class="comment-msg">
-                                <h4 class="en">Message</h4>
+                                <h4 class="en">댓글</h4>
                                 <textarea class="cComment" name="cComment" placeholder="댓글을 입력하세요"></textarea>
                             </div>
                             <div class="comment-btn">
@@ -96,6 +105,7 @@
                                 <button class="btn1 commentBtn" id="cBtn">댓글달기</button>
                             </div>
                         </div>
+                        <input type="reset" value="목록" class="btn1" onclick="move()">
                     </div>
                 </div>
             </div>
@@ -164,6 +174,16 @@
         if (confirm("댓글을 삭제 하시겠습니까?")) {
             location.href = "/comment/delete?id=" + cId;
         }
+    }
+
+    function remove(id) {
+        if(confirm(id + "게시물을 삭제 하시겠습니까?")) {
+        location.href = "/qna/delete?id="+id;
+        }
+    }
+
+    function move() {
+        location.href = "/qna";
     }
 
     </script>

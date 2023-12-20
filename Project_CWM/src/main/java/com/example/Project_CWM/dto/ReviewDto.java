@@ -12,6 +12,7 @@ public class ReviewDto {
     private String savedFilePathName;
     private long savedFileSize;
     private String folderName;
+    private int avg;
     private String ext;
     private int grp;
     private int seq;
@@ -105,6 +106,14 @@ public class ReviewDto {
         this.folderName = folderName;
     }
 
+    public int getAvg() {
+        return avg;
+    }
+
+    public void setAvg(int avg) {
+        this.avg = avg;
+    }
+
     public String getExt() {
         return ext;
     }
@@ -136,5 +145,5 @@ public class ReviewDto {
     public void setDepth(int depth) {
         this.depth = depth;
     }
-
 }
+

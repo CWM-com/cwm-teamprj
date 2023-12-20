@@ -1,12 +1,22 @@
 package com.example.Project_CWM.dto;
 
-public class PageDto {
-    private int pageCount = 10; //한 페이지 게시물 개수
+public class MypagePageDto {
+
+    private int startNum;
+    private int pageCount = 3;
     private int blockCount = 10;
-    private int page; //현제 페이지 번호
+    private int page;
     private int startPage;
     private int endPage;
     private int totalPage;
+
+    public int getStartNum() {
+        return startNum;
+    }
+
+    public void setStartNum(int startNum) {
+        this.startNum = startNum;
+    }
 
     public int getPageCount() {
         return pageCount;
@@ -58,8 +68,9 @@ public class PageDto {
 
     @Override
     public String toString() {
-        return "PageDto{" +
-                "pageCount=" + pageCount +
+        return "MypagePageDto{" +
+                "startNum=" + startNum +
+                ", pageCount=" + pageCount +
                 ", blockCount=" + blockCount +
                 ", page=" + page +
                 ", startPage=" + startPage +

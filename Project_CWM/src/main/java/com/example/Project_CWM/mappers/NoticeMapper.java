@@ -1,6 +1,7 @@
 package com.example.Project_CWM.mappers;
 
 import com.example.Project_CWM.dto.NoticeDto;
+import com.example.Project_CWM.dto.QnaDto;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

@@ -30,13 +30,13 @@
                     <div>
                         <ul class="title-List">
                             <li>
-                                <a href="/weather">공지사항</a>
+                                <a href="/notice">공지사항</a>
                             </li>
                             <li>
-                                <a href="/weather">QnA</a>
+                                <a href="/qna">QnA</a>
                             </li>
                             <li>
-                                <a href="/weather">리뷰</a>
+                                <a href="/review">캠핑 리뷰</a>
                             </li>
                         </ul>
                     </div>
@@ -55,7 +55,7 @@
                             </li>
                             <li>
                                 <label>작성자</label>
-                                <input type="text" name="writer" class="input width-15 noto">
+                                [[${userId}]]
                             </li>
                             <li>
                                 <label>내용</label>
@@ -89,12 +89,6 @@
 
                 alert("질문을 입력해 주세요.");
                 subject.focus();
-                return false;
-            }
-
-            if(!=writer.value) {
-                alert("게시물 작성자를 입력해 주세요.");
-                writer.focus();
                 return false;
             }
 
