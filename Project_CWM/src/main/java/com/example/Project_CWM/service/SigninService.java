@@ -1,4 +1,4 @@
-package com.example.Project_CWM.service;
+package com.example.Project_CWM.Service;
 
 import com.example.Project_CWM.dto.MemberDto;
 import com.example.Project_CWM.mappers.SigninMapper;

@@ -29,13 +29,13 @@
                     <div>
                         <ul class="title-List">
                             <li>
-                                <a href="/notice">공지사항</a>
+                                <a href="">공지사항2</a>
                             </li>
                             <li>
-                                <a href="/qna">QnA</a>
+                                <a href="">캠핑 리뷰</a>
                             </li>
                             <li>
-                                <a href="/review">캠핑 리뷰</a>
+                                <a href="">QnA</a>
                             </li>
                         </ul>
                     </div>
@@ -80,11 +80,17 @@
                                         </th:block>
                                         <a th:href="@{/qna/view?(id=${qna.id})}" class="active">[[${qna.subject}]]</a>
                                     </td>
-                                    <td>[[${qna.writer}]]</td>
+                                    <td>[[${qna.userId}]]</td>
                                     <td>[[${qna.regdate}]]</td>
                                     <td>
-                                        <a th:href="@{/qna/update?(id=${qna.id})}" class="btn1">수정</a>
-                                        <a href="#" class="btn1" th:onclick="remove([[${qna.id}]])")>삭제</a>
+                                        <span th:if="${session.LoginIn != null and session.LoginIn.userId == qna.userId}">
+                                            <a th:href="@{/qna/update(id=${qna.id})}" class="btn1">수정</a>
+                                            <a href="#" class="btn1" th:onclick="remove([[${qna.id}]])">삭제</a>
+                                        </span>
+                                        <span th:unless="${session.LoginIn != null and session.LoginIn.userId == qna.userId}">
+                                            -
+                                        </span>
+
                                     </td>
                                 </tr>
                             </tbody>
@@ -121,7 +127,7 @@
                     </a>
                 </div>
                 <div class="bottom">
-                    <a th:href="@{/qna/write}" class="btn1">글쓰기</a>
+                    <a th:if="${session.LoginIn != null}" th:href="@{/qna/write}" class="btn1">글쓰기</a>
                 </div>
             </div>
         </div>

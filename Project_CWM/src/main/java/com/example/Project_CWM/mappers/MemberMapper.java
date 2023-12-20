@@ -8,10 +8,13 @@ import java.util.List;
 @Mapper
 public interface MemberMapper {
 
+    @Select("select count(*) from member")
+    public int MemberCount();
+
     @Select("select count(*) from member where user_Id = #{userId}")
     public int setIdCheck(String userId);
 
-    @Insert("insert into member values(null,#{userId},#{userPasswd},#{userEmail},#{userName},#{userTel},now(),#{userAuthority})")
+    @Insert("insert into member values(null,#{userId}, #{userPasswd},#{userEmail},#{userName},#{userTel},now(),#{userAuthority})")
     public void setSignup(MemberDto registerDto);
 
     @Select("select * from member where user_id = #{userid}")

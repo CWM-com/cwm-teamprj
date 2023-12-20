@@ -1,13 +1,19 @@
 package com.example.Project_CWM.controller;
 
 import com.example.Project_CWM.dto.MemberDto;
+import com.example.Project_CWM.dto.ReservationOrderDto;
 import com.example.Project_CWM.service.MypageService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/mypage")
@@ -19,9 +25,9 @@ public class MypageController {
     @GetMapping("")
     public String getMypage(HttpSession session, Model model) {
 
-        MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn");
+        MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn"); //사람정보
 
-        int idx = setIDX.getIdx();
+        int idx = setIDX.getIdx(); //그 사람 idx번호만
 
         model.addAttribute("recent",mypageService.recentCamp(idx));
 

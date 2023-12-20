@@ -2,7 +2,9 @@ package com.example.Project_CWM.controller;
 
 import com.example.Project_CWM.service.NoticeService;
 import com.example.Project_CWM.dto.NoticeDto;
+import com.example.Project_CWM.dto.QnaDto;
 import com.example.Project_CWM.mappers.NoticeMapper;
+import com.example.Project_CWM.mappers.QnaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -36,7 +38,6 @@ public class NoticeController {
         model.addAttribute("cnt", noticeService.getSearchCnt(searchType, words));
         model.addAttribute("list", noticeService.getSearch(page, searchType, words));
         model.addAttribute("page", noticeService.NoticePageCalc(page));
-
         return "notice/notice";
     }
 

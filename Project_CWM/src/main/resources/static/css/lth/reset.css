@@ -18,6 +18,10 @@ header {
     background-color: #121417;
 }
 
+main {
+    margin-bottom: 100px;
+}
+
 ul li {
     list-style: none;
 }
