@@ -56,11 +56,15 @@
                         </div>
                         <div class="content">
                             <div class="txt_cont prewrap">
-                                <p>
-                                <p>
-                                    <img th:src="@{|/${view.folderName}/${view.savedFileName}|}">
-                                </p>
-                                <span>[[${view.orgName}]]</span>
+                                <div>
+                                    <p th:if="${view.savedFileName != null}">
+                                        <img th:src="@{|/${view.folderName}/${view.savedFileName}|}">
+                                    </p>
+                                </div>
+                                <div>
+                                    <p th:unless="${view.savedFileName != null}">
+                                    </p>
+                                </div>
                                 </p>
                                 [[${view.content}]]
                             </div>
