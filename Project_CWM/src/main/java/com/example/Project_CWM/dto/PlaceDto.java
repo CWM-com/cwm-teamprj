@@ -11,6 +11,10 @@ public class PlaceDto {
     private String bookmark;
     private int star;
     private String regdate;
+    private String placeContent1;
+    private String placeContent2;
+    private String placeContent3;
+    private String placeContent4;
 
     public int getPlaceId() {
         return placeId;
@@ -84,9 +88,41 @@ public class PlaceDto {
         this.regdate = regdate;
     }
 
+    public String getPlaceContent1() {
+        return placeContent1;
+    }
+
+    public void setPlaceContent1(String placeContent1) {
+        this.placeContent1 = placeContent1;
+    }
+
+    public String getPlaceContent2() {
+        return placeContent2;
+    }
+
+    public void setPlaceContent2(String placeContent2) {
+        this.placeContent2 = placeContent2;
+    }
+
+    public String getPlaceContent3() {
+        return placeContent3;
+    }
+
+    public void setPlaceContent3(String placeContent3) {
+        this.placeContent3 = placeContent3;
+    }
+
+    public String getPlaceContent4() {
+        return placeContent4;
+    }
+
+    public void setPlaceContent4(String placeContent4) {
+        this.placeContent4 = placeContent4;
+    }
+
     @Override
     public String toString() {
-        return "MapDto{" +
+        return "PlaceDto{" +
                 "placeId=" + placeId +
                 ", placeCode='" + placeCode + '\'' +
                 ", placeName='" + placeName + '\'' +
@@ -96,6 +132,10 @@ public class PlaceDto {
                 ", bookmark='" + bookmark + '\'' +
                 ", star=" + star +
                 ", regdate='" + regdate + '\'' +
+                ", placeContent1='" + placeContent1 + '\'' +
+                ", placeContent2='" + placeContent2 + '\'' +
+                ", placeContent3='" + placeContent3 + '\'' +
+                ", placeContent4='" + placeContent4 + '\'' +
                 '}';
     }
 }

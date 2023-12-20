@@ -34,6 +34,15 @@ place_y float,
 foreign key(place_code) references placeinfo(place_code)
 );
 
+create table placecontent(
+place_code varchar(10) not null,
+place_content1 varchar(255),
+place_content2 varchar(255),
+place_content3 varchar(255),
+place_content4 varchar(255),
+foreign key(place_code) references placeinfo(place_code)
+);
+
 create table placebookmark(
 place_code varchar(10) not null,
 idx int not null,

@@ -126,6 +126,7 @@ public class PlaceService {
     public void dropAddr(String placeCode){
         placeMapper.dropAddr(placeCode);
     }
+    public void dropContent(String placeCode){placeMapper.dropContent(placeCode);}
 
     public PlaceDto getDetail(String placeCode){
         return placeMapper.getDetail(placeCode);
@@ -133,12 +134,14 @@ public class PlaceService {
     public List<PlaceFilesDto> getMainFiles(){
         return placeMapper.getMainFiles();
     }
+    public PlaceDto getContent(String placeCode){return placeMapper.getContent(placeCode);}
     public void setFiles(PlaceFilesDto mapFileDto){
         placeMapper.setFiles(mapFileDto);
     }
     public void setAddr(MapDto mapDto){
         placeMapper.setAddr(mapDto);
     }
+    public void setContent(PlaceDto placeDto){placeMapper.setContent(placeDto);}
 
 //    public void addBookmark(String placeCode, int idx){
 //        placeMapper.addBookmark(placeCode, idx);
