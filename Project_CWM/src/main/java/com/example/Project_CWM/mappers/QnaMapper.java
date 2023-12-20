@@ -12,7 +12,7 @@ public interface QnaMapper {
     @Select("select * from qna order by id desc")
     public List<QnaDto> getQna();
 
-    @Insert("insert into qna values(null, #{subject} ,#{writer}, #{content}, now(), #{ext} ,#{grp}, 1, 1)")
+    @Insert("insert into qna values(null, #{userId}, #{subject}, #{content}, now(), #{ext} ,#{grp}, 1, 1)")
     public void setWrite(QnaDto qnaDto);
 
     @Delete("delete from qna where id = #{id}")
@@ -21,7 +21,7 @@ public interface QnaMapper {
     @Select("select * from qna where id = #{id}")
     public QnaDto getView(int id);
 
-    @Update("update qna set subject=#{subject}, writer=#{writer}, content=#{content}, regdate=now(), ext=#{ext}  where id=#{id}")
+    @Update("update qna set subject=#{subject}, content=#{content}, regdate=now(), ext=#{ext}  where id=#{id}")
     public void setUpdate(QnaDto qnaDto);
 
     @Select("select * from qna ${searchQuery} order by grp desc, seq asc, depth asc limit #{startNum}, #{offset}")
@@ -33,7 +33,7 @@ public interface QnaMapper {
     @Select("select count(*) from qna")
     public int totalCount();
 
-    @Insert("insert into qna values(null, #{subject}, #{writer}, #{content}, now(), #{ext}, #{grp}, #{seq}, #{depth})")
+    @Insert("insert into qna values(null, #{userId}, #{subject}, #{content}, now(), #{ext}, #{grp}, #{seq}, #{depth})")
     void setReply(QnaDto qnaDto);
 
     @Select("select ifnull(max(grp) + 1, 1) as maxGrp from qna")

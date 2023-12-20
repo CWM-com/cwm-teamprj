@@ -1,6 +1,6 @@
 CREATE TABLE qna (
     id INT NOT NULL AUTO_INCREMENT,
-    writer VARCHAR(20) not null,
+    user_Id varchar(20) not null,
     subject varchar(255) not null,
     content text,
     regdate DATE,
@@ -8,7 +8,8 @@ CREATE TABLE qna (
     grp INT,
     seq INT,
     depth INT,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    foreign key(user_id) references member(user_id) on update cascade on delete restrict
 );
 
 create table notice(

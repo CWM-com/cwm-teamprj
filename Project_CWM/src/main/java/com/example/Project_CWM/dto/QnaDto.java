@@ -3,7 +3,7 @@ package com.example.Project_CWM.dto;
 public class QnaDto {
     private int id;
     private String subject;
-    private String writer;
+    private String userId;
     private String content;
     private String regdate;
     private String ext;
@@ -27,12 +27,12 @@ public class QnaDto {
         this.subject = subject;
     }
 
-    public String getWriter() {
-        return writer;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setWriter(String writer) {
-        this.writer = writer;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getContent() {
@@ -81,5 +81,20 @@ public class QnaDto {
 
     public void setDepth(int depth) {
         this.depth = depth;
+    }
+
+    @Override
+    public String toString() {
+        return "QnaDto{" +
+                "id=" + id +
+                ", subject='" + subject + '\'' +
+                ", userId='" + userId + '\'' +
+                ", content='" + content + '\'' +
+                ", regdate='" + regdate + '\'' +
+                ", ext='" + ext + '\'' +
+                ", grp=" + grp +
+                ", seq=" + seq +
+                ", depth=" + depth +
+                '}';
     }
 }
