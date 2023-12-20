@@ -14,4 +14,6 @@ function InfoDelete() {
         userPasswd.focus();
         return false;
     }
+    
+
 }
