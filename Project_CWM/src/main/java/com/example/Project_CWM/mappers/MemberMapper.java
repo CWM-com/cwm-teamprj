@@ -8,6 +8,9 @@ import java.util.List;
 @Mapper
 public interface MemberMapper {
 
+    @Select("select count(*) from member")
+    public int MemberCount();
+
     @Select("select count(*) from member where user_Id = #{userId}")
     public int setIdCheck(String userId);
 

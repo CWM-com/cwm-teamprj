@@ -21,7 +21,7 @@ const counter = ($counter, max) => {
 let checked = document.querySelector("#checked");
 let isVisible = false;
 
-
+// 카운팅 위치 설정
 function checkvisible(checked, check = 'above') {
   // 페이지의 세로 스크롤 위치
   const scrolltop = window.scrollY;  
@@ -40,28 +40,7 @@ function checkvisible(checked, check = 'above') {
   }
 }
 
-const evented = function () {
-  if(!isVisible && checkvisible(checked)) {
-    // alert("성공");
-    // 카운트를 적용시킬 요소
-    const $counter = document.querySelectorAll(".count");
-  
-    // 목표 수치
-    const max1 = 22;
-    const max2 = 40;
-    const max3 = 78;
-  
-    setTimeout(() => counter($counter[0], max1), 800);
-    setTimeout(() => counter($counter[1], max2), 800);
-    setTimeout(() => counter($counter[2], max3), 800);
-    isVisible = true;
-  }
 
-  if(isVisible) {
-    window.removeEventListener('scroll', evented);
-  }
-}
-window.addEventListener('scroll', evented);
 
 
 
@@ -83,6 +62,9 @@ const TopBtn = document.querySelector(".scroll-TopBtn");
     }
   };
 TopBtn.addEventListener('click', move);
+
+
+
 
 
 

@@ -403,7 +403,7 @@ section:nth-child(2) {
     font-weight: bold;
 }
 
-.wrap-cotent1 > div > p {
+.wrap-cotent1 > div > .comment {
     width: 300px;
     height: 150px;
     color: rgba(0, 0, 0, 0.6);
@@ -456,6 +456,7 @@ section:nth-child(2) {
     color: #fff;
     font-size: 50px;
     font-weight: bold;
+    text-align: center;
 }
 
 .count-box span {
@@ -578,14 +579,21 @@ section:nth-child(2) {
     transition: all 0.8s ease-in-out;
 }
 
+.weather-img {
+    width: 300px;
+    height: 150px;
+}
+
 .weather-img h3 img{
     width: 100px;
     height: 100px;
     display: flex;
-    justify-content: between;
+    justify-content: space-between;
 }
 
-
+.SeoulIcon {
+    text-align: center;
+}
 
 
 
