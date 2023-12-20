@@ -105,6 +105,7 @@
                                 <button class="btn1 commentBtn" id="cBtn">댓글달기</button>
                             </div>
                         </div>
+                        <input type="reset" value="목록" class="btn1" onclick="move()">
                     </div>
                 </div>
             </div>
@@ -179,6 +180,10 @@
         if(confirm(id + "게시물을 삭제 하시겠습니까?")) {
         location.href = "/qna/delete?id="+id;
         }
+    }
+
+    function move() {
+        location.href = "/qna";
     }
 
     </script>

@@ -62,7 +62,7 @@ public interface ReservationMapper {
     public void getReservationList(ReservationOrderDto reservationOrderDto);
 
     // searchQuery에 따른 출력
-    @Select("select * from reservation where ${searchQuery} mem_idx = #{memIdx} order by reserv_idx desc limit #{startNum}, #{offset}")
+    @Select("select r.*, p.place_code from reservation as r inner join placeinfo as p on(r.camp_name = p.place_name) where ${searchQuery} mem_idx = #{memIdx} order by reserv_idx desc limit #{startNum}, #{offset}")
     public List<ReservationOrderDto> OrderList(Map<String,Object> map);
 
     // searchQuery에 따른 카운트

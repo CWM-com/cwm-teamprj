@@ -18,6 +18,8 @@ public class ReservationOrderDto {
     private String impUid;
     private String merchantUid;
     private String regdate;
+    private String placeCode;
+
     public int getReservIdx() {
         return reservIdx;
     }
@@ -138,6 +140,14 @@ public class ReservationOrderDto {
         this.impUid = impUid;
     }
 
+    public String getMerchantUid() {
+        return merchantUid;
+    }
+
+    public void setMerchantUid(String merchantUid) {
+        this.merchantUid = merchantUid;
+    }
+
     public String getRegdate() {
         return regdate;
     }
@@ -146,12 +156,12 @@ public class ReservationOrderDto {
         this.regdate = regdate;
     }
 
-    public String getMerchantUid() {
-        return merchantUid;
+    public String getPlaceCode() {
+        return placeCode;
     }
 
-    public void setMerchantUid(String merchantUid) {
-        this.merchantUid = merchantUid;
+    public void setPlaceCode(String placeCode) {
+        this.placeCode = placeCode;
     }
 
     @Override
@@ -172,8 +182,9 @@ public class ReservationOrderDto {
                 ", memIdx='" + memIdx + '\'' +
                 ", campPrice='" + campPrice + '\'' +
                 ", impUid='" + impUid + '\'' +
-                ", merchantUid=" + merchantUid +
+                ", merchantUid='" + merchantUid + '\'' +
                 ", regdate='" + regdate + '\'' +
+                ", placeCode='" + placeCode + '\'' +
                 '}';
     }
 }

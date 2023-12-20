@@ -40,5 +40,11 @@ public interface QnaMapper {
     @Select("select ifnull(max(grp) + 1, 1) as maxGrp from qna")
     int getMaxGrp();
 
+    // mypage에서 사용
+    @Select("select * from qna where user_Id = #{userId} order by grp desc, seq asc, depth asc limit #{startNum}, #{offset}")
+    List<QnaDto> getMyQnA(Map<String, Object> map);
+    @Select("select count(*) from qna where user_Id = #{userId}")
+    int getMyQnaCount(String userId);
+
 
 }
