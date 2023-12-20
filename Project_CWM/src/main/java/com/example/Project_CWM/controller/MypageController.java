@@ -25,9 +25,9 @@ public class MypageController {
     @GetMapping("")
     public String getMypage(HttpSession session, Model model) {
 
-        MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn");
+        MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn"); //사람정보
 
-        int idx = setIDX.getIdx();
+        int idx = setIDX.getIdx(); //그 사람 idx번호만
 
         model.addAttribute("recent",mypageService.recentCamp(idx));
 
