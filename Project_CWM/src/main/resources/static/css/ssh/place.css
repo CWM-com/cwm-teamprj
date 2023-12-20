@@ -111,7 +111,7 @@
 }
 .content-list-detail li{
     width: 70px;
-    padding-right: 10px;
+    margin-right: 10px;
     font-size: 18px;
     font-weight: 600;
 }
