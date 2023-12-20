@@ -33,6 +33,13 @@ public interface PlaceMapper {
     @Delete("delete from placecoor where place_code = #{placeCode}")
     void dropAddr(String placeCode);
 
+    //캠핑장 추가시 세부 내용 입력
+    @Insert("insert into placecontent values(#{placeCode}, #{placeContent1}, #{placeContent2}, #{placeContent3}, #{placeContent4})")
+    public void setContent(PlaceDto placeDto);
+    //캠핑장 제거시 해당 세부 내용 테이블 열 제거
+    @Delete("delete from placecontent where place_code = #{placeCode}")
+    void dropContent(String placeCode);
+
     //조건에 맞는 캠핑장 수 출력
     @Select("select count(*) from placeinfo ${searchQuery}")
     int getSearchCount(String searchQuery);
@@ -46,6 +53,8 @@ public interface PlaceMapper {
     public PlaceDto getDetail(String placeCode);
     @Select("select * from placefiles where fileType = 'main'")
     public List<PlaceFilesDto> getMainFiles();
+    @Select("select * from placecontent where place_code = #{placeCode}")
+    public PlaceDto getContent(String placeCode);
 
     //캠핑장 조회수 업데이트
     @Update("update placeinfo set visit = visit + 1 where place_code = #{placeCode}")

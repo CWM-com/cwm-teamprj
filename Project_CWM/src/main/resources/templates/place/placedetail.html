@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장소상세페이지</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
     <link rel="stylesheet" href="/css/ssh/reset-copy.css">
     <link rel="stylesheet" href="/css/ssh/main-copy.css">
     <link rel="stylesheet" href="/css/ssh/common.css">
@@ -113,10 +113,10 @@
                             </div>
                             <!-- 이전, 다음 버튼 필요시 추가 -->
                             <div class="swiper-button-prev">
-                                <button class="left-arrow"><i class="fa-solid fa-angle-left"></i></button>
+<!--                                <button class="left-arrow"><i class="fa-solid fa-angle-left"></i></button>-->
                             </div>
                             <div class="swiper-button-next">
-                                <button class="right-arrow"><i class="fa-solid fa-angle-right"></i></button>
+<!--                                <button class="right-arrow"><i class="fa-solid fa-angle-right"></i></button>-->
                             </div>
                         </div>
                         <div class="detail-position">
@@ -180,12 +180,12 @@
                                         </div>
                                     </div>
                                     <div class="p">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsum odit totam, pariatur blanditiis velit ea illum quibusdam animi exercitationem ipsa asperiores repudiandae officiis, quas molestias rerum cum at obcaecati.</p>
+                                        <p>[[${content.placeContent1}]]</p>
                                     </div>
                                 </div>
                                 <div class="detail-etc-pic">
                                     <div class="p">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis dolor eius aspernatur pariatur expedita consequatur facere fugit, deserunt labore voluptatibus. Ducimus libero debitis nisi ullam amet culpa totam earum, sequi quasi obcaecati aliquid mollitia dignissimos.</p>
+                                        <p>[[${content.placeContent2}]]</p>
                                     </div>
                                     <div class="pic000-list">
                                         <div >
@@ -200,12 +200,12 @@
                                         </div>
                                     </div>
                                     <div class="p">
-                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque soluta perspiciatis aliquid officia voluptates, quisquam ipsam est eius quasi temporibus nobis aliquam. Veniam neque aliquid beatae pariatur iusto at asperiores. Sint quod explicabo impedit quia magni, temporibus illum voluptas ipsam!</p>
+                                        <p>[[${content.placeContent3}]]</p>
                                     </div>
                                 </div>
                                 <div class="detail-etc-pic">
                                     <div class="p">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis dolor eius aspernatur pariatur expedita consequatur facere fugit, deserunt labore voluptatibus. Ducimus libero debitis nisi ullam amet culpa totam earum, sequi quasi obcaecati aliquid mollitia dignissimos.</p>
+                                        <p>[[${content.placeContent4}]]</p>
                                     </div>
                                     <div class="pic000-list">
                                         <div >
@@ -231,14 +231,25 @@
 
     <script>
         new Swiper('.swiper', {
-            // 다양한 옵션 설정,
-            direction: 'vertical', // 슬라이드 진행 방향, 기본값 horizontal(가로)
+            speed: 400, // 슬라이드 간 전환 시간 (ms)
+            spaceBetween: 100, //  슬라이드 간 거리 (px)
             // autoplay: true 도 가능하지만 객체 데이터로 할당하면 추가적인 옵션 설정 가능
-            autoplay: true,
+            autoplay: {
+                // 자동재생 여부
+                delay: 5000, // 시작시간 설정
+            },
             loop: true, // 반복재생 여부
-            slidesPerView: 2, // 한번에 보여줄 슬라이드 개수
-            spaceBetween: 5, // 슬라이드 사이 여백
+            slidesPerView: 1, // 한번에 보여줄 슬라이드 개수
+            spaceBetween: 50, // 슬라이드 사이 여백
             centeredSlides: true, // 1번 슬라이드가 가운데 보이기
+
+            // nav 화살표 출력 시 추가
+            navigation: {
+                prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next',
+            },
+            centeredSlides: true, // true 인 경우 활성 슬라이드는 항상 왼쪽이 아닌 가운데에 배치됩니다.
+            slidesOffsetBefore: 10 // 컨테이너 시작 부분 (모든 슬라이드 이전)에 슬라이드 오프셋 추가 (픽셀 단위)
         })
     </script>
 

@@ -62,6 +62,7 @@ public class PlaceController {
         if(!placeCode.isEmpty()){
             placeService.dropAddr(placeCode);
             placeService.dropFiles(placeCode);
+            placeService.dropContent(placeCode);
             placeService.deletePlace(placeCode);
             return Map.of("msg", "success");
         }else{
@@ -91,6 +92,7 @@ public class PlaceController {
     public String getPlaceDetail(@RequestParam String placeCode, Model model){
         placeMapper.updateVisit(placeCode);
         model.addAttribute("detail", placeService.getDetail(placeCode));
+        model.addAttribute("content", placeService.getContent(placeCode));
         return("place/placedetail");
     }
 //    @PostMapping("/placedetail/addBookmark")
@@ -253,7 +255,6 @@ public class PlaceController {
         String apiUrl = "https://dapi.kakao.com/v2/local/search/address.json";
         String jsonString = null;
         query = mapDto.getPlaceAddr();
-
         try {
             query = URLEncoder.encode(query, "UTF-8");
 
@@ -297,6 +298,9 @@ public class PlaceController {
             throw new RuntimeException(e);
         }
         placeService.setAddr(mapDto);
+
+        //세부내용
+        placeService.setContent(placeDto);
 
         return "redirect:/place/place";
     }
