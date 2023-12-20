@@ -33,7 +33,7 @@ public class QnaController {
 
 
     @GetMapping("")
-    public String getQna(HttpSession session, Model model, @RequestParam(value = "searchType", defaultValue = "") String searchType, @RequestParam(value = "words", defaultValue = "") String words, @RequestParam(value="page", defaultValue = "1") int page, HttpServletRequest request) {
+    public String getQna(Model model, @RequestParam(value = "searchType", defaultValue = "") String searchType, @RequestParam(value = "words", defaultValue = "") String words, @RequestParam(value="page", defaultValue = "1") int page, HttpServletRequest request) {
         List<QnaDto> qna = qnaService.getQna();
 //        model.addAttribute("page", qnaService.QnaPageCalc(page));
 //        System.out.println( "이거"+ qnaService.getSearch(page, searchType, words));
@@ -54,13 +54,13 @@ public class QnaController {
     public String getWrite(HttpSession session, Model model) {
         MemberDto loggedInMember = (MemberDto) session.getAttribute("LoginIn");
 
-            if (loggedInMember == null || loggedInMember.getUserId() == null) {
-                // 로그인이 되어있지 않은 경우 또는 로그인 정보가 부족한 경우에 대한 예외 처리
-                model.addAttribute("userId", "Unknown User");
-            } else {
-                // 세션에서 가져온 사용자의 userId를 모델에 추가
-                model.addAttribute("userId", loggedInMember.getUserId());
-            }
+        if (loggedInMember == null || loggedInMember.getUserId() == null) {
+            // 로그인이 되어있지 않은 경우 또는 로그인 정보가 부족한 경우에 대한 예외 처리
+            model.addAttribute("userId", "Unknown User");
+        } else {
+            // 세션에서 가져온 사용자의 userId를 모델에 추가
+            model.addAttribute("userId", loggedInMember.getUserId());
+        }
 
         return "qna/qnaWrite";
     }
