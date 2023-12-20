@@ -314,6 +314,23 @@ td:nth-child(4) {
     border-left: 0;
 }
 
+.bottom{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    margin-top: 30px
+}
+.bottom-center{
+    display: flex;
+    justify-content: center;
+    margin-top: 210px;
+}
+
+.page-bar > a span {
+    font-size: 20px;
+    margin-right: 3px;
+    margin-left: 3px;
+}
 
 /* Qna 부분 끝 */
 
@@ -395,4 +412,6 @@ footer {
     color: rgb(196, 196, 196);
 }
 /* footer 끝 */
+
+
 

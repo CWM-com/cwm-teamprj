@@ -1,8 +1,11 @@
 package com.example.Project_CWM.service;
 
 import com.example.Project_CWM.dto.MypagePageDto;
+import com.example.Project_CWM.dto.PageDto;
+import com.example.Project_CWM.dto.QnaDto;
 import com.example.Project_CWM.dto.ReservationOrderDto;
 import com.example.Project_CWM.mappers.MemberMapper;
+import com.example.Project_CWM.mappers.QnaMapper;
 import com.example.Project_CWM.mappers.ReservationMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +21,8 @@ public class MypageService {
     private MemberMapper memberMapper;
     @Autowired
     private ReservationMapper reservationMapper;
+    @Autowired
+    private QnaMapper qnaMapper;
 
     public void setinfoUpdate(String userPasswd, String userTel, int idx) {
 
@@ -88,5 +93,19 @@ public class MypageService {
         mypagePageDto.setTotalPage(totalPage);
 
         return mypagePageDto;
+    }
+
+    // my QnA
+    public List<QnaDto> getMyQnA(int page, String userId) {
+        Map<String, Object> map = new HashMap<>();
+
+        PageDto pageDto = new PageDto();
+
+        int startNum = (page - 1) * pageDto.getPageCount();
+        map.put("startNum", startNum);
+        map.put("offset", pageDto.getPageCount());
+        map.put("userId", userId);
+
+        return qnaMapper.getMyQnA(map); //boardMapper.getList()로 보냄
     }
 }

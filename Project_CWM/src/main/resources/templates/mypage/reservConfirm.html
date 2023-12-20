@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../../static/css/kdh/reset.css">
-    <link rel="stylesheet" href="../../static/css/kdh/mypage/reservConfirm.css">
+    <link rel="stylesheet" href="/css/kdh/reset.css">
+    <link rel="stylesheet" href="/css/kdh/mypage/reservConfirm.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 
@@ -56,8 +56,8 @@
                                                     </div>
                                                     <div class="all-information">
                                                         <div class="img-cover">
-                                                            <div class="img-box">
-                                                                <img src="../../static/images/mainimg2.jpg" alt="">
+                                                            <div class="img-box" th:each="main : ${main}" th:if="${o.placeCode == main.placeCode}">
+                                                                <img th:src="@{|/${main.folderName}/thumb_${main.orgName}|}" alt="${file.orgName}">
                                                             </div>
                                                         </div>
                                                         <div class="reservation-information">
