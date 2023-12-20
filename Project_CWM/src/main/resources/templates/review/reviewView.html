@@ -1,169 +1,92 @@
 <!DOCTYPE html>
-<html lang="ko">
-<html xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="/css/lth/reset.css">
-    <link rel="stylesheet" href="/css/lth/view.css">
+    <link rel="stylesheet" th:href="@{/css/lth/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/lth/view.css}">
 </head>
 <body>
-    <header th:insert="~{fragment/header::header_a}">
+<header th:insert="~{fragment/header::header_a}">
 
-    </header>
-    <main>
-        <div class="section0">
-            <div class="bar-back"></div>
+</header>
+<main>
+    <div class="section0">
+        <div class="bar-back"></div>
+    </div>
+    <div class="section0">
+        <div class="section00">
+
         </div>
-        <div class="section0">
-            <div class="section00">
-                
-            </div>
+    </div>
+    <div class="mypage-container">
+        <div class="page-List">
+            <a href="/mypage"><h2>캠핑게시판</h2></a>
+            <nav>
+                <div>
+                    <ul class="title-List">
+                        <li>
+                            <a href="/notice">공지사항</a>
+                        </li>
+                        <li>
+                            <a href="/qna">QnA</a>
+                        </li>
+                        <li>
+                            <a href="/review">캠핑 리뷰</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
-        <div class="mypage-container">
-            <div class="page-List">
-                <a href="/mypage"><h2>캠핑게시판</h2></a>
-                <nav>
-                    <div>
-                        <ul class="title-List">
-                            <li>
-                                <a href="/notice">공지사항</a>
-                            </li>
-                            <li>
-                                <a href="/qna">QnA</a>
-                            </li>
-                            <li>
-                                <a href="/review">캠핑 리뷰</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-            <div class="page-title">
-                <div class="notice-detail">
-                    <div class="wed-container">
-                        <form>
-                            <div class="board_titWrap">
-                                <div class="subject">
-                                    <h4>[[${view.subject}]]</h4>
-                                    <div class="reg_info">
-                                        <span class="date">[[${view.regdate}]]</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <div class="txt_cont prewrap">
-                                    [[${view.content}]]
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <a th:href="@{/qna/reply?(id=${view.id})}" class="btn1">답글달기</a>
-                </div>
-                <div class="comment-wrap">
-                    <div class="comment-top">
-                        <h3 class="en">
-                            <i class="fa-solid fa-caret-right"></i> Comments
-                        </h3>
-                    </div>
-
-                    <div class="comment-write">
-                        <input type="hidden" name="bId" th:value="${view.id}">
-
-                        <div class="comment-msg">
-                            <h4 class="en">Message</h4>
-                            <textarea name="cComment"></textarea>
-                        </div>
-
-                        <div class="comment-name">
-                            <h4 class="en">Name</h4>
-                            <input type="text" name="cWriter">
-                        </div>
-
-                        <div class="comment-btn">
-                            <h4 class="en"></h4>
-                            <button class="btn1" id="cBtn">댓글달기</button>
-                        </div>
-                        <div class="comment-main">
-                            <div class="comment-list">
-                                <div class="comment-flex">
-
+        <div class="page-title">
+            <div class="notice-detail">
+                <div class="wed-container">
+                    <form>
+                        <div class="board_titWrap">
+                            <div class="subject">
+                                <h4>[[${view.subject}]]</h4>
+                                <div class="reg_info">
+                                    <span class="visit">조회수 : [[${view.visit}]]</span>
+                                    <br>
+                                    <span class="date">[[${view.regdate}]]</span>
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-    
-    <footer th:insert="~{fragment/footer::footer_a}">
-
-    </footer>
-    <script src="js/kdh/reservation/tabmove.js"></script>
-<script>
-        let bId         = document.querySelector("input[name=bId]");
-        let cComment    = document.querySelector("textarea[name=cComment]");
-        let cWriter     = document.querySelector("input[name=cWriter]");
-
-        $( function() {
-            let obj = {
-                bId: bId.value
-            };
-
-            $.ajax({
-                type: "get",
-                url: "/comment/commentList",
-                dataType: "json",
-                data: obj,
-                success: function(res) {
-                    //console.log(res.cList);
-                    let output = "";
-                    res.cList.forEach( (c) => {
-                        output += `<div class="comment-box">
-                            <h3>[${c.cWriter}] - <span>${c.cRegdate}</span></h3>
-                            <p>
-                                ${c.cComment}
-                                <p class="msg-btn">
-                                    <a href="">수정</a> | <a href="">삭제</a>
+                        <div class="content">
+                            <div class="txt_cont prewrap">
+                                <div>
+                                    <p th:if="${view.savedFileName != null}">
+                                        <img th:src="@{|/${view.folderName}/${view.savedFileName}|}">
+                                    </p>
+                                </div>
+                                <div>
+                                    <p th:unless="${view.savedFileName != null}">
+                                    </p>
+                                </div>
                                 </p>
-                            </p>
-                        </div>`;
-                    } );
-                    document.querySelector(".comment-flex").innerHTML = output;
-                }
-            });
-        });
+                                [[${view.content}]]
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
+        </div>
+    </div>
+</main>
 
-        document.querySelector("#cBtn").addEventListener('click', function() {
-            let obj = {
-                bId: bId.value,
-                cComment: cComment.value,
-                cWriter: cWriter.value
-            }
-            alert("gd");
+<footer th:insert="~{fragment/footer::footer_a}">
 
-            $.ajax({
-                type: "get",
-                url: "/comment/commentWrite",
-                dataType: "json",
-                data: obj,
-                success: function(res) {
-                    if(res.msg == "success") {
-                        alert("댓글이 등록되었습니다.");
-                        location.reload();
-                    }
-                }
-            });
-
-        });
+</footer>
+<script src="js/kdh/reservation/tabmove.js"></script>
+<script>
+    function remove(id) {
+        if(confirm(id + "게시물을 삭제 하시겠습니까?")) {
+        location.href = "/notice/delete?id="+id;
+        }
+    }
 </script>
 </body>
 </html>

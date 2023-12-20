@@ -170,4 +170,18 @@ public class NoticeController {
     }
 
 
+
+    //user가 보는 메인화면
+
+    @GetMapping("/user")
+    public String getNoticeUser(Model model, @RequestParam(value = "searchType", defaultValue = "") String searchType, @RequestParam(value = "words", defaultValue = "") String words, @RequestParam(value="page", defaultValue = "1") int page) {
+        List<NoticeDto> notice = noticeService.getNotice();
+        model.addAttribute("list", noticeService.getNotice());
+        model.addAttribute("cnt", noticeService.getSearchCnt(searchType, words));
+        model.addAttribute("list", noticeService.getSearch(page, searchType, words));
+        model.addAttribute("page", noticeService.NoticePageCalc(page));
+        return "notice/noticeUser";
+    }
+
+
 }
