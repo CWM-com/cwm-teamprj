@@ -1,6 +1,7 @@
 package com.example.Project_CWM.mappers;
 
 import com.example.Project_CWM.dto.NoticeDto;
+import com.example.Project_CWM.dto.QnaDto;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -48,5 +49,4 @@ public interface NoticeMapper {
 
     @Update("update notice set visit = visit + 1 where id = #{id}")
     void updateVisit(int id);
-
 }

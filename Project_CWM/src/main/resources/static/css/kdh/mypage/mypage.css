@@ -288,6 +288,14 @@ img {
     font-size: 12px;
 }
 
+.info p {
+    font-size: 18px;
+    font-weight: bold;
+
+    height: 42px;
+    line-height: 42px;
+}
+
 /* 캠핑 박스 시작 */
 
 .camp-box {

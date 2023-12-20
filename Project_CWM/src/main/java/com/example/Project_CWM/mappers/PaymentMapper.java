@@ -9,12 +9,12 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface PaymentMapper {
 
-    @Insert("insert into payment values(null,#{impUid},#{merchantUid},#{payMethod},#{orderName},#{amount},#{buyerName},#{buyerTel},#{buyerEmail},now(),#{paymentStatus},#{memIdx})")
+    @Insert("insert into Payment values(null,#{impUid},#{merchantUid},#{payMethod},#{orderName},#{amount},#{buyerName},#{buyerTel},#{buyerEmail},now(),#{paymentStatus},#{memIdx})")
     public void getPaymentOrder(PaymentDto paymentDto);
 
-    @Select("select amount from payment where imp_uid = #{impUid}")
+    @Select("select amount from Payment where imp_uid = #{impUid}")
     public String getPay(String impUid);
 
-    @Update("update payment set payment_status = 'cancel' where imp_uid = #{impUid}")
+    @Update("update Payment set payment_status = 'cancel' where imp_uid = #{impUid}")
     public void updatePayment(String impUid);
 }

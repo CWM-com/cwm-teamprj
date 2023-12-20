@@ -60,9 +60,9 @@
                     </div>
                 </div>
             </div>
-            <div class="camp-box">
+            <div class="camp-box" th:if="${recent.size() > 0}">
                 <h3>최근 예약한 캠핑장</h3>
-                <div class="info" th:each=" r : ${recent}">
+                <div class="info" th:each="r : ${recent}">
                     <ul>
                         <li>
                             <span>캠핑장  :</span>
@@ -77,6 +77,17 @@
                             [[${r.checkin}]]
                         </li>
                     </ul>
+                    <ul class="camp-more">
+                        <li>
+                           <a th:href="@{/mypage/reservConfirm}"><span>더보기</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="camp-box" th:unless="${recent.size() > 0}">
+                <h3>최근 예약한 캠핑장</h3>
+                <div class="info">
+                    <p>예약한 캠핑장이 없습니다.</p>
                     <ul class="camp-more">
                         <li>
                            <a th:href="@{/mypage/reservConfirm}"><span>더보기</span></a>
