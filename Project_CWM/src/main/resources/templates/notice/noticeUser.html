@@ -108,10 +108,14 @@
                     <h1>공지사항</h1>
                 </div>
                 <div class="notice-container">
-                    <form method="get" action="notice" onsubmit="return check()">
+                    <form method="get" action="/notice" onsubmit="return check()">
                         <div class="notice-search">
+                            <select name="searchType" class="searchType">
+                                <option value="subject">제목</option>
+                                <option value="content">내용</option>
+                            </select>
                             <div class="inpbox">
-                                <input type="text" name="word" class="word" placeholder="제목 + 내용" required>
+                                <input type="text" name="words" class="words" required>
                             </div>
                             <button type="submit" class="notice-search-btn" value="검색">
                                 <img src="/images/magnifying-glass-solid.svg" alt="">
@@ -127,7 +131,6 @@
                             <th>제목</th>
                             <th>날짜</th>
                             <th>조회수</th>
-                            <th>비고</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -142,11 +145,7 @@
                                     <span>[[${notice.regdate}]]</span>
                                 </td>
                                 <td>
-                                    <span>?</span>
-                                </td>
-                                <td>
-                                    <a th:href="@{/notice/update?(id=${notice.id})}" class="btn1">수정</a>
-                                    <a href="#" class="btn1" th:onclick="remove([[${notice.id}]])")>삭제</a>
+                                    <span>[[${notice.visit}]]</span>
                                 </td>
                             </tr>
                         </tbody>
@@ -183,9 +182,7 @@
                     <i class="fa-solid fa-angle-right"></i>
                 </a>
             </div>
-            <div class="bottom">
-                <a th:href="@{/notice/write}" class="btn1">글쓰기</a>
-            </div>
+
         </div>
     </div>
 </main>
