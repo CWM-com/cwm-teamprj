@@ -49,4 +49,13 @@ public interface ReviewMapper {
     @Update("update review set visit = visit + 1 where id = #{id}")
     void updateVisit(int id);
 
+
+
+
+
+
+
+    @Select("select count(*) from review")
+    public int ReviewCount();
+
 }

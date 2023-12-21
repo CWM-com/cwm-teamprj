@@ -1,0 +1,87 @@
+.member {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin : 20px 0;
+}
+
+.select-member {
+    display: flex;
+}
+
+.search {
+    margin-left: 10px;
+}
+
+.btn-search {
+    padding: 0px 16px;
+}
+
+/* 회원 표 */
+.page-title {
+    width: 1000px;
+    height: 100%;
+    margin-bottom: 100px;
+    position: relative;
+}
+
+.page-title h1 {
+    font-size: 28px;
+    padding-bottom: 10px;
+    line-height: 29px;
+}
+
+.use-infomation {
+    margin: 50px 0px 80px 0px;
+}
+
+.use-title {
+    margin-bottom: 30px;
+}
+
+.use-title > h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid #24262b;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.payment-table > thead > tr > th {
+    padding: 10px;
+    background-color: #f5f6fa;
+    height: 50px;
+    border: 1px solid #d7d7d7;
+}
+
+.payment-table > tbody > tr > th {
+    border: 1px solid #d7d7d7;
+}
+
+.payment-table > tbody > tr > td {
+    padding: 6px;
+    border: 1px solid #d7d7d7;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+.payment-table > tbody > tr > th:first-child {
+    width: 5%;
+}
+
+.payment-table > tbody > tr > td:last-child {
+    width: 10%;
+}
+
+.delte-member {
+    padding: 6px 16px;
+    outline: none;
+    background-color: #24262b;
+    color: #fff;
+    cursor: pointer;
+}
