@@ -67,7 +67,7 @@ public class MemberDto {
         this.userRegdate = userRegdate;
     }
 
-    public String getUserAuthority(String userAuthority) {
+    public String getUserAuthority() {
         return userAuthority;
     }
 

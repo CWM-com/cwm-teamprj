@@ -82,13 +82,20 @@ public class LoginController {
     public String setLogin(@ModelAttribute MemberDto registerDto, HttpServletRequest req, HttpSession session) {
 
         MemberDto m = signinService.setLogin(registerDto);
+        System.out.println(m);
         String prevUri = (String) req.getSession().getAttribute("prev");
-        if(m != null) {
+        if(m != null && m.getUserAuthority().equals("USER")) {
             session = req.getSession(); // 세션 생성할 준비
             session.setAttribute("LoginIn", m);
             session.setMaxInactiveInterval(60 * 10);
             System.out.println("로그인 완료");
             return "redirect:" + prevUri;
+        }else if(m != null && m.getUserAuthority().equals("Admin")){
+            session = req.getSession(); // 세션 생성할 준비
+            session.setAttribute("LoginIn", m);
+            session.setMaxInactiveInterval(60 * 10);
+            System.out.println("로그인 완료");
+            return "redirect:/";
         }else {
             return "redirect:/login";
         }

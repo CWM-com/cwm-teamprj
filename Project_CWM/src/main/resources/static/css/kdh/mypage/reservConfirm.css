@@ -443,13 +443,19 @@ img {
     justify-content: end;
 }
 
-.cancle-box > p {
-    width: 80px;
+.cancle-box > .cancels {
+    width:110px;
     margin-left: 100px;
 }
 
+.cancel-complete {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(238, 52, 52);
+}
+
 .cancle-btn {
-    padding: 8px 12px;
+    padding: 12px 12px;
     background-color:rgb(57 115 157 / 60%);
     color: #fff;
     border: 1px solid rgb(188, 201, 224);

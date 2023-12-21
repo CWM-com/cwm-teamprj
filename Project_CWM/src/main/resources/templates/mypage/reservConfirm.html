@@ -77,6 +77,7 @@
                                                             </div>
                                                             <div class="reservation-date">
                                                                 <p>[[${o.checkin}]] ~ [[${o.checkout}]]</p>
+                                                                <input type="hidden" id="cancelDate" th:value="${o.checkin}">
                                                                 <th:block th:if="${o.adultNum > 0 and o.teenNum > 0 and o.cildNum > 0}">
                                                                     <p>
                                                                         성인[[${o.adultNum}]]명, 청소년[[${o.teenNum}]]명, 유아[[${o.cildNum}]]명
@@ -104,10 +105,10 @@
                                                         </div>
                                                         <div class="cancle-box">
                                                             <th:block th:if="${o.reservStatus} eq 'complete'">
-                                                                <p><button class="cancle-btn">예약취소</button></p>
+                                                                <p class="cancels"><button class="cancle-btn">예약 취소하기</button></p>
                                                             </th:block>
                                                             <th:block th:unless="${o.reservStatus} eq 'complete'">
-                                                                
+                                                                <p class="cancel-complete">예약이 취소되었습니다.</p>
                                                             </th:block>
                                                         </div>
                                                     </div>
@@ -169,8 +170,8 @@
 
     </footer>
 
-    <script src="../../static/js/kdh/reservation/tabmove.js"></script>
-    <script src="../../static/js/kdh/reservation/paymentCancle.js"></script>
+    <script src="/js/kdh/reservation/tabmove.js"></script>
+    <script src="/js/kdh/reservation/paymentCancle.js"></script>
 </body>
 
 </html>

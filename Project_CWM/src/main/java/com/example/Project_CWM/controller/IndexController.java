@@ -3,6 +3,7 @@ package com.example.Project_CWM.controller;
 import com.example.Project_CWM.dto.PlaceDto;
 import com.example.Project_CWM.mappers.MemberMapper;
 import com.example.Project_CWM.mappers.PlaceMapper;
+import com.example.Project_CWM.mappers.ReviewMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,14 +23,18 @@ public class IndexController {
     private MemberMapper memberMapper;
     @Autowired
     private PlaceMapper placeMapper;
+    @Autowired
+    private ReviewMapper reviewMapper;
 
     @GetMapping("/index")
     public String getIndex(Model model) {
        int cnt =  memberMapper.MemberCount();
        int cnt2 = placeMapper.MainPlaceCount();
+       int cnt3 = reviewMapper.ReviewCount();
 
        model.addAttribute("cnt1", cnt);
        model.addAttribute("cnt2", cnt2);
+       model.addAttribute("cnt3", cnt3);
         return "index";
     }
 
