@@ -1,11 +1,11 @@
 package com.example.Project_CWM.controller;
 
 import com.example.Project_CWM.dto.MemberDto;
-import com.example.Project_CWM.dto.NoticeDto;
+import com.example.Project_CWM.dto.ReservationOrderDto;
 import com.example.Project_CWM.dto.ReviewDto;
-import com.example.Project_CWM.mappers.NoticeMapper;
+import com.example.Project_CWM.mappers.ReservationMapper;
 import com.example.Project_CWM.mappers.ReviewMapper;
-import com.example.Project_CWM.service.NoticeService;
+import com.example.Project_CWM.service.ReservationService;
 import com.example.Project_CWM.service.ReviewService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,6 +31,9 @@ public class ReviewController {
     ReviewService reviewService;
 
     @Autowired
+    ReservationMapper reservationMapper;
+
+    @Autowired
     ReviewMapper reviewMapper;
 
 
@@ -37,15 +41,28 @@ public class ReviewController {
     String fileDir;
 
     @GetMapping("")
-    public String getReview(Model model, @RequestParam(value = "searchType", defaultValue = "") String searchType, @RequestParam(value = "words", defaultValue = "") String words, @RequestParam(value="page", defaultValue = "1") int page, HttpServletRequest request) {
+    public String getReview(Model model, @RequestParam(value = "searchType", defaultValue = "") String searchType, @RequestParam(value = "words", defaultValue = "") String words, @RequestParam(value="page", defaultValue = "1") int page, HttpSession session
+    ) {
         List<ReviewDto> review = reviewService.getReview();
         model.addAttribute("list", reviewService.getReview());
         model.addAttribute("cnt", reviewService.getSearchCnt(searchType, words));
         model.addAttribute("list", reviewService.getSearch(page, searchType, words));
         model.addAttribute("page", reviewService.ReviewPageCalc(page));
 
-        boolean isLoggedIn = isLoggedIn(request);
-        model.addAttribute("isLoggedIn", isLoggedIn);
+        MemberDto loggedInMember = (MemberDto) session.getAttribute("LoginIn");
+
+//        int reviewWrite = reservationMapper.checkReview(idx);
+//        model.addAttribute("reviewWrite", reviewWrite);
+//        System.out.println(reviewWrite);
+        if (loggedInMember != null) {
+            int reviewWrite = reservationMapper.checkReview(loggedInMember.getIdx());
+            model.addAttribute("reviewWrite", reviewWrite);
+            System.out.println(reviewWrite);
+            System.out.println("idx: " + loggedInMember.getIdx());
+            System.out.println("리뷰 작성 수: " + reviewWrite);
+        }
+
+
         return "review/review";
     }
 

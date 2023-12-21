@@ -67,6 +67,7 @@
                         <tr>
                             <th>번호</th>
                             <th>제목</th>
+                            <th>작성자</th>
                             <th>날짜</th>
                             <th>조회수</th>
                             <th>평점</th>
@@ -79,6 +80,10 @@
                                 </td>
                                 <td>
                                     <a th:href="@{/review/view?(id=${review.id})}" class="active">[[${review.subject}]]</a>
+                                    <span>[부산캠핑장]</span>
+                                </td>
+                                <td>
+                                    <span>[[${review.userId}]]</span>
                                 </td>
                                 <td>
                                     <span>[[${review.regdate}]]</span>
@@ -125,8 +130,10 @@
                     <i class="fa-solid fa-angle-right"></i>
                 </a>
             </div>
-            <div class="bottom">
+            <div class="bottom" th:if="${session.LoginIn != null && reviewWrite != 0}">
                 <a th:href="@{/review/write}" class="btn1">글쓰기</a>
+            </div>
+            <div class="bottom" th:unless="${session.LoginIn != null && reviewWrite != 0}">
             </div>
         </div>
     </div>
