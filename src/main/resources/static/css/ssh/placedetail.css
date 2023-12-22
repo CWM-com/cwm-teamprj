@@ -1,0 +1,154 @@
+/* 디테일 내용 */
+.detail-content{
+    width: 950px;
+    padding-right: 30px;
+}
+
+/* 디테일 제목 */
+.detail-title{
+    width: 100%;
+    display: flex;
+}
+.detail-title-title{
+    width: 60%;
+}
+.detail-title-bookmark{
+    width: 20%;
+    text-align: right;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ccc;
+    margin-right: 40px;
+}
+.rating {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+.star {
+    cursor: pointer;
+    color: #ccc;
+    margin: 0 5px;
+}
+.active {
+    color: tomato;
+}
+
+/* 디테일 바디 */
+.detail-body{
+    margin: 100px 0 150px 0;
+    text-align: center;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+tr{
+    height: 50px;
+    text-align: center;
+}
+td{
+    border: 1px solid #ccc;
+}
+td:nth-child(1), td:nth-child(3){
+    font-weight: bold;
+    background-color: #eee;
+}
+td:nth-child(2), td:nth-child(4){
+    background-color: #fff;
+}
+td i{
+    cursor: pointer;
+}
+
+/* 디테일 사진 */
+.detail-pics{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    border: 0;
+    background-color: transparent;
+    font-size: 20px;
+    cursor: pointer;
+}
+.pic00-list{
+    width: 100%;
+    height: 500px;
+    /* background-color: rgba(165, 192, 239, 0.4); */
+    margin: 0 20px;
+    display: flex;
+}
+.pic00-list div {
+    transition: opacity 0.5s ease-in-out;
+}
+.pic01, .pic02, .pic03, .pic04{
+    width: 100%; /* 작은 div의 가로 크기 */
+    height: 100%; /* 작은 div의 세로 크기 */
+    overflow: hidden;
+}
+.pic01 img, .pic02 img, .pic03 img, .pic04 img{
+    width: auto; /* 이미지의 가로 크기를 자동으로 조절 */
+    height: 100%; /* 이미지를 부모 요소에 맞게 세로 크기 조절 */
+    display: block; /* 인라인 요소로부터 블록 요소로 변경 */
+    margin: 0 auto;
+}
+.visible {
+    opacity: 1;
+}
+.hidden {
+    opacity: 0.1;
+}
+
+/* 디테일 자리 */
+.detail-position{
+    margin-top: 100px;
+}
+.detail-position h2{
+    text-align: center;
+}
+.detail-position-icons{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    font-size: 40px;
+    padding: 20px 30px;
+    background-color: rgba(195, 235, 195, 0.3);
+}
+.icons{
+    padding: 30px 20px;
+    /* display: flex; */
+}
+.icons span{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 디테일 주변 */
+.detail-etc{
+    margin-top: 100px;    
+}
+.detail-etc h2{
+    text-align: center;
+}
+.detail-etc-pic{
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    background-color: rgba(165, 192, 239, 0.4);
+    padding: 20px 10px;
+}
+.detail-etc01{
+    width: 25%;
+    height: 100%;
+    /* text-align: center; */
+}
+.span{
+    background-color: rgba(255, 255, 255, 0.5);
+    height: auto;
+    /* padding-bottom: 20px; */
+}

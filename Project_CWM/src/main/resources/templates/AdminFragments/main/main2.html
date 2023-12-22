@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원관리 페이지</title>
+
 </head>
 <body>
 <div class="main-content" th:fragment="main2_frag">
@@ -29,7 +30,7 @@
                 </form>
             </div>
         </div>
-        <form action="/admin/member" method="post">
+        <form action="" method="">
             <div class="payment-box">
                 <table class="payment-table">
                     <thead>
@@ -43,16 +44,16 @@
                             <th>비고</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody th:each="m : ${member}">
                         <tr>
                             <th>
                                 번호
                             </th>
-                            <td>이름</td>
-                            <td>아이디</td>
-                            <td>비밀번호</td>
-                            <td>이메일</td>
-                            <td>전화번호</td>
+                            <td>[[${m.userName}]]</td>
+                            <td>[[${m.userId}]]</td>
+                            <td>[[${m.userPasswd}]]</td>
+                            <td>[[${m.userEmail}]]</td>
+                            <td>[[${m.userTel}]]</td>
                             <td><button type="button" class="delte-member">삭제</button></td>
                         </tr>
                     </tbody>

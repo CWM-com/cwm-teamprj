@@ -13,7 +13,7 @@ public class ReservationOrderDto {
     private int teenNum;
     private int cildNum;
     private String reservStatus;
-    private String memIdx;
+    private int memIdx;
     private String campPrice;
     private String impUid;
     private String merchantUid;
@@ -116,11 +116,11 @@ public class ReservationOrderDto {
         this.reservStatus = reservStatus;
     }
 
-    public String getMemIdx() {
+    public int getMemIdx() {
         return memIdx;
     }
 
-    public void setMemIdx(String memIdx) {
+    public void setMemIdx(int memIdx) {
         this.memIdx = memIdx;
     }
 
