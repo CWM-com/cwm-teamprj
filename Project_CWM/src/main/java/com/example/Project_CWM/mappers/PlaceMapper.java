@@ -80,6 +80,7 @@ public interface PlaceMapper {
     @Select("select count(*) from placeinfo")
     public int MainPlaceCount();
 
+    // 메인페이지 베스트 캠핑 3가지
 
 
 
