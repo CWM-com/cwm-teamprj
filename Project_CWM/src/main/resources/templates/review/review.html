@@ -28,13 +28,13 @@
                 <div>
                     <ul class="title-List">
                         <li>
-                            <a href="">공지사항</a>
+                            <a href="/notice">공지사항</a>
                         </li>
                         <li>
-                            <a href="">캠핑 리뷰</a>
+                            <a href="/qna">QnA</a>
                         </li>
                         <li>
-                            <a href="">QnA</a>
+                            <a href="/review">캠핑 리뷰</a>
                         </li>
                     </ul>
                 </div>
@@ -43,10 +43,10 @@
         <div class="page-title">
             <div class="notice">
                 <div class="title">
-                    <h1>공지사항</h1>
+                    <h1>캠핑장리뷰</h1>
                 </div>
                 <div class="notice-container">
-                    <form method="get" action="/notice" onsubmit="return check()">
+                    <form method="get" action="/review" onsubmit="return check()">
                         <div class="notice-search">
                             <select name="searchType" class="searchType">
                                 <option value="subject">제목</option>
@@ -67,28 +67,34 @@
                         <tr>
                             <th>번호</th>
                             <th>제목</th>
+                            <th>작성자</th>
                             <th>날짜</th>
                             <th>조회수</th>
-                            <th>비고</th>
+                            <th>평점</th>
                         </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="notice, k: ${list}">
+                            <tr th:each="review, k: ${list}">
                                 <td>
                                     <span>[[${cnt - ((page.page - 1) * page.pageCount) - k.index}]]</span>
                                 </td>
                                 <td>
-                                    <a th:href="@{/notice/view?(id=${notice.id})}" class="active">[[${notice.subject}]]</a>
+                                    <a th:href="@{/review/view?(id=${review.id})}" class="active">[[${review.subject}]]</a>
+                                    <span>[부산캠핑장]</span>
                                 </td>
                                 <td>
-                                    <span>[[${notice.regdate}]]</span>
+                                    <span>[[${review.userId}]]</span>
                                 </td>
                                 <td>
-                                    <span>[[${notice.visit}]]</span>
+                                    <span>[[${review.regdate}]]</span>
                                 </td>
                                 <td>
-                                    <a th:href="@{/notice/update?(id=${notice.id})}" class="btn1">수정</a>
-                                    <a href="#" class="btn1" th:onclick="remove([[${notice.id}]])")>삭제</a>
+                                    <span>[[${review.visit}]]</span>
+                                </td>
+                                <td>
+                                    <span>[[${review.eval}]]/5</span>
+<!--                                    <a th:href="@{/review/update?(id=${review.id})}" class="btn1">수정</a>-->
+<!--                                    <a href="#" class="btn1" th:onclick="remove([[${review.id}]])")>삭제</a>-->
                                 </td>
                             </tr>
                         </tbody>
@@ -98,13 +104,13 @@
             <div class="bottom-center">
                 <a href="#" th:if="${page.page <= 1}"></a>
 
-                <a th:href="@{/notice?(page=${page.page - 1})}" th:unless="${page.page <= 1}">
+                <a th:href="@{/review?(page=${page.page - 1})}" th:unless="${page.page <= 1}">
                     <i class="fa-solid fa-angle-left"></i>
                 </a>
 
                 <!-- page number -->
 
-                <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}" th:href="@{/notice?(page=${i})}">
+                <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}" th:href="@{/review?(page=${i})}">
                     <th:block th:if="${page.page eq i}">
                           <span style="color:#f00">
                             <strong>[[${i}]]</strong>
@@ -119,13 +125,15 @@
                 <!-- page number -->
                 <a href="#" th:if="${page.page >= page.totalPage}"></a>
 
-                <a th:href="@{/notice?(page=${page.page + 1})}"
+                <a th:href="@{/review?(page=${page.page + 1})}"
                    th:unless="${page.page >= page.totalPage}">
                     <i class="fa-solid fa-angle-right"></i>
                 </a>
             </div>
-            <div class="bottom">
-                <a th:href="@{/notice/write}" class="btn1">글쓰기</a>
+            <div class="bottom" th:if="${session.LoginIn != null && reviewWrite != 0}">
+                <a th:href="@{/review/write}" class="btn1">글쓰기</a>
+            </div>
+            <div class="bottom" th:unless="${session.LoginIn != null && reviewWrite != 0}">
             </div>
         </div>
     </div>
@@ -139,7 +147,7 @@
 <script>
     function remove(id) {
         if(confirm(id + "게시물을 삭제 하시겠습니까?")) {
-        location.href = "/notice/delete?id="+id;
+        location.href = "/review/delete?id="+id;
         }
     }
 </script>

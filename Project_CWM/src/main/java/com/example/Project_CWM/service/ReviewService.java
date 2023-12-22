@@ -1,8 +1,7 @@
 package com.example.Project_CWM.service;
 
-import com.example.Project_CWM.dto.NoticeDto;
-import com.example.Project_CWM.dto.PageDto;
-import com.example.Project_CWM.dto.ReviewDto;
+import com.example.Project_CWM.dto.*;
+import com.example.Project_CWM.mappers.MemberMapper;
 import com.example.Project_CWM.mappers.NoticeMapper;
 import com.example.Project_CWM.mappers.ReviewMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,10 @@ public class ReviewService {
 
     @Autowired
     ReviewMapper reviewMapper;
+
+    @Autowired
+    MemberMapper memberMapper;
+
 
     public List<ReviewDto> getReview() {
         return reviewMapper.getReview();
@@ -93,4 +96,12 @@ public class ReviewService {
 
         return pageDto;
     }
+
+
+    public List<MemberDto> reviewWrite1(int idx) {
+        return memberMapper.reviewWrite1(idx);
+    }
+
+
+
 }
