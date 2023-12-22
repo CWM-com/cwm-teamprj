@@ -8,7 +8,7 @@
 <body>
 <div class="main-content" th:fragment="main3_frag">
     <div class="register-body">
-        <form onsubmit="return frmCheck()" action="/place/placeregister" method="post" enctype="multipart/form-data" >
+        <form onsubmit="return frmCheck()" action="/current=3" method="post" enctype="multipart/form-data" >
             <table>
                 <tr>
                     <th>캠핑장 고유번호</th>
@@ -84,7 +84,7 @@
                     </a>
                 </div>
                 <div class="bottom-right">
-                    <a th:href="@{/place/placeregister}">
+                    <a th:href="@{/current=3}">
                         <button type="submit" class="btn blue">캠핑장 등록</button>
                     </a>
                 </div>
