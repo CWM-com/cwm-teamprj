@@ -280,7 +280,7 @@ img {
     border-color:rgba(165, 192, 239, 0.4);
     box-shadow: 2px 2px 5px 2px rgb(0, 0, 0,0.4);
     border-radius: 5px;
-
+    width : 300px;
     cursor: pointer;
 }
 
@@ -443,9 +443,8 @@ section:nth-child(2) {
     align-items: center;
 }
 
-.count-box {
-    margin-left: 130px;
-    margin-right: 130px;
+.count-box:nth-child(2) {
+    margin: 0 200px;
 }
 
 .count-box:nth-child(3) {

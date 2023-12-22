@@ -40,6 +40,17 @@
 
                             </th:block>
                         </span>
+                        <span>
+                            <th:block th:if="${#strings.isEmpty(session.LoginIn)}">
+                               
+                            </th:block>
+
+                            <th:block th:unless="${#strings.isEmpty(session.LoginIn)}">
+                                <th:block th:if="${#strings.equals(session.LoginIn.userAuthority,'Admin')}">
+                                    <a th:href="@{/}">관리자 페이지</a>
+                                </th:block>
+                            </th:block>
+                        </span>
                     </div>
                 </div>
                 <div class="header-Line">
