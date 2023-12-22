@@ -13,7 +13,7 @@ public interface ReviewMapper {
     public List<ReviewDto> getReview();
 
 
-    @Insert("insert into review values(null, #{subject}, #{userId}, #{content}, #{eval}, 0, now(), #{orgName}, #{savedFileName}, #{savedFilePathName}, #{savedFileSize}, #{folderName}, #{ext}, #{grp}, 1, 1)")
+    @Insert("insert into review values(null, #{subject}, #{userId}, #{content}, #{eval}, #{campName}, 0, now(), #{orgName}, #{savedFileName}, #{savedFilePathName}, #{savedFileSize}, #{folderName}, #{ext}, #{grp}, 1, 1)")
     public void setWrite(ReviewDto reviewDto);
 
     @Delete("delete from review where id = #{id}")
@@ -28,7 +28,7 @@ public interface ReviewMapper {
     int getMaxGrp();
 
     /*파일업데이트*/
-    @Update("update review set subject=#{subject}, content=#{content}, eval=#{eval}, regdate=now(), orgName=#{orgName}, savedFileName=#{savedFileName}, savedFilePathName=#{savedFilePathName}, savedFileSize=#{savedFileSize}, folderName=#{folderName}, ext=#{ext}  where id=#{id}")
+    @Update("update review set subject=#{subject}, content=#{content}, eval=#{eval}, #{campName}, regdate=now(), orgName=#{orgName}, savedFileName=#{savedFileName}, savedFilePathName=#{savedFilePathName}, savedFileSize=#{savedFileSize}, folderName=#{folderName}, ext=#{ext}  where id=#{id}")
     void setUpdate(ReviewDto reviewDto);
 
     /*파일다운*/

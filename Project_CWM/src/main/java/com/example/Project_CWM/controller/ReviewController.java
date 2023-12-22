@@ -80,6 +80,9 @@ public class ReviewController {
             model.addAttribute("userId", loggedInMember.getUserId());
         }
 
+        List<String> allCampNames = reviewService.getAllCampNames();
+        model.addAttribute("allCampNames", allCampNames);
+
         return "review/reviewWrite";
     }
 
@@ -160,6 +163,8 @@ public class ReviewController {
     public String getUpdate(@RequestParam int id, Model model) {
         ReviewDto bd = reviewMapper.getView(id);
         model.addAttribute("modify", bd);
+        List<String> allCampNames = reviewService.getAllCampNames();
+        model.addAttribute("allCampNames", allCampNames);
         return "review/reviewUpdate";
     }
 
