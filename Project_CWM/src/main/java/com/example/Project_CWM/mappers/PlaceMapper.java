@@ -80,11 +80,9 @@ public interface PlaceMapper {
     @Select("select count(*) from placeinfo")
     public int MainPlaceCount();
 
+
     // 메인페이지 베스트 캠핑 3가지
-
-
-
-
-
+    @Select("select pc.place_content4, pi.place_name, pi.place_code from placeinfo as pi inner join placecontent as pc on(pi.place_code = pc.place_code) order by pi.visit desc limit 0,3;")
+    public List<PlaceDto> getBestPlace();
 
 }

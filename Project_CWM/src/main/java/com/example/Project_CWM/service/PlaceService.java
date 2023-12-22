@@ -152,4 +152,8 @@ public class PlaceService {
 //    public void updateBookmark(String placeCode){
 //        placeMapper.updateBookmark(placeCode);
 //    }
+
+    public List<PlaceDto> getBestPlace() {
+        return placeMapper.getBestPlace();
+    }
 }

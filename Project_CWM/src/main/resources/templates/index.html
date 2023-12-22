@@ -136,32 +136,14 @@
                         <h2>BEST CAMP</h2>
                         <span>소개합니다 Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, hic!</span>
                     </div>
-                    <div class="bestList">
-                        <div class="best-box">
+                    <div class="bestList" >
+                        <div class="best-box" th:each=" br : ${BestPlace}">
                             <div class="best-img">
                                 <img src="/images/imgg.jpg" alt="">
                             </div>
                             <div class="Listexplan">
-                                <p>서울 캠핑</p>
-                                <p>설명 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, accusamus.</p>
-                            </div>
-                        </div>
-                        <div class="best-box">
-                            <div class="best-img">
-                                <img src="/images/bestming1.jpg" alt="">
-                            </div>
-                            <div class="Listexplan">
-                                <p>경기 캠핑</p>
-                                <p>설명 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, accusamus.</p>
-                            </div>
-                        </div>
-                        <div class="best-box">
-                            <div class="best-img">
-                                <img src="/images/mainimg3.jpg" alt="">
-                            </div>
-                            <div class="Listexplan">
-                                <p>부산 캠핑</p>
-                                <p>설명 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, accusamus.</p>
+                                <p>[[${br.placeName}]]</p>
+                                <p>[[${br.placeContent4]]</p>
                             </div>
                         </div>
                     </div>
