@@ -37,8 +37,8 @@ public class AdminPageController {
     private AdminService adminService;
     @Autowired
     PlaceService placeService;
-    @Value("${fileDir}")
-    String fileDir;
+    @Value("${fileDir2}")
+    String fileDir2;
 
     @GetMapping("")
     public String getAdmin(@RequestParam(value="current", defaultValue="1") String current, Model model) {
@@ -52,7 +52,7 @@ public class AdminPageController {
     public String getPlaceRegister(){
         return("current=3");
     }
-    @PostMapping("/placeregister")
+    @PostMapping("/current=3")
     public String setPlace(@ModelAttribute PlaceDto placeDto,
                            @ModelAttribute MapDto mapDto,
                            @RequestParam("fileMain") List<MultipartFile> fileMain,
@@ -63,8 +63,8 @@ public class AdminPageController {
 
         String placeCode = placeDto.getPlaceCode();
         String folderName = "place_" + placeCode + "_files";
-        String savedPathName = fileDir + folderName;
-        File makeFolder = new File(fileDir + folderName);
+        String savedPathName = fileDir2 + folderName;
+        File makeFolder = new File(fileDir2 + folderName);
         if(!makeFolder.exists()){
             makeFolder.mkdir();
         }
