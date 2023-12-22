@@ -138,12 +138,12 @@
                     </div>
                     <div class="bestList" >
                         <div class="best-box" th:each=" br : ${BestPlace}">
-                            <div class="best-img">
-                                <img src="/images/imgg.jpg" alt="">
+                            <div class="best-img" th:each="m : ${main}" th:if="${br.placeCode == m.placeCode}">
+                                <img th:src="@{|/${m.folderName}/thumb_${m.orgName}|}" alt="${file.orgName}">
                             </div>
                             <div class="Listexplan">
                                 <p>[[${br.placeName}]]</p>
-                                <p>[[${br.placeContent4]]</p>
+                                <p>[[${br.placeContent4}]]</p>
                             </div>
                         </div>
                     </div>

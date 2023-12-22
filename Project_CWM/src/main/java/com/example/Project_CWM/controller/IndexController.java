@@ -33,14 +33,15 @@ public class IndexController {
 
     @GetMapping("/index")
     public String getIndex(Model model) {
-       int cnt =  memberMapper.MemberCount();
-//       int cnt2 = placeMapper.MainPlaceCount();
-       int cnt3 = reviewMapper.ReviewCount();
+        int cnt =  memberMapper.MemberCount();
+        int cnt2 = placeMapper.MainPlaceCount();
+        int cnt3 = reviewMapper.ReviewCount();
 
-       model.addAttribute("BestPlace", placeService.getBestPlace());
-       model.addAttribute("cnt1", cnt);
-//       model.addAttribute("cnt2", cnt2);
-       model.addAttribute("cnt3", cnt3);
+        model.addAttribute("BestPlace", placeService.getBestPlace());
+        model.addAttribute("main", placeService.getMainFiles());
+        model.addAttribute("cnt1", cnt);
+        model.addAttribute("cnt2", cnt2);
+        model.addAttribute("cnt3", cnt3);
         return "index";
     }
 
