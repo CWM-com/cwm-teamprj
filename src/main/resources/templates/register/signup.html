@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/kdh/reset.css">
+    <link rel="stylesheet" href="/css/kdh/register/signup.css">
+
+</head>
+<body>
+    <div class="signup-container">
+        <nav>
+            <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+            <p><strong>회원정보 입력</strong></p>
+        </nav>
+        <main class="signup-wrap">
+            <div class="cert-text">
+                <h3>회원정보를 입력해주세요.</h3>
+            </div>
+            <form action="">
+                <ul>
+                    <li>
+                        <div class="input-type">
+                            <label for="userName"><h3>이름</h3></label>
+                            <input type="text" name="userName" id="userName" class="id-info" placeholder="이름">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="input-type">
+                            <label for="userEmail"><h3>이메일</h3></label>
+                            <input type="text" name="userEmail" id="userEmail" class="id-info" placeholder="이메일을 입력해주세요">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="input-type">
+                            <label for="userId"><h3>아이디</h3></label>
+                            <input type="text" name="userId" id="userId" class="id-info" placeholder="이메일을 입력해주세요">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="input-type">
+                            <label for="userPwd"><h3>비밀번호</h3></label>
+                            <input type="password" name="userPwd" id="userPwd" class="id-info" placeholder="8자 이상, 숫자와 영문 필수 포함">
+                            <input type="password" name="checkPwd" id="checkPwd" class="id-info" placeholder="비밀번호 확인">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="input-type">
+                            <label for="userTel"><h3>전화번호</h3></label>
+                            <input type="tel" name="userTel" id="userTel" class="id-info" placeholder="전화번호를 입력해주세요">
+                        </div>
+                    </li>
+                    <div class="agree-check">
+                        <ul>
+                            <li>
+                                <div class="agree-all">
+                                    <input type="checkbox" id="checkAll" value="all"><label for="checkAll">전체동의</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="agree-one">
+                                    <input type="checkbox" id="check_1" class="check"><label for="check_1">이용약관동의</label><strong>(필수)</strong>
+                                </div>
+                                <div class="agree-btn_1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>  
+                                </div>
+                                <div class="modal">
+                                    <div class="modal-content">
+                                        <div class="agree-explan">
+                                            <div class="modal-box1">
+                                                <p>약관 동의 설명 예시</p>
+                                            </div>
+                                            <div class="modal-box2">
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga harum est sapiente natus, officiis obcaecati! Qui illum reprehenderit maxime ab?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="agree-one">
+                                    <input type="checkbox" id="check_2" class="check"><label for="check_2">개인정보수집 및 이용동의</label><strong>(필수)</strong>
+                                </div>
+                                <div class="agree-btn_2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>  
+                                </div>
+                                <div class="modal">
+                                    <div class="modal-content">
+                                        <div class="agree-explan">
+                                            <div class="modal-box1">
+                                                <p>약관 동의 설명 예시2</p>
+                                            </div>
+                                            <div class="modal-box2">
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga harum est sapiente natus, officiis obcaecati! Qui illum reprehenderit maxime ab?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="agree-one">
+                                    <input type="checkbox" id="check_3" class="check"><label for="check_3">만 14세이상</label><strong>(필수)</strong>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </ul>
+                <div>
+                    <button type="submit" class="signup-check">회원가입</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="/js/kdh/pageMove/move_page.js"></script>
+    <script src="/js/kdh/register/agree_check.js"></script>
+</body>
+</html>

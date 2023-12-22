@@ -6,7 +6,18 @@ cancleBtn.forEach((b) => {
 
         let merchantUid = b.closest(".all-box-cotent").querySelector("#merchantUid").value;
 
-        if (confirm("해당 예약을 취소하시겠습니까?")) {
+        let changeDate = b.closest(".all-box-cotent").querySelector("#cancelDate").value;
+
+        let reservDate = new Date(changeDate);
+        let today = new Date();
+
+        let reservDates = MaxDate(today, reservDate);
+        console.log(reservDates);
+
+        if (reservDates == 0 || reservDates > 0) {
+            alert("취소 가능한 날짜가 지났습니다.");
+            return false;
+        } else if (confirm("해당 예약을 취소하시겠습니까?")) {
             $.ajax({
                 type: "post",
                 url: "/payment/cancle",
@@ -15,10 +26,14 @@ cancleBtn.forEach((b) => {
             }).done(function (data) {
                 if (data.msg == "success") {
                     alert("결제취소 완료");
-                }else {
+                } else {
                     alert("다시 확인해주세요.");
                 }
             });
         }
     });
 });
+
+function MaxDate(day1, day2) {
+    return Math.floor((day1 - day2) / (1000 * 60 * 60 * 24));
+}

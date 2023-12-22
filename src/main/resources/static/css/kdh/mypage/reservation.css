@@ -1,0 +1,502 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f7f7;
+}
+
+header {
+    background-color: #121417;
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+}
+
+.p-fix {
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    left: 0;
+    overflow: visible;
+    background-color: rgba(18, 20, 23,0.8);
+    /* #121417 */
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+
+.header-top {
+    display: flex;
+    justify-content: end;
+    
+}
+
+.top-right {
+    height: 30px;
+    margin-top: 10px;
+}
+
+.top-right span {
+    margin-right: 12px;
+}
+
+.top-right span:last-child {
+    margin-right: 0;
+}
+
+.header-top span a {
+    font-size: 12px;
+    color: #7c7c7c;
+}
+
+.header-Line {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.Logo h3 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.menuList {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menuList::after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.menuList li {
+    position: relative;
+    float: left;
+    margin-right: 50px;
+}
+
+.menuList li:hover .submenu {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.6s ease-in-out;
+}
+
+.menuList li:last-child {
+    margin-right: 0px;
+}
+
+.menuList li a {
+    /* color:rgba(165, 192, 239, 0.8); */
+    color: #e1ecf0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.submenu {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.sub-left {
+    left: 5px;
+}
+
+.sub-right {
+    left: -12px;
+}
+
+.submenu li a {
+    padding: 0 10px;
+    width: 100%;
+    display: block; 
+    
+    line-height: 32px;
+    font-weight: normal;
+}
+
+.submenu a:last-child {
+    border-bottom: none;
+}
+
+.submenu li {
+    width: 130px;
+    text-align: center;
+    background-color: rgba(18, 20, 23,0.5);
+}
+
+.submenu li a:hover {
+    background-color: rgba(18, 20, 23,0.8);
+    transition: all 0.5s ease-in-out;
+}
+
+/* 바디 */
+.section0{
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 헤더 뒷공간 */
+.bar-back{
+    width: 100%;
+    height: 110px;
+    background-color: #fff;
+}
+
+/* 바디 제목 */
+.section00{
+    display: flex;
+    margin-top: 100px;
+}
+
+.section-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.menu0 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.menu00 {
+    width: 100%;
+}   
+.menu0 h2::after {
+    content: "";
+    margin-top: 10px;
+    width: 100%;
+    height: 1.5px;
+    display: block;
+    background-color: #ccc;
+}
+.menu0 div h2 {
+    color: #000;
+    font-size: 28px;
+    text-align: center;
+}
+
+/* 캠핑 내용 */
+
+/* 사이드바 */
+.side-menu-bar{
+    position: absolute;
+    left: 10px;
+    width: 200px;
+    text-align: center;
+}
+.side-title{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(165, 192, 239, 0.4);
+    border-radius: 15px 15px 15px 15px;
+}
+
+.side-title a {
+    color: #fff;
+}
+
+.side-content {
+    padding: 5px 0px;
+}
+
+.side-content a {
+    color: #000;
+}
+
+
+
+/* tab 시작 */
+.section-wrap .tab {
+    position: relative;
+}
+
+.tab .tabnav {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.tab .tabnav li {
+    width: 90px;
+    height: 46px;
+
+    border-top: 0px;
+    margin-top: 8px;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.tab .tabnav li a {
+    font-size: 20px;
+    color: #7c7c7c; 
+}
+
+.on{
+    color: #000;
+}
+
+.on::after {
+    content: "";
+    display: block;
+    width: 90%;
+    height: 2px;
+    margin-top: 5px;
+    margin-left: 5px;
+    background-color: #8faec2;
+}
+
+.on:first-child::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 2px;
+    margin-top: 5px;
+    margin-left: 23px;
+    background-color: #8faec2;
+}
+
+.tab .tab-container {
+    margin-top: 50px;
+}
+
+.tab .tab-container .tab-content:first-child {
+    display: block;
+}
+
+.tab .tab-container .tab-content {
+    display: none;
+}
+
+/* tab 끝 */
+
+/* tab 메뉴1  내용 시작 */
+
+.all {
+    width: 300px;
+    margin: 20px 16px 50px;
+    padding: 12px 16px;
+    background-color: rgb(227, 232, 235);
+}
+
+.all-box-container {
+    width: 600px;
+    margin-bottom: 24px;
+}
+
+.all-box-cotent {
+    padding: 12px 16px 16px;
+    border: 1px solid rgb(211, 217, 217);
+    border-radius: 8px;
+    box-shadow: rgba(62, 66, 67, 0.04) 4px 4px 10px 0px;
+}
+
+.all-box-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgb(211, 217, 217);
+}
+
+.all-box-top .date {
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: -0.5px;
+}
+
+.all-box-top .num {
+    color: rgb(121, 126, 129);
+    font-weight: 400;
+}
+
+.all-information {
+    display: flex;
+    align-items: center;
+    padding-top: 12px;
+}
+
+.img-cover {
+    width: 150px;
+    height: 180px;
+}
+
+.img-box {
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 180px;
+}
+
+.img-box >img {
+    width: 100%;
+    height: 100%;
+}
+
+.reservation-information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 20px;
+    height: 180px;
+}
+/* 취소 완료 시작 */
+.reservation-check {
+    display: inline-block;
+    padding: 2px 6px 0px;
+    color: #000;
+    color: rgb(125, 137, 157);
+    border: 1px solid rgb(188, 201, 224);
+    border-radius: 3px;
+}
+
+.reservation-check p {
+    font-size: 14px;
+}
+/* 취소완료 끝 */
+.reservation-name {
+    margin-top: 15px;
+}
+
+.reservation-name > .location {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.reservation-name > .name {
+    margin-top: 2px;
+    font-size: 14px;
+    color: rgb(121, 126, 129)
+}
+
+.reservation-date {
+    margin-top: 15px;
+}
+
+.reservation-date p {
+    font-size: 16px;
+}
+
+.reservation-date p:nth-child(2) {
+    margin-top: 2px;
+}
+
+
+/* 예약완료 */
+
+.reservation-check2 {
+    display: inline-block;
+    padding: 2px 6px 0px;
+    color: #000;
+    color: rgb(83, 136, 228);
+    border: 1px solid rgb(188, 201, 224);
+    border-radius: 3px;
+}
+
+.reservation-check2 p {
+    font-size: 14px;
+}
+/* 예약 완료 끝 */
+
+/* footer 시작 */
+
+footer {
+    background-color: #24262b;
+    height: 300px;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-wrap {
+    width: 100%;
+    padding-top: 80px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.footer-wrap .footer-item {
+    width: 100%;
+    height: 150px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(196, 196, 196);
+}
+
+.footer-item::after {
+    content: "";
+    width: 1100px;
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    margin-top: 16px;
+}
+
+.footer-item p {
+    padding-bottom: 6px;
+}
+
+.footer-item p:last-child {
+    margin-bottom: 0px;
+}
+
+.footer-icon {
+    font-size: 22px;
+    text-align: right;
+}
+
+.footer-icon a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    line-height: 40px;
+    margin-right: 10px;
+}
+
+.footer-icon a:hover {
+    background-color: #fff;
+    color: #24262b;
+    transition: all 0.6s ease-in-out;
+    padding-left: 0;
+    cursor: pointer;
+}
+
+.footer-copyright {
+    position: relative;
+    bottom: 34px;
+    width: 100%;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(196, 196, 196);
+}

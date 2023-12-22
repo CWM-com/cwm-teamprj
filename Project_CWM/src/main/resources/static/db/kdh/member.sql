@@ -257,4 +257,3 @@ WHERE ct.camp_name = #{campName}
 
 
   select p.place_code, r.* from reservation as r inner join placeinfo as p on(r.camp_name = p.place_name) where mem_idx = 1;
-    

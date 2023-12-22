@@ -3,11 +3,64 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>회원관리 페이지</title>
+
 </head>
 <body>
 <div class="main-content" th:fragment="main2_frag">
-    <h1>캠핑장 등록</h1>
+    <h1>회원관리</h1>
+    <div class="">
+        <div class="member">
+            <h4>총 개수</h4>
+            <div class="select-member">
+                <form action="">
+                    <select name="" id="">
+                        <option value="" selected>--정렬 기준--</option>
+                        <option value="">이름</option>
+                        <option value="">아이디</option>
+                        <option value="">이메일</option>
+                        <option value="">전화번호</option>
+                    </select>
+                </form>
+                <form action="" method="">
+                    <div class="camp-option-search">
+                        <input type="text" name="search" class="search" id="search">
+                        <input type="submit" class="btn-search" value="검색">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <form action="" method="">
+            <div class="payment-box">
+                <table class="payment-table">
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>이름</th>
+                            <th>아이디</th>
+                            <th>비밀번호</th>
+                            <th>이메일</th>
+                            <th>전화번호</th>
+                            <th>비고</th>
+                        </tr>
+                    </thead>
+                    <tbody th:each="m : ${member}">
+                        <tr>
+                            <th>
+                                번호
+                            </th>
+                            <td>[[${m.userName}]]</td>
+                            <td>[[${m.userId}]]</td>
+                            <td>[[${m.userPasswd}]]</td>
+                            <td>[[${m.userEmail}]]</td>
+                            <td>[[${m.userTel}]]</td>
+                            <td><button type="button" class="delte-member">삭제</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
 </div>
 </body>
 </html>
