@@ -4,6 +4,8 @@ import com.example.Project_CWM.dto.PlaceDto;
 import com.example.Project_CWM.mappers.MemberMapper;
 import com.example.Project_CWM.mappers.PlaceMapper;
 import com.example.Project_CWM.mappers.ReviewMapper;
+import com.example.Project_CWM.service.AdminService;
+import com.example.Project_CWM.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,14 +28,18 @@ public class IndexController {
     @Autowired
     private ReviewMapper reviewMapper;
 
+    @Autowired
+    private PlaceService placeService;
+
     @GetMapping("/index")
     public String getIndex(Model model) {
        int cnt =  memberMapper.MemberCount();
-       int cnt2 = placeMapper.MainPlaceCount();
+//       int cnt2 = placeMapper.MainPlaceCount();
        int cnt3 = reviewMapper.ReviewCount();
 
+       model.addAttribute("BestPlace", placeService.getBestPlace());
        model.addAttribute("cnt1", cnt);
-       model.addAttribute("cnt2", cnt2);
+//       model.addAttribute("cnt2", cnt2);
        model.addAttribute("cnt3", cnt3);
         return "index";
     }

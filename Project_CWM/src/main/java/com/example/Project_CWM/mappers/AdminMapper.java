@@ -1,6 +1,7 @@
 package com.example.Project_CWM.mappers;
 
 import com.example.Project_CWM.dto.MemberDto;
+import com.example.Project_CWM.dto.PlaceDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
