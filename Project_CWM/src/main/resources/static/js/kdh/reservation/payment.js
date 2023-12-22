@@ -15,7 +15,7 @@ let campType = document.querySelector("#campType");
 let memIdx = document.querySelector("input[name=memIdx]");
 let adultNum = document.querySelector("#adultNum");
 let teenNum = document.querySelector("#teenNum");
-let cildNum = document.querySelector("#cildNum");
+let cildNum = document.querySelector("#cildNum");git 
 let checkin = document.querySelector("#checkin");
 let checkdays = document.querySelector("#checkdays");
 let checkout = document.querySelector("#checkout");
