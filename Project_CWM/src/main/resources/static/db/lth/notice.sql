@@ -34,8 +34,9 @@ primary key(id)
 create table review(
 id int not null auto_increment,
 subject varchar(255) not null,
-writer varchar(20) not null,
+user_Id varchar(20) not null,
 content text,
+eval int not null;
 visit int,
 regdate date,
 orgName varchar(255),
@@ -47,8 +48,32 @@ ext varchar(20),
 grp int,
 seq int,
 depth int,
-primary key(id)
+primary key(id),
+foreign key(user_id) references member(user_id) on update cascade on delete restrict
 );
+
+
+CREATE TABLE review (
+    id INT NOT NULL AUTO_INCREMENT,
+    subject VARCHAR(255) NOT NULL,
+    user_id VARCHAR(20) NOT NULL,
+    content TEXT,
+    eval INT NOT NULL,
+    visit INT,
+    regdate DATE,
+    orgName VARCHAR(255),
+    savedFileName VARCHAR(255),
+    savedFilePathName VARCHAR(255),
+    savedFileSize BIGINT,
+    folder_name VARCHAR(10),
+    ext VARCHAR(20),
+    grp INT,
+    seq INT,
+    depth INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES member(user_id) ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
 
 create table comment(
 c_id int not null auto_increment,

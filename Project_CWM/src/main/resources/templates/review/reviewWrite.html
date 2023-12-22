@@ -47,7 +47,7 @@
                 <h1>QnA</h1>
             </div>
             <div class="wrap">
-                <form onsubmit="return frmCheck()" action="/notice/write" method="post" enctype="multipart/form-data" autocomplete="off">
+                <form onsubmit="return frmCheck()" action="/review/write" method="post" enctype="multipart/form-data" autocomplete="off">
                     <ul>
                         <li>
                             <label>질문</label>
@@ -55,7 +55,18 @@
                         </li>
                         <li>
                             <label>작성자</label>
-                            <input type="text" name="writer" class="input width-15 noto">
+                            [[${userId}]]
+                        </li>
+                        <li>
+                            <label>평점</label>
+                            <select name="eval" id="eval">
+                                <option>평점을 선택하세요</option>
+                                <option value="1">1/5</option>
+                                <option value="2">2/5</option>
+                                <option value="3">3/5</option>
+                                <option value="4">4/5</option>
+                                <option value="5">5/5</option>
+                            </select>
                         </li>
                         <li>
                             <label>내용</label>
@@ -86,7 +97,6 @@
     }
 
     let subject = document.querySelector("input[name=subject]");
-    let writer = document.querySelector("input[name=writer]");
     let content = document.querySelector("textarea[name=subject]");
 
     function frmCheck() {
@@ -97,12 +107,6 @@
             return false;
         }
 
-        if(writer.value == "") {
-            alert("게시물 작성자를 입력해 주세요.");
-            writer.focus();
-            return false;
-        }
-
         if(content.value == "") {
             alert("내용을 입력해 주세요.");
             content.focus();
@@ -110,9 +114,8 @@
         }
     }
 
-
     function move() {
-        location.href = "/qna";
+        location.href = "/review";
     }
 </script>
 </body>

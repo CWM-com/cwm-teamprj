@@ -28,4 +28,6 @@ public interface MemberMapper {
     @Delete("delete from member where idx = #{idx}")
     public void Infodelete(int idx);
 
+    @Select("Select * from member where idx = #{idx}")
+    public List<MemberDto> reviewWrite1(int idx);
 }

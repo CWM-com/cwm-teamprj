@@ -77,4 +77,14 @@ public interface ReservationMapper {
     // myPage 메인 최근 캠핑장
     @Select("select camp_name, camp_type, check_in from reservation where mem_idx = #{idx} order by reserv_idx desc limit 0,1; ")
     public List<ReservationOrderDto> recentCamp(int idx);
+
+    //review에 사용하는 것
+    @Select("select count(reserv_status) from reservation where mem_idx = #{memIdx} and reserv_status = 'complete'")
+    public int checkReview(int idx);
+
+
+
+
+
+
 }
