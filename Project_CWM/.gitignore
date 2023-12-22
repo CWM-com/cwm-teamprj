@@ -19,8 +19,6 @@ target/
 *.iws
 *.iml
 *.ipr
-/src/main/resources/static/js/kdh/reservation/payment.js
-
 
 ### NetBeans ###
 /nbproject/private/
