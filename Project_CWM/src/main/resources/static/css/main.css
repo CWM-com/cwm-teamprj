@@ -598,9 +598,13 @@ section:nth-child(2) {
 }
 
 .SeoulIcon {
-    text-align: center;
+    display: flex;
+        justify-content: center;
 }
 
+.SeoulNowtemp {
+    text-align: center;
+}
 
 
 /* main 끝 */
