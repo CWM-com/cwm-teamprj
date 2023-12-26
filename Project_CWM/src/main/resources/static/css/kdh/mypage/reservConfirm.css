@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 body {
     font-family: 'Noto Sans KR', sans-serif;
-    font-family: 'Poppins', sans-serif;
     background-color: #fff;
 }
 
@@ -119,10 +117,15 @@ img {
     left: 0;
     right: 0;
     z-index: 1;
+    margin-top : 0.5px;
 }
 
 .sub-left {
     left: 5px;
+}
+
+.sub-middle {
+    left: -25px;
 }
 
 .sub-right {
@@ -132,10 +135,10 @@ img {
 .submenu li a {
     padding: 0 10px;
     width: 100%;
-    display: block; 
-    
+    display: block;
     line-height: 32px;
     font-weight: normal;
+    font-size: 15px;
 }
 
 .submenu a:last-child {

@@ -1,11 +1,13 @@
 package com.example.Project_CWM.controller;
 
 import com.example.Project_CWM.dto.PlaceDto;
+import com.example.Project_CWM.dto.ReviewDto;
 import com.example.Project_CWM.mappers.MemberMapper;
 import com.example.Project_CWM.mappers.PlaceMapper;
 import com.example.Project_CWM.mappers.ReviewMapper;
 import com.example.Project_CWM.service.AdminService;
 import com.example.Project_CWM.service.PlaceService;
+import com.example.Project_CWM.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +32,9 @@ public class IndexController {
 
     @Autowired
     private PlaceService placeService;
+
+    @Autowired
+    ReviewService reviewService;
 
     @GetMapping("/index")
     public String getIndex(Model model) {
