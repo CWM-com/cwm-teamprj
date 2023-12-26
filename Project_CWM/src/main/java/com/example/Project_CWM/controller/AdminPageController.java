@@ -1,11 +1,9 @@
 package com.example.Project_CWM.controller;
 
-import com.example.Project_CWM.dto.MapDto;
-import com.example.Project_CWM.dto.MemberDto;
-import com.example.Project_CWM.dto.PlaceDto;
-import com.example.Project_CWM.dto.PlaceFilesDto;
+import com.example.Project_CWM.dto.*;
 import com.example.Project_CWM.mappers.PlaceMapper;
 import com.example.Project_CWM.service.AdminService;
+import com.example.Project_CWM.service.NoticeService;
 import com.example.Project_CWM.service.PlaceService;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,11 +38,21 @@ public class AdminPageController {
     @Value("${fileDir2}")
     String fileDir2;
 
+    @Autowired
+    NoticeService noticeService;
+
     @GetMapping("")
-    public String getAdmin(@RequestParam(value="current", defaultValue="1") String current, Model model) {
+    public String getAdmin(@RequestParam(value="current", defaultValue="1") String current, Model model, @RequestParam(value = "searchType", defaultValue = "") String searchType, @RequestParam(value = "words", defaultValue = "") String words, @RequestParam(value="page", defaultValue = "1") int page) {
 
         model.addAttribute("current", current);
         model.addAttribute("member", adminService.AdminMember());
+
+        List<NoticeDto> notice = noticeService.getNotice();
+        model.addAttribute("list", noticeService.getNotice());
+        model.addAttribute("cnt", noticeService.getSearchCnt(searchType, words));
+        model.addAttribute("list", noticeService.getSearch(page, searchType, words));
+        model.addAttribute("page", noticeService.NoticePageCalc(page));
+
         return "adminPage";
     }
 
@@ -240,11 +248,14 @@ public class AdminPageController {
 
         return "redirect:/place/place";
     }
+
     @GetMapping("/checkPlaceCode")
     @ResponseBody
     public Map<String, Object> getCheckPlaceCode(@RequestParam String placeCode){
         int checkCode = placeService.getCheckPlaceCode(placeCode);
         return Map.of("checkCode", checkCode);
     }
+
+
 }
 
