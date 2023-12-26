@@ -77,7 +77,7 @@
                             </li>
                             <li>
                                 <a href="/place/placetool">캠핑 팁</a>
-                                <ul class="submenu sub-left">
+                                <ul class="submenu sub-middle">
                                     <li>
                                         <a href="/place/placetool">캠핑 도구</a>
                                     </li>
@@ -93,10 +93,10 @@
                                         <a href="/notice">공지사항</a>
                                     </li>
                                     <li>
-                                        <a href="/review">캠핑 리뷰</a>
+                                        <a href="/qna">Q&A</a>
                                     </li>
                                     <li>
-                                        <a href="/qna">Q&A</a>
+                                        <a href="/review">캠핑 리뷰</a>
                                     </li>
                                 </ul>
                             </li>
@@ -134,12 +134,14 @@
                 <div class="best-menu">
                     <div class="menu-info">
                         <h2>BEST CAMP</h2>
-                        <span>소개합니다 Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, hic!</span>
+                        <span>별이 빛나는 밤 펼쳐지는 캠핑장을 <br>여러분께 소개합니다!</span>
                     </div>
                     <div class="bestList" >
                         <div class="best-box" th:each=" br : ${BestPlace}">
                             <div class="best-img" th:each="m : ${main}" th:if="${br.placeCode == m.placeCode}">
-                                <img th:src="@{|/${m.folderName}/thumb_${m.orgName}|}" alt="${file.orgName}">
+                                <a th:href="@{/place/placedetail?(placeCode=${br.placeCode})}">
+                                    <img th:src="@{|/${m.folderName}/thumb_${m.orgName}|}" alt="${file.orgName}">
+                                </a>
                             </div>
                             <div class="Listexplan">
                                 <p>[[${br.placeName}]]</p>

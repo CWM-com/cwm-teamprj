@@ -105,7 +105,7 @@
 .content-list-detail{
     display: flex;
 }
-.content-list-detail:nth-child(6){
+.content-list-detail:nth-child(5), .content-list-detail:nth-child(6){
     display: flex;
     justify-content: center;
 }

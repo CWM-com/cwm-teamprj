@@ -7,6 +7,8 @@ import com.example.Project_CWM.mappers.PlaceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,8 +32,8 @@ public class PlaceService {
                 searchQuery = "where place_name like '%" + search + "%' order by regdate desc";
                 select.put("searchQuery", searchQuery);
                 select.put("selectType", selectType);
-            }else if(selectType.equals("pop")){
-                searchQuery = "where place_name like '%" + search + "%' order by star desc";
+            }else if(selectType.equals("visit")){
+                searchQuery = "where place_name like '%" + search + "%' order by visit desc";
                 select.put("searchQuery", searchQuery);
                 select.put("selectType", selectType);
             }else if(selectType.equals("name")){
@@ -52,8 +54,8 @@ public class PlaceService {
                 searchQuery = "order by regdate desc";
                 select.put("searchQuery", searchQuery);
                 select.put("selectType", selectType);
-            }else if(selectType.equals("pop")){
-                searchQuery = "order by star desc";
+            }else if(selectType.equals("visit")){
+                searchQuery = "order by visit desc";
                 select.put("searchQuery", searchQuery);
                 select.put("selectType", selectType);
             }else if(selectType.equals("name")){

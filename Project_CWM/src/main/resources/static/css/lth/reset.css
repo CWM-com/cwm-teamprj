@@ -128,10 +128,15 @@ a {
     left: 0;
     right: 0;
     z-index: 1;
+    margin-top : 0.5px;
 }
 
 .sub-left {
     left: 5px;
+}
+
+.sub-middle {
+    left: -25px;
 }
 
 .sub-right {
@@ -141,10 +146,10 @@ a {
 .submenu li a {
     padding: 0 10px;
     width: 100%;
-    display: block; 
-    
+    display: block;
     line-height: 32px;
     font-weight: normal;
+    font-size: 15px;
 }
 
 .submenu a:last-child {

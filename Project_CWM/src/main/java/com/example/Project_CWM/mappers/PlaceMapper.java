@@ -49,7 +49,8 @@ public interface PlaceMapper {
     List<PlaceDto> getSearch(Map<String, Object> mapp);
 
     //캠핑장 별점 업데이트
-    
+//    @Update("update placeinfo set star = (SELECT avg(eval) FROM review WHERE camp_name = #{placeName}) where place_name = #{placeName}")
+//    int updateStar(String placeName);
 
     //캠핑당 디테일 출력
     @Select("select * from placeinfo where place_code = #{placeCode}")

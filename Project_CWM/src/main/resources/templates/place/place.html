@@ -60,7 +60,7 @@
                                 <select name="selectType" class="selectType" onchange="updateSelectedOption();this.form.submit();">
                                     <option value="">정렬 순서</option>
                                     <option value="regdate" th:selected="${st eq 'regdate'}"> 최근 등록순</option>
-                                    <option value="pop" th:selected="${st eq 'pop'}">인기순</option>
+                                    <option value="visit" th:selected="${st eq 'visit'}">인기순</option>
                                     <option value="name" th:selected="${st eq 'name'}">이름순</option>
                                     <option value="code" th:selected="${st eq 'code'}">지역순</option>
                                 </select>
@@ -98,21 +98,15 @@
                                                 <p id="camp-tel">[[${ps.placeCall}]]</p>
                                             </div>
                                             <div class="content-list-detail">
-                                                <li id="code">코드 : </li>
-                                                <p id="camp-code">[[${ps.placeCode}]]</p>
-                                            </div>
-                                            <div class="content-list-detail">
                                                 <li id="visit">조회수 :</li>
                                                 <p id="camp-visit">[[${ps.visit}]]</p>
-<!--                                                <li id="bookmark">총 북마크 :</li>-->
-<!--                                                <p id="camp-bookmark">[[${ps.bookmark}]]</p>-->
-                                                <li id="star">별점 :</li>
-                                                <p id="camp-star">[[${ps.star}]]</p>
                                             </div>
                                             <div class="content-list-detail">
                                                 <a th:href="@{/place/placedetail?(placeCode=${ps.placeCode})}">
                                                     <button type="button" class="btn detail">캠핑장 상세보기</button>
                                                 </a>
+                                            </div>
+                                            <div class="content-list-detail" th:if="${session.LoginIn != null}">
                                                 <a th:href="@{/place/deleteFiles?(placeCode=${ps.placeCode})}" th:onclick="dropTable([[${ps.placeCode}]])">
                                                     <button type="button" class="btn delete">캠핑장 삭제</button>
                                                 </a>
@@ -152,10 +146,10 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="bottom-right">
-<!--                            <a th:href="@{/place/placeregister}">-->
-<!--                                <button type="button" class="btn blue">캠핑장 등록</button>-->
-<!--                            </a>-->
+                        <div class="bottom-right" th:if="${session.LoginIn != null}">
+                            <a th:href="@{/?current=3}">
+                                <button type="button" class="btn blue">캠핑장 등록</button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -165,9 +159,6 @@
     </main>
     <footer th:insert="~{fragment/footer::footer_a}"></footer>
 <script>
-
-
-
     function dropTable(placeCode){
         if(confirm("삭제하면 복구할 수 없습니다.\n정말 삭제하시겠습니까?")){
             $.ajax({
