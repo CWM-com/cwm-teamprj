@@ -32,6 +32,10 @@ public class PlaceService {
                 searchQuery = "where place_name like '%" + search + "%' order by regdate desc";
                 select.put("searchQuery", searchQuery);
                 select.put("selectType", selectType);
+            }else if(selectType.equals("visit")){
+                searchQuery = "where place_name like '%" + search + "%' order by visit desc";
+                select.put("searchQuery", searchQuery);
+                select.put("selectType", selectType);
             }else if(selectType.equals("name")){
                 searchQuery = "where place_name like '%" + search + "%' order by place_name asc";
                 select.put("searchQuery", searchQuery);
@@ -48,6 +52,10 @@ public class PlaceService {
         }else{
             if(selectType.equals("regdate")){
                 searchQuery = "order by regdate desc";
+                select.put("searchQuery", searchQuery);
+                select.put("selectType", selectType);
+            }else if(selectType.equals("visit")){
+                searchQuery = "order by visit desc";
                 select.put("searchQuery", searchQuery);
                 select.put("selectType", selectType);
             }else if(selectType.equals("name")){
