@@ -128,10 +128,15 @@ img {
     left: 0;
     right: 0;
     z-index: 1;
+    margin-top : 0.5px;
 }
 
 .sub-left {
     left: 5px;
+}
+
+.sub-middle {
+    left: -25px;
 }
 
 .sub-right {
@@ -141,10 +146,10 @@ img {
 .submenu li a {
     padding: 0 10px;
     width: 100%;
-    display: block; 
-    
+    display: block;
     line-height: 32px;
     font-weight: normal;
+    font-size: 15px;
 }
 
 .submenu a:last-child {
@@ -270,8 +275,10 @@ img {
 }
 
 .menu-info span {
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.6);
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: -2px;
+    color: rgba(165, 192, 239, 1);
 }
 
 .best-box {
