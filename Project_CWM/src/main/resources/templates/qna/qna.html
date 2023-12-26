@@ -10,9 +10,9 @@
     <link rel="stylesheet" th:href="@{/css/lth/qna.css}">
 </head>
 <body>
-    <header th:insert="~{fragment/header::header_a}">
+<header th:insert="~{fragment/header::header_a}">
 
-    </header>
+</header>
     <main>
         <div class="section0">
             <div class="bar-back"></div>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="top">
                         <form method="get" action="/qna" onsubmit="return check()">
-                            <div class="top-right">
+                            <div class="top-right2">
                                 <select name="searchType" class="searchType">
                                     <option value="subject">질문</option>
                                     <option value="writer">작성자</option>
