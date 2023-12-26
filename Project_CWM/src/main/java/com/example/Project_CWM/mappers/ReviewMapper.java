@@ -28,8 +28,9 @@ public interface ReviewMapper {
     int getMaxGrp();
 
     /*파일업데이트*/
-    @Update("update review set subject=#{subject}, content=#{content}, eval=#{eval}, #{campName}, regdate=now(), orgName=#{orgName}, savedFileName=#{savedFileName}, savedFilePathName=#{savedFilePathName}, savedFileSize=#{savedFileSize}, folderName=#{folderName}, ext=#{ext}  where id=#{id}")
+    @Update("update review set subject=#{subject}, content=#{content}, regdate=now(), orgName=#{orgName}, savedFileName=#{savedFileName}, savedFilePathName=#{savedFilePathName}, savedFileSize=#{savedFileSize}, folder_name=#{folderName}, ext=#{ext} where id=#{id}")
     void setUpdate(ReviewDto reviewDto);
+
 
     /*파일다운*/
 

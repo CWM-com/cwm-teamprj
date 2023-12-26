@@ -172,6 +172,8 @@ public class ReviewController {
     @PostMapping("/update")
     public String setUpdate(@ModelAttribute ReviewDto reviewDto, @RequestParam("file") MultipartFile mf) throws IOException {
 
+
+
         if(!mf.isEmpty()) {
 
             String folderName = new SimpleDateFormat("yyyyMMdd").format(System.currentTimeMillis());
@@ -229,5 +231,7 @@ public class ReviewController {
         HttpSession session = request.getSession(false);
         return session != null && session.getAttribute("userId") != null;
     }
+
+
 
 }

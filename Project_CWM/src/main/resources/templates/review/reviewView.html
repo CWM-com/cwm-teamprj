@@ -46,7 +46,10 @@
                     <form>
                         <div class="board_titWrap">
                             <div class="subject">
-                                <h4>[[${view.subject}]]</h4>
+                                <h4>[[${view.subject}]] <span>[</span><span>[[${view.campName}]]</span><span>]</span></h4>
+                                <div>
+                                    <span>평점 : [[${view.eval}]]</span>
+                                </div>
                                 <div class="reg_info">
                                     <span class="visit">조회수 : [[${view.visit}]]</span>
                                     <br>
@@ -72,7 +75,12 @@
                     </form>
                 </div>
             </div>
-
+            <div class="bottom">
+            <span th:if="${session.LoginIn != null and session.LoginIn.userId == view.userId}">
+                <a th:href="@{/review/update(id=${view.id})}" class="btn1">수정</a>
+                <a href="#" class="btn1" th:onclick="remove([[${view.id}]])">삭제</a>
+            </span>
+            </div>
         </div>
     </div>
 </main>

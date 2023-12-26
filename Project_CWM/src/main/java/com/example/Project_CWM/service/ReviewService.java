@@ -24,6 +24,7 @@ public class ReviewService {
     @Autowired
     ReservationMapper reservationMapper;
 
+
     public List<ReviewDto> getReview() {
         return reviewMapper.getReview();
     }
@@ -101,12 +102,10 @@ public class ReviewService {
     }
 
 
-    public List<MemberDto> reviewWrite1(int idx) {
-        return memberMapper.reviewWrite1(idx);
-    }
-
     public List<String> getAllCampNames() {
         return reservationMapper.getAllCampNames();
     }
+
+
 
 }

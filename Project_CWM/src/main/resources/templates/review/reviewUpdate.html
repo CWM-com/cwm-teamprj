@@ -48,32 +48,10 @@
             </div>
             <div class="wrap">
                 <form onsubmit="return frmCheck()" action="/review/update" method="post" autocomplete="off" enctype="multipart/form-data">
-                    <ul>
+                <ul>
                         <li>
                             <label>제목</label>
                             <input type="text" name="subject" class="input width-100 noto" th:value="${modify.subject}">
-                        </li>
-                        <li>
-                            <label>작성자</label>
-                            <input type="text" name="writer" class="input width-15 noto" th:value="${modify.writer}">
-                        </li>
-                        <li>
-                            <label>평점</label>
-                            <select name="eval" id="eval">
-                                <option>평점을 선택하세요</option>
-                                <option value="1">1/5</option>
-                                <option value="2">2/5</option>
-                                <option value="3">3/5</option>
-                                <option value="4">4/5</option>
-                                <option value="5">5/5</option>
-                            </select>
-                        </li>
-                        <li>
-                            <label>캠핑장 선택</label>
-                            <select name="campName" id="campName">
-                                <option value="">전체 캠핑장</option>
-                                <option th:each="campName : ${allCampNames}" th:value="${campName}" th:text="${campName}"></option>
-                            </select>
                         </li>
                         <li>
                             <label>내용</label>
@@ -91,6 +69,10 @@
                             <input type="submit" value="글저장" class="btn1">
                             <input type="reset" value="목록" class="btn1" onclick="move()">
                             <input type="hidden" name="id" th:value="${modify.id}">
+                            <input type="hidden" name="id" th:value="${modify.subject}">
+                            <input type="hidden" name="id" th:value="${modify.content}">
+                            <input type="hidden" name="id" th:value="${modify.eval}">
+                            <input type="hidden" name="id" th:value="${modify.campName}">
                             <input type="hidden" name="orgName" th:value="${modify.orgName}">
                             <input type="hidden" name="savedFileName" th:value="${modify.savedFileName}">
                             <input type="hidden" name="savedFilePathName" th:value="${modify.savedFilePathName}">

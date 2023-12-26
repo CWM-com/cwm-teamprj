@@ -10,7 +10,7 @@ public class QnaDto {
     private int grp;
     private int seq;
     private int depth;
-
+    private int visit;
     public int getId() {
         return id;
     }
@@ -81,6 +81,14 @@ public class QnaDto {
 
     public void setDepth(int depth) {
         this.depth = depth;
+    }
+
+    public int getVisit() {
+        return visit;
+    }
+
+    public void setVisit(int visit) {
+        this.visit = visit;
     }
 
     @Override

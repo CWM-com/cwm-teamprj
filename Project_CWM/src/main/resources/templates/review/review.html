@@ -67,7 +67,7 @@
                         <tr>
                             <th>번호</th>
                             <th>제목</th>
-                            <th>작성자</th>
+                            <th>등록일</th>
                             <th>날짜</th>
                             <th>조회수</th>
                             <th>평점</th>
@@ -79,8 +79,8 @@
                                 <span>[[${cnt - ((page.page - 1) * page.pageCount) - k.index}]]</span>
                             </td>
                             <td>
+                                [<span style="color:red">[[${review.campName}]]</span>]
                                 <a th:href="@{/review/view?(id=${review.id})}" class="active">[[${review.subject}]]</a>
-                                [<span>[[${review.campName}]]</span>]
                             </td>
                             <td>
                                 <span>[[${review.userId}]]</span>
