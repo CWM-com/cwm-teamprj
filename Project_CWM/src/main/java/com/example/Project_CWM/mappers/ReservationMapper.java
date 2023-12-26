@@ -82,8 +82,8 @@ public interface ReservationMapper {
     @Select("select count(reserv_status) from reservation where mem_idx = #{memIdx} and reserv_status = 'complete'")
     public int checkReview(int idx);
 
-
-
+    @Select("SELECT camp_name FROM reservation WHERE reserv_status = 'complete'")
+    List<String> getAllCampNames();
 
 
 

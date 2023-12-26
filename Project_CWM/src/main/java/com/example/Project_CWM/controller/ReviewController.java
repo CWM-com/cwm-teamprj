@@ -80,6 +80,9 @@ public class ReviewController {
             model.addAttribute("userId", loggedInMember.getUserId());
         }
 
+        List<String> allCampNames = reviewService.getAllCampNames();
+        model.addAttribute("allCampNames", allCampNames);
+
         return "review/reviewWrite";
     }
 
@@ -160,12 +163,16 @@ public class ReviewController {
     public String getUpdate(@RequestParam int id, Model model) {
         ReviewDto bd = reviewMapper.getView(id);
         model.addAttribute("modify", bd);
+        List<String> allCampNames = reviewService.getAllCampNames();
+        model.addAttribute("allCampNames", allCampNames);
         return "review/reviewUpdate";
     }
 
 
     @PostMapping("/update")
     public String setUpdate(@ModelAttribute ReviewDto reviewDto, @RequestParam("file") MultipartFile mf) throws IOException {
+
+
 
         if(!mf.isEmpty()) {
 
@@ -224,5 +231,7 @@ public class ReviewController {
         HttpSession session = request.getSession(false);
         return session != null && session.getAttribute("userId") != null;
     }
+
+
 
 }

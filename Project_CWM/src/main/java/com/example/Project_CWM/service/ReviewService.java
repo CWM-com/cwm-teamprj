@@ -3,6 +3,7 @@ package com.example.Project_CWM.service;
 import com.example.Project_CWM.dto.*;
 import com.example.Project_CWM.mappers.MemberMapper;
 import com.example.Project_CWM.mappers.NoticeMapper;
+import com.example.Project_CWM.mappers.ReservationMapper;
 import com.example.Project_CWM.mappers.ReviewMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,9 @@ public class ReviewService {
 
     @Autowired
     MemberMapper memberMapper;
+
+    @Autowired
+    ReservationMapper reservationMapper;
 
 
     public List<ReviewDto> getReview() {
@@ -98,8 +102,8 @@ public class ReviewService {
     }
 
 
-    public List<MemberDto> reviewWrite1(int idx) {
-        return memberMapper.reviewWrite1(idx);
+    public List<String> getAllCampNames() {
+        return reservationMapper.getAllCampNames();
     }
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지</title>
+    <title>리뷰 보기</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" th:href="@{/css/lth/reset.css}">
     <link rel="stylesheet" th:href="@{/css/lth/view.css}">
@@ -28,7 +28,7 @@
                 <div>
                     <ul class="title-List">
                         <li>
-                            <a href="/notice">공지사항</a>
+                            <a href="/notice/user">공지사항</a>
                         </li>
                         <li>
                             <a href="/qna">QnA</a>
@@ -46,7 +46,10 @@
                     <form>
                         <div class="board_titWrap">
                             <div class="subject">
-                                <h4>[[${view.subject}]]</h4>
+                                <h4>[[${view.subject}]] <span>[</span><span>[[${view.campName}]]</span><span>]</span></h4>
+                                <div>
+                                    <span>평점 : [[${view.eval}]]</span>
+                                </div>
                                 <div class="reg_info">
                                     <span class="visit">조회수 : [[${view.visit}]]</span>
                                     <br>
@@ -72,7 +75,12 @@
                     </form>
                 </div>
             </div>
-
+            <div class="bottom">
+            <span th:if="${session.LoginIn != null and session.LoginIn.userId == view.userId}">
+                <a th:href="@{/review/update(id=${view.id})}" class="btn1">수정</a>
+                <a href="#" class="btn1" th:onclick="remove([[${view.id}]])">삭제</a>
+            </span>
+            </div>
         </div>
     </div>
 </main>

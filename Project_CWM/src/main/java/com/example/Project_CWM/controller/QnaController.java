@@ -97,6 +97,7 @@ public class QnaController {
     public String getView(@RequestParam int id, Model model, HttpServletRequest request) {
         model.addAttribute("view", qnaService.getView(id));
         boolean isLoggedIn = isLoggedIn(request);
+        qnaMapper.updateVisit(id);
         model.addAttribute("isLoggedIn", isLoggedIn);
         return "qna/view";
     }
