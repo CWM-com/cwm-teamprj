@@ -45,6 +45,8 @@ public interface QnaMapper {
     List<QnaDto> getMyQnA(Map<String, Object> map);
     @Select("select count(*) from qna where user_Id = #{userId}")
     int getMyQnaCount(String userId);
+    @Select("select * from qna where user_Id = #{userId} order by id desc limit 0,1;")
+    public List<QnaDto> getRecentQna(String userId);
 
     @Update("update qna set visit = visit + 1 where id = #{id}")
     void updateVisit(int id);

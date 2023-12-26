@@ -38,9 +38,11 @@ public class MypageController {
 
         MemberDto setIDX = (MemberDto) session.getAttribute("LoginIn"); //사람정보
 
-        int idx = setIDX.getIdx(); //그 사람 idx번호만
+        int idx = setIDX.getIdx();
+        String userId = setIDX.getUserId();
 
         model.addAttribute("recent",mypageService.recentCamp(idx));
+        model.addAttribute("recentQna", qnaMapper.getRecentQna(userId));
 
         return "mypage/mypage";
     }
