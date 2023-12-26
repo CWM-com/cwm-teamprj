@@ -52,7 +52,7 @@
                                     <div class="reg_wrap">
                                         <div class="reg_info">
                                             <span class="date">작성자 : [[${view.userId}]]</span>
-                                            <span class="date">[[${view.regdate}]]</span>
+                                            <span class="date">작성일 : [[${view.regdate}]]</span>
                                         </div>
                                     </div>
                                 </div>
@@ -70,9 +70,12 @@
                         <a th:href="@{/qna/update(id=${view.id})}" class="btn1">수정</a>
                         <a href="#" class="btn1" th:onclick="remove([[${view.id}]])">삭제</a>
                     </span>
-                    <span th:if="${session.LoginIn}">
+                    <span th:if="${session.LoginIn}" class="bottom2">
                         <a th:href="@{/qna/reply(id=${view.id})}" class="btn1">답글달기</a>
                     </span>
+                </div>
+                <div class="home">
+                    <input type="reset" value="목록" class="btn1 btn-size" onclick="move()">
                 </div>
                 <div class="comment-wrap">
                     <div class="comment-top">
@@ -105,7 +108,6 @@
                                 <button class="btn1 commentBtn" id="cBtn">댓글달기</button>
                             </div>
                         </div>
-                        <input type="reset" value="목록" class="btn1" onclick="move()">
                     </div>
                 </div>
             </div>
@@ -135,7 +137,7 @@
                 let output = "";
                 res.cList.forEach((c) => {
                     output += `<div class="comment-box">
-                        <h3>${c.cWriter}  <span>${c.cRegdate}</span></h3>
+                        <h3>${c.cWriter}  <span>작성일 : ${c.cRegdate}</span></h3>
                         <p>
                             ${c.cComment}
                             <p class="msg-btn">

@@ -1,6 +1,8 @@
 .weather-container {
-    width: 100%;
+    width: 49%;
     margin-top: 10px;
+    margin-left: 10px;
+    float: right;
 }
 
 .bottom-right {
@@ -17,4 +19,5 @@
     color: #fff;
     cursor: pointer;
     vertical-align: middle;
+     margin-top: 10px;
 }

@@ -31,15 +31,15 @@ public class NoticeController {
     @Value("${fileDir}")
     String fileDir;
 
-    @GetMapping("")
-    public String getNotice(Model model, @RequestParam(value = "searchType", defaultValue = "") String searchType, @RequestParam(value = "words", defaultValue = "") String words, @RequestParam(value="page", defaultValue = "1") int page) {
-        List<NoticeDto> notice = noticeService.getNotice();
-        model.addAttribute("list", noticeService.getNotice());
-        model.addAttribute("cnt", noticeService.getSearchCnt(searchType, words));
-        model.addAttribute("list", noticeService.getSearch(page, searchType, words));
-        model.addAttribute("page", noticeService.NoticePageCalc(page));
-        return "notice/notice";
-    }
+//    @GetMapping("")
+//    public String getNotice(Model model, @RequestParam(value = "searchType", defaultValue = "") String searchType, @RequestParam(value = "words", defaultValue = "") String words, @RequestParam(value="page", defaultValue = "1") int page) {
+//        List<NoticeDto> notice = noticeService.getNotice();
+//        model.addAttribute("list", noticeService.getNotice());
+//        model.addAttribute("cnt", noticeService.getSearchCnt(searchType, words));
+//        model.addAttribute("list", noticeService.getSearch(page, searchType, words));
+//        model.addAttribute("page", noticeService.NoticePageCalc(page));
+//        return "notice/notice";
+//    }
 
     @GetMapping("/write")
     public String getWrite(@ModelAttribute NoticeDto noticeDto, Model model) {

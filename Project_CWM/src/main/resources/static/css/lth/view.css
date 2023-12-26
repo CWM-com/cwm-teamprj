@@ -36,12 +36,17 @@
     font-size: 16px;
     border-bottom: 2px solid #000;
     margin-bottom: 100px;
+    text-align: center;
 }
 
 .bottom {
     display: flex;
     justify-content: right;
     margin-top: -50px;
+}
+
+.bottom2 {
+    margin-left: 4px;
 }
 
 .btn1 {
@@ -55,10 +60,14 @@ cursor: pointer;
 vertical-align: middle;
 }
 
+.btn-size {
+    width: 55.77px;
+    height: 30px;
+    margin-bottom: 20px
+}
 
 /*댓글*/
  
-
 
 .comment-top h3 {
     margin-bottom: 30px;
@@ -131,3 +140,4 @@ input {
 .comment-main {
    margin-bottom: 50px;
 }
+
