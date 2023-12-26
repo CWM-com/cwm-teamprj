@@ -44,6 +44,8 @@ public class ReviewController {
 
     @Value("${fileDir}")
     String fileDir;
+    @Value("${fileDir2}")
+    String fileDir2;
 
     @GetMapping("")
     public String getReview(Model model, @RequestParam(value = "searchType", defaultValue = "") String searchType, @RequestParam(value = "words", defaultValue = "") String words, @RequestParam(value="page", defaultValue = "1") int page, HttpSession session
@@ -107,9 +109,9 @@ public class ReviewController {
 
         if(!mf.isEmpty()) {
 
-            String folderName = new SimpleDateFormat("yyyyMMdd").format(System.currentTimeMillis());
+            String folderName = "reFiles";
 
-            File makeFolder = new File(fileDir + folderName);
+            File makeFolder = new File(fileDir2 + folderName);
 
 
             if(!makeFolder.exists()) {
@@ -123,7 +125,7 @@ public class ReviewController {
 
             String saveFileName = uuid + ext;
 
-            String savedFilePathName = fileDir + folderName + "/" + saveFileName;
+            String savedFilePathName = fileDir2 + folderName + "/" + saveFileName;
 
             /* boardDto => DB*/
             reviewDto.setOrgName(mf.getOriginalFilename());
@@ -180,7 +182,7 @@ public class ReviewController {
 
             String folderName = new SimpleDateFormat("yyyyMMdd").format(System.currentTimeMillis());
 
-            File makeFolder = new File(fileDir + folderName);
+            File makeFolder = new File(fileDir2 + folderName);
 
 
             if(!makeFolder.exists()) {
@@ -194,7 +196,7 @@ public class ReviewController {
 
             String saveFileName = uuid + ext;
 
-            String savedFilePathName = fileDir + folderName + "/" + saveFileName;
+            String savedFilePathName = fileDir2 + folderName + "/" + saveFileName;
 
             /* boardDto => DB*/
             reviewDto.setOrgName(mf.getOriginalFilename());

@@ -487,7 +487,7 @@ section:nth-child(2) {
     content: "";
     margin-top: 10px;
     margin-left: 40%;
-    width: 110px;
+    width: 380px;
     height: 1.5px;
     display: block;
     background-color: #ccc;
@@ -512,14 +512,6 @@ section:nth-child(2) {
     box-shadow: 0 1px 2px 0 rgba(90, 91, 95, 0.1);
     border-radius: 6px;
     cursor: pointer;
-
-    animation-name: contentbox;
-    animation-duration: 3s;
-    animation-delay: 1s;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
-
-    transition: all 0.3s ease-in-out;
 }
 
 .section-content-box:hover {
@@ -547,7 +539,13 @@ section:nth-child(2) {
 }
 
 .review-img .img-box {
-    height: auto;
+    height: 250px;
+}
+.review-img .img-box img{
+    height: 100%;
+    object-fit: contain;
+}
+
 }
 
 .review-img div h4 {

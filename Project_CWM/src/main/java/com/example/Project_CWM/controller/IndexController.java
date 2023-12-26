@@ -42,6 +42,7 @@ public class IndexController {
         model.addAttribute("cnt1", cnt);
         model.addAttribute("cnt2", cnt2);
         model.addAttribute("cnt3", cnt3);
+        model.addAttribute("RecentReview", reviewMapper.getRecentReview());
         return "index";
     }
 
