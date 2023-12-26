@@ -30,7 +30,7 @@
                 <div class="userInfo-box">
                     <h3>[[${session.LoginIn.userName}]]님 정보</h3>
                     <div class="info">
-                        <ul>
+                        <ul class="mypage-tab">
                             <li>
                                 <span>아이디 :</span>
                                 [[${session.LoginIn.userId}]]
@@ -56,7 +56,7 @@
                         <h3>최근 QnA 문의 내역</h3>
                         <div class="notice-List" th:if="${recentQna.size() > 0}">
                             <div class="qna" th:each="q : ${recentQna}">
-                                <ul>
+                                <ul class="mypage-tab">
                                     <li>
                                         <span>작성자 :</span>
                                         [[${q.userId}]]
@@ -86,7 +86,7 @@
             <div class="camp-box" th:if="${recent.size() > 0}">
                 <h3>최근 예약한 캠핑장</h3>
                 <div class="info" th:each="r : ${recent}">
-                    <ul>
+                    <ul class="mypage-tab">
                         <li>
                             <span>캠핑장  :</span>
                             [[${r.campName}]]
