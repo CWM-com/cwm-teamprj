@@ -53,7 +53,7 @@ public class AdminPageController {
         return("current=3");
     }
 
-    @PostMapping("current=3")
+    @PostMapping("/current=3")
     public String setPlace(@ModelAttribute PlaceDto placeDto,
                            @ModelAttribute MapDto mapDto,
                            @RequestParam("fileMain") List<MultipartFile> fileMain,
