@@ -13,7 +13,7 @@ public interface QnaMapper {
     @Select("select * from qna order by id desc")
     public List<QnaDto> getQna();
 
-    @Insert("insert into qna values(null, #{userId}, #{subject}, #{content}, now(), #{ext} ,#{grp}, 1, 1)")
+    @Insert("insert into qna values(null, #{userId}, #{subject}, #{content}, now(), #{ext} ,#{grp}, 1, 1, 0)")
     public void setWrite(QnaDto qnaDto);
 
     @Delete("delete from qna where id = #{id}")
@@ -34,7 +34,7 @@ public interface QnaMapper {
     @Select("select count(*) from qna")
     public int totalCount();
 
-    @Insert("insert into qna values(null, #{userId}, #{subject}, #{content}, now(), #{ext}, #{grp}, #{seq}, #{depth})")
+    @Insert("insert into qna values(null, #{userId}, #{subject}, #{content}, now(), #{ext}, #{grp}, #{seq}, #{depth}, 0)")
     void setReply(QnaDto qnaDto);
 
     @Select("select ifnull(max(grp) + 1, 1) as maxGrp from qna")
@@ -46,5 +46,7 @@ public interface QnaMapper {
     @Select("select count(*) from qna where user_Id = #{userId}")
     int getMyQnaCount(String userId);
 
+    @Update("update qna set visit = visit + 1 where id = #{id}")
+    void updateVisit(int id);
 
 }

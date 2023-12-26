@@ -6,6 +6,7 @@ public class ReviewDto {
     private String userId;
     private String content;
     private int eval;
+    private String campName;
     private int visit;
     private String regdate;
     private String orgName;
@@ -153,6 +154,14 @@ public class ReviewDto {
 
     public void setDepth(int depth) {
         this.depth = depth;
+    }
+
+    public String getCampName() {
+        return campName;
+    }
+
+    public void setCampName(String campName) {
+        this.campName = campName;
     }
 }
 

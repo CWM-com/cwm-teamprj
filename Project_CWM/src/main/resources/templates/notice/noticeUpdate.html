@@ -30,13 +30,13 @@
                 <div>
                     <ul class="title-List">
                         <li>
-                            <a href="/notice">공지사항</a>
+                            <a href="/notice/user">공지사항</a>
                         </li>
                         <li>
                             <a href="/qna">QnA</a>
                         </li>
                         <li>
-                            <a href="/review">리뷰</a>
+                            <a href="/review">캠핑 리뷰</a>
                         </li>
                     </ul>
                 </div>
@@ -50,7 +50,7 @@
                 <form onsubmit="return frmCheck()" action="/notice/update" method="post" autocomplete="off" enctype="multipart/form-data">
                     <ul>
                         <li>
-                            <label>질문</label>
+                            <label>제목</label>
                             <input type="text" name="subject" class="input width-100 noto" th:value="${modify.subject}">
                         </li>
                         <li>
