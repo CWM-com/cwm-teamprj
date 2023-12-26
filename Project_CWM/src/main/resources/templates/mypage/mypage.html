@@ -53,9 +53,32 @@
                 </div>
                 <div class="use-content">
                     <div class="use-box">
-                        <h3>QnA 문의 내역</h3>
-                        <div class="notice-List">
-                            <p>문의한 내역이 없습니다.</p>
+                        <h3>최근 QnA 문의 내역</h3>
+                        <div class="notice-List" th:if="${recentQna.size() > 0}">
+                            <div class="qna" th:each="q : ${recentQna}">
+                                <ul>
+                                    <li>
+                                        <span>작성자 :</span>
+                                        [[${q.userId}]]
+                                    </li>
+                                    <li>
+                                        <span>제목 :</span>
+                                        [[${q.subject}]]
+                                    </li>
+                                    <li>
+                                        <span>작성날짜 :</span>
+                                        [[${q.regdate}]]
+                                    </li>
+                                </ul>
+                                <ul class="qna-info">
+                                    <li>
+                                       <a th:href="@{/qna/view?(id=${q.id})}" class="active"><span>바로가기</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="notice-List" th:unless="${recentQna.size() > 0}">
+                                <p>문의한 내역이 없습니다.</p>
                         </div>
                     </div>
                 </div>
