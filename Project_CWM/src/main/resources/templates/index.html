@@ -273,13 +273,63 @@
                     <div class="review-img">
                         <div class="img-box">
                             <img src="/images/review_img.jpg" alt="">
+                <th:block th:if="${!RecentReview.isEmpty()}">
+                    <th:block th:each="rr : ${RecentReview}">
+                        <th:block th:if="${rr.orgName == null}">
+                            <div class="section-content-box">
+                                <div class="icon-box">
+                                    <span><i class="fa-solid fa-tags"></i></span>
+                                </div>
+                                <div class="review-img">
+                                        <div class="img-box">
+                                            <img src="/images/ssh/refiles/noimages.png" alt="등록된 사진이 없습니다.">
+                                        </div>
+                                    <div>
+                                        <h4>장소 : [[${rr.campName}]]</h4>
+                                    </div>
+                                    <div>
+                                        <h4>[[${rr.subject}]]</h4>
+                                    </div>
+                                    <div>>[[${rr.content}]]</div>
+                                </div>
+                            </div>
+                        </th:block>
+                        <th:block th:unless="${rr.orgName == null}">
+                            <div class="section-content-box">
+                                <div class="icon-box">
+                                    <span><i class="fa-solid fa-tags"></i></span>
+                                </div>
+                                <div class="review-img">
+                                    <div class="img-box">
+                                        <img th:src="@{|/${rr.folderName}/${rr.savedFileName}|}" alt="${rr.orgName}">
+                                    </div>
+                                    <div>
+                                        <h4>장소 : [[${rr.campName}]]</h4>
+                                    </div>
+                                    <div>
+                                        <h4>[[${rr.subject}]]</h4>
+                                    </div>
+                                    <div>>[[${rr.content}]]</div>
+                                </div>
+                            </div>
+                        </th:block>
+                    </th:block>
+                </th:block>
+                <th:block th:unless="${!RecentReview.isEmpty()}">
+                    <div class="section-content-box">
+                        <div class="icon-box">
+                            <span><i class="fa-solid fa-tags"></i></span>
                         </div>
-                        <div>
-                            <h4>후기 제목 Lorem ipsum dolor sit amet.</h4>
+                        <div class="review-img">
+                            <div class="img-box">
+                                <h4>등록된 이미지가 없습니다.</h4>
+                            </div>
+                            <div>
+                                <h4>등록된 리뷰가 없습니다.</h4>
+                            </div>
                         </div>
-                        <div>내용 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore, placeat!</div>
                     </div>
-                </div>
+                </th:block>
             </div>
             <div>
                 <button class="scroll-TopBtn"><i class="fa-solid fa-angle-up"></i><br>TOP</button>
