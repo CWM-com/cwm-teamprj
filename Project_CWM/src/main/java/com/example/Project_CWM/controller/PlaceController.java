@@ -55,8 +55,11 @@ public class PlaceController {
         model.addAttribute("total", placeMapper.getSearchCount(searchQuery));
 
         model.addAttribute("main", placeService.getMainFiles());
+
+
         return "place/place";
     }
+
     @GetMapping("/deletePlace")
     @ResponseBody
     public Map<String, Object> deletePlace(@RequestParam String placeCode){

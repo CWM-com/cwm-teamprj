@@ -1,8 +1,10 @@
 package com.example.Project_CWM.controller;
 
 import com.example.Project_CWM.dto.MemberDto;
+import com.example.Project_CWM.dto.PlaceDto;
 import com.example.Project_CWM.dto.ReservationOrderDto;
 import com.example.Project_CWM.dto.ReviewDto;
+import com.example.Project_CWM.mappers.PlaceMapper;
 import com.example.Project_CWM.mappers.ReservationMapper;
 import com.example.Project_CWM.mappers.ReviewMapper;
 import com.example.Project_CWM.service.ReservationService;
@@ -35,6 +37,9 @@ public class ReviewController {
 
     @Autowired
     ReviewMapper reviewMapper;
+
+    @Autowired
+    PlaceMapper placeMapper;
 
 
     @Value("${fileDir}")
@@ -87,7 +92,7 @@ public class ReviewController {
     }
 
     @PostMapping("/write")
-    public String setWrite(@ModelAttribute ReviewDto reviewDto, @RequestParam("file") MultipartFile mf, HttpSession session) throws IOException {
+    public String setWrite(@ModelAttribute ReviewDto reviewDto, @ModelAttribute PlaceDto placeDto, @RequestParam("file") MultipartFile mf, HttpSession session) throws IOException {
 
         // 세션에서 사용자 정보를 가져옴
         MemberDto loggedInMember = (MemberDto) session.getAttribute("LoginIn");
@@ -129,8 +134,6 @@ public class ReviewController {
             reviewDto.setFolderName(folderName);
             reviewDto.setExt(ext);
 
-
-
             /* 파일 업로드 쓰기 */
             mf.transferTo(new File(savedFilePathName));
 
@@ -138,7 +141,6 @@ public class ReviewController {
         int maxGrp = reviewMapper.getMaxGrp();
         reviewDto.setGrp(maxGrp);
         reviewMapper.setWrite(reviewDto);
-
 
 
         return "redirect:/review";

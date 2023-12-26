@@ -60,7 +60,6 @@
                                 <select name="selectType" class="selectType" onchange="updateSelectedOption();this.form.submit();">
                                     <option value="">정렬 순서</option>
                                     <option value="regdate" th:selected="${st eq 'regdate'}"> 최근 등록순</option>
-                                    <option value="pop" th:selected="${st eq 'pop'}">인기순</option>
                                     <option value="name" th:selected="${st eq 'name'}">이름순</option>
                                     <option value="code" th:selected="${st eq 'code'}">지역순</option>
                                 </select>
@@ -106,8 +105,8 @@
                                                 <p id="camp-visit">[[${ps.visit}]]</p>
 <!--                                                <li id="bookmark">총 북마크 :</li>-->
 <!--                                                <p id="camp-bookmark">[[${ps.bookmark}]]</p>-->
-                                                <li id="star">별점 :</li>
-                                                <p id="camp-star">[[${ps.star}]]</p>
+<!--                                                <li id="star">별점 :</li>-->
+<!--                                                <p id="camp-star">[[${ps.star}]]</p>-->
                                             </div>
                                             <div class="content-list-detail">
                                                 <a th:href="@{/place/placedetail?(placeCode=${ps.placeCode})}">
@@ -165,9 +164,6 @@
     </main>
     <footer th:insert="~{fragment/footer::footer_a}"></footer>
 <script>
-
-
-
     function dropTable(placeCode){
         if(confirm("삭제하면 복구할 수 없습니다.\n정말 삭제하시겠습니까?")){
             $.ajax({
