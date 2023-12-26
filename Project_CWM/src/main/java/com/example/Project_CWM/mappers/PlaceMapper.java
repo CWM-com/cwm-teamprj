@@ -48,6 +48,9 @@ public interface PlaceMapper {
     @Select("select * from placeinfo ${searchQuery} limit #{startNum}, #{offset}")
     List<PlaceDto> getSearch(Map<String, Object> mapp);
 
+    //캠핑장 별점 업데이트
+    
+
     //캠핑당 디테일 출력
     @Select("select * from placeinfo where place_code = #{placeCode}")
     public PlaceDto getDetail(String placeCode);
@@ -79,7 +82,6 @@ public interface PlaceMapper {
     // 메인페이지 캠프 개수 카운팅
     @Select("select count(*) from placeinfo")
     public int MainPlaceCount();
-
 
     // 메인페이지 베스트 캠핑 3가지
     @Select("select pc.place_content4, pi.place_name, pi.place_code from placeinfo as pi inner join placecontent as pc on(pi.place_code = pc.place_code) order by pi.visit desc limit 0,3;")
