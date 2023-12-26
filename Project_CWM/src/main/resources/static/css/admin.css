@@ -120,6 +120,10 @@
             display: flex;
         }
 
+        .admin-info > a {
+            color: #fff;
+        }
+
         .navbar-icons {
             margin-left: 20px;
 

@@ -52,6 +52,7 @@ public class AdminPageController {
     public String getPlaceRegister(){
         return("current=3");
     }
+
     @PostMapping("/placeregister")
     public String setPlace(@ModelAttribute PlaceDto placeDto,
                            @ModelAttribute MapDto mapDto,
