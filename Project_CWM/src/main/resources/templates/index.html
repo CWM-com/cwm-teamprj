@@ -243,40 +243,44 @@
                     <th:block th:each="rr : ${RecentReview}">
                         <th:block th:if="${rr.orgName == null}">
                             <div class="section-content-box">
-                                <div class="icon-box">
-                                    <span><i class="fa-solid fa-tags"></i></span>
-                                </div>
-                                <div class="review-img">
-                                        <div class="img-box">
-                                            <img src="/images/ssh/refiles/noimages.png" alt="등록된 사진이 없습니다.">
+                                <a th:href="@{/review/view?(id=${rr.id})}">
+                                    <div class="icon-box">
+                                        <span><i class="fa-solid fa-tags"></i></span>
+                                    </div>
+                                    <div class="review-img">
+                                            <div class="img-box">
+                                                <img src="/images/ssh/refiles/noimages.png" alt="등록된 사진이 없습니다.">
+                                            </div>
+                                        <div>
+                                            <h4>장소 : [[${rr.campName}]]</h4>
                                         </div>
-                                    <div>
-                                        <h4>장소 : [[${rr.campName}]]</h4>
+                                        <div>
+                                            <h4>제목 : [[${rr.subject}]]</h4>
+                                        </div>
+                                        <div class="rrcontent">내용 : [[${rr.content}]]</div>
                                     </div>
-                                    <div>
-                                        <h4>제목 : [[${rr.subject}]]</h4>
-                                    </div>
-                                    <div class="rrcontent">내용 : [[${rr.content}]]</div>
-                                </div>
+                                </a>
                             </div>
                         </th:block>
                         <th:block th:unless="${rr.orgName == null}">
                             <div class="section-content-box">
-                                <div class="icon-box">
-                                    <span><i class="fa-solid fa-tags"></i></span>
-                                </div>
-                                <div class="review-img">
-                                    <div class="img-box">
-                                        <img th:src="@{|/${rr.folderName}/${rr.savedFileName}|}" alt="${rr.orgName}">
+                                <a th:href="@{/review/view?(id=${rr.id})}">
+                                    <div class="icon-box">
+                                        <span><i class="fa-solid fa-tags"></i></span>
                                     </div>
-                                    <div>
-                                        <h4>장소 : [[${rr.campName}]]</h4>
+                                    <div class="review-img">
+                                        <div class="img-box">
+                                            <img th:src="@{|/${rr.folderName}/${rr.savedFileName}|}" alt="${rr.orgName}">
+                                        </div>
+                                        <div>
+                                            <h4>장소 : [[${rr.campName}]]</h4>
+                                        </div>
+                                        <div>
+                                            <h4>제목 : [[${rr.subject}]]</h4>
+                                        </div>
+                                        <div class="rrcontent">내용 : [[${rr.content}]]</div>
                                     </div>
-                                    <div>
-                                        <h4>제목 : [[${rr.subject}]]</h4>
-                                    </div>
-                                    <div class="rrcontent">내용 : [[${rr.content}]]</div>
-                                </div>
+                                </a>
                             </div>
                         </th:block>
                     </th:block>
