@@ -236,7 +236,7 @@
         </form>
         <section>
             <div class="review-title">
-                <h1>BEST Review</h1>
+                <h1>RECENT REVIEW</h1>
             </div>
             <div class="section-main-2">
                 <th:block th:if="${!RecentReview.isEmpty()}">
@@ -254,9 +254,9 @@
                                         <h4>장소 : [[${rr.campName}]]</h4>
                                     </div>
                                     <div>
-                                        <h4>[[${rr.subject}]]</h4>
+                                        <h4>제목 : [[${rr.subject}]]</h4>
                                     </div>
-                                    <div>>[[${rr.content}]]</div>
+                                    <div class="rrcontent">내용 : [[${rr.content}]]</div>
                                 </div>
                             </div>
                         </th:block>
@@ -273,9 +273,9 @@
                                         <h4>장소 : [[${rr.campName}]]</h4>
                                     </div>
                                     <div>
-                                        <h4>[[${rr.subject}]]</h4>
+                                        <h4>제목 : [[${rr.subject}]]</h4>
                                     </div>
-                                    <div>>[[${rr.content}]]</div>
+                                    <div class="rrcontent">내용 : [[${rr.content}]]</div>
                                 </div>
                             </div>
                         </th:block>
