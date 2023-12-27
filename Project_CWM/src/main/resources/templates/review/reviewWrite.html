@@ -50,7 +50,7 @@
                 <form onsubmit="return frmCheck()" action="/review/write" method="post" enctype="multipart/form-data" autocomplete="off">
                     <ul>
                         <li>
-                            <label>질문</label>
+                            <label>제목</label>
                             <input type="text" name="subject" class="input width-100 noto">
                         </li>
                         <li>
@@ -109,7 +109,7 @@
     function frmCheck() {
 
         if(subject.value == "") {
-            alert("질문을 입력해 주세요.");
+            alert("제목을 입력해 주세요.");
             subject.focus();
             return false;
         }

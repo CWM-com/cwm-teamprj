@@ -12,6 +12,8 @@ public interface ReviewMapper {
     @Select("select * from review order by id desc")
     public List<ReviewDto> getReview();
 
+    @Select("select * from review order by id desc limit 0, 3")
+    public List<ReviewDto> getRecentReview();
 
     @Insert("insert into review values(null, #{subject}, #{userId}, #{content}, #{eval}, #{campName}, 0, now(), #{orgName}, #{savedFileName}, #{savedFilePathName}, #{savedFileSize}, #{folderName}, #{ext}, #{grp}, 1, 1)")
     public void setWrite(ReviewDto reviewDto);
@@ -33,9 +35,6 @@ public interface ReviewMapper {
 
 
     /*파일다운*/
-
-
-
 
 
     @Select("select count(*) from review")
