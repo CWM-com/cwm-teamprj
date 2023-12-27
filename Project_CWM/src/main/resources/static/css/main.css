@@ -530,6 +530,15 @@ section:nth-child(2) {
     text-align: right;
 }
 
+.section-content-box a:link {
+  color : black;
+  text-decoration: none;
+}
+.section-content-box a:visited {
+  color : black;
+  text-decoration: none;
+}
+
 .section-content-box div span i {
     font-size: 35px;
 }
