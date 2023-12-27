@@ -541,12 +541,11 @@ section:nth-child(2) {
 
 .review-img .img-box {
     height: 250px;
+    margin-bottom: 10px;
 }
 .review-img .img-box img{
     height: 100%;
     object-fit: contain;
-}
-
 }
 
 .review-img div h4 {
@@ -555,10 +554,13 @@ section:nth-child(2) {
     font-weight: 600;
 }
 
-.review-img div:last-child {
+.rrcontent {
     padding-left: 8px;
     padding-bottom: 6px;
     color: rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .scroll-TopBtn {
@@ -685,5 +687,3 @@ footer {
     font-weight: 500;
     color: rgb(196, 196, 196);
 }
-
-
