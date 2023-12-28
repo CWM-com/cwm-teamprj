@@ -3,134 +3,97 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>공지사항</title>
 </head>
+
 <body>
-<div class="main-content" th:fragment="main3_frag">
-    <div class="register-body">
-        <form onsubmit="return frmCheck()" action="/current=3" method="post" enctype="multipart/form-data" >
-            <table>
-                <tr>
-                    <th>캠핑장 고유번호</th>
-                    <td>
-                        <input type="text" name="placeCode" placeholder="ex) 101, 203">
-                    </td>
-                </tr>
-                <tr>
-                    <th>캠핑장 이름</th>
-                    <td>
-                        <input type="text" name="placeName" placeholder="ex) 서울 난지 캠핑장">
-                    </td>
-                </tr>
-                <tr>
-                    <th>캠핑장 주소</th>
-                    <td>
-                        <input type="text" name="placeAddr" placeholder="ex) 서울특별시 마포구 상암동 495-81">
-                    </td>
-                </tr>
-                <tr>
-                    <th>캠핑장 전화번호</th>
-                    <td>
-                        <input type="text" name="placeCall" placeholder="ex) 02-304-0061">
-                    </td>
-                </tr>
-                <tr>
-                    <th>캠핑장 설명1</th>
-                    <td>
-                        <textarea name="placeContent1" cols="80" rows="5"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <th>캠핑장 설명2</th>
-                    <td>
-                        <textarea name="placeContent2" cols="80" rows="5"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <th>캠핑장 설명3</th>
-                    <td>
-                        <textarea name="placeContent3" cols="80" rows="5"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <th>캠핑장 설명4</th>
-                    <td>
-                        <textarea name="placeContent4" cols="80" rows="5"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <th>캠핑장 메인사진<br>첨부파일(1개)</th>
-                    <td>
-                        <input type="file" name="fileMain" multiple>
-                    </td>
-                </tr>
-                <tr>
-                    <th>캠핑장 사진<br>첨부파일(3개)</th>
-                    <td>
-                        <input type="file" name="fileDetail" multiple>
-                    </td>
-                </tr>
-                <tr>
-                    <th>캠핑장 주변사진<br>첨부파일(4개)</th>
-                    <td>
-                        <input type="file" name="fileAround" multiple>
-                    </td>
-                </tr>
-            </table>
-            <div class="bottom">
-                <div class="bottom-left">
-                    <a th:href="@{/place/place}">
-                        <button type="button" class="btn black">목록으로</button>
-                    </a>
+    <div class="main-content" th:fragment="main3_frag">
+        <div class="page-title">
+            <div class="notice">
+                <h1>공지사항</h1>
+                <div class="notice-container">
+                    <form method="get" action="/notice" onsubmit="return check()">
+                        <div class="notice-search">
+                            <select name="searchType" class="searchType">
+                                <option value="subject">제목</option>
+                                <option value="content">내용</option>
+                            </select>
+                            <div class="inpbox">
+                                <input type="text" name="words" class="words" required>
+                            </div>
+                            <button type="submit" class="notice-search-btn" value="검색">
+                                <img src="/images/magnifying-glass-solid.svg" alt="">
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div class="bottom-right">
-                    <a th:href="@{/current=3}">
-                        <button type="submit" class="btn blue">캠핑장 등록</button>
-                    </a>
+                <div class="notice-List">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>날짜</th>
+                            <th>조회수</th>
+                            <th>비고</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="notice, k: ${list}">
+                            <td>
+                                <span>[[${cnt - ((page.page - 1) * page.pageCount) - k.index}]]</span>
+                            </td>
+                            <td>
+                                <a th:href="@{/notice/view?(id=${notice.id})}" class="active">[[${notice.subject}]]</a>
+                            </td>
+                            <td>
+                                <span>[[${notice.regdate}]]</span>
+                            </td>
+                            <td>
+                                <span>[[${notice.visit}]]</span>
+                            </td>
+                            <td>
+                                <a th:href="@{/notice/update?(id=${notice.id})}" class="btn1">수정</a>
+                                <a href="#" class="btn1" th:onclick="remove([[${notice.id}]])")>삭제</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </form>
+            <div class="bottom-center">
+                <a href="#" th:if="${page.page <= 1}"></a>
+
+                <a th:href="@{/notice?(page=${page.page - 1})}" th:unless="${page.page <= 1}">
+                    <i class="fa-solid fa-angle-left"></i>
+                </a>
+
+                <!-- page number -->
+
+                <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}" th:href="@{/notice?(page=${i})}">
+                    <th:block th:if="${page.page eq i}">
+                          <span style="color:#f00">
+                            <strong>[[${i}]]</strong>
+                          </span>
+                    </th:block>
+                    <th:block th:unless="${page.page eq i}">
+                          <span>
+                            <strong>[[${i}]]</strong>
+                          </span>
+                    </th:block>
+                </a>
+                <!-- page number -->
+                <a href="#" th:if="${page.page >= page.totalPage}"></a>
+
+                <a th:href="@{/notice?(page=${page.page + 1})}"
+                   th:unless="${page.page >= page.totalPage}">
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+            </div>
+            <div class="bottom">
+                <a th:href="@{/notice/write}" class="btn1">글쓰기</a>
+            </div>
+        </div>
     </div>
-</div>
-<script>
-    function frmCheck(){
-        let placeName = document.querySelector("input[name=placeName]");
-        let placeCode = document.querySelector("input[name=placeCode]");
-        let placeAddr = document.querySelector("input[name=placeAddr]");
-        let placeCall = document.querySelector("input[name=placeCall]");
-
-        if(placeCode.value == ""){
-            alert("캠핑장 코드를 입력하세요.");
-            placeCode.focus();
-            return false;
-        }else if(placeName.value == ""){
-            alert("캠핑장 이름을 입력하세요.");
-            placeName.focus();
-            return false;
-        }else if(placeAddr.value == ""){
-            alert("캠핑장 주소를 입력하세요.");
-            placeAddr.focus();
-            return false;
-        }else if(placeCall.value == ""){
-            alert("캠핑장 번호를 입력하세요.");
-            placeCall.focus();
-            return false;
-        }
-
-        $.ajax({
-            type: "get",
-            url: "/place/checkPlaceCode",
-            dataType: "json",
-            data: {placeCode: placeCode.value},
-            success: function(res){
-                if(res.checkCode == "1"){
-                    alert("사용할 수 없는 테이블 코드입니다.\n새로 입력하세요.");
-                    placeCode.value = "";
-                    placeCode.focus();
-                }
-            }
-        })
-    }
-</script>
 </body>
 </html>

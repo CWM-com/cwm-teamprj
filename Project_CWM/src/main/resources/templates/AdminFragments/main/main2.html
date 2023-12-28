@@ -3,64 +3,134 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>회원관리 페이지</title>
-
+    <title>Title</title>
 </head>
 <body>
 <div class="main-content" th:fragment="main2_frag">
-    <h1>회원관리</h1>
-    <div class="">
-        <div class="member">
-            <h4>총 개수</h4>
-            <div class="select-member">
-                <form action="">
-                    <select name="" id="">
-                        <option value="" selected>--정렬 기준--</option>
-                        <option value="">이름</option>
-                        <option value="">아이디</option>
-                        <option value="">이메일</option>
-                        <option value="">전화번호</option>
-                    </select>
-                </form>
-                <form action="" method="">
-                    <div class="camp-option-search">
-                        <input type="text" name="search" class="search" id="search">
-                        <input type="submit" class="btn-search" value="검색">
-                    </div>
-                </form>
-            </div>
-        </div>
-        <form action="" method="">
-            <div class="payment-box">
-                <table class="payment-table">
-                    <thead>
-                        <tr>
-                            <th>구분</th>
-                            <th>이름</th>
-                            <th>아이디</th>
-                            <th>비밀번호</th>
-                            <th>이메일</th>
-                            <th>전화번호</th>
-                            <th>비고</th>
-                        </tr>
-                    </thead>
-                    <tbody th:each="m : ${member}">
-                        <tr>
-                            <th>
-                                번호
-                            </th>
-                            <td>[[${m.userName}]]</td>
-                            <td>[[${m.userId}]]</td>
-                            <td>[[${m.userPasswd}]]</td>
-                            <td>[[${m.userEmail}]]</td>
-                            <td>[[${m.userTel}]]</td>
-                            <td><button type="button" class="delte-member">삭제</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+    <div class="register-body">
+        <form onsubmit="return frmCheck()" action="/current=3" method="post" enctype="multipart/form-data" >
+            <table>
+                <tr>
+                    <th>캠핑장 고유번호</th>
+                    <td>
+                        <input type="text" name="placeCode" placeholder="ex) 101, 203">
+                    </td>
+                </tr>
+                <tr>
+                    <th>캠핑장 이름</th>
+                    <td>
+                        <input type="text" name="placeName" placeholder="ex) 서울 난지 캠핑장">
+                    </td>
+                </tr>
+                <tr>
+                    <th>캠핑장 주소</th>
+                    <td>
+                        <input type="text" name="placeAddr" placeholder="ex) 서울특별시 마포구 상암동 495-81">
+                    </td>
+                </tr>
+                <tr>
+                    <th>캠핑장 전화번호</th>
+                    <td>
+                        <input type="text" name="placeCall" placeholder="ex) 02-304-0061">
+                    </td>
+                </tr>
+                <tr>
+                    <th>캠핑장 설명1</th>
+                    <td>
+                        <textarea name="placeContent1" cols="80" rows="5"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>캠핑장 설명2</th>
+                    <td>
+                        <textarea name="placeContent2" cols="80" rows="5"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>캠핑장 설명3</th>
+                    <td>
+                        <textarea name="placeContent3" cols="80" rows="5"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>캠핑장 설명4</th>
+                    <td>
+                        <textarea name="placeContent4" cols="80" rows="5"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>캠핑장 메인사진<br>첨부파일(1개)</th>
+                    <td>
+                        <input type="file" name="fileMain" multiple>
+                    </td>
+                </tr>
+                <tr>
+                    <th>캠핑장 사진<br>첨부파일(3개)</th>
+                    <td>
+                        <input type="file" name="fileDetail" multiple>
+                    </td>
+                </tr>
+                <tr>
+                    <th>캠핑장 주변사진<br>첨부파일(4개)</th>
+                    <td>
+                        <input type="file" name="fileAround" multiple>
+                    </td>
+                </tr>
+            </table>
+            <div class="bottom">
+                <div class="bottom-left">
+                    <a th:href="@{/place/place}">
+                        <button type="button" class="btn black">목록으로</button>
+                    </a>
+                </div>
+                <div class="bottom-right">
+                    <a th:href="@{/current=3}">
+                        <button type="submit" class="btn blue">캠핑장 등록</button>
+                    </a>
+                </div>
             </div>
         </form>
     </div>
 </div>
+<script>
+    function frmCheck(){
+        let placeName = document.querySelector("input[name=placeName]");
+        let placeCode = document.querySelector("input[name=placeCode]");
+        let placeAddr = document.querySelector("input[name=placeAddr]");
+        let placeCall = document.querySelector("input[name=placeCall]");
+
+        if(placeCode.value == ""){
+            alert("캠핑장 코드를 입력하세요.");
+            placeCode.focus();
+            return false;
+        }else if(placeName.value == ""){
+            alert("캠핑장 이름을 입력하세요.");
+            placeName.focus();
+            return false;
+        }else if(placeAddr.value == ""){
+            alert("캠핑장 주소를 입력하세요.");
+            placeAddr.focus();
+            return false;
+        }else if(placeCall.value == ""){
+            alert("캠핑장 번호를 입력하세요.");
+            placeCall.focus();
+            return false;
+        }
+
+        $.ajax({
+            type: "get",
+            url: "/place/checkPlaceCode",
+            dataType: "json",
+            data: {placeCode: placeCode.value},
+            success: function(res){
+                if(res.checkCode == "1"){
+                    alert("사용할 수 없는 테이블 코드입니다.\n새로 입력하세요.");
+                    placeCode.value = "";
+                    placeCode.focus();
+                }
+            }
+        })
+    }
+</script>
 </body>
 </html>
