@@ -8,6 +8,7 @@ CREATE TABLE qna (
     grp INT,
     seq INT,
     depth INT,
+    visit int,
     PRIMARY KEY (id),
     foreign key(user_id) references member(user_id) on update cascade on delete restrict
 );
@@ -37,6 +38,7 @@ subject varchar(255) not null,
 user_Id varchar(20) not null,
 content text,
 eval int not null;
+camp_name not null;
 visit int,
 regdate date,
 orgName varchar(255),

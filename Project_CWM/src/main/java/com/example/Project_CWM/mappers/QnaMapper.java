@@ -13,7 +13,7 @@ public interface QnaMapper {
     @Select("select * from qna order by id desc")
     public List<QnaDto> getQna();
 
-    @Insert("insert into qna values(null, #{userId}, #{subject}, #{content}, now(), #{ext} ,#{grp}, 1, 1, 0)")
+    @Insert("insert into qna values(null, #{userId}, #{subject}, #{content}, now(), #{ext} ,#{grp}, 1, 1,0)")
     public void setWrite(QnaDto qnaDto);
 
     @Delete("delete from qna where id = #{id}")
