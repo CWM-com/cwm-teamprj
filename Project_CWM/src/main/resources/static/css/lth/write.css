@@ -33,10 +33,7 @@ outline: 0;
     height: 400px;
 }
 
-ul li {
-    margin-top: 20px;
-    margin-bottom: 5px;
-}
+
 
 .input:focus {
     border: 1px solid #86b7fe;
