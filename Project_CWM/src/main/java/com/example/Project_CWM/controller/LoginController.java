@@ -1,6 +1,6 @@
 package com.example.Project_CWM.controller;
 
-import com.example.Project_CWM.Service.SigninService;
+import com.example.Project_CWM.service.SigninService;
 import com.example.Project_CWM.dto.MemberDto;
 import com.example.Project_CWM.mappers.SigninMapper;
 import com.example.Project_CWM.service.MypageService;
